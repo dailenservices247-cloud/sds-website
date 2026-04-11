@@ -8,6 +8,7 @@ import { Container } from "./Container";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
+  { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/lab/scrlpets", label: "Lab" },

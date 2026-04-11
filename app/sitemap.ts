@@ -5,6 +5,7 @@ const siteUrl = "https://synapsedynamics.vercel.app";
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
+    "/about",
     "/services",
     "/services/architect",
     "/services/automator",
@@ -12,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/how-it-works",
     "/lab/scrlpets",
     "/contact",
+    "/legal/privacy",
+    "/legal/terms",
   ];
   const lastModified = new Date();
   return routes.map((route) => ({

@@ -13,6 +13,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-slot": "^1.2.4",
+    "@vercel/analytics": "^2.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.38.0",
@@ -21,6 +22,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.72.1",
+    "resend": "^6.10.0",
     "tailwind-merge": "^3.5.0",
     "zod": "^4.3.6"
   },

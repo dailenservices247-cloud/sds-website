@@ -15,6 +15,7 @@ const footerGroups = [
   {
     title: "Company",
     links: [
+      { href: "/about", label: "About" },
       { href: "/how-it-works", label: "How it works" },
       { href: "/contact", label: "Contact" },
     ],
@@ -22,8 +23,8 @@ const footerGroups = [
   {
     title: "Legal",
     links: [
-      { href: "#", label: "Privacy" },
-      { href: "#", label: "Terms" },
+      { href: "/legal/privacy", label: "Privacy" },
+      { href: "/legal/terms", label: "Terms" },
     ],
   },
 ];

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
@@ -84,6 +85,7 @@ export default function RootLayout({
         <Nav />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
