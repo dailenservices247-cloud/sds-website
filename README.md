@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Synapse Dynamics — Website
 
-## Getting Started
+Marketing site for **Synapse Dynamics Segmented**, an AI agency owned by Black Sheep 247 LLC. This is the credibility surface for pitches — the real URL on a real brand a skeptical founder can point at.
 
-First, run the development server:
+**Status:** Wave 1 complete. Live at the production domain once deployed on Vercel.
+
+---
+
+## Stack
+
+| Layer | Tech |
+|---|---|
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind CSS v3 with SDS brand tokens |
+| Fonts | Inter + JetBrains Mono via `next/font/google` |
+| Icons | lucide-react |
+| Animation | Framer Motion (sparingly, CSS where possible) |
+| Forms | Server actions + zod validation, honeypot for spam |
+| Deployment | Vercel (free Hobby tier) |
+| Analytics | Vercel Analytics (not yet enabled) |
+
+---
+
+## Run it locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run favicons    # regenerate favicons from monogram SVG (also runs on prebuild)
+npm run dev         # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Build + production
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build       # includes favicon regen via prebuild
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+├── (marketing)/           # Public marketing pages
+│   ├── page.tsx           # Home
+│   ├── services/          # Services index + 3 detail pages
+│   ├── how-it-works/      # Four-step process
+│   └── contact/           # Form + server action
+├── layout.tsx             # Root layout + fonts + metadata
+├── globals.css            # Tailwind + brand CSS variables
+├── sitemap.ts             # Next.js metadata routes
+├── robots.ts
+├── manifest.ts            # PWA manifest
+└── opengraph-image.tsx    # Dynamic OG image
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+components/
+├── brand/                 # Wordmark, Monogram, NodalWorm
+├── layout/                # Nav, Footer, Container
+└── sections/              # Reusable page sections (Hero, CTA, etc.)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+lib/
+├── utils.ts               # cn() helper
+└── content/
+    └── services.ts        # Three service series (single source of truth)
 
-## Deploy on Vercel
+public/
+├── brand/                 # Proprietary SVG logo files (see BRAND-ASSETS-LICENSE.md)
+├── favicon.ico
+├── icon-192.png
+├── icon-512.png
+└── apple-touch-icon.png
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+scripts/
+└── generate-favicons.mjs  # Rasterizes favicons from monogram.svg via sharp
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+BRAND.md                   # Locked brand identity (v2.1) — visual source of truth
+BRAND-ASSETS-LICENSE.md    # Brand assets are NOT MIT — proprietary to Black Sheep 247 LLC
+LICENSE                    # Source code MIT license
+```
+
+---
+
+## Brand assets
+
+Brand assets live in `public/brand/` and are **not** covered by the MIT license. They are proprietary to Black Sheep 247 LLC. See `BRAND-ASSETS-LICENSE.md`.
+
+The canonical brand identity document is `BRAND.md` (v2.1 locked). Don't modify visuals without updating that doc.
+
+**The three SDS marks:**
+- **Wordmark** (default everywhere) — "Synapse Dynamics" with the inline worm-S letterform in accent green. Implemented in `components/brand/Wordmark.tsx`.
+- **Monogram** (favicons, avatars, square contexts) — Mono-S Coil with segment rings. `components/brand/Monogram.tsx`.
+- **Nodal Worm** (hero sections, pitch decks, large format) — nine tapering nodes along a subtle S-curve spine. `components/brand/NodalWorm.tsx`.
+
+The accent green is `#22C55E`. SDS is visually independent from Scrlpets (which uses coral `#EE5A42`) — both are siblings under the Black Sheep 247 LLC umbrella.
+
+---
+
+## Deploying to Vercel
+
+1. Log into Vercel with the GitHub account that owns this repo.
+2. Import the `sds-website` repo as a new project.
+3. Framework preset auto-detects Next.js — accept defaults.
+4. Deploy. First deploy lands on `sds-website-<hash>.vercel.app`.
+5. In project settings, change the production domain to `synapsedynamics.vercel.app` if available (fall back to `sds-synapse` or `synapse-dynamics`).
+6. When a custom domain is available, add it in Vercel project settings. SSL auto-issues.
+
+---
+
+## Wave 1 scope
+
+Built:
+- Home, Services index, 3 service detail pages, How It Works, Contact
+- Nav, Footer, brand components, shared sections
+- Metadata API, sitemap, robots, manifest, dynamic OG image
+- Favicons generated from monogram via sharp
+- Contact form with honeypot + zod validation (logs only in Wave 1)
+
+**Not in Wave 1** (Wave 2+):
+- About page, Digital Products page, Case study deep dives
+- Email delivery on contact form (currently console logs)
+- Privacy Policy / Terms of Service (stub links)
+- Blog / MDX
+- Client portal
+- Analytics dashboard
+
+---
+
+## Contact form
+
+The contact form is a server action (`app/(marketing)/contact/actions.ts`) with zod validation and a honeypot field (`website`). In Wave 1 it only logs submissions. Wave 2 will wire up email delivery via Resend, Postmark, or similar.
+
+---
+
+© 2026 Black Sheep 247 LLC · Synapse Dynamics Segmented

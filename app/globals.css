@@ -3,25 +3,74 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Core surfaces */
+  --bg-primary: #0a0f0c;
+  --bg-surface: #111817;
+  --bg-elevated: #1c2422;
+  --bg-light: #f5f7f6;
+
+  /* Brand accent — SDS emerald (independent from Scrlpets coral) */
+  --accent-primary: #22c55e;
+  --accent-bright: #34d880;
+  --accent-deep: #15803d;
+
+  /* Ink */
+  --text-primary: #f0fdf4;
+  --text-muted: #94a3a0;
+  --text-dim: #5f6b66;
+
+  /* Borders */
+  --border-subtle: #242e2a;
+  --border-accent: #2d8f50;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+}
+
+/* Focus ring for accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .container-x {
+    @apply mx-auto w-full max-w-container px-6 md:px-8;
+  }
+
+  .section-y {
+    @apply py-24 md:py-32;
+  }
+
+  .meta-label {
+    @apply font-mono text-xs uppercase tracking-[0.15em] text-accent;
   }
 }

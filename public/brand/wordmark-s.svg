@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 100" width="60" height="100" role="img" aria-label="Synapse Dynamics — wordmark S">
+  <title>Synapse Dynamics — Wordmark S (inline letterform)</title>
+  <!--
+    Synapse Dynamics Segmented — Inline Wordmark S v1
+    Purpose: the "S" in "Synapse" — a custom letterform that IS the logo.
+    This variant is stripped of segment rings for inline use at typographic scale.
+    For standalone monogram/favicon/avatar, use sds-logo-monogram.svg (with rings).
+    Proportions tuned to sit inline with Inter 700 at cap-height 0.78em.
+  -->
+  <path
+    d="M 52 20 C 52 4, 8 4, 8 30 C 8 50, 52 50, 52 70 C 52 96, 8 96, 8 80"
+    fill="none"
+    stroke="#22C55E"
+    stroke-width="14"
+    stroke-linecap="round"
+  />
+</svg>
