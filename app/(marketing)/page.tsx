@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { NodalWorm } from "@/components/brand/NodalWorm";
 import { CTA } from "@/components/sections/CTA";
@@ -208,30 +209,24 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <article className="mt-16 overflow-hidden rounded-3xl border border-[color:var(--border-subtle)] bg-bg-surface">
+          <Link
+            href="/lab/scrlpets"
+            className="group mt-16 block overflow-hidden rounded-3xl border border-[color:var(--border-subtle)] bg-bg-surface transition-colors hover:border-accent"
+          >
             <div className="grid gap-0 md:grid-cols-[1.1fr_1fr]">
               {/* Visual slot */}
               <div className="relative order-2 min-h-[280px] overflow-hidden bg-bg-elevated md:order-1 md:min-h-[440px]">
-                {/* TODO: Replace with Scrlpets hero screenshot */}
+                <Image
+                  src="/lab/scrlpets-hero.png"
+                  alt="Scrlpets — a full-stack social marketplace for animal breeders."
+                  fill
+                  sizes="(min-width: 768px) 55vw, 100vw"
+                  className="object-cover object-left-top transition-transform duration-500 group-hover:scale-[1.02]"
+                />
                 <div
                   aria-hidden
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "radial-gradient(circle at 30% 40%, rgba(238,90,66,0.22) 0%, transparent 55%), radial-gradient(circle at 70% 70%, rgba(52,211,153,0.18) 0%, transparent 60%)",
-                  }}
+                  className="absolute inset-0 bg-gradient-to-t from-bg-primary/60 via-transparent to-transparent"
                 />
-                <div className="relative flex h-full flex-col items-center justify-center p-10 text-center">
-                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-dim">
-                    Case study preview
-                  </p>
-                  <p className="mt-4 text-5xl font-bold tracking-tight text-ink-primary md:text-6xl">
-                    Scrlpets
-                  </p>
-                  <p className="mt-2 text-sm font-mono uppercase tracking-[0.18em] text-[#EE5A42]">
-                    A pet-first social network
-                  </p>
-                </div>
               </div>
 
               {/* Content slot */}
@@ -239,7 +234,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-3">
                   <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-mono font-medium uppercase tracking-[0.15em] text-accent">
                     <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-                    Live now
+                    Live in pre-beta
                   </span>
                   <span className="font-mono text-xs uppercase tracking-[0.15em] text-ink-dim">
                     Architect · Automator
@@ -249,25 +244,19 @@ export default function HomePage() {
                   Scrlpets
                 </h3>
                 <p className="mt-4 text-base leading-relaxed text-ink-muted text-pretty">
-                  A social network built for pets and the humans who love them.
-                  Full-stack Next.js application with Supabase, real-time feeds,
-                  breed communities, AI-powered moderation, and a production
-                  roadmap we&apos;re still shipping against. Built, launched, and
-                  iterated in-house.
+                  A full-stack social marketplace for animal breeders. 605
+                  source files. 131 Postgres tables. 21 integrated AI tools.
+                  Built in-house at SDS, live in pre-beta, and the answer to
+                  &ldquo;can these people actually ship?&rdquo;
                 </p>
 
-                <a
-                  href="https://scrlpets.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group mt-8 inline-flex items-center gap-2 self-start rounded-md border border-accent px-5 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent hover:text-bg-primary"
-                >
-                  Visit scrlpets.com
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </a>
+                <span className="mt-8 inline-flex items-center gap-2 self-start rounded-md border border-accent px-5 py-3 text-sm font-semibold text-accent transition-colors group-hover:bg-accent group-hover:text-bg-primary">
+                  Read the case study
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
               </div>
             </div>
-          </article>
+          </Link>
         </Container>
       </section>
 

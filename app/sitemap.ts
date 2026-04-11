@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/automator",
     "/services/strategist",
     "/how-it-works",
+    "/lab/scrlpets",
     "/contact",
   ];
   const lastModified = new Date();
