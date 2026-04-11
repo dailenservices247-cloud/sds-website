@@ -69,25 +69,25 @@ export const services: Service[] = [
     ],
     engagementModels: [
       {
-        name: "Project",
+        name: "Lean Build",
         description:
-          "Fixed scope, fixed timeline. Best for discrete builds with clear requirements.",
-        price: "Starting at $___",
-        bestFor: "MVPs, internal tools, clear-scope rebuilds",
+          "A tight, ~2-week build for a single focused deliverable. Scoped small on purpose — the fastest way to get real production software into your hands.",
+        price: "Starting at $4,500",
+        bestFor: "Internal tools, landing pages with logic, MVP slices",
       },
       {
-        name: "Retainer",
+        name: "Standard Platform",
         description:
-          "Dedicated capacity, month-to-month. For ongoing product development and feature work.",
-        price: "Starting at $___/mo",
-        bestFor: "Active products needing continuous delivery",
+          "A ~4–6 week build for a full app or platform. Ships with auth, data model, deployment, and documentation. This is the default Architect engagement.",
+        price: "Starting at $9,500",
+        bestFor: "SaaS MVPs, internal platforms, full customer-facing apps",
       },
       {
-        name: "Equity partnership",
+        name: "Custom Ecosystem",
         description:
-          "Reduced cash, meaningful equity. Reserved for founders we want to build the future with.",
-        price: "Custom",
-        bestFor: "Pre-seed founders with strong product instincts",
+          "An ~8–12 week build for multi-product or multi-surface systems. Web app, admin panel, integrations, and the infrastructure that holds it together.",
+        price: "Starting at $20,000",
+        bestFor: "Marketplaces, multi-tenant platforms, full product ecosystems",
       },
     ],
   },
@@ -133,25 +133,25 @@ export const services: Service[] = [
     ],
     engagementModels: [
       {
-        name: "Single workflow",
+        name: "Workflow Spark",
         description:
-          "One automation, built and deployed. Includes documentation and 30 days of bug support.",
-        price: "Starting at $___",
-        bestFor: "Teams with one specific pain point",
+          "One automation, designed and shipped. Includes deployment, monitoring, error alerts, and a runbook. The fastest way to kill a recurring task.",
+        price: "Starting at $2,500",
+        bestFor: "Teams with one specific repetitive pain point",
       },
       {
-        name: "Automation retainer",
+        name: "Operations Suite",
         description:
-          "We operate as your part-time automation team. Design, build, maintain, and extend.",
-        price: "Starting at $___/mo",
+          "A set of connected automations that cover a whole operational function — lead routing, reporting, document processing, whatever the suite needs to do.",
+        price: "Starting at $5,500",
+        bestFor: "Businesses replacing a manual operational function",
+      },
+      {
+        name: "Embedded Automator",
+        description:
+          "Monthly retainer. We operate as your part-time automation team — designing, building, maintaining, and extending workflows as the business evolves.",
+        price: "$1,500/mo retainer",
         bestFor: "Businesses with ongoing process change",
-      },
-      {
-        name: "Audit + roadmap",
-        description:
-          "One-time engagement. We map every repetitive task in your org and rank them by ROI.",
-        price: "Starting at $___",
-        bestFor: "Operators who know there's waste but can't see it",
       },
     ],
   },
@@ -192,24 +192,24 @@ export const services: Service[] = [
     ],
     engagementModels: [
       {
-        name: "Consultation",
+        name: "Discovery Sprint",
         description:
-          "A 90-minute strategic session. You leave with a written summary and three next actions.",
-        price: "Starting at $___",
+          "A ~1-week engagement. We map the highest-leverage AI opportunities in your business, pressure-test them against your actual data, and deliver a written plan with a prioritized hit list.",
+        price: "$1,500 flat",
         bestFor: "Specific, bounded questions — fast answers",
       },
       {
-        name: "Sprint",
+        name: "Quarterly Plan",
         description:
-          "Two focused weeks. Discovery, analysis, and a delivered plan with prioritized hit list.",
-        price: "Starting at $___",
+          "A 90-day strategic roadmap. Discovery, positioning, vendor evaluation, build-vs-buy calls, and a quarter-long execution plan you can hand to an ops team.",
+        price: "$4,500 flat",
         bestFor: "Teams ready to decide and act",
       },
       {
-        name: "Partnership",
+        name: "Embedded Strategist",
         description:
-          "Monthly retainer. Ongoing strategic advisor access, quarterly reviews, and roadmap input.",
-        price: "Starting at $___/mo",
+          "Monthly retainer. Ongoing strategic advisor access, quarterly reviews, and a seat in the room when decisions get made.",
+        price: "$3,500/mo retainer",
         bestFor: "Founders who want SDS in the room",
       },
     ],
