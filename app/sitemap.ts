@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/architect",
     "/services/automator",
     "/services/strategist",
+    "/products",
     "/how-it-works",
     "/lab/scrlpets",
     "/contact",
