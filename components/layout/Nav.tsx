@@ -7,13 +7,22 @@ import { Wordmark } from "@/components/brand/Wordmark";
 import { Container } from "./Container";
 import { cn } from "@/lib/utils";
 
+// Nav order = user journey: Browse → Engage → Buy.
+//   Browse:  Portfolio (catalog), Lab (what's shipping)
+//   Engage:  Matchmaker (interactive funnel), Foundation ($19/mo)
+//   Buy:     Services (consulting tiers)
+//   CTA:     "Start a project" → /contact (right-aligned, accent button)
+//
+// Removed from primary nav (still reachable via footer or direct URL):
+//   /about    — in footer Company column
+//   /contact  — covered by the right-aligned CTA button + footer
+//   /preview  — temp design-iteration entry, by direct URL
 const navLinks = [
-  { href: "/about", label: "About" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/lab", label: "Lab" },
+  { href: "/matchmaker", label: "Matchmaker" },
+  { href: "/foundation", label: "Foundation" },
   { href: "/services", label: "Services" },
-  { href: "/products", label: "Products" },
-  { href: "/how-it-works", label: "How It Works" },
-  { href: "/lab/scrlpets", label: "Lab" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function Nav() {
@@ -31,30 +40,30 @@ export function Nav() {
             <Wordmark className="text-lg md:text-xl text-ink-primary transition-opacity group-hover:opacity-80" />
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Desktop nav (lg+): full row. Tablets (md) collapse to mobile menu. */}
+          <nav className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-md px-4 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-ink-primary"
+                className="rounded-md px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-ink-primary whitespace-nowrap"
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="ml-3 inline-flex items-center rounded-md border border-accent px-4 py-2 text-sm font-semibold text-accent transition-colors hover:bg-accent hover:text-bg-primary"
+              className="ml-2 inline-flex items-center rounded-md border border-accent px-3.5 py-2 text-sm font-semibold text-accent transition-colors hover:bg-accent hover:text-bg-primary whitespace-nowrap"
             >
               Start a project
             </Link>
           </nav>
 
-          {/* Mobile toggle */}
+          {/* Mobile/tablet toggle (shown below lg breakpoint) */}
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
-            className="md:hidden rounded-md p-2 text-ink-primary hover:bg-bg-surface"
+            className="lg:hidden rounded-md p-2 text-ink-primary hover:bg-bg-surface"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
           >
@@ -62,11 +71,11 @@ export function Nav() {
           </button>
         </div>
 
-        {/* Mobile nav */}
+        {/* Mobile/tablet nav — fits 8+ items + CTA without clipping */}
         <nav
           className={cn(
-            "md:hidden overflow-hidden transition-all duration-200",
-            open ? "max-h-96 pb-6" : "max-h-0"
+            "lg:hidden overflow-hidden transition-[max-height] duration-300 ease-out",
+            open ? "max-h-[42rem] pb-6" : "max-h-0"
           )}
         >
           <div className="flex flex-col gap-1 pt-2">

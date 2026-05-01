@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { NodalWorm } from "@/components/brand/NodalWorm";
+// NodalWorm removed 2026-04-30 — asset deprecated by Dailen
 
 export const metadata = {
   title: "404 — Not found",
@@ -19,12 +19,7 @@ export default function NotFound() {
             "radial-gradient(ellipse at top, rgba(34,197,94,0.08) 0%, transparent 55%)",
         }}
       />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-24 top-1/2 -z-10 -translate-y-1/2 opacity-[0.12] md:right-12"
-      >
-        <NodalWorm width={520} decorative />
-      </div>
+      {/* (NodalWorm decoration removed 2026-04-30 per Dailen) */}
 
       <Container>
         <div className="max-w-2xl">

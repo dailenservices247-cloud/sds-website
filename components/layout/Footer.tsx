@@ -13,17 +13,19 @@ const footerGroups = [
     ],
   },
   {
-    title: "Company",
+    title: "Build with us",
     links: [
-      { href: "/about", label: "About" },
-      { href: "/products", label: "Products" },
-      { href: "/how-it-works", label: "How it works" },
-      { href: "/contact", label: "Contact" },
+      { href: "/portfolio", label: "Portfolio" },
+      { href: "/foundation", label: "Foundation Subscription" },
+      { href: "/matchmaker", label: "AI Business Matchmaker" },
+      { href: "/lab", label: "The Lab" },
     ],
   },
   {
-    title: "Legal",
+    title: "Company",
     links: [
+      { href: "/about", label: "About" },
+      { href: "/contact", label: "Contact" },
       { href: "/legal/privacy", label: "Privacy" },
       { href: "/legal/terms", label: "Terms" },
     ],
@@ -40,7 +42,7 @@ export function Footer() {
               <Wordmark className="text-xl text-ink-primary" />
             </Link>
             <p className="mt-4 max-w-xs text-sm text-ink-muted">
-              An AI agency building custom apps, automations, and strategy for
+              An AI agency building websites, custom apps, automations, and strategy for
               founders who need results, not decks.
             </p>
             <p className="mt-6 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-ink-dim">

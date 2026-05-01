@@ -24,6 +24,149 @@
   --border-accent: #2d8f50;
 }
 
+/* ============================================================================
+   [data-theme="v3"] — Brand v3 overlay (synthesis: Replicate × Ollama)
+   Locked 2026-04-30. Applies to NEW routes inside app/(v3)/ ONLY.
+   Existing 12 brand-v2 dark-emerald routes are completely untouched.
+
+   See DESIGN.md (project root) for full visual spec.
+
+   Pattern: "Quiet shell, loud moments."
+   - Quiet base: pure white + ink, generous whitespace, restrained type
+   - Loud moments: orange→red→magenta gradient hero, Bricolage 64-128px display
+   - Brand v2 emerald PRESERVED as the LIVE-status semantic (operational only)
+   - Binary radius system: 12px containers / 9999px interactive
+   - Zero shadows — depth from borders + background blocks
+   ============================================================================ */
+[data-theme="v3"] {
+  /* Core surfaces — brand v2 dark canvas (matches existing site) */
+  --bg-primary:        #0a0f0c;  /* page background */
+  --bg-surface:        #111817;  /* card surface */
+  --bg-elevated:       #1c2422;  /* elevated card / hover */
+  --bg-light:          #f5f7f6;  /* available if needed */
+  --bg-dark:           #050807;  /* manifesto / deepest dark */
+  --bg-dark-elevated:  #0d1311;
+
+  /* Loud-register Hero Blaze — emerald-family gradient (on-brand) */
+  --gradient-blaze-from: #15803d;  /* deep emerald */
+  --gradient-blaze-via:  #22c55e;  /* primary emerald */
+  --gradient-blaze-to:   #34d880;  /* bright emerald */
+
+  /* Inline link decoration */
+  --link-decoration: #5f6b66;     /* brand v2 muted token */
+
+  /* Accent — brand v2 emerald primary throughout (NOT just LIVE) */
+  --accent-primary: #22c55e;
+  --accent-bright:  #34d880;
+  --accent-deep:    #15803d;
+
+  /* LIVE-status (alias of accent for clarity) */
+  --accent-live:        #22c55e;
+  --accent-live-bright: #34d880;
+
+  /* Ink — light text on dark canvas (matches BRAND.md v2.1 lock) */
+  --text-primary: #f0fdf4;        /* warm near-white */
+  --text-strong:  #ffffff;
+  --text-muted:   #94a3a0;        /* secondary text per BRAND.md */
+  --text-dim:     #5f6b66;        /* tertiary text per BRAND.md */
+  --text-soft:    #5f6b66;
+
+  /* On-dark text (for darkest manifesto sections) */
+  --text-on-dark:      #f0fdf4;
+  --text-on-dark-soft: #94a3a0;
+
+  /* Borders — brand v2 subtle */
+  --border-subtle: #242e2a;
+  --border-soft:   #1c2422;
+  --border-accent: #2d8f50;
+}
+
+[data-theme="v3"] body,
+[data-theme="v3"] {
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+[data-theme="v3"] ::selection {
+  background: var(--text-primary);
+  color: #ffffff;
+}
+
+/* Hero Blaze — full-bleed gradient utility for loud-register hero moments. */
+[data-theme="v3"] .gradient-blaze {
+  background-image: linear-gradient(
+    135deg,
+    var(--gradient-blaze-from) 0%,
+    var(--gradient-blaze-via)  50%,
+    var(--gradient-blaze-to)   100%
+  );
+}
+
+/* Dotted-underline inline link — Replicate signature */
+[data-theme="v3"] .link-dotted {
+  text-decoration: underline dotted var(--link-decoration);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  color: var(--text-primary);
+  transition: color 200ms ease, text-decoration-color 200ms ease;
+}
+[data-theme="v3"] .link-dotted:hover {
+  color: #000000;
+  text-decoration-color: #000000;
+}
+
+/* Bricolage display tuning — variable axes for compression / optical-size */
+[data-theme="v3"] .display {
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.0;
+  font-variation-settings: "wdth" 92, "opsz" 96;
+}
+[data-theme="v3"] .display-section {
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  line-height: 1.05;
+  font-variation-settings: "wdth" 100, "opsz" 48;
+}
+
+/* Quiet-register section heading — system rounded sans (Ollama feel) */
+[data-theme="v3"] .display-quiet {
+  font-family: ui-rounded, system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.11;
+}
+
+/* Mono caption — UPPERCASE technical labels (uses JetBrains Mono shared with v2) */
+[data-theme="v3"] .mono-label {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* LIVE-status pulse — non-color affordance per WCAG SC 1.4.1.
+   Honors prefers-reduced-motion per WCAG SC 2.3.3. */
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.7; transform: scale(0.92); }
+}
+
+.live-pulse {
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-pulse {
+    animation: none;
+  }
+}
+
 * {
   box-sizing: border-box;
 }

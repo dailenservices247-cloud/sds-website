@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Synapse Dynamics",
     short_name: "Synapse Dynamics",
     description:
-      "An AI agency building custom apps, automations, and strategy for founders who need results, not decks.",
+      "An AI agency building websites, custom apps, automations, and strategy for founders who need results, not decks.",
     start_url: "/",
     display: "standalone",
     background_color: "#0a0f0c",
