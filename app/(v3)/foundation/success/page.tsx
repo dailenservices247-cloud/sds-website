@@ -41,17 +41,17 @@ export default function FoundationSuccessPage({
         <ol className="space-y-3 text-base text-ink-muted leading-relaxed list-decimal list-inside">
           {isSetup ? (
             <>
-              <li>You'll receive a confirmation email with your receipt + a calendar link to schedule the kickoff window.</li>
+              <li>You&apos;ll receive a confirmation email with your receipt + a calendar link to schedule the kickoff window.</li>
               <li>Dailen reviews your existing stack via async intake.</li>
               <li>Loom walkthrough + voice messages over the following week.</li>
               <li>Wrap-up: your CLAUDE.md, Keychain, Denise persona, three starter skills — fully configured.</li>
             </>
           ) : (
             <>
-              <li>You'll receive a confirmation email with your receipt + a Discord invite.</li>
+              <li>You&apos;ll receive a confirmation email with your receipt + a Discord invite.</li>
               <li>The first behind-the-build content drop arrives within 24 hours.</li>
               <li>Friday Q&amp;A recap in your inbox at the end of this week.</li>
-              <li>You'll be notified when Apotheosis launches and your subscription auto-converts to Pro — same $19/mo, no price change.</li>
+              <li>You&apos;ll be notified when Apotheosis launches and your subscription auto-converts to Pro — same $19/mo, no price change.</li>
             </>
           )}
         </ol>

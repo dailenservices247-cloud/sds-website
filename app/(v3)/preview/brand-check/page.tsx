@@ -74,7 +74,7 @@ export default function BrandCheckPage() {
             <ul className="text-ink-muted space-y-1">
               <li>• Anywhere visible on the rendered website</li>
               <li>• Hero of any page</li>
-              <li>• As a "loading" placeholder</li>
+              <li>• As a &quot;loading&quot; placeholder</li>
               <li>• Mid-page accent</li>
             </ul>
           </div>

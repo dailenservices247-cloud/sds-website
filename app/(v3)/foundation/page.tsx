@@ -2,7 +2,6 @@
 // Foundation Subscription page. All 9 Q3 lock decisions baked in.
 // Pre-Form-610 gated state visible now; Stripe wires up post-Articles cascade.
 
-import Link from "next/link";
 import type { Metadata } from "next";
 import { Creature } from "@/components/v3/Creature";
 import { Wordmark } from "@/components/brand/Wordmark";

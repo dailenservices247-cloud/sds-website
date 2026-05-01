@@ -12,7 +12,7 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { sortedPortfolio, projectsByStatus } from "@/lib/content/portfolio";
+import { projectsByStatus } from "@/lib/content/portfolio";
 import { RevealGroup, RevealItem } from "@/components/v3/RevealOnScroll";
 import { Wordmark } from "@/components/brand/Wordmark";
 
