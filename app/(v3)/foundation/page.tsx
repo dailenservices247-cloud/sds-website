@@ -20,6 +20,10 @@ export const metadata: Metadata = {
 // Toggle back to false ONLY if Stripe access needs to be paused.
 const FOUNDATION_LIVE = true;
 
+// Founding Member counter — hardcoded for now. Update weekly from Stripe subscriber count
+// until subscriber data is wired in. When this hits 0, the Founding Member tier closes.
+const FOUNDING_MEMBERS_REMAINING = 100;
+
 export default function FoundationPage() {
   return (
     <article>
@@ -198,10 +202,15 @@ export default function FoundationPage() {
       {/* Founding Member tier */}
       <section className="container-x py-16 md:py-20 max-w-3xl">
         <div className="rounded-2xl bg-bg-dark p-8 md:p-12 border border-border-subtle">
-          <p className="mono-label mb-4 text-accent-bright">First 100 subscribers · Limited</p>
+          <p className="mono-label mb-4 text-accent-bright">
+            First 100 subscribers · {FOUNDING_MEMBERS_REMAINING} spots left
+          </p>
           <h2 className="display text-white text-balance mb-6" style={{ fontSize: "clamp(2.25rem, 5vw, 3.5rem)" }}>
             Founding&nbsp;Member tier.
           </h2>
+          <p className="text-sm text-ink-dim italic mb-6">
+            We update this count weekly. When it hits 0, the Founding Member tier closes.
+          </p>
           <p className="text-lg leading-relaxed text-pretty mb-10 text-ink-muted">
             The first 100 Foundation subscribers get treated like the founders they are. This is
             permanent. The benefits don&rsquo;t expire when you cancel and resubscribe.
@@ -224,8 +233,74 @@ export default function FoundationPage() {
         </div>
       </section>
 
+      {/* What's NOT in it */}
+      <section className="container-x py-16 md:py-20 max-w-3xl">
+        <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-8">
+          What&rsquo;s deliberately NOT in it.
+        </h2>
+        <ul role="list" className="space-y-5 text-base md:text-lg text-ink-muted leading-relaxed">
+          <li><strong className="text-ink-primary">No 1-on-1 sessions in the main bundle.</strong> Doesn&rsquo;t scale; positions the founder as service provider; weakens the portfolio framing.</li>
+          <li><strong className="text-ink-primary">No done-for-you builds.</strong> Same problem.</li>
+          <li><strong className="text-ink-primary">No cohort programs.</strong> Cohort overhead is high; doesn&rsquo;t fit solo-with-agent-leverage.</li>
+          <li><strong className="text-ink-primary">No standalone consultation product.</strong> Anyone who needs more than a Setup Session needs an actual SDS consulting engagement — different shape (scoped project), not a glorified consultation.</li>
+        </ul>
+      </section>
+
+      {/* FAQ */}
+      <section className="container-x py-16 md:py-20 max-w-3xl">
+        <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-8">
+          FAQ.
+        </h2>
+        <div className="space-y-4">
+          {[
+            {
+              q: "How is this different from a $20 Substack newsletter?",
+              a: "Substacks deliver finished content. Foundation delivers participation in a build. You’re not consuming polished essays — you’re seeing the unvarnished work, voting on direction, and watching the portfolio mesh assemble. If you want a finished product, wait for Apotheosis Pro at launch. If you want to see how it gets built, this is the on-ramp.",
+            },
+            {
+              q: "What if you stop building?",
+              a: "Worst case: you’ve paid $19/mo for a few months and lost interest in the daily chronicle of one founder’s portfolio. Cancel anytime in your Stripe customer portal — no email required, no retention call. The Discord stays, the content you’ve already consumed stays. Refund within 7 days of any single charge for any reason — DM in Discord or email dailen@synapsedynamics.io.",
+            },
+            {
+              q: "How does the Apotheosis Pro auto-conversion work?",
+              a: "When Apotheosis ships (target August 2026), your existing Foundation Subscription is converted to Apotheosis Pro at the same $19/mo. Same bill, same card, same cadence. Stripe handles it server-side; you don’t take any action. Future Apotheosis Pro subscribers will pay more — Foundation members ride the original price forever.",
+            },
+            {
+              q: "Why $19/mo specifically?",
+              a: "It’s the lowest annual subscription price that covers the underlying tooling cost (Stripe fees + content infrastructure + Discord + email) without being a “lite” tier that creates a worse experience. There’s no $9 tier. There’s no $99 tier. One price, one set of benefits.",
+            },
+            {
+              q: "Is the Founding Member NFT a financial product?",
+              a: "No. It’s a credential — a non-fungible badge proving you were a Foundation Subscriber before [some date], stored on the NeoHood chain. No ownership, no revenue share, no voting rights, no resale market promise from us. If a secondary market emerges later, that’s outside our control. Worth zero dollars by design.",
+            },
+          ].map(({ q, a }) => (
+            <details
+              key={q}
+              className="group rounded-xl border border-border-subtle bg-bg-surface p-5 md:p-6"
+            >
+              <summary className="cursor-pointer list-none flex items-start justify-between gap-4 text-base md:text-lg font-semibold text-ink-primary">
+                <span>{q}</span>
+                <span
+                  aria-hidden="true"
+                  className="mt-1 text-ink-dim transition-transform group-open:rotate-45 select-none"
+                >
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 text-base text-ink-muted leading-relaxed text-pretty">
+                {a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       {/* Retroactive NFT explanation */}
       <section className="container-x py-16 md:py-20 max-w-3xl">
+        <p className="text-sm text-ink-dim italic mb-4">
+          If the word &ldquo;NFT&rdquo; triggers you, skip this section &mdash; it&rsquo;s
+          optional reading and doesn&rsquo;t affect what you&rsquo;re paying for.
+        </p>
         <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-6">
           About the Founding Member NFT.
         </h2>
@@ -249,19 +324,6 @@ export default function FoundationPage() {
         </div>
       </section>
 
-      {/* What's NOT in it */}
-      <section className="container-x py-16 md:py-20 max-w-3xl">
-        <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-8">
-          What&rsquo;s deliberately NOT in it.
-        </h2>
-        <ul role="list" className="space-y-5 text-base md:text-lg text-ink-muted leading-relaxed">
-          <li><strong className="text-ink-primary">No 1-on-1 sessions in the main bundle.</strong> Doesn&rsquo;t scale; positions the founder as service provider; weakens the portfolio framing.</li>
-          <li><strong className="text-ink-primary">No done-for-you builds.</strong> Same problem.</li>
-          <li><strong className="text-ink-primary">No cohort programs.</strong> Cohort overhead is high; doesn&rsquo;t fit solo-with-agent-leverage.</li>
-          <li><strong className="text-ink-primary">No standalone consultation product.</strong> Anyone who needs more than a Setup Session needs an actual SDS consulting engagement — different shape (scoped project), not a glorified consultation.</li>
-        </ul>
-      </section>
-
       {/* Setup Session */}
       <section className="container-x py-16 md:py-20 max-w-3xl border-t border-border-subtle">
         <p className="mono-label mb-4">Side-gate · Optional</p>
@@ -278,6 +340,13 @@ export default function FoundationPage() {
         </p>
         <p className="text-base text-ink-dim leading-relaxed text-pretty">
           Capped at 4 per month. Side gate, not main door.
+        </p>
+      </section>
+
+      {/* Trust strip — addresses missing trust-signal red-team finding */}
+      <section className="container-x pt-4 pb-2 max-w-3xl">
+        <p className="text-sm text-ink-dim text-center">
+          Cancel anytime · 7-day money-back · No retention call · No upsells
         </p>
       </section>
 
