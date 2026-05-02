@@ -8,6 +8,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
+import { SITE_URL } from "@/lib/site-config";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,7 +35,7 @@ const bricolage = Bricolage_Grotesque({
 // (Originally planned Geist Mono but it's not in next/font/google catalog —
 // it's at the standalone `geist` package, not worth the extra dep tonight.)
 
-const siteUrl = "https://synapsedynamics.vercel.app";
+const siteUrl = SITE_URL;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

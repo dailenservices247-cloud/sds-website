@@ -18,7 +18,7 @@ export default function TermsPage() {
       <p>
         These Terms of Use govern your access to and use of the Synapse
         Dynamics Segmented website at{" "}
-        <a href="https://synapsedynamics.vercel.app">synapsedynamics.vercel.app</a>{" "}
+        <a href="https://synapsedynamics.io">synapsedynamics.io</a>{" "}
         (the &ldquo;<strong>Site</strong>&rdquo;), operated by Black Sheep 247
         LLC (&ldquo;<strong>SDS</strong>,&rdquo; &ldquo;<strong>we</strong>
         ,&rdquo; &ldquo;<strong>us</strong>&rdquo;). By using the Site, you

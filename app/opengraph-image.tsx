@@ -121,7 +121,7 @@ export default async function OGImage() {
               margin: 0,
             }}
           >
-            synapsedynamics.vercel.app
+            synapsedynamics.io
           </p>
         </div>
       </div>

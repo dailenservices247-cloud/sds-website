@@ -4,6 +4,7 @@
 
 import "server-only";
 import Stripe from "stripe";
+import { SITE_URL } from "@/lib/site-config";
 
 if (!process.env.STRIPE_SECRET_KEY) {
   throw new Error(
@@ -20,7 +21,7 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   // non-ASCII characters here.
   appInfo: {
     name: "Synapse Dynamics - Black Sheep 247 LLC website",
-    url: "https://synapsedynamics.vercel.app",
+    url: SITE_URL,
   },
 });
 

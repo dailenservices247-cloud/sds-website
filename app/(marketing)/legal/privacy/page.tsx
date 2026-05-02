@@ -20,7 +20,7 @@ export default function PrivacyPage() {
         <strong>we</strong>,&rdquo; &ldquo;<strong>us</strong>&rdquo;) is a
         brand of Black Sheep 247 LLC. We respect your privacy. This page
         explains what information we collect when you visit{" "}
-        <a href="https://synapsedynamics.vercel.app">synapsedynamics.vercel.app</a>{" "}
+        <a href="https://synapsedynamics.io">synapsedynamics.io</a>{" "}
         or contact us, why we collect it, and what we do with it.
       </p>
 
