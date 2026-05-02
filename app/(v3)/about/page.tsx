@@ -11,7 +11,7 @@ import { Wordmark } from "@/components/brand/Wordmark";
 import { SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "About — Solo founder, real portfolio · Synapse Dynamics",
+  title: { absolute: "About — Solo founder, real portfolio · Synapse Dynamics" },
   description:
     "Synapse Dynamics is the operating company under Black Sheep 247 LLC. One founder building a portfolio of AI products that connect.",
   alternates: { canonical: `${SITE_URL}/about` },

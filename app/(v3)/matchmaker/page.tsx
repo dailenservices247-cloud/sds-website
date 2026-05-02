@@ -8,7 +8,7 @@ import { Wordmark } from "@/components/brand/Wordmark";
 import { SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Matchmaker · Synapse Dynamics",
+  title: { absolute: "Matchmaker · Synapse Dynamics" },
   description:
     "Interactive interview that recommends the AI business that fits you. Building it. Be first to try.",
   alternates: { canonical: `${SITE_URL}/matchmaker` },

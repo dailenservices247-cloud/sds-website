@@ -12,7 +12,7 @@ import {
 } from "./actions";
 
 export const metadata: Metadata = {
-  title: "Foundation Subscription · Synapse Dynamics",
+  title: { absolute: "Foundation Subscription · Synapse Dynamics" },
   description:
     "Access the entire portfolio mesh — $19/mo. Auto-converts to Apotheosis Pro at launch.",
   alternates: { canonical: `${SITE_URL}/foundation` },

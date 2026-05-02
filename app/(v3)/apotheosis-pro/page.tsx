@@ -14,7 +14,7 @@ import { Wordmark } from "@/components/brand/Wordmark";
 import { SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Apotheosis Pro · Synapse Dynamics",
+  title: { absolute: "Apotheosis Pro · Synapse Dynamics" },
   description:
     "The platform Foundation Subscription becomes. Launching August 2026.",
   alternates: { canonical: `${SITE_URL}/apotheosis-pro` },

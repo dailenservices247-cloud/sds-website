@@ -10,7 +10,7 @@ import { Wordmark } from "@/components/brand/Wordmark";
 import { SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Lab · Synapse Dynamics",
+  title: { absolute: "Lab · Synapse Dynamics" },
   description: "What's live, what's in motion. Active products and builds.",
   alternates: { canonical: `${SITE_URL}/lab` },
   openGraph: {

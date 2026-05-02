@@ -10,7 +10,7 @@ import { Wordmark } from "@/components/brand/Wordmark";
 import { SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Portfolio · Synapse Dynamics",
+  title: { absolute: "Portfolio · Synapse Dynamics" },
   description:
     "Everything Synapse Dynamics is building, in honest order. Status badges reflect reality.",
   alternates: { canonical: `${SITE_URL}/portfolio` },
