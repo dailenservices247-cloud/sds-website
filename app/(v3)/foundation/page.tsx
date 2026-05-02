@@ -83,6 +83,88 @@ export default function FoundationPage() {
         </section>
       )}
 
+      {/* Founder block — concrete proof-of-shipping above the benefit list */}
+      <section className="container-x py-12 md:py-16 max-w-3xl">
+        <div className="rounded-2xl bg-bg-surface border border-border-subtle p-8 md:p-10">
+          <p className="mono-label mb-3">Built by</p>
+          <h2 className="display-section text-2xl md:text-3xl text-ink-primary mb-4">
+            Dailen Huntley
+          </h2>
+          <p className="text-base md:text-lg text-ink-muted leading-relaxed mb-6 text-pretty">
+            Solo founder of Black Sheep 247 LLC. Toledo, Ohio. Currently shipping a
+            multi-product portfolio without VCs, without a team, and without a
+            $400/month tool stack. Foundation Subscription is how you ride along
+            while the rest gets built.
+          </p>
+          <div className="space-y-3 text-base md:text-lg">
+            <p className="text-ink-muted leading-relaxed text-pretty">
+              <strong className="text-ink-primary font-semibold">Already shipped:</strong>{" "}
+              <a
+                href="https://scrlpets.com"
+                className="text-accent hover:text-accent-bright underline underline-offset-4 decoration-1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                scrlpets.com
+              </a>{" "}
+              (animal-breeder marketplace, live), this site (
+              <a
+                href="https://synapsedynamics.io"
+                className="text-accent hover:text-accent-bright underline underline-offset-4 decoration-1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                synapsedynamics.io
+              </a>
+              ), and the founder channel at{" "}
+              <a
+                href="https://www.youtube.com/@allday24seven"
+                className="text-accent hover:text-accent-bright underline underline-offset-4 decoration-1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @allday24seven on YouTube
+              </a>
+              .
+            </p>
+            <p className="text-ink-muted leading-relaxed text-pretty">
+              <strong className="text-ink-primary font-semibold">In active build:</strong>{" "}
+              Apotheosis (the platform), BookStack, AWA, NeoHood Sovereign Engine, plus
+              tooling.
+            </p>
+          </div>
+          <div className="mt-7 pt-6 border-t border-border-subtle flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <a
+              href="https://www.linkedin.com/company/synapse-dynamics-segmented"
+              className="text-ink-primary hover:text-accent transition-colors inline-flex items-center gap-1.5"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>LinkedIn — Synapse Dynamics</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/dailenhuntley"
+              className="text-ink-primary hover:text-accent transition-colors inline-flex items-center gap-1.5"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>LinkedIn — Dailen</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              href="https://x.com/synapse_dynamic"
+              className="text-ink-primary hover:text-accent transition-colors inline-flex items-center gap-1.5"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>@synapse_dynamic</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* What's included */}
       <section className="relative overflow-hidden">
         <Creature slug="planaria" position="top-right" opacity={0.10} tint="muted" />
