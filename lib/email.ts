@@ -13,8 +13,8 @@ import { Resend } from "resend";
 
 const FROM = "Dailen at Synapse Dynamics <dailen@synapsedynamics.io>";
 
-// REPLACE BEFORE LIVE EMAIL TRAFFIC: real Discord invite URL
-const DISCORD_INVITE_URL = "https://discord.gg/REPLACE";
+// Permanent invite (Synapse Dynamics server, never expires, no use limit)
+const DISCORD_INVITE_URL = "https://discord.gg/jGxwQR55A9";
 // REPLACE BEFORE LIVE EMAIL TRAFFIC: real first build-log post URL
 const FIRST_DROP_URL = "https://synapsedynamics.io/build-log/welcome";
 // REPLACE BEFORE LIVE EMAIL TRAFFIC: real Stripe Customer Portal URL
