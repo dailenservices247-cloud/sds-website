@@ -5,15 +5,30 @@
 import type { Metadata } from "next";
 import { Creature } from "@/components/v3/Creature";
 import { Wordmark } from "@/components/brand/Wordmark";
+import { SITE_URL } from "@/lib/site-config";
 import {
   startFoundationCheckout,
   startSetupCheckout,
 } from "./actions";
 
 export const metadata: Metadata = {
-  title: "Foundation Subscription",
+  title: "Foundation Subscription · Synapse Dynamics",
   description:
     "Access the entire portfolio mesh — $19/mo. Auto-converts to Apotheosis Pro at launch.",
+  alternates: { canonical: `${SITE_URL}/foundation` },
+  openGraph: {
+    title: "Foundation Subscription · Synapse Dynamics",
+    description:
+      "Access the entire portfolio mesh — $19/mo. Auto-converts to Apotheosis Pro at launch.",
+    url: `${SITE_URL}/foundation`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Foundation Subscription · Synapse Dynamics",
+    description:
+      "Access the entire portfolio mesh — $19/mo. Auto-converts to Apotheosis Pro at launch.",
+  },
 };
 
 // Stripe is now live — Foundation Subscription is open for billing.
@@ -272,6 +287,18 @@ export default function FoundationPage() {
             {
               q: "Is the Founding Member NFT a financial product?",
               a: "No. It’s a credential — a non-fungible badge proving you were a Foundation Subscriber before [some date], stored on the NeoHood chain. No ownership, no revenue share, no voting rights, no resale market promise from us. If a secondary market emerges later, that’s outside our control. Worth zero dollars by design.",
+            },
+            {
+              q: "Why not just hire a fractional AI consultant for $200/hour?",
+              a: "If you're running a $50K+/month business, a fractional consultant probably has higher ROI than any $19/mo subscription can deliver. Foundation isn't trying to compete with that. It's for solo operators or pre-revenue founders where $200/hour for 4 hours/month is half the marketing budget. If you can afford a consultant, hire one. If you can't yet — Foundation gives you the founder's reasoning + decisions in async form for $19.",
+            },
+            {
+              q: "Why not just watch free YouTube channels like Greg Isenberg or Riley Brown?",
+              a: "Honestly — if you want polished, network-effect-driven creator content, those channels are excellent and ask nothing for it. Foundation is different in three specific ways: (1) you vote on direction, so the content responds to subscriber needs, not the algorithm, (2) it auto-converts to software (Apotheosis Pro at launch) rather than staying purely as content, (3) it's depth-first — fewer episodes, more documentation of actual decisions. If polish + free is your priority, the free channels win. If participation + future-product-access is your priority, Foundation does something different.",
+            },
+            {
+              q: "Why not a $30/mo Discord community like Build in Public or Indie Hackers premium?",
+              a: "Discord-only communities are great for peer-to-peer support, but they don't ladder up to anything. Foundation's Discord is one channel of access — it's also paired with weekly recap content, behind-the-build documentation, and the auto-conversion mechanic. If peer support is the entire need, Build in Public costs less. If you want one founder's documented portfolio decisions plus the community, Foundation is the bundle.",
             },
           ].map(({ q, a }) => (
             <details

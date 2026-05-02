@@ -5,18 +5,54 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import type { Metadata } from "next";
 import { Wordmark } from "@/components/brand/Wordmark";
+import { SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About — Solo founder, real portfolio · Synapse Dynamics",
   description:
     "Synapse Dynamics is the operating company under Black Sheep 247 LLC. One founder building a portfolio of AI products that connect.",
+  alternates: { canonical: `${SITE_URL}/about` },
+  openGraph: {
+    title: "About — Solo founder, real portfolio · Synapse Dynamics",
+    description:
+      "Synapse Dynamics is the operating company under Black Sheep 247 LLC. One founder building a portfolio of AI products that connect.",
+    url: `${SITE_URL}/about`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About — Solo founder, real portfolio · Synapse Dynamics",
+    description:
+      "Synapse Dynamics is the operating company under Black Sheep 247 LLC. One founder building a portfolio of AI products that connect.",
+  },
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${SITE_URL}/about#dailen-huntley-person`,
+  name: "Dailen Huntley",
+  url: `${SITE_URL}/about`,
+  jobTitle: "Founder",
+  worksFor: { "@id": `${SITE_URL}#synapse-dynamics-org` },
+  sameAs: [
+    "https://www.linkedin.com/in/dailenhuntley",
+    "https://x.com/synapse_dynamic",
+  ],
 };
 
 export default function AboutPage() {
   return (
     <article>
+      <Script
+        id="dailen-huntley-person"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       {/* Hero */}
       <section className="border-b border-border-subtle">
         <div className="container-x pt-24 md:pt-36 pb-16 md:pb-20 max-w-4xl">

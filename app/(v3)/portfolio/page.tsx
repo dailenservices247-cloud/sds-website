@@ -7,11 +7,26 @@ import { sortedPortfolio } from "@/lib/content/portfolio";
 import { RevealGroup, RevealItem } from "@/components/v3/RevealOnScroll";
 import { Creature } from "@/components/v3/Creature";
 import { Wordmark } from "@/components/brand/Wordmark";
+import { SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: "Portfolio · Synapse Dynamics",
   description:
     "Everything Synapse Dynamics is building, in honest order. Status badges reflect reality.",
+  alternates: { canonical: `${SITE_URL}/portfolio` },
+  openGraph: {
+    title: "Portfolio · Synapse Dynamics",
+    description:
+      "Everything Synapse Dynamics is building, in honest order. Status badges reflect reality.",
+    url: `${SITE_URL}/portfolio`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portfolio · Synapse Dynamics",
+    description:
+      "Everything Synapse Dynamics is building, in honest order. Status badges reflect reality.",
+  },
 };
 
 export default function PortfolioIndex() {

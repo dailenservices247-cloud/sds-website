@@ -7,10 +7,23 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { RevealGroup, RevealItem } from "@/components/v3/RevealOnScroll";
 import { Wordmark } from "@/components/brand/Wordmark";
+import { SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "The Lab",
+  title: "Lab · Synapse Dynamics",
   description: "What's live, what's in motion. Active products and builds.",
+  alternates: { canonical: `${SITE_URL}/lab` },
+  openGraph: {
+    title: "Lab · Synapse Dynamics",
+    description: "What's live, what's in motion. Active products and builds.",
+    url: `${SITE_URL}/lab`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lab · Synapse Dynamics",
+    description: "What's live, what's in motion. Active products and builds.",
+  },
 };
 
 const liveProducts = [

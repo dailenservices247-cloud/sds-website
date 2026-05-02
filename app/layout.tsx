@@ -4,11 +4,53 @@ import {
   JetBrains_Mono,
   Bricolage_Grotesque,
 } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { SITE_URL } from "@/lib/site-config";
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${SITE_URL}#synapse-dynamics-org`,
+  name: "Synapse Dynamics Segmented",
+  alternateName: "Synapse Dynamics",
+  url: SITE_URL,
+  logo: `${SITE_URL}/icon-512.png`,
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Black Sheep 247 LLC",
+  },
+  founder: {
+    "@type": "Person",
+    name: "Dailen Huntley",
+    url: `${SITE_URL}/about`,
+  },
+  sameAs: [
+    "https://www.linkedin.com/company/synapse-dynamics-segmented",
+    "https://x.com/synapse_dynamic",
+    "https://github.com/dailenservices247-cloud",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}#synapse-dynamics-website`,
+  name: "Synapse Dynamics",
+  url: SITE_URL,
+  publisher: { "@id": `${SITE_URL}#synapse-dynamics-org` },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
 
 const inter = Inter({
   subsets: ["latin"],
@@ -103,6 +145,18 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} ${bricolage.variable}`}
     >
       <body className="bg-bg-primary text-ink-primary font-sans antialiased">
+        <Script
+          id="synapse-dynamics-org"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <Script
+          id="synapse-dynamics-website"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <Nav />
         <main className="min-h-screen">{children}</main>
         <Footer />

@@ -5,11 +5,26 @@
 import type { Metadata } from "next";
 import { Creature } from "@/components/v3/Creature";
 import { Wordmark } from "@/components/brand/Wordmark";
+import { SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "AI Business Matchmaker",
+  title: "Matchmaker · Synapse Dynamics",
   description:
     "Interactive interview that recommends the AI business that fits you. Building it. Be first to try.",
+  alternates: { canonical: `${SITE_URL}/matchmaker` },
+  openGraph: {
+    title: "Matchmaker · Synapse Dynamics",
+    description:
+      "Interactive interview that recommends the AI business that fits you. Building it. Be first to try.",
+    url: `${SITE_URL}/matchmaker`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Matchmaker · Synapse Dynamics",
+    description:
+      "Interactive interview that recommends the AI business that fits you. Building it. Be first to try.",
+  },
 };
 
 export default function MatchmakerPage() {
