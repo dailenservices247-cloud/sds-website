@@ -4,6 +4,8 @@ import {
   JetBrains_Mono,
   Bricolage_Grotesque,
 } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -143,7 +145,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} ${bricolage.variable}`}
+      className={`${inter.variable} ${jetbrainsMono.variable} ${bricolage.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
       <body className="bg-bg-primary text-ink-primary font-sans antialiased">
         <Script

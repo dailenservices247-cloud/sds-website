@@ -1,313 +1,326 @@
-# Design System — SDS v3 (Synthesis: Replicate × Ollama)
-
-**Status:** v3 evolution of brand v2. Locked 2026-04-30.
-**Scope:** Applies to NEW routes only (`/portfolio`, `/portfolio/[slug]`, `/foundation`, `/matchmaker`, `/lab`, redesigned `/`, redesigned `/about`). Existing 12 brand v2 routes (`/services/*`, `/contact`, `/legal/*`, etc.) remain UNTOUCHED until a future migration session.
-
-This is a **synthesis** of two source DESIGN.md files — Replicate and Ollama — chosen by Dailen Huntley. References preserved at `/tmp/design-refs/picked/`.
-
-The synthesis pattern: **Quiet shell, loud moments.** Ollama-restraint sets the base canvas so Replicate-explosion can LAND at the conversion moments. If everything is loud, nothing is.
-
+---
+name: Synapse Dynamics — Brand v3
+description: The Editorial Workshop — matte monolith ground, sculpted Nox mascot, Immersive-Garden-register cinematic motion for Peer Operators
+colors:
+  shell: "#3a3b3d"
+  shell-deep: "#2a2a2d"
+  spine: "#2a6055"
+  spine-bright: "#347466"
+  gold: "#c8a23e"
+  gold-bright: "#d8b85a"
+  wine: "#7e303a"
+  cream: "#efede5"
+  cream-deep: "#e0ddd0"
+  ink-on-shell: "#efede5"
+  ink-on-shell-strong: "#ffffff"
+  ink-on-shell-muted: "#9b9b96"
+  ink-on-shell-dim: "#6c6c69"
+  ink-on-cream: "#2a2a2d"
+  ink-on-cream-muted: "#5c5d60"
+  border-subtle: "#4a4b4d"
+  border-strong: "#5c5d5f"
+typography:
+  display:
+    fontFamily: "Bricolage Grotesque, Anton, Bebas Neue, system-ui, sans-serif"
+    fontSize: "clamp(3rem, 7.2vw, 6rem)"
+    fontWeight: 700
+    lineHeight: 0.95
+    letterSpacing: "-0.005em"
+    fontVariation: "'wdth' 100, 'opsz' 96"
+  display-section:
+    fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
+    fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)"
+    fontWeight: 700
+    lineHeight: 1.0
+    letterSpacing: "0"
+    fontVariation: "'wdth' 100, 'opsz' 48"
+  body:
+    fontFamily: "GeistSans, Geist, system-ui, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 400
+    lineHeight: 1.55
+    letterSpacing: "normal"
+  body-large:
+    fontFamily: "GeistSans, Geist, system-ui, sans-serif"
+    fontSize: "1.25rem"
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: "normal"
+  caption:
+    fontFamily: "GeistSans, Geist, system-ui, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 400
+    lineHeight: 1.43
+    letterSpacing: "normal"
+  mono:
+    fontFamily: "JetBrains Mono, GeistMono, ui-monospace, monospace"
+    fontSize: "0.75rem"
+    fontWeight: 500
+    lineHeight: 1.4
+    letterSpacing: "0.08em"
+rounded:
+  sm: "4px"
+  md: "12px"
+  pill: "9999px"
+spacing:
+  xs: "4px"
+  sm: "8px"
+  md: "16px"
+  lg: "24px"
+  xl: "32px"
+  block-y: "clamp(2rem, 5vh, 4rem)"
+  section-y: "clamp(4rem, 10vh, 9rem)"
+  inline-gap: "clamp(1rem, 2vw, 2rem)"
+components:
+  button-primary:
+    backgroundColor: "{colors.gold}"
+    textColor: "{colors.shell}"
+    rounded: "{rounded.pill}"
+    padding: "16px 28px"
+    typography: "{typography.body}"
+  button-primary-hover:
+    backgroundColor: "{colors.gold-bright}"
+    textColor: "{colors.shell}"
+  button-ghost:
+    backgroundColor: "transparent"
+    textColor: "{colors.cream}"
+    rounded: "{rounded.pill}"
+    padding: "16px 28px"
+    typography: "{typography.body}"
+  button-ghost-hover:
+    backgroundColor: "{colors.shell-deep}"
+    textColor: "{colors.cream}"
+  card:
+    backgroundColor: "{colors.shell}"
+    textColor: "{colors.cream}"
+    rounded: "{rounded.md}"
+    padding: "32px"
+  card-elevated:
+    backgroundColor: "{colors.shell-deep}"
+    textColor: "{colors.cream}"
+    rounded: "{rounded.md}"
+    padding: "32px"
+  pill-mono-label:
+    backgroundColor: "transparent"
+    textColor: "{colors.gold}"
+    rounded: "{rounded.pill}"
+    padding: "4px 10px"
+    typography: "{typography.mono}"
+  pill-status-live:
+    backgroundColor: "{colors.spine}"
+    textColor: "{colors.cream}"
+    rounded: "{rounded.pill}"
+    padding: "4px 10px"
+    typography: "{typography.mono}"
 ---
 
-## 1. Visual Theme & Atmosphere
+## Overview
 
-A pure-white canvas where most of the page is restrained, monochrome, and editorial — and specific conversion moments **explode** with vibrant gradient, massive display type, and pill geometry that signals participation rather than performance.
+**The Editorial Workshop.** A magazine-grade marketing surface for Synapse Dynamics — an AI architecture studio for Peer Operators. The site reads as a continuous matte monolith: warm dark gray ground (Dodge Durango Destroyer Gray register), antique-gold filaments threaded through accents, petrol-green spine ridges marking section transitions, with a single sculpted Nox creature traveling through the page on scroll.
 
-The page reads in TWO REGISTERS:
+The visual register is **Immersive-Garden editorial cinematic** — bas-relief 3D mascot photography against a continuous matte plane, scroll-orchestrated parallax + scale tweens, generous whitespace, deliberate sequence of moments. The page does NOT use the Linear-density UI register (info-dense changelog format), the Stripe-fintech polish register (corporate navy + gold), or the AI-bro template register (gradient hero + 3 testimonials).
 
-- **Quiet register** (most of the page): pure white background, near-black text, generous whitespace, weight 400–500 type, zero shadows, border-only depth, system-ui rounded display. Inspired by Ollama. Communicates: *honest, restrained, the founder is doing the work, not the marketing.*
-- **Loud register** (specific moments only — hero of conversion routes, Foundation Subscription CTA, Matchmaker entry, Apotheosis early-access): vivid orange→red→magenta gradient backgrounds, 72–128px Bricolage Grotesque headlines at weight 700, pill-shaped everything, dotted-underline links. Inspired by Replicate. Communicates: *come build with us.*
+Mood: deliberate, crafted, builder-aware. Calm-confident with slow-burn excitement. Anti-hype. The interface communicates "this person actually ships and thinks before coding" through restraint + craft, not adjectives.
 
-The transition between registers is the design's voice. **Quiet sections set up loud sections.** Loud sections never run more than ~70vh; the quiet always returns.
+Anti-references: AI-bro/GoDaddy generic, Stripe-on-everything, Linear-density-on-marketing, MrBeast-loud display, Duolingo cute-childish, synthwave neon glow, generic AI brain icons.
 
-**Key Characteristics:**
-- Pure white canvas (`#ffffff`) with near-black text (`#171717`) — Ollama base
-- Selective gradient hero moments (orange → red → magenta) — Replicate energy at conversion points only
-- Bricolage Grotesque variable display font (free; replaces rb-freigeist-neue conceptually) at 48–128px, weight 700
-- Inter for body (already loaded in the project)
-- Geist Mono for code, status pills, technical labels (replaces JetBrains Mono — slightly tighter, more current)
-- **Binary radius system: 12px containers / 9999px interactive elements** — agreed across both source designs
-- Zero shadows on any element — depth comes from borders + background blocks (agreed across both)
-- Brand v2 emerald `#22C55E` PRESERVED as the LIVE-status accent (Replicate's spec uses near-identical green `#2b9a66` for status badges; the migration carries v2's brand through)
-- Dotted-underline links (`text-decoration: underline dotted #bbbbbb`) for inline narrative links
-- Pill-shaped (9999px) status badges, CTAs, image containers, tags
+Pro-references: Immersive Garden (immersive-garden.com), Linear (typography rigor only), Cursor (developer-tool clean), Apple product pages, Meebits voxel renders.
 
----
+## Colors
 
-## 2. Color Palette & Roles
+**Strategy: Committed.** One ground (matte gray shell) carries 80%+ of every surface; petrol-green primary + antique-gold accent each get 5–10% of attention via spine rules + display-emphasis words + CTA pills + mono labels. Cream is reserved for ink (text on shell) — NOT for inverted section grounds (cream-as-ground reads generic and breaks the monolith).
 
-### Primary
-- **Ink** (`#171717`): Primary text, primary headings, dark surface backgrounds. Slightly warm near-black (matches Vercel-of-Geist sensibility) — softer than pure black.
-- **Pure White** (`#ffffff`): Page background, card surfaces, button text on dark.
-- **Pure Black** (`#000000`): Used sparingly — manifesto-tier moments only, occasional 1px borders.
+All colors are intentionally **tinted neutrals**, not pure values. The shell `#3a3b3d` is warm gray (slight brown undertone) — explicitly chosen over `#2a2a2a` (cool gray) per locked taste profile v1. The cream `#efede5` is warm off-white, not paper. The gold is **antique gold** (desaturated brass register), not Stripe-gold (corporate). The petrol-green is desaturated bridge-of-blue/green at low chroma — never the saturated emerald `#22c55e` from brand v2.
 
-### Loud Register — Hero Gradient
-- **Hero Blaze**: Orange → Red → Magenta multi-stop gradient. Tokens:
-  - `#ea2804` (Replicate Red) — orange-red anchor
-  - `#dc2050` — magenta midpoint (added; bridges orange and pink)
-  - `#de1d8d` (Vercel Preview Pink) — magenta-pink terminus
-- Used: hero of `/`, `/foundation`, `/matchmaker`, `/portfolio/apotheosis`. Never on body sections.
-- Always full-bleed, ~50–70vh max height. Quiet always returns below.
+**Forbidden:** pure black `#000`, pure white `#ffffff`, pure gray (no warmth), saturated emerald, electric blue, neon anything.
 
-### Brand Continuity — emerald survives as semantic green
-- **LIVE Emerald** (`#22C55E`): Brand v2's primary accent, demoted to a semantic role: **operational status only**. Used on portfolio LIVE badges, success states, "shipping today" indicators. Pulses (animated) per WCAG SC 1.4.1 non-color affordance.
-- **LIVE Emerald Bright** (`#34d880`): Hover state.
+| Role | Token | Hex | Use |
+|---|---|---|---|
+| Body shell / primary ground | `shell` | `#3a3b3d` | Page background. Card backgrounds. The continuous monolith. |
+| Deeper shell | `shell-deep` | `#2a2a2d` | Elevated card variant. Section breaks needing slight depth. |
+| Primary accent | `spine` | `#2a6055` | Hairline rules between sections. Section-label dividers. Working-state interior emphasis. |
+| Spine bright | `spine-bright` | `#347466` | Hover states on petrol-accented elements. |
+| Secondary accent | `gold` | `#c8a23e` | Mono labels (uppercase). Display-emphasis word color. Primary CTA pill background. Antique-gold-filament accents. |
+| Gold bright | `gold-bright` | `#d8b85a` | Hover on gold elements. |
+| Emotion accent | `wine` | `#7e303a` | Used sparingly. Reserved for "before" labels or moments needing weight. |
+| Warm cream (ink) | `cream` | `#efede5` | Body text on shell. Display headline base color. |
+| Cream deep | `cream-deep` | `#e0ddd0` | Slight tint for cream-on-cream contrast (rare — use only when required). |
+| Ink strong | `ink-on-shell-strong` | `#ffffff` | Reserved — display-emphasis only when cream isn't sharp enough. |
+| Ink muted | `ink-on-shell-muted` | `#9b9b96` | Body copy secondary. Subhead descriptive text. |
+| Ink dim | `ink-on-shell-dim` | `#6c6c69` | Tertiary metadata. Caption muting. |
+| Border subtle | `border-subtle` | `#4a4b4d` | Card borders, divider lines on shell ground. |
+| Border strong | `border-strong` | `#5c5d5f` | Ghost button outlines. Focus emphasis. |
 
-### Neutral Scale
-- **Gray 900** (`#171717`): Primary text — same as Ink.
-- **Gray 600** (`#4d4d4d`): Secondary text, body copy emphasis.
-- **Gray 500** (`#666666`): Tertiary text, muted descriptions.
-- **Gray 400** (`#808080`): Placeholder, disabled.
-- **Gray 300** (`#bbbbbb`): Dotted-underline link decoration, muted metadata. Replicate's signature.
-- **Gray 200** (`#e5e5e5`): Borders, button backgrounds (Ollama gray pill), card outlines.
-- **Gray 100** (`#ebebeb`): Subtle dividers.
-- **Gray 50** (`#fafafa`): Subtle surface tint, section background variation.
+**Contrast verifications:** cream `#efede5` on shell `#3a3b3d` = 10.6:1 (passes AAA). Gold on shell = passes AA at large display sizes only — never used for body. Petrol on shell = passes AA for divider/accent use.
 
-### Surface
-- **Page** (`#ffffff`): default body background.
-- **Subtle Surface** (`#fafafa`): elevated card backgrounds, "ritual" cards.
-- **Dark Surface** (`#171717`): Inverted sections — manifesto blocks, footer, code-window cards. White text on this.
+**No info by color alone.** Status pills (LIVE / PRE-LAUNCH / etc.) include both background color AND uppercase text label. LIVE pulse animation is supplementary, not load-bearing.
 
-### Focus / Accessibility
-- **Focus Ring** (`hsla(212, 100%, 48%, 1)`): 2px outline, 2px offset on all interactive elements. Borrowed from Vercel's Geist focus token (still neutral / non-brand).
+## Typography
 
-### Gradient System
-- **Hero Blaze** (full-bleed, hero only)
-- **No subtle gradients** elsewhere — flat color blocks for everything else.
+**Display: Bricolage Grotesque** (variable font, weight 700, condensed-bold register). Stand-in for the locked Akira Expanded display lock — Bricolage covers the same condensed-heavy uppercase territory as a free open-licensed alternative. Use ONLY at 36px+ display sizes; never for body. Variation axes: `'wdth' 100` baseline (do not condense further), `'opsz' 96` for hero-scale, `'opsz' 48` for section-heading-scale.
 
----
+Text-transform on display: **uppercase** by default. Letter-spacing: `-0.005em` on hero (slight tightening to compensate for uppercase tracking), `0` on section heads.
 
-## 3. Typography Rules
+**Body: Geist Sans** (Vercel's geometric grotesque, free MIT license). Replaces Inter — Inter is Impeccable-anti-pattern banned as a generic default. Geist is distinctive, editorial-grade, and pairs well with Bricolage for display+body contrast.
 
-### Font Family
-- **Display** (loud register): `Bricolage Grotesque` (variable; weight axis 200–800, width axis 75–100, optical-size axis 12–96), with fallbacks: `system-ui, -apple-system, "Segoe UI", sans-serif`. Used for 48–128px headlines.
-- **Display Rounded** (quiet register): `system-ui, -apple-system` — relies on SF Pro Rounded on Apple, falls back to platform sans elsewhere. No extra font load. Used for 24–48px section headings in restrained moments.
-- **Body / UI**: `Inter` (already loaded; variable), with fallbacks: `system-ui, sans-serif`. Used for ALL body copy, navigation, captions.
-- **Mono**: `Geist Mono` (variable; replaces JetBrains Mono), with fallbacks: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`. OpenType `"liga"` enabled. Used for code, status pills, technical labels, metadata.
+Body weights: 400 (default reading), 500 (UI emphasis, navigation, CTAs), 600 (sub-headings only). No thin weights below 400 — they soften the deliberate register.
 
-### Hierarchy
+**Mono: JetBrains Mono** (existing system) for uppercase technical labels, status pills, editorial publication captions ("VOL. 03 / ISSUE Nº 01"), and code blocks. Always uppercase for caption-tier mono. Letter-spacing `0.08em` for caption/label use; normal for code blocks. Color: gold `#c8a23e` on shell ground.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| **Manifesto** | Bricolage Grotesque | 96–128px | 700 | 1.00 | -2.4px to -3.0px | "Imagine what you can build."-tier moments. One per page max. |
-| **Hero Display** | Bricolage Grotesque | 64–80px (clamp) | 700 | 1.02 | -2.0px | Hero headlines on loud routes. |
-| **Section Heading Loud** | Bricolage Grotesque | 48px | 700 | 1.05 | -1.4px | Loud-register section titles. |
-| **Section Heading Quiet** | system-ui rounded | 36px | 500 | 1.11 | -0.5px | Quiet-register section titles. |
-| **Sub-heading** | Inter | 24–28px | 600 | 1.25 | -0.4px | Card headings, feature names. |
-| **Body Large** | Inter | 20px | 400 | 1.50 | normal | Hero descriptions, intros. |
-| **Body** | Inter | 16–18px | 400–500 | 1.55 | normal | Standard reading text. |
-| **Caption** | Inter | 14px | 400–500 | 1.43 | normal | Metadata, labels. |
-| **Mono Caption** | Geist Mono | 12–13px | 500 | 1.40 | 0.05em (slight track) | Status pills, technical labels, layer indicators. UPPERCASE. |
-| **Mono Code** | Geist Mono | 14–16px | 400 | 1.50 | normal | Code blocks. |
+**Hierarchy via scale + weight contrast** (never via color alone). Scale ratio ~1.25 between steps minimum.
 
-### Principles
+| Role | Font | Size | Weight | Notes |
+|---|---|---|---|---|
+| Hero display | Bricolage | clamp(3rem, 7.2vw, 6rem) | 700 | Uppercase. Multi-color word-emphasis allowed (one cream + one gold + one petrol per phrase). |
+| Section display | Bricolage | clamp(2.25rem, 4.5vw, 3.5rem) | 700 | Uppercase. |
+| Sub-heading | Geist | 1.5–1.75rem | 600 | Card titles, pricing tier names. |
+| Body large | Geist | 1.25rem | 400 | Hero descriptions, intro paragraphs. |
+| Body | Geist | 1.125rem | 400 | Standard reading. Line-height 1.55. |
+| Caption | Geist | 0.875rem | 400 | Metadata, footnotes. |
+| Mono caption | JetBrains | 0.75rem | 500 | Section labels (UPPERCASE), status pills, editorial publication marks. |
 
-- **Bricolage Grotesque is the brand voice at scale.** Use only for display moments (48px+). The variable axes let us tune compression: `font-variation-settings: 'wdth' 92, 'opsz' 96` on the manifesto type; `'wdth' 100, 'opsz' 48` on section headings.
-- **Three weights, strict roles.** 400 (body / reading), 500 (UI / interactive / emphasized body), 600 (sub-headings). Display headlines exclusively use 700 in Bricolage. No other weights.
-- **Mono is for ≤6 word labels.** Status pills, layer numbers, version pins, technical metadata. NEVER paragraph body. Always UPPERCASE for caption-tier mono.
-- **Dotted-underline for inline links** in narrative body — `text-decoration: underline dotted; text-decoration-color: #bbbbbb; text-underline-offset: 4px`. Never solid in body. Solid IS used on CTA buttons.
+**Cap body line length 65–75ch.** Long-form copy never extends edge-to-edge — readability over coverage.
 
----
+**Anti-patterns banned:** Inter, Arial, Helvetica defaults. No `font-family: sans-serif` fallback as primary. No bouncy or italic display headlines.
 
-## 4. Component Stylings
+## Elevation
+
+**Philosophy: flat-with-tonal-depth.** Zero box shadows on the matte ground (shadows on a matte register read fake / glass-morphic / Stripe-cliché). All depth comes from background-color shifts (`shell` → `shell-deep`) and 1px tinted borders.
+
+The exception: the traveling Nox mascot is itself a 3D bas-relief render with baked-in lighting + shadow on the cream studio backdrop within the PNG — that's photographic depth, not CSS shadow.
+
+| Level | Treatment | Use |
+|---|---|---|
+| 0 — Flat ground | No border, no shadow | Page background, body content, hero text |
+| 1 — Bordered card | 1px solid `border-subtle` `#4a4b4d` | Portfolio cards, pricing tiers, contact form fields |
+| 2 — Elevated card | `shell-deep` `#2a2a2d` background + bordered | Hover state for level-1 cards. Foundation Subscription pitch container. |
+| 3 — Inverted moment | `cream` background + `ink-on-cream` text | Reserved for explicit content modules where cream-on-shell would lose readability (e.g. long-form blog posts on `/lab`). NOT for hero or portfolio sections — those stay matte. |
+| 4 — Bas-relief mascot | 3D-rendered Nox PNG with baked lighting | Single traveling instance, fixed position right of viewport on desktop. Hidden on mobile per current V1 implementation. |
+
+**No glassmorphism. No backdrop-blur as decoration.** Both are absolute Impeccable bans. The only allowed blur is the 6px filter on the AnimatePresence pose-crossfade transition (functional, not decorative).
+
+## Components
 
 ### Buttons
 
-**Primary CTA** (loud register, used at conversion moments):
-- Background: Pure Black `#000000`
-- Text: Pure White
-- Padding: 14px 28px
+**Primary CTA** (`button-primary`):
+- Background: `gold` `#c8a23e`
+- Text: `shell` `#3a3b3d` (dark ink on gold for contrast)
+- Padding: 16px 28px
 - Border-radius: pill (9999px)
-- Font: Inter 16px weight 500
-- Hover: Background → Ink `#171717` (subtle warmth shift)
-- Border: none
+- Typography: Geist body, weight 500
+- Hover: background → `gold-bright` `#d8b85a`
+- Focus: 2px outline `border-strong` `#5c5d5f`, 2px offset
 
-**Secondary CTA** (quiet register):
-- Background: Pure White
-- Text: Ink `#171717`
-- Padding: 14px 28px
+**Secondary / Ghost CTA** (`button-ghost`):
+- Background: transparent
+- Text: `cream` `#efede5`
+- Padding: 16px 28px
 - Border-radius: pill (9999px)
-- Border: 1px solid `#e5e5e5`
-- Hover: border darkens to `#bbbbbb`
+- Border: 1px solid `border-strong` `#5c5d5f`
+- Hover: background → `shell-deep` `#2a2a2d`
 
-**Gradient CTA** (rare — only on the matchmaker hero, foundation hero):
-- Background: Hero Blaze gradient
-- Text: Pure White
-- Padding: 16px 32px
-- Border-radius: pill (9999px)
-- Font: Inter 16px weight 600
-- Used max ONCE per route
+### Cards
 
-### Cards & Containers
-- Background: Pure White or Subtle Surface `#fafafa`
-- Border: `1px solid #e5e5e5` (Gray 200)
-- Border-radius: **12px** (containers always 12px; only interactive elements use pill)
-- Shadow: **none** — depth purely from border + background contrast
-- Hover (when clickable): border → `#bbbbbb`; subtle background → `#fafafa`
+**Standard card** (`card`):
+- Background: `shell` `#3a3b3d` (same as page — depth via border, not contrast)
+- Border: 1px solid `border-subtle` `#4a4b4d`
+- Border-radius: 12px (`rounded.md`)
+- Padding: 32px
+- Hover: border → `border-strong` `#5c5d5f`, slight `transform: translateY(-2px)`, transition 200ms ease-out
 
-### Status Badges (THE bridge to brand v2)
-- Pill (9999px), font-mono, uppercase, 12px Geist Mono weight 500
-- Padding: 4px 10px
-- Status colors:
-  - **LIVE**: bg `rgba(34, 197, 94, 0.12)`, text `#15803d`, dot `#22C55E` (pulse)
-  - **PRE-LAUNCH**: bg `#fef3c7`, text `#854d0e`
-  - **CONCEPT**: bg `#dbeafe`, text `#1e40af`
-  - **PARKED**: bg `#f5f5f5`, text `#525252`
-  - **INTERNAL**: bg `#ffedd5`, text `#9a3412`
-- LIVE pulse honors `prefers-reduced-motion`
+**Elevated card** (`card-elevated`):
+- Background: `shell-deep` `#2a2a2d`
+- Same other props
 
-### Inputs
-- Background: Pure White
-- Border: 1px solid `#e5e5e5`
-- Border-radius: **pill (9999px)** for search/email; 12px for textareas
-- Padding: 12px 20px
-- Focus: 2px focus ring `hsla(212, 100%, 48%, 1)`
-- Placeholder: Gray 400 `#808080`
+### Pills + status
 
-### Navigation
-- Background: transparent on white page
-- Border: 1px solid `#e5e5e5` at bottom (subtle separator), only visible on scroll
-- Logo: NodalWorm in Ink (`#171717`) — needs cream/white-canvas variant verification
-- Links: Inter 16px weight 500, Ink color, hover → underline dotted `#bbbbbb`
-- Right-aligned: Black pill CTA + Connect dropdown
-- Sticky on scroll with subtle backdrop blur
+**Mono section label** (`pill-mono-label`):
+- Background: transparent
+- Text: `gold` `#c8a23e`
+- UPPERCASE, JetBrains Mono 0.75rem weight 500, letter-spacing 0.08em
+- Used as section anchors ("II. PORTFOLIO", "III. THE FOUNDATION")
+- Mimics editorial publication chapter marks
 
-### Image Treatment
-- Pill-shaped containers (9999px) for hero illustrations, model gallery thumbnails
-- 12px containers for screenshots, code-window mockups
-- No drop shadows. Border-only.
+**Status pill — LIVE** (`pill-status-live`):
+- Background: `spine` `#2a6055`
+- Text: `cream` `#efede5`
+- Border-radius: pill
+- 4px 10px padding
+- Mono caption typography
 
-### Distinctive Components
+**Status pill — PRE-LAUNCH:** background `shell-deep`, same styling.
 
-**Manifesto Section**
-- Dark surface (`#171717`), white text
-- Bricolage 96–128px weight 700
-- One per page max — closes a high-energy route
-- Inspired by Replicate's "Imagine what you can build."
+### Spine rule
 
-**Code Window Card**
-- Dark surface (`#171717` or `#0d1117` for terminal-feel)
-- Geist Mono 14–16px, white text
-- 12px border-radius, no shadow
-- Optional: 1px accent border (`#22C55E` for active example)
+Petrol-green hairline horizontal divider that draws in on scroll-into-view. SVG `path` with `pathLength` animated 0 → 1 over 1.4s ease-out. Optional centered uppercase mono label overlaid (e.g. "II. PORTFOLIO") with `shell` background to mask the line behind the label.
 
-**Portfolio Card** (used on /portfolio index)
-- White, 12px radius, 1px border
-- Pill status badge + mono layer label at top
-- Bricolage 28–32px name + Inter 16px tagline
-- Hover: border → `#bbbbbb`, slight `transform: translateY(-2px)`, transition 200ms ease-out
+```tsx
+<motion.line stroke="var(--bv3-spine)" strokeWidth="1" pathLength={0 → 1} />
+```
 
-**Dotted-Underline Inline Link**
-- `text-decoration: underline dotted; text-decoration-color: #bbbbbb; text-underline-offset: 4px`
-- On hover: color → Ink `#000`, decoration-color → Ink
+### Mascot — Nox
 
----
+The single traveling Nox mascot is a `<motion.div>` at `position: fixed`, `top: 50%`, `right: 3vw`, `translateY: -50%`, with `useScroll` document-level progress driving `x` / `y` / `scale` / `rotate` MotionValues. Pose swaps at scroll thresholds via `useMotionValueEvent` + `AnimatePresence` crossfade with 6px blur on enter/exit (700ms ease-out).
 
-## 5. Layout Principles
+Pose mapping (per V1 first-pass):
+- Hero (0.0–0.16): `working` (worm-only, no baked wordmark text)
+- Portfolio (0.16–0.34): `working`
+- Foundation (0.34–0.5): `listening`
+- Services (0.5–0.68): `presenting`
+- Roadmap (0.68–0.86): `working`
+- Channels (0.86–1.0): `resting`
 
-### Spacing System
-- Base: 8px
-- Scale: 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 / 128 / 192px
-- Section vertical: 96–128px on mobile, 128–192px on desktop
-- Container padding: 24px mobile, 32–48px desktop
+Sources: 7 locked PNGs at `public/brand-v3/nox-*.png` per `AI Hub/Brand/sds-brand-v3-mascot-brief.md` v1 LOCKED 2026-05-08.
 
-### Container
-- Max width: `max-w-container` = 72rem (already defined in current Tailwind config — keep)
-- Centered, fluid
+Reduced-motion fallback: render static at current pose, no parallax/scale/rotate.
 
-### Whitespace Philosophy
-- **Whitespace is the brand.** Quiet sections breathe big. Loud sections fill the screen briefly, then dissolve back to white.
-- Content density is intentionally LOW — never fight visitors with cluttered surfaces.
+Hidden on mobile (`hidden md:block`) per desktop-first cinematic brief. Mobile fallback: corner-pinned smaller variant — banked for follow-up.
 
-### Border Radius (Binary)
-- **Container: 12px** — cards, panels, dialogs, code blocks, image containers (non-pill)
-- **Interactive: 9999px** — buttons, status badges, search inputs, tabs, tags, image avatars
-- **No values between 12 and 9999.** No 4px, no 6px, no 8px, no 24px. Binary system per Ollama discipline.
+### Forms
 
----
+Inputs match card register: shell-deep background, 1px border-subtle, 12px radius, 16px padding, 2px gold focus ring.
 
-## 6. Depth & Elevation
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| 0 — Flat | No border, no shadow | Page background, body content |
-| 1 — Bordered | 1px solid `#e5e5e5` | Cards, code blocks, buttons |
-| 2 — Subtle Surface | `#fafafa` background + bordered | Elevated cards, hover state |
-| 3 — Inverted | Dark `#171717` + white text | Manifesto blocks, code windows, footer |
-| 4 — Hero Blaze | Full-bleed gradient | Hero of conversion routes ONLY |
-
-**Shadow philosophy: zero.** Every visible depth cue comes from background-color shifts and 1px borders. Per BOTH source designs.
-
----
-
-## 7. Animation (added per Dailen's request — not in source DESIGN.mds)
-
-The design.md format is static; animation is layered on top via Framer Motion 12 (already installed).
-
-### Allowed motion
-- **Hero scroll-bound video** — looping `<video>` with `useScroll` + `useTransform` mapping scroll position to current frame. Per video 2 reference.
-- **Sequential card reveals** — `whileInView` with staggered children. 60ms stagger. fade + 8px translate-y.
-- **Hover states on cards** — 200ms ease-out, transform translateY(-2px) + border-color change.
-- **Manifesto type entrance** — Bricolage scales from 0.95 to 1.0 + fades in over 600ms when entering viewport.
-- **Gradient hero parallax** — gradient background shifts position 5–10% on scroll for depth.
-- **LIVE status pulse** — emerald dot pulses at 2s ease-in-out infinite. Behind `prefers-reduced-motion` media query.
-
-### Forbidden motion
-- Bouncing, springy overshoots — too playful for the voice.
-- Auto-playing carousels — accessibility nightmare.
-- Scroll-jacking (snap-scroll between sections) — fights the user.
-- Page-transition curtains — slows the site.
-
-### Reduced motion
-- ALL animations check `prefers-reduced-motion: reduce` and degrade gracefully (instant transitions, no parallax, no pulse).
-
----
-
-## 8. Do's and Don'ts
+## Do's and Don'ts
 
 ### Do
-- Use the binary radius system (12px or 9999px) — no other values
-- Use Bricolage Grotesque only at 48px+ display sizes
-- Use Inter for ALL body copy — never substitute
-- Reserve the Hero Blaze gradient for ONE moment per route, max 70vh
-- Apply the dotted-underline link style to inline body links
-- Pulse the LIVE status badge — non-color affordance per WCAG
-- Keep emerald `#22C55E` strictly semantic (LIVE / operational status) — never decorative
-- Honor `prefers-reduced-motion` on every animation
+
+- **Maintain the matte monolith.** Every section uses `shell` `#3a3b3d` as ground. Petrol-spine rules + gold mono labels + Bricolage display are how sections differentiate.
+- **Use the binary radius system: 12px (containers) or 9999px (pills).** No values between.
+- **Reserve display moments.** Bricolage 700 only at 36px+. One hero display per route. Section displays smaller.
+- **Use multi-color word emphasis on hero H1.** "BUILD THE / **THINKING** (gold) / INTO THE / **THING.** (petrol)" — the multi-color stack is signature.
+- **Pulse LIVE status badge** with `prefers-reduced-motion` honored.
+- **Apply scroll-orchestrated motion across the entire page.** Every section animates on entry (stagger fade + y-shift). The traveling Nox crossfades poses at section thresholds. Hero copy lifts/fades on scroll-out. Per Immersive Garden register.
+- **Keep the cream as ink, not as ground.** Cream `#efede5` is text color on shell. Avoid cream-as-section-background — it reads generic and breaks the monolith.
+- **Use editorial publication marks.** "VOL. 03 / ISSUE Nº 01 · AN AI ARCHITECTURE STUDIO" mono caption. "I. OPEN BERLIN — CLOSED FRIDAY — MMXXVI" stamp. These signal magazine-grade craft.
+- **Honor reduced-motion** on every animation.
+- **Apply Banned Words filter** to all copy: no "leverage," no "synergy," no "let's go," no MrBeast-energy.
 
 ### Don't
-- Don't use shadows anywhere
-- Don't use cream / off-white — pure white only
-- Don't use any gradient other than Hero Blaze
-- Don't apply Bricolage below 48px or above weight 700
-- Don't use Geist Mono for body text — labels only
-- Don't use solid underlines on inline body links — dotted is the signature
-- Don't migrate /services/* to white canvas yet — that's a separate session, brand v2 lock holds
-- Don't lazy-clone Replicate's red brand color — `#ea2804` lives ONLY in the gradient, never as a surface
+
+- **Don't use shadows.** Zero box-shadow anywhere. Depth via border + background shift.
+- **Don't use cream as a section background.** Pure-shell ground is the locked direction. (Exception: Level 3 elevation for long-form-blog readability only.)
+- **Don't use Inter, Arial, or generic-default body fonts.** Geist is the locked body family.
+- **Don't use bounce or elastic easing curves.** Cubic-bezier ease-out (`[0.16, 1, 0.3, 1]`) for all transitions.
+- **Don't use the saturated emerald `#22c55e` from brand v2.** Petrol-green `#2a6055` is the v3 primary accent.
+- **Don't use clichéd AI imagery.** No glowing brains, no electric blue, no circuit overlays, no synthwave neon.
+- **Don't overdesign.** Apply the Drop-Overclaim rule — observation about the work beats warmth-via-relationship language. Trust the matte ground + Nox + display type to carry the brand; don't add decorative gradients/flourishes "to fill space."
+- **Don't apply MrBeast-energy display register.** Quiet base, considered loud moments. Hero display IS the loud moment per route — don't compete with it.
+- **Don't add modal-as-first-thought.** Modals are usually laziness. Inline progressive disclosure first.
+- **Don't write em dashes.** Use commas, colons, semicolons, periods, or parentheses. (This applies to copy, not to code comments or display headlines where dash punctuation is intentional editorial.)
+- **Don't use side-stripe borders** as decorative accents (`border-left: 4px` on cards). Full borders or background tints only.
+- **Don't ship gradient text** (`background-clip: text` on a gradient). Solid colors only. Multi-color word emphasis = whole-word color swap, not gradient.
 
 ---
 
-## 9. Multi-route application matrix
+## Sources
 
-| Route | Register | Hero Blaze | Manifesto |
-|---|---|---|---|
-| `/` (redesigned home) | Mixed — quiet sections, ONE loud hero | Yes (top hero) | Optional close |
-| `/about` | Quiet throughout | No | No (founder voice is restrained) |
-| `/portfolio` (index) | Quiet | No | No |
-| `/portfolio/[slug]` | Quiet base; loud strip on `apotheosis` slug only | No (or top strip on apotheosis) | No |
-| `/foundation` | Loud hero, quiet body, loud CTA section | Yes (hero + closing CTA) | Yes (closing) |
-| `/matchmaker` | Loud throughout — this is the funnel front door | Yes (top hero) | Yes (closing) |
-| `/lab` | Quiet | No | No |
-| `/services/*` | NOT IN SCOPE — brand v2 dark-emerald, untouched | — | — |
-| `/contact`, `/legal/*` | NOT IN SCOPE — brand v2, untouched | — | — |
+- `PRODUCT.md` (sibling) — strategic register + users + principles
+- `AI Hub/Brand/sds-brand-v3-mascot-brief.md` v1 LOCKED 2026-05-08 — 7 locked Nox artifacts
+- `AI Hub/Brand/dailen-taste-profile.md` v1 — voice, visual, motion, layout, audience anchors
+- `AI Hub/Architecture/awa-v3-immersive-garden-spec.md` — authoritative AWA v3 spec (Immersive Garden / Dilshan Arukatti aesthetic mandate)
+- `AI Hub/Decisions/sds-website-brand.md` — brand v3 supersession entries 2026-05-08
+- `lib/design/brand-v3-tokens.ts` — TypeScript token export (palette + type + Nox paths)
+- `app/globals.css` `[data-theme="brand-v3"]` block — CSS variable mirror of these tokens
 
----
-
-## 10. Sources
-
-- `/tmp/design-refs/picked/DESIGN-replicate.md` — Replicate full spec (loud register source)
-- `/tmp/design-refs/picked/DESIGN-ollama.md` — Ollama full spec (quiet register source)
-- Council deliberation 2026-04-30 (synthesis logic, accessibility fixes)
-- Video 1 inspiration: youtu.be/cSF-bxotrz4 (awesome-design-md workflow)
-- Video 2 inspiration: youtu.be/TcFeSjwTo7g (scroll-bound video, sequential card reveals)
-- Brand v2 acceptance criteria: AI Hub/PRDs/sds-website-redesign-prd.md (existing 12 routes must not regress)
+Stale archive (do not consume): `DESIGN.v3-experiment-2026-04-30.archive.md` — pre-brand-v3 Replicate × Ollama synthesis from the abandoned `(v3)` route group experiment. Preserved for history only.

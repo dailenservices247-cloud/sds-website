@@ -2,21 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { Container } from "./Container";
 import { cn } from "@/lib/utils";
 
-// Nav order = user journey: Browse → Engage → Buy.
-//   Browse:  Portfolio (catalog), Lab (what's shipping)
-//   Engage:  Matchmaker (interactive funnel), Foundation ($19/mo)
-//   Buy:     Services (consulting tiers)
-//   CTA:     "Start a project" → /contact (right-aligned, accent button)
-//
-// Removed from primary nav (still reachable via footer or direct URL):
-//   /about    — in footer Company column
-//   /contact  — covered by the right-aligned CTA button + footer
-//   /preview  — temp design-iteration entry, by direct URL
 const navLinks = [
   { href: "/portfolio", label: "Portfolio" },
   { href: "/lab", label: "Lab" },
@@ -27,6 +18,11 @@ const navLinks = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  if (pathname.startsWith("/v1-") || pathname.startsWith("/v2-") || pathname.startsWith("/v3-")) {
+    return null;
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[color:var(--border-subtle)] bg-bg-primary/80 backdrop-blur supports-[backdrop-filter]:bg-bg-primary/60">
@@ -40,7 +36,6 @@ export function Nav() {
             <Wordmark className="text-lg md:text-xl text-ink-primary transition-opacity group-hover:opacity-80" />
           </Link>
 
-          {/* Desktop nav (lg+): full row. Tablets (md) collapse to mobile menu. */}
           <nav className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <Link
@@ -59,7 +54,6 @@ export function Nav() {
             </Link>
           </nav>
 
-          {/* Mobile/tablet toggle (shown below lg breakpoint) */}
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
@@ -71,7 +65,6 @@ export function Nav() {
           </button>
         </div>
 
-        {/* Mobile/tablet nav — fits 8+ items + CTA without clipping */}
         <nav
           className={cn(
             "lg:hidden overflow-hidden transition-[max-height] duration-300 ease-out",

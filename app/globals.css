@@ -270,3 +270,165 @@ body {
   border-color: var(--border-subtle);
   margin: 2.5rem 0;
 }
+
+/* ============================================================================
+   [data-theme="brand-v3"] — SDS Brand v3 (matte gray + Nox mascot)
+   Locked 2026-05-08. Applies to NEW routes inside app/(brand-v3)/ ONLY.
+   Existing (marketing) and (v3) route groups are untouched.
+
+   Source of truth:
+   - AI Hub/Brand/dailen-taste-profile.md v1
+   - AI Hub/Brand/sds-brand-v3-mascot-brief.md v1 LOCKED 2026-05-08
+   - AI Hub/Decisions/sds-website-brand.md (Brand v3 supersession 2026-05-08)
+
+   Pattern: matte monolith ground + petrol-green primary + antique-gold accent.
+   Type: condensed-bold display (Akira register, Bricolage fallback) + Inter body.
+   ============================================================================ */
+[data-theme="brand-v3"] {
+  /* Surfaces — matte monolith ground per Dodge Durango Destroyer Gray lock */
+  --bv3-shell:       #3a3b3d;  /* primary ground / body shell */
+  --bv3-shell-deep:  #2a2a2d;  /* deeper variant for elevated cards */
+  --bv3-cream:       #efede5;  /* warm cream for ink-on-ground sections */
+  --bv3-cream-deep:  #e0ddd0;
+
+  /* Brand accents — petrol green primary, antique gold accent, wine emotion */
+  --bv3-spine:       #2a6055;  /* petrol green — primary accent */
+  --bv3-spine-bright:#347466;
+  --bv3-gold:        #c8a23e;  /* antique gold — secondary accent */
+  --bv3-gold-bright: #d8b85a;
+  --bv3-wine:        #7e303a;  /* emotion accent (sparingly) */
+
+  /* Ink */
+  --bv3-ink:         #efede5;  /* light text on shell ground */
+  --bv3-ink-strong:  #ffffff;
+  --bv3-ink-muted:   #9b9b96;
+  --bv3-ink-dim:     #6c6c69;
+
+  /* On-cream ink — for warm-cream ground sections */
+  --bv3-ink-cream:        #2a2a2d;
+  --bv3-ink-cream-muted:  #5c5d60;
+
+  /* Borders */
+  --bv3-border-subtle: #4a4b4d;
+  --bv3-border-strong: #5c5d5f;
+
+  /* Shadows — restrained, sculpted-monolith register */
+  --bv3-shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --bv3-shadow-mid:  0 8px 20px rgba(0, 0, 0, 0.32);
+}
+
+[data-theme="brand-v3"] body,
+[data-theme="brand-v3"] {
+  color: var(--bv3-ink);
+  /* Background handled by CosmosVideo (fixed -z-10) which provides
+     var(--bv3-shell) as fallback inside its own wrapper. Setting body
+     bg here would cover the cosmos video. Routes without CosmosVideo
+     fall back to the html-level body bg via the rule below. */
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* HTML-level fallback so non-CosmosVideo brand-v3 routes still have ground */
+html:has([data-theme="brand-v3"]) {
+  background: var(--bv3-shell);
+}
+
+/* Override the root layout's body bg-bg-primary (#0a0f0c, brand v2) so the
+   CosmosVideo (fixed -z-10) is visible behind brand-v3 content. */
+body:has([data-theme="brand-v3"]) {
+  background: transparent !important;
+}
+
+[data-theme="brand-v3"] ::selection {
+  background: var(--bv3-gold);
+  color: var(--bv3-shell);
+}
+
+/* Display register — condensed-bold "Akira Expanded" stand-in via Bricolage. */
+[data-theme="brand-v3"] .bv3-display {
+  font-family: var(--font-bricolage), "Anton", "Bebas Neue", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 0.95;
+  font-variation-settings: "wdth" 100, "opsz" 96;
+  text-transform: uppercase;
+}
+[data-theme="brand-v3"] .bv3-display-section {
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.0;
+  font-variation-settings: "wdth" 100, "opsz" 48;
+  text-transform: uppercase;
+}
+
+/* Mono caption — UPPERCASE technical labels (shares JetBrains with v2) */
+[data-theme="brand-v3"] .bv3-mono {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bv3-gold);
+}
+
+/* Cream-ground section utility — flips ink + bg for warm panels */
+[data-theme="brand-v3"] .bv3-section-cream {
+  background: var(--bv3-cream);
+  color: var(--bv3-ink-cream);
+}
+[data-theme="brand-v3"] .bv3-section-cream .bv3-mono {
+  color: var(--bv3-spine);
+}
+
+/* Petrol-spine accent rule — thin horizontal divider */
+[data-theme="brand-v3"] .bv3-spine-rule {
+  border: 0;
+  border-top: 1px solid var(--bv3-spine);
+  margin: 2rem 0;
+}
+
+/* Gold-filament link — taste profile signature */
+[data-theme="brand-v3"] .bv3-link {
+  color: var(--bv3-gold);
+  text-decoration: underline;
+  text-decoration-color: var(--bv3-spine);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 200ms ease, text-decoration-color 200ms ease;
+}
+[data-theme="brand-v3"] .bv3-link:hover {
+  color: var(--bv3-gold-bright);
+  text-decoration-color: var(--bv3-gold-bright);
+}
+
+/* Explicit focus-visible styling for brand-v3 scope.
+   Per DESIGN.md: 2px gold outline, 2px offset, on every interactive element.
+   Native focus styles overridden via :focus-visible only (so mouse clicks
+   don't leave the ring lingering, but keyboard focus is always crisp). */
+[data-theme="brand-v3"] :focus {
+  outline: none;
+}
+[data-theme="brand-v3"] a:focus-visible,
+[data-theme="brand-v3"] button:focus-visible,
+[data-theme="brand-v3"] input:focus-visible,
+[data-theme="brand-v3"] textarea:focus-visible,
+[data-theme="brand-v3"] select:focus-visible,
+[data-theme="brand-v3"] [tabindex]:focus-visible {
+  outline: 2px solid var(--bv3-gold);
+  outline-offset: 2px;
+  border-radius: inherit;
+}
+
+/* prefers-reduced-motion — disable all custom transitions / animations
+   inside brand-v3 scope (Lenis + R3F components handle their own opt-out
+   internally; this catches CSS-driven motion). */
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="brand-v3"] *,
+  [data-theme="brand-v3"] *::before,
+  [data-theme="brand-v3"] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
