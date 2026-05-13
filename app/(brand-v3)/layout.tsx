@@ -21,6 +21,7 @@ export default function BrandV3Layout({ children }: { children: ReactNode }) {
     <div
       data-theme="brand-v3"
       className="min-h-screen text-[#efede5] antialiased"
+      style={{ backgroundColor: "#3a3b3d" }}
     >
       <LenisProvider>{children}</LenisProvider>
     </div>

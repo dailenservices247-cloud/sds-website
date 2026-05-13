@@ -22,7 +22,7 @@ import { projectsByStatus } from "@/lib/content/portfolio";
 import { services } from "@/lib/content/services";
 import { RevealGroup, RevealItem } from "@/components/v3/RevealOnScroll";
 import { BackstageLayer } from "@/components/brand-v3/BackstageLayer";
-import { CosmosVideo } from "@/components/brand-v3/CosmosVideo";
+import { Stage as NoxStage } from "@/components/brand-v3/nox/Stage";
 import {
   ScrubReveal,
   ScrubWords,
@@ -153,11 +153,13 @@ export default function GardenVariantHome() {
   }, []);
 
   return (
-    <div ref={pageRef} className="relative">
-      {/* Cosmos-dig video backdrop. Scroll-syncs the worm's dig arc —
-          horizontal swim at the top, S-curve through the middle, vertical
-          dive at the bottom. Persists across the whole page. */}
-      <CosmosVideo />
+    <div ref={pageRef} className="relative md:pr-[50vw]">
+      {/* Fixed right-half stage: brand-tinted cosmos shader + placeholder
+          8-capsule worm. Phase 1 motion architecture proven before real
+          art lands. Content lives in the unpadded left half; the worm
+          dig-descends as the user scrolls thanks to scrollProgress wired
+          into both the cosmos uniform and the worm's Y bias. */}
+      <NoxStage />
 
       {/* Backstage transparency layer — toggle bottom-right */}
       <BackstageLayer />
@@ -232,10 +234,14 @@ export default function GardenVariantHome() {
             <h1
               className="bv3-display text-balance"
               style={{
-                fontSize: "clamp(3rem, 8vw, 7rem)",
+                // Tightened for two-column layout — content lives in left
+                // 50vw, so hero scales off the column width (4vw of full
+                // viewport ≈ 8vw of column), capped at 5rem so it never
+                // overruns the narrower gutter.
+                fontSize: "clamp(2.5rem, 4.4vw, 5rem)",
                 color: "var(--bv3-cream)",
-                maxWidth: "16ch",
-                lineHeight: 0.92,
+                maxWidth: "12ch",
+                lineHeight: 0.96,
               }}
             >
               {["Build the", null, "thinking", null, "into the", null, "thing."].map((word, i) => {
