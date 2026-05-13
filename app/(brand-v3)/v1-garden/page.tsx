@@ -153,7 +153,11 @@ export default function GardenVariantHome() {
   }, []);
 
   return (
-    <div ref={pageRef} className="relative md:pr-[50vw]">
+    <div
+      ref={pageRef}
+      className="relative isolate"
+      style={{ zIndex: 0 }}
+    >
       {/* Fixed right-half stage: brand-tinted cosmos shader + placeholder
           8-capsule worm. Phase 1 motion architecture proven before real
           art lands. Content lives in the unpadded left half; the worm

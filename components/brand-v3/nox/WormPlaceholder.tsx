@@ -59,7 +59,18 @@ const MIN_GAP = 1.2;
 const YAW_DAMP = 4;
 const IDLE_MS = 1800;
 const BOUNDARY_PAD = 0.4;
-const SCROLL_DESCENT_RANGE = 8;  // world units head travels top→bottom
+// Scroll dig curve: hero hold for first 8% of scroll, then smoothstep
+// descent to 92%. Range tuned to ~70% of camera-visible Y so the worm
+// doesn't shoot out of frame before the page ends.
+const SCROLL_DESCENT_RANGE = 3.8;
+const HERO_HOLD = 0.08;
+const DIG_END = 0.92;
+const HERO_Y_ANCHOR = 1.4;       // world Y for hero pose (upper area of viewport)
+const HERO_X_ANCHOR = 1.1;        // world X for hero pose — RIGHT side of viewport
+                                  // (full-width canvas now spans -2.8 to +2.8),
+                                  // off-LEFT of the staggered wordmark at +2.5
+const HERO_X_BLEND_RANGE = 0.10;  // how fast worm leaves hero X as scroll begins
+const RIGHT_SIDE_PAD = 0.2;       // worm's leftmost X in dig mode (stays right half)
 
 interface WormPlaceholderProps {
   /** Document scroll progress, 0..1. Drives Y descent. */
@@ -148,11 +159,43 @@ export function WormPlaceholder({
       targetY = cy + Math.sin(elapsed * 1.2) * 0.35;
     }
 
-    // ---- 2. Apply scroll descent bias to target Y --------------------
-    // Worm should dig DOWN as user scrolls. Bias the target Y downward
-    // based on scrollProgress so the worm naturally settles deeper.
-    const scrollYBias = -scrollProgress * SCROLL_DESCENT_RANGE;
-    targetY += scrollYBias;
+    // ---- 1b. HERO X anchor — pull target X toward HERO_X_ANCHOR when
+    // scroll is in hero zone. As scroll increases past HERO_X_BLEND_RANGE,
+    // the anchor influence fades to 0 and mouse-follow takes over fully.
+    const heroXInfluence = 1 - Math.min(1, scrollProgress / HERO_X_BLEND_RANGE);
+    if (heroXInfluence > 0.001) {
+      // Blend the target X toward the hero anchor. Heavy weight in pure
+      // hero state (scrollProgress=0), zero by end of HERO_X_BLEND_RANGE.
+      targetX = THREE.MathUtils.lerp(targetX, HERO_X_ANCHOR, heroXInfluence * 0.85);
+    }
+
+    // ---- 2. Apply scroll dig curve to target Y -----------------------
+    // Three-stage scroll mapping:
+    //   [0, HERO_HOLD]      → worm anchored at HERO_Y_ANCHOR (hero idle
+    //                         next to the Synapse Dynamics wordmark)
+    //   [HERO_HOLD, DIG_END] → smoothstep descent through cosmos
+    //   [DIG_END, 1]        → fully dug at bottom of camera view
+    // Reversible: scrolling back up reverses the worm naturally because
+    // scrollProgress is the source of truth — the bias just lerps back.
+    let scrollYBias: number;
+    if (scrollProgress <= HERO_HOLD) {
+      scrollYBias = HERO_Y_ANCHOR;
+    } else if (scrollProgress >= DIG_END) {
+      scrollYBias = HERO_Y_ANCHOR - SCROLL_DESCENT_RANGE;
+    } else {
+      const t = (scrollProgress - HERO_HOLD) / (DIG_END - HERO_HOLD);
+      const eased = t * t * (3 - 2 * t);  // smoothstep
+      scrollYBias = HERO_Y_ANCHOR - eased * SCROLL_DESCENT_RANGE;
+    }
+    // The bias REPLACES the target Y rather than adding to it — the
+    // dig line is dominant; mouse Y only gets a light pull so the worm
+    // isn't completely ignoring cursor Y in dig mode.
+    if (mouseRef.current.seen && dwellMs < IDLE_MS) {
+      const tmpY = new THREE.Vector3(mouseRef.current.ndcX, mouseRef.current.ndcY, 0.5).unproject(camera);
+      targetY = scrollYBias * 0.72 + tmpY.y * 0.28;
+    } else {
+      targetY = scrollYBias + Math.sin(elapsed * 1.0) * 0.18;  // light idle bob
+    }
 
     targetRef.current.set(targetX, targetY, 0);
 
@@ -168,15 +211,12 @@ export function WormPlaceholder({
     // ---- 4. Damped follow ------------------------------------------
     headPos.lerp(targetRef.current, FOLLOW_LERP);
 
-    // ---- 5. Boundary clamp — right canvas only ---------------------
-    // The Stage canvas is sticky on the right half of the viewport.
-    // Camera looks straight at world origin; with the right canvas's
-    // viewport, world X=0 is roughly the LEFT EDGE of the canvas (since
-    // the right canvas's CSS center is at viewport-X = 75%).
-    // We compute the canvas-left-edge in world space dynamically.
-    const leftEdgeNDC = new THREE.Vector3(-1, 0, 0.5);
-    leftEdgeNDC.unproject(camera);
-    const leftBound = leftEdgeNDC.x + BOUNDARY_PAD;
+    // ---- 5. Boundary clamp — worm stays in RIGHT half of viewport.
+    // Canvas is now full-width (cosmos flows under content), but the
+    // worm is constrained to viewport X >= 50% so it never crosses
+    // into the left content column. World X = 0 maps to the viewport
+    // centerline; we add a pad so the worm visually stays well clear.
+    const leftBound = RIGHT_SIDE_PAD;
 
     if (headPos.x < leftBound) {
       headPos.x = leftBound;
