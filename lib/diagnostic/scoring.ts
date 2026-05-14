@@ -148,8 +148,8 @@ export const BUCKET_COPY: Record<
       href: "/v1-garden#offers",
     },
     secondaryCta: {
-      label: "Or download the free Skill Pack",
-      href: "https://github.com/dailenservices247-cloud/sds-skill-pack",
+      label: "Or grab the Atomic Note Template Pack",
+      href: "/atomic-note-pack",
     },
   },
   compounding: {
