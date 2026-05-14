@@ -50,7 +50,8 @@ const C_TAIL_EMISSIVE = new THREE.Color("#7e303a");
 const SEG_COUNT = 8;
 const SEG_RADIUS_HEAD = 0.42;
 const SEG_RADIUS_TAIL = 0.22;
-const SEG_DIST = 0.62;       // gap between segment centers in world units
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _SEG_DIST = 0.62;       // gap between segment centers in world units; kept for Phase 2 spacing recalc
 const HISTORY_STRIDE = 4;     // body[i] reads head_history[i*stride]
 
 // Motion constants (locked from shape brief)
@@ -58,7 +59,8 @@ const FOLLOW_LERP = 0.04;
 const MIN_GAP = 1.2;
 const YAW_DAMP = 4;
 const IDLE_MS = 1800;
-const BOUNDARY_PAD = 0.4;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _BOUNDARY_PAD = 0.4; // kept for Phase 2 boundary-hit personality trigger
 // Scroll dig curve: hero hold for first 8% of scroll, then smoothstep
 // descent to 92%. Range tuned to ~70% of camera-visible Y so the worm
 // doesn't shoot out of frame before the page ends.
@@ -84,7 +86,7 @@ export function WormPlaceholder({
   scrollProgress,
   onBoundaryHit,
 }: WormPlaceholderProps) {
-  const { viewport, camera, size } = useThree();
+  const { viewport, camera } = useThree();
 
   // Refs for mesh instances + motion state
   const headRef = useRef<THREE.Mesh>(null);

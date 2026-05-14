@@ -307,6 +307,18 @@ export default function GardenVariantHome() {
               >
                 Explore the portfolio
               </Link>
+              <Link
+                href="/diagnostic"
+                className="inline-flex items-center gap-2 px-7 py-4 font-medium transition-all hover:bg-[rgba(255,255,255,0.04)]"
+                style={{
+                  background: "transparent",
+                  color: "var(--bv3-cream)",
+                  border: "1px solid var(--bv3-border-strong)",
+                  borderRadius: "9999px",
+                }}
+              >
+                Take the 5-min diagnostic
+              </Link>
             </div>
 
             {/* Editorial footnote */}
