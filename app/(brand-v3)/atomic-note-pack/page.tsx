@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 // REPLACE BEFORE LIVE: paste the Stripe Payment Link URL here once created
 // in the Stripe dashboard. Until then the button degrades to a mailto.
 const STRIPE_PAYMENT_LINK =
-  "https://buy.stripe.com/REPLACE_WITH_LIVE_PAYMENT_LINK";
+  "https://buy.stripe.com/dRmeV50QV8KM0O647xbjW01";
 const GITHUB_ZIP =
   "https://github.com/dailenservices247-cloud/atomic-note-pack/archive/refs/heads/main.zip";
 const GITHUB_REPO =
