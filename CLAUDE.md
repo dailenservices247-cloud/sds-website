@@ -65,3 +65,16 @@ Before building ANY new feature / page:
 ## Dailen-side pending (Cowork cannot do these)
 1. Buy `synapsedynamics.com` domain (~$12/yr) — BLOCKS Resend activation
 2. Resend setup (after domain): verify domain → add 4 DNS records → create API key → set 3 env vars in Vercel across all 3 environments → redeploy
+
+## Self-verify before reporting done
+
+After any UI-touching change in this repo, before reporting the task complete:
+
+1. Use Chrome DevTools MCP (`chrome-devtools-mcp`) to navigate to the affected route
+2. Click through the user happy path
+3. Read the browser console and network logs
+4. If any error, warning, or unexpected state appears, fix it and re-verify
+5. Only after a clean verification, mark the task complete and update the relay log
+
+This rule banked 2026-05-13 from the Puru "one line in claude.md = 30% fewer bugs" pattern.
+See full skill spec at github.com/dailenservices247-cloud/sds-skill-pack/blob/main/plugins/sds-skill-pack/skills/self-verify/SKILL.md.
