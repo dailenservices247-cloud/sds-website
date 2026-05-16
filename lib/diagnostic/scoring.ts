@@ -155,9 +155,9 @@ export const BUCKET_COPY: Record<
   compounding: {
     title: "Compounding",
     thesis:
-      "Your stack is the asset, not the bottleneck. The next leverage layer is Architect Retainer plus the Operator community tier: monthly architecture review, governance you can hand to clients, and a peer network at the same maturity level.",
+      "Your stack is the asset, not the bottleneck. The next leverage layer is Headless Architect: a 10-client capped cohort retainer with monthly architecture review, governance you can hand to your own clients, and a value-back guarantee if the month does not move the work forward. Pairs with the Operator community tier for peer pressure at the same maturity level.",
     primaryCta: {
-      label: "Talk about Architect Retainer",
+      label: "Talk about Headless Architect",
       href: "/v1-garden#offers",
     },
     secondaryCta: {
