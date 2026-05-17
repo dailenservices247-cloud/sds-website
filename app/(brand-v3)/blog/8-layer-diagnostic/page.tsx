@@ -25,14 +25,8 @@ export const metadata: Metadata = {
     type: "article",
     url: "https://synapsedynamics.io/blog/8-layer-diagnostic",
     siteName: "Synapse Dynamics Segmented",
-    images: [
-      {
-        url: "/og/8-layer-diagnostic.png",
-        width: 1200,
-        height: 630,
-        alt: "The 8-Layer Diagnostic — Synapse Dynamics Segmented",
-      },
-    ],
+    // OG image auto-resolved by Next.js from opengraph-image.tsx in this
+    // same route segment. Dynamic ImageResponse at edge runtime.
   },
   twitter: {
     card: "summary_large_image",
@@ -40,7 +34,7 @@ export const metadata: Metadata = {
       "The 8-Layer Diagnostic: A 20-Minute Self-Audit for Your Agent Stack",
     description:
       "Score your agent stack across 8 layers. Surface the one bottleneck actually slowing you down.",
-    images: ["/og/8-layer-diagnostic.png"],
+    // Twitter card image is auto-derived from the opengraph-image.tsx file
   },
 };
 
