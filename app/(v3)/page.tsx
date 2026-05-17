@@ -95,6 +95,13 @@ export default function HomePage() {
             >
               Explore the portfolio
             </Link>
+            <a
+              href="https://buy.stripe.com/eVqcMX1UZaSU0O69rRbjW04"
+              className="inline-flex items-center gap-2 rounded-full bg-transparent text-white/85 border border-white/25 px-6 py-3 text-sm font-medium hover:text-white hover:border-white/60 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              <span style={{ opacity: 0.7 }}>Or: get the Stack →</span>
+              <span className="font-semibold">$149</span>
+            </a>
           </div>
         </motion.div>
       </section>
