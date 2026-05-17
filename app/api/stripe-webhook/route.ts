@@ -17,10 +17,43 @@ import { stripe } from "@/lib/stripe";
 import {
   sendFoundationWelcomeEmail,
   sendSetupWelcomeEmail,
+  sendPeerOperatorStackWelcomeEmail,
 } from "@/lib/email";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
+// Peer Operator's Stack v1 product ID (Stripe live).
+// Used as a fallback detector when metadata.product is unset on the session
+// (the Dashboard-recreated Payment Link omits metadata since Stripe's UI no
+// longer surfaces it on the Payment Link create form).
+const PEER_OPERATOR_STACK_PRODUCT_ID = "prod_UWlvMzls8Yi1wO";
+
+async function sessionHasStackLineItem(
+  sessionId: string,
+): Promise<boolean> {
+  try {
+    const expanded = await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ["line_items.data.price.product"],
+    });
+    const items = expanded.line_items?.data ?? [];
+    return items.some((item) => {
+      const product = item.price?.product;
+      if (!product) return false;
+      if (typeof product === "string") {
+        return product === PEER_OPERATOR_STACK_PRODUCT_ID;
+      }
+      // Expanded Product object
+      return product.id === PEER_OPERATOR_STACK_PRODUCT_ID;
+    });
+  } catch (err) {
+    const e = err as Error;
+    console.error(
+      `[stripe-webhook] Failed to expand line items for ${sessionId}: ${e.message}`,
+    );
+    return false;
+  }
+}
 
 export async function POST(req: NextRequest) {
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -69,14 +102,36 @@ export async function POST(req: NextRequest) {
   try {
     if (product === "foundation_subscription") {
       await sendFoundationWelcomeEmail(session);
-    } else if (product === "setup_session") {
-      await sendSetupWelcomeEmail(session);
-    } else {
-      console.warn(
-        `[stripe-webhook] Unknown product on session ${session.id}: ${product ?? "(none)"}`,
-      );
-      return NextResponse.json({ received: true, unknownProduct: true });
+      return NextResponse.json({ received: true, sent: true, product });
     }
+
+    if (product === "setup_session") {
+      await sendSetupWelcomeEmail(session);
+      return NextResponse.json({ received: true, sent: true, product });
+    }
+
+    if (product === "peer_operators_stack") {
+      await sendPeerOperatorStackWelcomeEmail(session);
+      return NextResponse.json({ received: true, sent: true, product });
+    }
+
+    // Fallback: metadata is missing on the Stack Payment Link (Stripe UI
+    // dropped metadata from the create-link form). Detect via expanded
+    // line_items product ID and dispatch the Stack email if matched.
+    if (await sessionHasStackLineItem(session.id)) {
+      await sendPeerOperatorStackWelcomeEmail(session);
+      return NextResponse.json({
+        received: true,
+        sent: true,
+        product: "peer_operators_stack",
+        via: "line_item_product_id",
+      });
+    }
+
+    console.warn(
+      `[stripe-webhook] Unknown product on session ${session.id}: ${product ?? "(none)"}`,
+    );
+    return NextResponse.json({ received: true, unknownProduct: true });
   } catch (err) {
     const e = err as Error;
     console.error(
@@ -86,6 +141,4 @@ export async function POST(req: NextRequest) {
     // 500 so Stripe retries the webhook with exponential backoff.
     return NextResponse.json({ error: "Send failed" }, { status: 500 });
   }
-
-  return NextResponse.json({ received: true, sent: true, product });
 }

@@ -23,6 +23,8 @@ const CUSTOMER_PORTAL_URL = "https://synapsedynamics.io/foundation/manage";
 const CALENDLY_URL = "https://cal.com/dailenhuntley/setup-session";
 // REPLACE BEFORE LIVE EMAIL TRAFFIC: real Setup Session intake form URL
 const INTAKE_FORM_URL = "https://synapsedynamics.io/setup-session/intake";
+// Peer Operator's Stack v1 — hosted on Vercel via sds-website /public.
+const STACK_DOWNLOAD_URL = "https://synapsedynamics.io/stack-v1.zip";
 
 function getResend(): Resend | null {
   const key = process.env.RESEND_API_KEY;
@@ -178,6 +180,71 @@ export async function sendSetupWelcomeEmail(
   if (result.error) {
     throw new Error(
       `[email] Resend send (setup) failed: ${result.error.message}`,
+    );
+  }
+}
+
+function peerOperatorStackHtml(firstName: string): string {
+  const name = escapeHtml(firstName);
+  return `<!doctype html>
+<html><body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #111;">
+  <p>Hey ${name},</p>
+
+  <p>Thanks for picking up the Stack. Direct download below.</p>
+
+  <p><strong>Download Peer Operator's Stack v1</strong><br/>
+  <a href="${STACK_DOWNLOAD_URL}">${STACK_DOWNLOAD_URL}</a></p>
+
+  <p><strong>What I'd do on day 1</strong></p>
+  <ol>
+    <li>Unzip somewhere stable. <code>~/Desktop/peer-operators-stack-v1/</code> is fine.</li>
+    <li>Read the README to see what's in each of the 5 categories.</li>
+    <li>Pick the one skill that addresses what's frustrating you most this week.</li>
+    <li>Don't try to install all 20. The library is designed to be picked from.</li>
+  </ol>
+
+  <p><strong>The 5 categories</strong></p>
+  <ul>
+    <li><strong>Memory + retrieval</strong> (skills 1&ndash;4): atomic-node, retrieval contracts, decisions-log + inferences-log index patterns.</li>
+    <li><strong>Voice + craft</strong> (skills 5&ndash;8): brand-voice linter, doctrine injection, banned-words list, drop-overclaim editing pass.</li>
+    <li><strong>Workflow + skills</strong> (skills 9&ndash;14): find-skill router, CLAUDE.md TOC, /goal ritual, Plan-Mode brief, Chrome DevTools MCP verification, subagent dispatch.</li>
+    <li><strong>Engagement layer</strong> (skills 15&ndash;18): engagement letter, Calendly-to-Stripe redirect, Tally intake spec, Stripe hosted-confirmation pattern.</li>
+    <li><strong>Bonus + diagnostic</strong> (skills 19&ndash;20): 8-layer agent stack diagnostic, ICAC tier discipline.</li>
+  </ul>
+
+  <p><strong>Lifetime access</strong><br/>
+  You own v1 and every v1.x update going forward. When v1.1 ships, it lands in your inbox automatically. No action needed on your end.</p>
+
+  <p><strong>14-day refund window</strong><br/>
+  Reply to this email with one line ("refund please") and the refund is yours, no questions asked. The window starts today.</p>
+
+  <p><strong>Stuck on which skill to start with?</strong><br/>
+  Reply with one sentence on what you're building right now. I'll point you at the skill that'll bite the soonest. The reply-to is monitored by a human (me).</p>
+
+  <p>&mdash; Dailen<br/>
+  Synapse Dynamics &middot; Black Sheep 247 LLC</p>
+</body></html>`;
+}
+
+export async function sendPeerOperatorStackWelcomeEmail(
+  session: Stripe.Checkout.Session,
+): Promise<void> {
+  const resend = getResend();
+  if (!resend) return;
+
+  const r = recipientFromSession(session);
+  if (!r) return;
+
+  const result = await resend.emails.send({
+    from: FROM,
+    to: r.to,
+    subject: "Your Peer Operator's Stack is here",
+    html: peerOperatorStackHtml(r.firstName),
+  });
+
+  if (result.error) {
+    throw new Error(
+      `[email] Resend send (peer-operator-stack) failed: ${result.error.message}`,
     );
   }
 }
