@@ -16,12 +16,12 @@ export const STRIPE_O1_ARCHITECTURE_REVIEW_LINK =
 export const STRIPE_ATOMIC_NOTE_PACK_LINK =
   "https://buy.stripe.com/dRmeV50QV8KM0O647xbjW01";
 // Stripe Payment Link: Peer Operator's Stack v1, $149 one-time.
-// Product: prod_UWlvMzls8Yi1wO | Price: price_1TXiNZ0OE14HosLEWfrmNuiR | Link: plink_1TXiOM0OE14HosLEgb3YaDU4
-// TODO: Dashboard-only post-create: add confirmation message (markdown), custom field
-// "Where did you hear about the Stack?" (optional text), metadata
-// (product=peer_operators_stack, version=v1.0.0, cohort=launch).
+// Product: prod_UWlvMzls8Yi1wO. Recreated via Dashboard 2026-05-16 to attach
+// confirmation message (markdown) + custom field "Where did you hear about
+// the Stack?" (optional text). Old API-created link
+// plink_1TXiOM0OE14HosLEgb3YaDU4 deactivated.
 export const STRIPE_PEER_OPERATOR_STACK_LINK =
-  "https://buy.stripe.com/cNi14f8jn6CE9kCavVbjW03";
+  "https://buy.stripe.com/eVqcMX1UZaSU0O69rRbjW04";
 
 // Skool community: Synapse Studio (Hobby tier, $9/mo). Private group.
 // Pro upgrade ($99/mo) unlocks custom URL (community.synapsedynamics.io)
