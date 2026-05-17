@@ -15,14 +15,22 @@ const FROM = "Dailen at Synapse Dynamics <dailen@synapsedynamics.io>";
 
 // Permanent invite (Synapse Dynamics server, never expires, no use limit)
 const DISCORD_INVITE_URL = "https://discord.gg/jGxwQR55A9";
-// REPLACE BEFORE LIVE EMAIL TRAFFIC: real first build-log post URL
-const FIRST_DROP_URL = "https://synapsedynamics.io/build-log/welcome";
-// REPLACE BEFORE LIVE EMAIL TRAFFIC: real Stripe Customer Portal URL
-const CUSTOMER_PORTAL_URL = "https://synapsedynamics.io/foundation/manage";
-// REPLACE BEFORE LIVE EMAIL TRAFFIC: real Calendly/Cal.com kickoff URL
-const CALENDLY_URL = "https://cal.com/dailenhuntley/setup-session";
-// REPLACE BEFORE LIVE EMAIL TRAFFIC: real Setup Session intake form URL
-const INTAKE_FORM_URL = "https://synapsedynamics.io/setup-session/intake";
+// Foundation Subscription first-drop URL. Until a dedicated `/build-log/welcome`
+// page lands, redirect buyers to the Skool community where build-notes drop.
+const FIRST_DROP_URL = "https://www.skool.com/synapse-studio-8041";
+// Foundation Subscription customer portal. Until a Stripe Customer Portal
+// session route exists at `/api/billing/portal`, buyers manage by replying to
+// the welcome email (FROM mailbox is monitored).
+const CUSTOMER_PORTAL_URL = "mailto:dailen@synapsedynamics.io?subject=Foundation%20Subscription%20%E2%80%94%20manage%20my%20billing";
+// Setup Session kickoff URL. NOTE: verify with Dailen whether the canonical
+// booking URL is on Calendly.com or Cal.com. Foundation has its own product
+// stream and may not need this constant.
+const CALENDLY_URL = "https://calendly.com/dailenhuntley/setup-session";
+// Setup Session intake URL. NOTE: a dedicated intake form for Setup Session
+// is queued for next sprint. Until then, use the O1 intake as the closest
+// analog (Calendly redirect into the same Tally form). When Setup launches in
+// market, create a separate Tally and update this constant.
+const INTAKE_FORM_URL = "https://tally.so/r/D4xzQR";
 // Peer Operator's Stack v1 — hosted on Vercel via sds-website /public.
 const STACK_DOWNLOAD_URL = "https://synapsedynamics.io/stack-v1.zip";
 
