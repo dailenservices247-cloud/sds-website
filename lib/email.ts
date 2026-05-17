@@ -256,3 +256,70 @@ export async function sendPeerOperatorStackWelcomeEmail(
     );
   }
 }
+
+// Day-7 testimonial-ask follow-up email. Sent ~7 days after a Stack purchase.
+//
+// Trigger mechanism (not yet wired at v1):
+//   Option A: Resend `scheduledAt` parameter at webhook time (no infra needed,
+//             but Resend's scheduled-send feature is in beta and behavior may
+//             vary).
+//   Option B: Vercel cron job at /api/cron/stack-followups that queries a
+//             Supabase `stack_purchases` table for purchases 7+ days old
+//             without a follow-up timestamp, sends them, marks as sent.
+//
+// Both deferred to v1.1 sprint. v1 ships the function so the trigger plumbing
+// has a real callable to invoke when ready.
+const STACK_FEEDBACK_FORM_FALLBACK =
+  "mailto:dailen@synapsedynamics.io?subject=Peer%20Operator%27s%20Stack%20%E2%80%94%20day-7%20feedback";
+
+function peerOperatorStackTestimonialHtml(firstName: string): string {
+  const name = escapeHtml(firstName);
+  return `<!doctype html>
+<html><body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #111;">
+  <p>Hey ${name},</p>
+
+  <p>It&rsquo;s been about a week since you grabbed the Peer Operator&rsquo;s Stack.</p>
+
+  <p>If one specific skill landed (or didn&rsquo;t), I&rsquo;d value a one-line read on which one and what changed (or didn&rsquo;t).</p>
+
+  <p>Three quick options:</p>
+
+  <ol>
+    <li><strong>Two-minute feedback form:</strong> <a href="${STACK_FEEDBACK_FORM_FALLBACK}">send a one-liner</a> (this becomes the day-7 Tally form once it&rsquo;s live; until then it&rsquo;s a direct-to-Dailen email).</li>
+    <li><strong>Reply to this email</strong> with a sentence or two. Voice memo welcome if you prefer.</li>
+    <li><strong>Drop it in the Skool community</strong> at <a href="https://www.skool.com/synapse-studio-8041">synapse-studio-8041</a> if you&rsquo;d rather discuss with peers.</li>
+  </ol>
+
+  <p>If a specific pattern bombed for you, that&rsquo;s the most valuable data. v1.x patches go out free as updates; honest feedback shapes the priority order. The 14-day refund window is still open if the Stack just isn&rsquo;t the right fit.</p>
+
+  <p>If you scored the Stack a clear 5 and there&rsquo;s one specific peer who&rsquo;d benefit, the referral pattern works two ways &mdash; send me their name + how to reach them, and I&rsquo;ll handle the introduction so they don&rsquo;t feel cold-pitched.</p>
+
+  <p>Thanks for being in the first cohort.</p>
+
+  <p>&mdash; Dailen<br/>
+  Synapse Dynamics &middot; Black Sheep 247 LLC</p>
+</body></html>`;
+}
+
+export async function sendPeerOperatorStackTestimonialAskEmail(
+  session: Stripe.Checkout.Session,
+): Promise<void> {
+  const resend = getResend();
+  if (!resend) return;
+
+  const r = recipientFromSession(session);
+  if (!r) return;
+
+  const result = await resend.emails.send({
+    from: FROM,
+    to: r.to,
+    subject: "One week with the Stack — quick read?",
+    html: peerOperatorStackTestimonialHtml(r.firstName),
+  });
+
+  if (result.error) {
+    throw new Error(
+      `[email] Resend send (peer-operator-stack testimonial-ask) failed: ${result.error.message}`,
+    );
+  }
+}
