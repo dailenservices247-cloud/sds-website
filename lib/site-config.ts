@@ -4,13 +4,30 @@ export const SITE_URL = "https://synapsedynamics.io";
 export const SITE_HOST = "synapsedynamics.io";
 
 // External booking + payment endpoints. Locked 2026-05-14.
-// Calendly: O1 AI Architecture Review wedge offering (90 min, $1.5K).
+// O1 Architecture Review = 3-tier ladder (locked 2026-05-20).
+// Decision: AI Hub/Decisions/decision-2026-05-20-o1-review-three-tier-ladder.md
+// 60-day check at 2026-07-19 evaluates sunset/keep on each tier.
+//
+// Calendly: single booking link for all O1 tiers. Tier assignment happens
+// at intake form / payment, not booking step.
 export const CALENDLY_O1_ARCHITECTURE_REVIEW =
   "https://calendly.com/dailenhuntley/ai-architecture-review";
-// Stripe Payment Link: O1 AI Architecture Review, $1,500 one-time.
+// Stripe Payment Link: O1 Architecture Review — Essentials, $1,500 one-time.
 // Product: prod_UWA22LvEYz08vo | Price: price_1TX7it0OE14HosLEE97oGYzi
+// (Existing constant kept for backward-compat; alias as ESSENTIALS_LINK below.)
 export const STRIPE_O1_ARCHITECTURE_REVIEW_LINK =
   "https://buy.stripe.com/4gM14fczD5yA8gycE3bjW02";
+export const STRIPE_O1_REVIEW_ESSENTIALS_LINK = STRIPE_O1_ARCHITECTURE_REVIEW_LINK;
+// Stripe Payment Link: O1 Architecture Review — Standard, $2,500 one-time.
+// Product: prod_UY8ioZWXdNmk7e | Price: price_1TZ2RN0OE14HosLECzHpxOEy
+// Created 2026-05-20 via Stripe MCP per tier-ladder decision.
+export const STRIPE_O1_REVIEW_STANDARD_LINK =
+  "https://buy.stripe.com/5kQ14fbvzbWYdASdI7bjW05";
+// Stripe Payment Link: O1 Architecture Review — Premium, $5,000 one-time.
+// Product: prod_UY8iz2p15RjyCz | Price: price_1TZ2RQ0OE14HosLEj4xLUaV7
+// Created 2026-05-20 via Stripe MCP per tier-ladder decision.
+export const STRIPE_O1_REVIEW_PREMIUM_LINK =
+  "https://buy.stripe.com/bJeeV5eHL3qsdASavVbjW06";
 // Stripe Payment Link: Atomic Note Template Pack, $19 one-time.
 // Product: prod_UW8HDFDCGh1cBg | Price: price_1TX61P0OE14HosLEMmAgXsDE
 export const STRIPE_ATOMIC_NOTE_PACK_LINK =
