@@ -315,6 +315,47 @@ body {
   /* Shadows — restrained, sculpted-monolith register */
   --bv3-shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.25);
   --bv3-shadow-mid:  0 8px 20px rgba(0, 0, 0, 0.32);
+
+  /* ---------- Legacy-token bridge (2026-05-20) ----------
+     Pages migrated from (v3) brand v2 emerald route group to (brand-v3)
+     route group on 2026-05-20 (commits 5105f4d + 92d3908) still reference
+     legacy Tailwind classes like bg-bg-primary / text-ink-primary.
+     Map those legacy tokens to brand-v3 equivalents so moved pages
+     visually inherit the matte-gray V3 register without per-page rewrite.
+     If a moved page is rewritten with native --bv3-* tokens, the bridge
+     becomes inert for that page. Remove bridge once all moved pages are
+     refactored. */
+  --bg-primary:        var(--bv3-shell);
+  --bg-surface:        var(--bv3-shell-deep);
+  --bg-elevated:       var(--bv3-shell-deep);
+  --bg-light:          var(--bv3-cream);
+  --bg-dark:           var(--bv3-shell-deep);
+  --bg-dark-elevated:  var(--bv3-shell-deep);
+
+  --text-primary:      var(--bv3-ink);
+  --text-strong:       var(--bv3-ink-strong);
+  --text-muted:        var(--bv3-ink-muted);
+  --text-dim:          var(--bv3-ink-dim);
+  --text-soft:         var(--bv3-ink-dim);
+  --text-on-dark:      var(--bv3-ink);
+  --text-on-dark-soft: var(--bv3-ink-muted);
+
+  --accent-primary:    var(--bv3-gold);
+  --accent-bright:     var(--bv3-gold-bright);
+  --accent-deep:       var(--bv3-spine);
+  --accent-live:       var(--bv3-gold);
+  --accent-live-bright:var(--bv3-gold-bright);
+
+  --border-subtle:     var(--bv3-border-subtle);
+  --border-soft:       var(--bv3-border-subtle);
+  --border-accent:     var(--bv3-spine);
+
+  --link-decoration:   var(--bv3-gold);
+
+  /* Gradient legacy mapping — emerald gradient becomes gold/spine gradient */
+  --gradient-blaze-from: var(--bv3-spine);
+  --gradient-blaze-via:  var(--bv3-spine-bright);
+  --gradient-blaze-to:   var(--bv3-gold);
 }
 
 [data-theme="brand-v3"] body,
