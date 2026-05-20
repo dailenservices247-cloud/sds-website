@@ -32,6 +32,12 @@ export const STRIPE_O1_REVIEW_PREMIUM_LINK =
 // Product: prod_UW8HDFDCGh1cBg | Price: price_1TX61P0OE14HosLEMmAgXsDE
 export const STRIPE_ATOMIC_NOTE_PACK_LINK =
   "https://buy.stripe.com/dRmeV50QV8KM0O647xbjW01";
+// Stripe Payment Link: SDS Anti-Slop Skill Pack v1, $49 one-time.
+// Product: prod_UYHepwPCSLkGHn | Price: price_1TZB5h0OE14HosLExW7omrAZ
+// Created 2026-05-20 via Stripe MCP. ICP overlap with Stack v1
+// (per decision-2026-05-20-stack-v1-icp-solo-ai-builder-context-drift.md).
+export const STRIPE_ANTI_SLOP_SKILL_PACK_LINK =
+  "https://buy.stripe.com/3cI3cnbvzf9a0O647xbjW07";
 // Stripe Payment Link: Peer Operator's Stack v1, $149 one-time.
 // Product: prod_UWlvMzls8Yi1wO. Recreated via Dashboard 2026-05-16 to attach
 // confirmation message (markdown) + custom field "Where did you hear about
