@@ -19,6 +19,7 @@ import {
   sendSetupWelcomeEmail,
   sendPeerOperatorStackWelcomeEmail,
   sendAntiSlopWelcomeEmail,
+  sendAtomicNotePackWelcomeEmail,
 } from "@/lib/email";
 
 export const runtime = "nodejs";
@@ -30,6 +31,7 @@ export const dynamic = "force-dynamic";
 // Dashboard, so manually-created links omit it).
 const PEER_OPERATOR_STACK_PRODUCT_ID = "prod_UWlvMzls8Yi1wO";
 const ANTI_SLOP_PRODUCT_ID = "prod_UYHepwPCSLkGHn";
+const ATOMIC_NOTE_PACK_PRODUCT_ID = "prod_UW8HDFDCGh1cBg";
 
 async function sessionLineItemProductIds(
   sessionId: string,
@@ -68,6 +70,13 @@ async function sessionHasAntiSlopLineItem(
 ): Promise<boolean> {
   const ids = await sessionLineItemProductIds(sessionId);
   return ids.includes(ANTI_SLOP_PRODUCT_ID);
+}
+
+async function sessionHasAtomicNotePackLineItem(
+  sessionId: string,
+): Promise<boolean> {
+  const ids = await sessionLineItemProductIds(sessionId);
+  return ids.includes(ATOMIC_NOTE_PACK_PRODUCT_ID);
 }
 
 export async function POST(req: NextRequest) {
@@ -135,6 +144,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ received: true, sent: true, product });
     }
 
+    if (product === "atomic_note_pack") {
+      await sendAtomicNotePackWelcomeEmail(session);
+      return NextResponse.json({ received: true, sent: true, product });
+    }
+
     // Fallback: metadata is missing on Stripe-Dashboard-recreated Payment Links
     // (Stripe UI dropped metadata from the create-link form). Detect via
     // expanded line_items product ID and dispatch the matching email.
@@ -154,6 +168,16 @@ export async function POST(req: NextRequest) {
         received: true,
         sent: true,
         product: "anti_slop_skill_pack",
+        via: "line_item_product_id",
+      });
+    }
+
+    if (await sessionHasAtomicNotePackLineItem(session.id)) {
+      await sendAtomicNotePackWelcomeEmail(session);
+      return NextResponse.json({
+        received: true,
+        sent: true,
+        product: "atomic_note_pack",
         via: "line_item_product_id",
       });
     }

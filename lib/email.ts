@@ -35,6 +35,9 @@ const INTAKE_FORM_URL = "https://tally.so/r/D4xzQR";
 const STACK_DOWNLOAD_URL = "https://synapsedynamics.io/stack-v1.zip";
 // SDS Anti-Slop Skill Pack v1 — hosted on Vercel via sds-website /public.
 const ANTI_SLOP_DOWNLOAD_URL = "https://synapsedynamics.io/anti-slop-skill-pack-v1.zip";
+// Atomic Note Template Pack — MIT, free on GitHub, $19 honor-system tip on Stripe.
+const ATOMIC_NOTE_PACK_GITHUB_REPO = "https://github.com/dailenservices247-cloud/atomic-note-pack";
+const ATOMIC_NOTE_PACK_GITHUB_ZIP = "https://github.com/dailenservices247-cloud/atomic-note-pack/archive/refs/heads/main.zip";
 
 function getResend(): Resend | null {
   const key = process.env.RESEND_API_KEY;
@@ -335,6 +338,77 @@ export async function sendAntiSlopWelcomeEmail(
   if (result.error) {
     throw new Error(
       `[email] Resend send (anti-slop) failed: ${result.error.message}`,
+    );
+  }
+}
+
+function atomicNotePackHtml(firstName: string): string {
+  const name = escapeHtml(firstName);
+  return `<!doctype html>
+<html><body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #111;">
+  <p>Hey ${name},</p>
+
+  <p>Thanks for the $19. Means more than you'd think for an honor-system tip on something that's also free.</p>
+
+  <p><strong>The pack is here</strong><br/>
+  <a href="${ATOMIC_NOTE_PACK_GITHUB_ZIP}">${ATOMIC_NOTE_PACK_GITHUB_ZIP}</a> (direct ZIP download)<br/>
+  <a href="${ATOMIC_NOTE_PACK_GITHUB_REPO}">${ATOMIC_NOTE_PACK_GITHUB_REPO}</a> (GitHub repo, MIT)</p>
+
+  <p><strong>What's inside (4 atom types + 1 retrieval contract)</strong></p>
+  <ul>
+    <li><code>decision-node.md</code> &ndash; a locked choice plus alternatives considered</li>
+    <li><code>inference-node.md</code> &ndash; a claim or pattern derived from sources</li>
+    <li><code>context-node.md</code> &ndash; a snapshot of state at a moment in time</li>
+    <li><code>test-node.md</code> &ndash; a validation, eval, or experiment with results</li>
+    <li><code>retrieval-contract.md</code> &ndash; what an agent needs to know, before any infrastructure pick</li>
+    <li><code>examples/</code> &ndash; five filled-in examples drawn from real production work</li>
+    <li><code>README.md</code> &ndash; methodology, Obsidian + Notion + Cursor setup, anti-patterns</li>
+  </ul>
+
+  <p><strong>How to use it (3 minutes to first atom)</strong></p>
+  <ol>
+    <li>Unzip into your Obsidian vault root (or Notion, or any markdown notes app)</li>
+    <li>Read <code>README.md</code> for the methodology + Obsidian-specific setup steps</li>
+    <li>Copy one template (start with <code>decision-node.md</code>) into a new file with today's date</li>
+    <li>Fill it in for an actual decision you made this week. That's your first atom.</li>
+    <li>Add a second atom tomorrow. Don't try to retro-fill everything; the graph compounds forward.</li>
+  </ol>
+
+  <p><strong>Why atomic, why typed</strong><br/>
+  Most operators run one rolling Decisions Log + one Lessons Learned dump. At scale that forces your AI agent to read entire files every time it needs context. Atomic-node format inverts that: each decision in its own file, agents scan summaries cheaply, follow typed edges only when they need detail.</p>
+
+  <p><strong>If the pack helps</strong><br/>
+  Send me one decision-node you wrote. I'd genuinely value seeing it in the wild. Reply-to is monitored by a human (me).</p>
+
+  <p><strong>If you want the full Peer Operator's Stack</strong><br/>
+  The Atomic Note Pack is Skill 01 of a 20-pattern library. The Stack ($149) includes this + retrieval contracts + brand-voice linter + 8-layer agent stack diagnostic + 16 more patterns. <a href="https://synapsedynamics.io/stack">synapsedynamics.io/stack</a></p>
+
+  <p>Either way, thanks for backing the work.</p>
+
+  <p>&mdash; Dailen<br/>
+  Synapse Dynamics &middot; Black Sheep 247 LLC</p>
+</body></html>`;
+}
+
+export async function sendAtomicNotePackWelcomeEmail(
+  session: Stripe.Checkout.Session,
+): Promise<void> {
+  const resend = getResend();
+  if (!resend) return;
+
+  const r = recipientFromSession(session);
+  if (!r) return;
+
+  const result = await resend.emails.send({
+    from: FROM,
+    to: r.to,
+    subject: "Your Atomic Note Pack — thanks for the tip",
+    html: atomicNotePackHtml(r.firstName),
+  });
+
+  if (result.error) {
+    throw new Error(
+      `[email] Resend send (atomic-note-pack) failed: ${result.error.message}`,
     );
   }
 }
