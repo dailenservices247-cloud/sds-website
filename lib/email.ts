@@ -33,6 +33,8 @@ const CALENDLY_URL = "https://calendly.com/dailenhuntley/setup-session";
 const INTAKE_FORM_URL = "https://tally.so/r/D4xzQR";
 // Peer Operator's Stack v1 — hosted on Vercel via sds-website /public.
 const STACK_DOWNLOAD_URL = "https://synapsedynamics.io/stack-v1.zip";
+// SDS Anti-Slop Skill Pack v1 — hosted on Vercel via sds-website /public.
+const ANTI_SLOP_DOWNLOAD_URL = "https://synapsedynamics.io/anti-slop-skill-pack-v1.zip";
 
 function getResend(): Resend | null {
   const key = process.env.RESEND_API_KEY;
@@ -253,6 +255,86 @@ export async function sendPeerOperatorStackWelcomeEmail(
   if (result.error) {
     throw new Error(
       `[email] Resend send (peer-operator-stack) failed: ${result.error.message}`,
+    );
+  }
+}
+
+function antiSlopHtml(firstName: string): string {
+  const name = escapeHtml(firstName);
+  return `<!doctype html>
+<html><body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #111;">
+  <p>Hey ${name},</p>
+
+  <p>Thanks for picking up the Anti-Slop Skill Pack. Direct download below.</p>
+
+  <p><strong>Download SDS Anti-Slop Skill Pack v1</strong><br/>
+  <a href="${ANTI_SLOP_DOWNLOAD_URL}">${ANTI_SLOP_DOWNLOAD_URL}</a></p>
+
+  <p><strong>What I'd do on day 1</strong></p>
+  <ol>
+    <li>Unzip somewhere stable. <code>~/Desktop/anti-slop-skill-pack/</code> is fine.</li>
+    <li>Open <code>INSTALL.md</code>. Pick the install mode that fits how you use Claude (Claude.ai Custom Instructions / Claude Code skill / Project knowledge layer).</li>
+    <li>Paste a draft you're about to ship. Say "run anti-slop on this." Watch the flag list.</li>
+    <li>Fork <code>banned-words-list.md</code> for your brand. Add what's banned for you, remove what your brand actually wants.</li>
+  </ol>
+
+  <p><strong>What's in the pack (8 files)</strong></p>
+  <ul>
+    <li><code>SKILL.md</code> &ndash; the Claude skill itself</li>
+    <li><code>banned-words-list.md</code> &ndash; six-category blocklist with replacements</li>
+    <li><code>voice-fingerprint-scan.md</code> &ndash; 4-check pre-publish pass (Specific / Honest / Peer / Banned-phrase)</li>
+    <li><code>usage-examples.md</code> &ndash; 10 before/after rewrites from real work</li>
+    <li><code>INSTALL.md</code> &ndash; three install modes explained</li>
+    <li><code>README.md</code> &ndash; overview + forking guidance</li>
+    <li><code>LICENSE.md</code> &ndash; MIT</li>
+    <li><code>CHANGELOG.md</code> &ndash; v1.0 ship notes + v1.1 banked items</li>
+  </ul>
+
+  <p><strong>Six categories the pack catches</strong></p>
+  <ul>
+    <li>Hype / AI-marketing-speak (supercharge, unlock, transform, 10x)</li>
+    <li>Filler intensifiers (just, really, basically, actually, simply)</li>
+    <li>AI-influencer vocabulary (leverage, level up, game-changer, imagine if)</li>
+    <li>Motivational-grindset (hustle, grind, lock in, side hustle)</li>
+    <li>Exit-fetishism (billion-dollar, $100M exit, unicorn)</li>
+    <li>Scarcity-FOMO (get it while the getting's good, the window is closing)</li>
+  </ul>
+
+  <p><strong>Lifetime access</strong><br/>
+  You own v1 and every v1.x update going forward. When v1.1 ships, it lands in your inbox automatically. No action needed.</p>
+
+  <p><strong>14-day refund</strong><br/>
+  If the pack doesn't pay for itself inside two drafts run through it, reply to this email. Full refund, no quarrels.</p>
+
+  <p><strong>Cross-sell honesty</strong><br/>
+  If you also want the full Peer Operator's Stack v1 (20 patterns, including this anti-slop skill as Skill 05), it's $149 at <a href="https://synapsedynamics.io/stack">synapsedynamics.io/stack</a>. Skip if you already have it.</p>
+
+  <p>Reply with one sentence on what you're about to write next. I'll point out which category trips the most operators in your lane.</p>
+
+  <p>&mdash; Dailen<br/>
+  Synapse Dynamics &middot; Black Sheep 247 LLC</p>
+</body></html>`;
+}
+
+export async function sendAntiSlopWelcomeEmail(
+  session: Stripe.Checkout.Session,
+): Promise<void> {
+  const resend = getResend();
+  if (!resend) return;
+
+  const r = recipientFromSession(session);
+  if (!r) return;
+
+  const result = await resend.emails.send({
+    from: FROM,
+    to: r.to,
+    subject: "Your SDS Anti-Slop Skill Pack is here",
+    html: antiSlopHtml(r.firstName),
+  });
+
+  if (result.error) {
+    throw new Error(
+      `[email] Resend send (anti-slop) failed: ${result.error.message}`,
     );
   }
 }

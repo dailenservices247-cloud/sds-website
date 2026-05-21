@@ -18,41 +18,56 @@ import {
   sendFoundationWelcomeEmail,
   sendSetupWelcomeEmail,
   sendPeerOperatorStackWelcomeEmail,
+  sendAntiSlopWelcomeEmail,
 } from "@/lib/email";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-// Peer Operator's Stack v1 product ID (Stripe live).
-// Used as a fallback detector when metadata.product is unset on the session
-// (the Dashboard-recreated Payment Link omits metadata since Stripe's UI no
-// longer surfaces it on the Payment Link create form).
+// Stripe live product IDs.
+// Used as fallback detectors when metadata.product is unset on the session
+// (Stripe's Payment Link create form no longer surfaces metadata on the
+// Dashboard, so manually-created links omit it).
 const PEER_OPERATOR_STACK_PRODUCT_ID = "prod_UWlvMzls8Yi1wO";
+const ANTI_SLOP_PRODUCT_ID = "prod_UYHepwPCSLkGHn";
 
-async function sessionHasStackLineItem(
+async function sessionLineItemProductIds(
   sessionId: string,
-): Promise<boolean> {
+): Promise<string[]> {
   try {
     const expanded = await stripe.checkout.sessions.retrieve(sessionId, {
       expand: ["line_items.data.price.product"],
     });
     const items = expanded.line_items?.data ?? [];
-    return items.some((item) => {
-      const product = item.price?.product;
-      if (!product) return false;
-      if (typeof product === "string") {
-        return product === PEER_OPERATOR_STACK_PRODUCT_ID;
-      }
-      // Expanded Product object
-      return product.id === PEER_OPERATOR_STACK_PRODUCT_ID;
-    });
+    return items
+      .map((item) => {
+        const product = item.price?.product;
+        if (!product) return null;
+        if (typeof product === "string") return product;
+        return product.id;
+      })
+      .filter((id): id is string => Boolean(id));
   } catch (err) {
     const e = err as Error;
     console.error(
       `[stripe-webhook] Failed to expand line items for ${sessionId}: ${e.message}`,
     );
-    return false;
+    return [];
   }
+}
+
+async function sessionHasStackLineItem(
+  sessionId: string,
+): Promise<boolean> {
+  const ids = await sessionLineItemProductIds(sessionId);
+  return ids.includes(PEER_OPERATOR_STACK_PRODUCT_ID);
+}
+
+async function sessionHasAntiSlopLineItem(
+  sessionId: string,
+): Promise<boolean> {
+  const ids = await sessionLineItemProductIds(sessionId);
+  return ids.includes(ANTI_SLOP_PRODUCT_ID);
 }
 
 export async function POST(req: NextRequest) {
@@ -115,15 +130,30 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ received: true, sent: true, product });
     }
 
-    // Fallback: metadata is missing on the Stack Payment Link (Stripe UI
-    // dropped metadata from the create-link form). Detect via expanded
-    // line_items product ID and dispatch the Stack email if matched.
+    if (product === "anti_slop_skill_pack") {
+      await sendAntiSlopWelcomeEmail(session);
+      return NextResponse.json({ received: true, sent: true, product });
+    }
+
+    // Fallback: metadata is missing on Stripe-Dashboard-recreated Payment Links
+    // (Stripe UI dropped metadata from the create-link form). Detect via
+    // expanded line_items product ID and dispatch the matching email.
     if (await sessionHasStackLineItem(session.id)) {
       await sendPeerOperatorStackWelcomeEmail(session);
       return NextResponse.json({
         received: true,
         sent: true,
         product: "peer_operators_stack",
+        via: "line_item_product_id",
+      });
+    }
+
+    if (await sessionHasAntiSlopLineItem(session.id)) {
+      await sendAntiSlopWelcomeEmail(session);
+      return NextResponse.json({
+        received: true,
+        sent: true,
+        product: "anti_slop_skill_pack",
         via: "line_item_product_id",
       });
     }
