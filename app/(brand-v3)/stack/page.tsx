@@ -12,9 +12,6 @@
 import type { Metadata } from "next";
 import { STRIPE_PEER_OPERATOR_STACK_LINK, SITE_URL } from "@/lib/site-config";
 
-const STRIPE_ATOMIC_NOTE_PACK_LINK =
-  "https://buy.stripe.com/dRmeV50QV8KM0O647xbjW01";
-
 export const metadata: Metadata = {
   title:
     "Peer Operator's Stack v1 — 20 patterns for solo AI builders | Synapse Dynamics Segmented",

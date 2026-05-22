@@ -19,11 +19,8 @@
 import type { Metadata } from "next";
 import {
   STRIPE_ANTI_SLOP_SKILL_PACK_LINK,
-  STRIPE_PEER_OPERATOR_STACK_LINK,
   SITE_URL,
 } from "@/lib/site-config";
-
-const SKILL_PACK_ZIP_URL = "https://synapsedynamics.io/anti-slop-skill-pack-v1.zip";
 
 export const metadata: Metadata = {
   title:
