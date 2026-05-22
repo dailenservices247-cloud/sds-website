@@ -177,6 +177,48 @@ export default function AtomicNotePackPage() {
           </a>
         </section>
 
+        {/* Cross-sell — other SDS packs */}
+        <section className="mt-12">
+          <p
+            className="bv3-mono mb-3 text-xs"
+            style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+          >
+            RELATED PACKS
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="/voice-network"
+              className="rounded-md px-5 py-3 text-sm"
+              style={{
+                border: "1px solid var(--bv3-border-subtle)",
+                color: "var(--bv3-ink)",
+              }}
+            >
+              Claude Voice Network Pack — $79
+            </a>
+            <a
+              href="/anti-slop"
+              className="rounded-md px-5 py-3 text-sm"
+              style={{
+                border: "1px solid var(--bv3-border-subtle)",
+                color: "var(--bv3-ink)",
+              }}
+            >
+              Anti-Slop Skill Pack — $49
+            </a>
+            <a
+              href="/stack"
+              className="rounded-md px-5 py-3 text-sm"
+              style={{
+                border: "1px solid var(--bv3-border-subtle)",
+                color: "var(--bv3-ink)",
+              }}
+            >
+              Peer Operator&apos;s Stack v1 — $149
+            </a>
+          </div>
+        </section>
+
         <footer
           className="mt-24 text-xs"
           style={{ color: "var(--bv3-ink-dim)" }}

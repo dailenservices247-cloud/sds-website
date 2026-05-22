@@ -358,6 +358,16 @@ export default function StackPage() {
             >
               Or start with Atomic Note Pack — $19
             </a>
+            <a
+              href="/voice-network"
+              className="rounded-md px-6 py-4 text-base"
+              style={{
+                border: "1px solid var(--bv3-border-strong)",
+                color: "var(--bv3-ink)",
+              }}
+            >
+              + Voice Network — $79
+            </a>
           </div>
         </section>
 

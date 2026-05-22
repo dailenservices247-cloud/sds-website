@@ -851,6 +851,106 @@ export default function CursorVariantHome() {
             ))}
           </motion.div>
         </section>
+
+        {/* ===================================================================
+            Productized packs — flat list, low-noise
+            =================================================================== */}
+        <section
+          className="mx-auto w-full max-w-7xl px-6 py-16 md:py-20"
+          style={{ borderTop: "1px solid var(--bv3-border-subtle)" }}
+        >
+          <CommandLine
+            command="packs --list"
+            result="4 productized digital packs · ship-ready"
+          />
+          <h2
+            className="mb-8 text-balance"
+            style={{
+              fontFamily: "var(--font-bricolage), system-ui, sans-serif",
+              fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
+              fontWeight: 700,
+              lineHeight: 1.05,
+              letterSpacing: "-0.025em",
+              color: "var(--bv3-cream)",
+            }}
+          >
+            One-time packs. Lifetime v1.x updates.
+          </h2>
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+            <Link
+              href="/voice-network"
+              className="group rounded-lg border p-5 transition-colors"
+              style={{
+                background: "var(--bv3-shell-deep)",
+                borderColor: "var(--bv3-border-subtle)",
+              }}
+            >
+              <div className="mb-2 flex items-baseline justify-between">
+                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-gold)", letterSpacing: "0.14em" }}>
+                  [NEW] CLAUDE VOICE NETWORK PACK
+                </span>
+                <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$79</span>
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--bv3-ink-muted)" }}>
+                Persistent AI specialists that travel with you. Bridge installer + Playbook + vault template + 5 starter Projects.
+              </p>
+            </Link>
+            <Link
+              href="/stack"
+              className="group rounded-lg border p-5 transition-colors"
+              style={{
+                background: "var(--bv3-shell-deep)",
+                borderColor: "var(--bv3-border-subtle)",
+              }}
+            >
+              <div className="mb-2 flex items-baseline justify-between">
+                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-gold)", letterSpacing: "0.14em" }}>
+                  PEER OPERATOR&apos;S STACK V1
+                </span>
+                <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$149</span>
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--bv3-ink-muted)" }}>
+                20 patterns for solo AI builders. Anti-context-drift, anti-hallucination, anti-memory-loss working library.
+              </p>
+            </Link>
+            <Link
+              href="/anti-slop"
+              className="group rounded-lg border p-5 transition-colors"
+              style={{
+                background: "var(--bv3-shell-deep)",
+                borderColor: "var(--bv3-border-subtle)",
+              }}
+            >
+              <div className="mb-2 flex items-baseline justify-between">
+                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-gold)", letterSpacing: "0.14em" }}>
+                  ANTI-SLOP SKILL PACK V1
+                </span>
+                <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$49</span>
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--bv3-ink-muted)" }}>
+                Strip banned phrases, hype-tone, AI-influencer vocabulary, filler before publish. Six-category blocklist + voice scan.
+              </p>
+            </Link>
+            <Link
+              href="/atomic-note-pack"
+              className="group rounded-lg border p-5 transition-colors"
+              style={{
+                background: "var(--bv3-shell-deep)",
+                borderColor: "var(--bv3-border-subtle)",
+              }}
+            >
+              <div className="mb-2 flex items-baseline justify-between">
+                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-gold)", letterSpacing: "0.14em" }}>
+                  ATOMIC NOTE TEMPLATE PACK
+                </span>
+                <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$19 tip</span>
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--bv3-ink-muted)" }}>
+                Decision / inference / context / test atomic node format. MIT on GitHub, honor-system tip on Stripe.
+              </p>
+            </Link>
+          </div>
+        </section>
       </main>
 
       {/* ===================================================================
