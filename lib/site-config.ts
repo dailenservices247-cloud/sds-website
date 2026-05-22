@@ -38,6 +38,13 @@ export const STRIPE_ATOMIC_NOTE_PACK_LINK =
 // (per decision-2026-05-20-stack-v1-icp-solo-ai-builder-context-drift.md).
 export const STRIPE_ANTI_SLOP_SKILL_PACK_LINK =
   "https://buy.stripe.com/3cI3cnbvzf9a0O647xbjW07";
+// Stripe Payment Link: Claude Voice Network Pack v1, $79 one-time.
+// Product: prod_UYo2LbyJkBL7RL | Price: price_1TZgQh0OE14HosLEYNtglVM1
+// Created 2026-05-21 via Stripe CLI. Metadata: product=voice_network_pack.
+// Bundles bridge installer + Project Design Playbook + Vault Template +
+// 5 starter Project templates. Cross-sell to Anti-Slop + Stack v1.
+export const STRIPE_VOICE_NETWORK_PACK_LINK =
+  "https://buy.stripe.com/aFa28jeHL5yA1Sa9rRbjW09";
 // Stripe Payment Link: Peer Operator's Stack v1, $149 one-time.
 // Product: prod_UWlvMzls8Yi1wO. Recreated via Dashboard 2026-05-16 to attach
 // confirmation message (markdown) + custom field "Where did you hear about

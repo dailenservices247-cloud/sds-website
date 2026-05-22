@@ -35,6 +35,9 @@ const INTAKE_FORM_URL = "https://tally.so/r/D4xzQR";
 const STACK_DOWNLOAD_URL = "https://synapsedynamics.io/stack-v1.zip";
 // SDS Anti-Slop Skill Pack v1 — hosted on Vercel via sds-website /public.
 const ANTI_SLOP_DOWNLOAD_URL = "https://synapsedynamics.io/anti-slop-skill-pack-v1.zip";
+// Claude Voice Network Pack v1 — hosted on Vercel via sds-website /public.
+const VOICE_NETWORK_PACK_DOWNLOAD_URL =
+  "https://synapsedynamics.io/claude-voice-network-pack-v1.zip";
 // Atomic Note Template Pack — MIT, free on GitHub, $19 honor-system tip on Stripe.
 const ATOMIC_NOTE_PACK_GITHUB_REPO = "https://github.com/dailenservices247-cloud/atomic-note-pack";
 const ATOMIC_NOTE_PACK_GITHUB_ZIP = "https://github.com/dailenservices247-cloud/atomic-note-pack/archive/refs/heads/main.zip";
@@ -476,6 +479,90 @@ export async function sendPeerOperatorStackTestimonialAskEmail(
   if (result.error) {
     throw new Error(
       `[email] Resend send (peer-operator-stack testimonial-ask) failed: ${result.error.message}`,
+    );
+  }
+}
+
+function voiceNetworkPackHtml(firstName: string): string {
+  const name = escapeHtml(firstName);
+  return `<!doctype html>
+<html><body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #111;">
+  <p>Hey ${name},</p>
+
+  <p>Thanks for picking up the Claude Voice Network Pack. Direct download below.</p>
+
+  <p><strong>Download Claude Voice Network Pack v1</strong><br/>
+  <a href="${VOICE_NETWORK_PACK_DOWNLOAD_URL}">${VOICE_NETWORK_PACK_DOWNLOAD_URL}</a></p>
+
+  <p><strong>What I&rsquo;d do on day 1</strong></p>
+  <ol>
+    <li>Unzip somewhere stable. <code>~/Desktop/claude-voice-network-pack/</code> is fine.</li>
+    <li>Open <code>bridge/INSTALL.md</code>. ~20 min wall-clock if you&rsquo;re fluent in shell.</li>
+    <li>Run <code>./bridge/smoke-test.sh</code> after install. It probes all five layers and prints your public tunnel URL.</li>
+    <li>Drop <code>vault-template/</code> into your Obsidian vault root.</li>
+    <li>Upload one of <code>templates/01-discovery</code> &hellip; <code>05-personal-memory</code> to a new Claude.ai Project. Open from your phone. Voice mode.</li>
+  </ol>
+
+  <p><strong>What&rsquo;s in the pack (32 files / 172K)</strong></p>
+  <ul>
+    <li><code>bridge/</code> &ndash; wrapper template + worked Obsidian example + two launchd plists + smoke-test + 7-failure troubleshooting library + named-tunnel migration guide</li>
+    <li><code>playbook/Project-Design-Playbook.md</code> &ndash; full methodology (13 sections, 2200 words)</li>
+    <li><code>vault-template/</code> &ndash; atomic-node spec + relay protocol + handoff pattern + 8 starter folders + Active Work Log stub</li>
+    <li><code>templates/</code> &ndash; 5 starter Project bundles (Discovery / Build / Sales / Content / Personal-Memory). v1.0 ships scaffold; v1.1 (by 2026-05-28) ships full content. You get the upgrade free.</li>
+    <li><code>README.md</code> + <code>CHANGELOG.md</code> + <code>LICENSE.md</code></li>
+  </ul>
+
+  <p><strong>The seven silent failures the troubleshooting library covers</strong></p>
+  <ol>
+    <li>Self-signed TLS cert rejection (&ldquo;fetch failed&rdquo; on every tool call)</li>
+    <li>Transport mismatch &ndash; <code>/sse</code> vs <code>/mcp</code> endpoint</li>
+    <li>launchd-spawned env stripped of <code>PATH</code></li>
+    <li>Keychain miss under launchd context</li>
+    <li>Tunnel URL rotation on cloudflared restart</li>
+    <li>Claude.ai client cached old tool schema (toggle won&rsquo;t clear it)</li>
+    <li>Wrong-package endpoint paths (404 on every tool)</li>
+  </ol>
+
+  <p>Each is documented with symptom + root cause + fix. Built tonight from a three-hour debug session, so you skip the integration tax.</p>
+
+  <p><strong>Lifetime v1.x access</strong><br/>
+  When v1.1 (full starter Projects + bearer-auth middleware) lands by 2026-05-28, it ships to your inbox automatically. v1.2 (multi-bridge ingress example) shortly after. No re-purchase. No surprise paywall.</p>
+
+  <p><strong>14-day refund</strong><br/>
+  If the bridge won&rsquo;t install on your Mac (Monterey+) or smoke-test won&rsquo;t pass after the troubleshooting library, reply to this email for a full refund.</p>
+
+  <p><strong>Anthropic MCP Tunnels note</strong><br/>
+  Anthropic shipped hosted MCP Tunnels for Managed Agents enterprise on 2026-05-19. Likely extends to consumer Claude.ai in 6-12 months. When it does, the bridge piece sunsets cleanly &ndash; you point your Claude.ai connector at Anthropic&rsquo;s hosted endpoint instead of your tunnel URL. The methodology and vault structure and 5 starter Projects don&rsquo;t go away. The methodology is the durable asset.</p>
+
+  <p><strong>Cross-sell honesty</strong><br/>
+  If you also publish content / DMs / proposals, add the Anti-Slop Skill Pack ($49) at <a href="https://synapsedynamics.io/anti-slop">synapsedynamics.io/anti-slop</a>. If you&rsquo;re building serious agentic software, add the Peer Operator&rsquo;s Stack v1 ($149) at <a href="https://synapsedynamics.io/stack">synapsedynamics.io/stack</a>. Skip if you already have either.</p>
+
+  <p>Reply with one sentence on the first MCP you&rsquo;re going to bridge. I&rsquo;ll point out the failure mode most likely to bite for that specific server.</p>
+
+  <p>&mdash; Dailen<br/>
+  Synapse Dynamics &middot; Black Sheep 247 LLC</p>
+</body></html>`;
+}
+
+export async function sendVoiceNetworkPackWelcomeEmail(
+  session: Stripe.Checkout.Session,
+): Promise<void> {
+  const resend = getResend();
+  if (!resend) return;
+
+  const r = recipientFromSession(session);
+  if (!r) return;
+
+  const result = await resend.emails.send({
+    from: FROM,
+    to: r.to,
+    subject: "Your Claude Voice Network Pack is here",
+    html: voiceNetworkPackHtml(r.firstName),
+  });
+
+  if (result.error) {
+    throw new Error(
+      `[email] Resend send (voice-network-pack) failed: ${result.error.message}`,
     );
   }
 }
