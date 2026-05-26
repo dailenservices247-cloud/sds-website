@@ -11,22 +11,20 @@
 
 import type { Metadata } from "next";
 import {
-  STRIPE_VOICE_NETWORK_PACK_LINK,
-  STRIPE_ANTI_SLOP_SKILL_PACK_LINK,
   STRIPE_PEER_OPERATOR_STACK_LINK,
   SITE_URL,
 } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title:
-    "Claude Voice Network Pack v1 — persistent AI specialists that travel with you | Synapse Dynamics Segmented",
+    "Claude Voice Network Pack — your phone Claude finally reads your vault | Synapse Dynamics Segmented",
   description:
-    "Expose any local stdio MCP server (Obsidian, Stripe, GitHub, Supabase, custom) to Claude.ai mobile via launchd + cloudflared. Ships the bridge installer + Project Design Playbook + vault structure + 5 starter Project templates. $79 once. Mac-only. Lifetime v1.x updates.",
+    "Phone Claude.ai voice mode can't see your local files. This bridge fixes it. Bridge + Project Design Playbook + vault structure + 5 starter Project templates. Mac only. Free.",
   alternates: { canonical: `${SITE_URL}/voice-network` },
   openGraph: {
-    title: "Claude Voice Network Pack v1",
+    title: "Claude Voice Network Pack — phone Claude reads your vault",
     description:
-      "Build a team of persistent AI specialists that travel with you. Bridge + methodology + vault template + 5 starter Projects. $79.",
+      "Phone Claude.ai voice mode can't see your local files. This bridge fixes it. Free. Mac only.",
     url: `${SITE_URL}/voice-network`,
     type: "website",
   },
@@ -107,31 +105,31 @@ const SILENT_FAILURES = [
 
 const USE_CASES = [
   {
-    title: "Voice-drive your Obsidian vault from anywhere",
-    body: "Walking, driving, at work without your laptop. Voice mode + persistent Project = ongoing conversation with your own second brain. Your sessions write back as atomic-node decisions. Vault compounds.",
+    title: "The walk that didn't happen",
+    body: "Walking, driving, work-without-laptop — your voice can already drive Claude. With this, voice can drive your vault too. The idea you had at the gym makes it into your decisions folder before you forget it.",
   },
   {
-    title: "Multiple specialists, one vault",
-    body: "Discovery Co-pilot for live thinking. Build Co-pilot for scope-defending. Sales Co-pilot for reply triage. Each Project specializes. All share the same vault MCP. Cross-context flows through your decisions graph without bleeding.",
+    title: "Stop re-explaining yourself",
+    body: "Five specialist Projects, each with its own system instructions. All reading your vault. Discovery Co-pilot knows your current thinking. Build Co-pilot defends your scope. Sales Co-pilot remembers who you called Monday. None of them ask 'what are you working on?'",
   },
   {
-    title: "Cross-MCP through one phone",
-    body: "Expose your Stripe MCP, GitHub MCP, Supabase MCP, custom MCPs — all to your phone via separate bridges. Same launchd pattern, different ports. Claude.ai sees them as separate connectors.",
+    title: "One tunnel, every tool",
+    body: "Obsidian, Stripe, GitHub, Supabase, custom — exposed through one phone. Same launchd pattern, different ports. Your phone becomes the remote for your whole stack.",
   },
   {
-    title: "Survives reboot. Self-heals on crash.",
-    body: "launchd KeepAlive + ThrottleInterval. cloudflared auto-reconnect. Your bridge stays up while you're away. No babysitting.",
+    title: "Set up once. Forget it.",
+    body: "launchd KeepAlive. cloudflared auto-reconnect. Your bridge stays up while you're away. No babysitting. No 3am restarts.",
   },
 ];
 
 const FAQ = [
   {
-    q: "Why $79? The components are free open source.",
-    a: "The components are free; the bundle isn't anywhere. mcp-proxy + cloudflared + launchd plists + Keychain wrappers + Project methodology + vault structure + 5 starter Projects + 7-failure troubleshooting library — each component is documented somewhere, but not in one tested package. The pack saves you the integration tax. Tonight's build session was three hours of debugging silent failures. You skip that.",
+    q: "Why is this free? You used to charge $79.",
+    a: "Distribution matters more than price for a niche operator product. The pack itself is solid — the pricing was the wrong shape for discovery. Free unlocks GitHub stars + Reddit + Hacker News distribution that the $79 SKU blocked. If it's useful, the SDS Operator Install ($2,500) is the next tier — but the pack stands on its own.",
   },
   {
     q: "Mac only. What about Linux / Windows?",
-    a: "v1 is Mac only because launchd is Mac-specific. Linux (systemd) and Windows (scheduled tasks) are banked for v2. Buy v1 now if you're on a Mac; v2 includes free upgrade.",
+    a: "v1 is Mac only because launchd is Mac-specific. Linux (systemd) and Windows (scheduled tasks) are banked for v2. If you're on a Mac, install today.",
   },
   {
     q: "Anthropic just announced MCP Tunnels. Why not wait?",
@@ -143,11 +141,11 @@ const FAQ = [
   },
   {
     q: "Security — anyone with the tunnel URL can read my data?",
-    a: "Yes, until you add auth. The pack covers two hardening paths: named subdomain (eliminates URL rotation pain) + bearer-token middleware (forces Authorization header on every request). Both shipped in v1. Until you wire them, you have URL-secrecy only (random 4-word subdomain, ~30 bits entropy). Fine for low-risk vaults; harden before exposing financial / health / customer data.",
+    a: "Yes, until you add auth. The pack covers two hardening paths: named subdomain (eliminates URL rotation pain) + bearer-token middleware + OAuth 2.1 gateway (forces auth on every request). All shipped. Until you wire them, you have URL-secrecy only (random 4-word subdomain, ~30 bits entropy). Fine for low-risk vaults; harden before exposing financial / health / customer data.",
   },
   {
-    q: "Refund policy?",
-    a: "14-day refund. If the bridge doesn't install cleanly on your Mac (Monterey+) or the 5-layer smoke test won't pass after troubleshooting, full refund. Reply to your purchase email.",
+    q: "Want this installed for you?",
+    a: "$2,500 Starter — SDS Operator Install. One-on-one install call, custom Project setup, vault structure migration, 30-day support. Two-week engagement, end to end. Reply to dailenhuntley@gmail.com with 'Operator Install' in the subject if interested.",
   },
 ];
 
@@ -174,17 +172,19 @@ export default function VoiceNetworkPackPage() {
             className="text-4xl md:text-5xl font-bold mb-4 leading-tight"
             style={{ color: "var(--bv3-ink)" }}
           >
-            Persistent AI specialists that travel with you.
+            Stop typing on your phone.<br />
+            Stop the back-and-forth with Claude.<br />
+            Start the conversation.
           </h1>
           <p
             className="text-lg leading-relaxed"
             style={{ color: "var(--bv3-ink-muted)", maxWidth: "62ch" }}
           >
-            Expose any local stdio MCP server (Obsidian, Stripe, GitHub, Supabase, custom) to Claude.ai mobile via launchd + cloudflared. Bridge + Project Design Playbook + vault structure + 5 starter Project templates. One pack, four layers, lifetime v1.x updates.
+            Voice mode on phone Claude.ai. Voice mode in Claude Code. Both reading your actual vault. Both talking to your real tools. The bridge makes both work.
           </p>
           <div className="mt-8 flex items-center gap-4 flex-wrap">
             <a
-              href={STRIPE_VOICE_NETWORK_PACK_LINK}
+              href="https://github.com/dailenservices247-cloud/voice-network-pack"
               className="inline-block px-6 py-3 font-semibold text-sm"
               style={{
                 backgroundColor: "var(--bv3-gold)",
@@ -192,13 +192,13 @@ export default function VoiceNetworkPackPage() {
                 borderRadius: "0.25rem",
               }}
             >
-              Get the pack — $79 once
+              Get the pack — FREE
             </a>
             <p
               className="bv3-mono text-xs"
               style={{ color: "var(--bv3-ink-dim)", letterSpacing: "0.14em" }}
             >
-              VERSION 1.0 / 32 FILES / 172K / MAC ONLY
+              VERSION 1.0.2 / 32 FILES / MAC ONLY / NO CREDIT CARD
             </p>
           </div>
         </header>
@@ -215,17 +215,20 @@ export default function VoiceNetworkPackPage() {
             className="text-2xl font-bold mb-4"
             style={{ color: "var(--bv3-ink)" }}
           >
-            Anthropic shipped MCP Tunnels for enterprise. The methodology layer is the missing piece.
+            The wall.
           </h2>
           <div
             className="leading-relaxed space-y-3"
             style={{ color: "var(--bv3-ink-muted)", maxWidth: "64ch" }}
           >
             <p>
-              MCP Tunnels (Anthropic, 2026-05-19) extends Claude&apos;s reach to local servers — for Managed Agents enterprise customers. Doesn&apos;t reach consumer Claude.ai. Doesn&apos;t structure your vault. Doesn&apos;t define what a persistent Project looks like or how its sessions compound.
+              Your vault has six months of decisions, two months of project notes, and tomorrow&apos;s plan written down. Voice mode on phone Claude.ai can&apos;t touch any of it. You can ask voice mode to be a poet. You can&apos;t ask it to fetch what you wrote yesterday.
             </p>
             <p>
-              This pack is that missing layer. Bridge stack tested end-to-end (3 hours of silent-failure debugging documented in the troubleshooting library). Project Design Playbook formalizes the 4-file pattern. Vault structure template gives you the atomic-node decisions graph your Projects write into. Five starter Projects ready to upload.
+              The bridge fixes that. Anthropic&apos;s enterprise MCP Tunnels does this for Managed Agents customers — doesn&apos;t reach consumer Claude.ai. This pack is the consumer-Claude version, plus the methodology layer so the bridge actually does something useful when wired up.
+            </p>
+            <p>
+              Built once. Used daily. Survives reboot. Ships with the 7 silent failures that ate the original build session — so you don&apos;t lose the 3 hours.
             </p>
           </div>
         </section>
@@ -236,7 +239,7 @@ export default function VoiceNetworkPackPage() {
             className="bv3-mono mb-3 text-xs"
             style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
           >
-            02 / WHAT YOU UNLOCK
+            02 / WHAT YOU GET BACK
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {USE_CASES.map((c) => (
@@ -405,17 +408,17 @@ export default function VoiceNetworkPackPage() {
             className="text-2xl font-bold mb-3"
             style={{ color: "var(--bv3-ink)" }}
           >
-            $79 once. Lifetime v1.x updates.
+            FREE. No credit card. Install today.
           </h2>
           <p
             className="mb-6 leading-relaxed"
             style={{ color: "var(--bv3-ink-muted)", maxWidth: "62ch" }}
           >
-            14-day refund. Mac only (Monterey+). Includes the 32-file pack + access to v1.1 (full starter Projects authored) + v1.2 (bearer-auth middleware) when they land.
+            Mac only (Monterey+). The 32-file pack on GitHub. Workshop tier of the SDS Operator System. If you want it installed for you, the SDS Operator Install ($2,500) is the next tier — but the pack stands on its own.
           </p>
           <div className="flex flex-wrap gap-3">
             <a
-              href={STRIPE_VOICE_NETWORK_PACK_LINK}
+              href="https://github.com/dailenservices247-cloud/voice-network-pack"
               className="inline-block px-6 py-3 font-semibold text-sm"
               style={{
                 backgroundColor: "var(--bv3-gold)",
@@ -423,10 +426,10 @@ export default function VoiceNetworkPackPage() {
                 borderRadius: "0.25rem",
               }}
             >
-              Buy now — $79
+              Get the pack — FREE
             </a>
             <a
-              href={STRIPE_ANTI_SLOP_SKILL_PACK_LINK}
+              href="mailto:dailenhuntley@gmail.com?subject=Operator%20Install"
               className="inline-block px-6 py-3 font-semibold text-sm border"
               style={{
                 borderColor: "var(--bv3-border)",
@@ -434,7 +437,7 @@ export default function VoiceNetworkPackPage() {
                 borderRadius: "0.25rem",
               }}
             >
-              Bundle with Anti-Slop — $49
+              Install service — $2,500
             </a>
             <a
               href={STRIPE_PEER_OPERATOR_STACK_LINK}
@@ -445,14 +448,14 @@ export default function VoiceNetworkPackPage() {
                 borderRadius: "0.25rem",
               }}
             >
-              + Stack v1 — $149
+              + Stack (advanced) — $497
             </a>
           </div>
           <p
             className="mt-6 text-xs leading-relaxed"
             style={{ color: "var(--bv3-ink-muted)", maxWidth: "60ch" }}
           >
-            If you operate multiple AI tools daily and want the persistent-Project pattern: Voice Network Pack. If you also publish content / DMs / proposals: add Anti-Slop. If you&apos;re building serious agentic software: add Stack v1.
+            If you operate multiple AI tools daily and want the persistent-Project pattern: the pack is free, install when you&apos;re ready. If you want it set up for you: Operator Install. If you&apos;re building serious agentic software: add the Stack.
           </p>
         </section>
 
