@@ -1,13 +1,23 @@
 // app/(brand-v3)/voice-network/page.tsx
 //
-// Pre-purchase product page for Claude Voice Network Pack v1.
-// $79 productized bundle: bridge installer + Project Design Playbook +
-// vault structure template + 5 starter Project templates.
+// Claude Voice Network Pack v2 landing — async-worker pattern as hero.
+//
+// v1 (RELIEF framing) led with "stop typing on phone." Solid framing but
+// it sold the bridge, not the differentiator. The real differentiator is
+// the async-worker pattern: phone Claude dispatches tasks via vault →
+// desktop Claude Code executes headless → voice reads result back.
+//
+// v2 reframes around: "Tell your phone Claude what to build. Your desktop
+// builds it while you walk." Bridge becomes table-stakes; the worker
+// pattern is the lead. Free pack distributes the workshop tier; SDS
+// Operator Install ($2,500) is the revenue layer.
+//
+// Decision context:
+//   AI Hub/Decisions/decision-2026-05-26-async-worker-pattern-shipped.md
+//   AI Hub/Decisions/decision-2026-05-27-obsidian-keepalive-hardened.md
+//   AI Hub/Decisions/decision-2026-05-26-skills-pivot-locked.md
 //
 // Lives under the brand-v3 route group, V3 Cursor register.
-//
-// Decision: AI Hub/Decisions/decision-2026-05-21-claude-voice-network-pack.md
-// (positioning shift mid-build: bridge installer -> methodology + tooling at $79).
 
 import type { Metadata } from "next";
 import {
@@ -17,18 +27,65 @@ import {
 
 export const metadata: Metadata = {
   title:
-    "Claude Voice Network Pack — your phone Claude finally reads your vault | Synapse Dynamics Segmented",
+    "Claude Voice Network Pack — phone voice mode dispatches, desktop Claude Code builds | Synapse Dynamics Segmented",
   description:
-    "Phone Claude.ai voice mode can't see your local files. This bridge fixes it. Bridge + Project Design Playbook + vault structure + 5 starter Project templates. Mac only. Free.",
+    "Tell your phone Claude what to build. Desktop Claude Code executes it while you walk. The vault is the inbox. Bridge + worker + methodology + 5 starter Projects. Mac only. Free.",
   alternates: { canonical: `${SITE_URL}/voice-network` },
   openGraph: {
-    title: "Claude Voice Network Pack — phone Claude reads your vault",
+    title: "Claude Voice Network Pack — your phone dispatches, your desktop builds",
     description:
-      "Phone Claude.ai voice mode can't see your local files. This bridge fixes it. Free. Mac only.",
+      "Voice-mode dispatcher + headless desktop worker. Built once, runs while you sleep. Free. Mac only.",
     url: `${SITE_URL}/voice-network`,
     type: "website",
   },
 };
+
+const HOW_IT_WORKS = [
+  {
+    n: "01",
+    title: "You talk to phone Claude in voice mode",
+    body: "Walking. Driving. At work. Voice conversation about what you're building. When the conversation reaches a doable next step, you say go.",
+  },
+  {
+    n: "02",
+    title: "Phone Claude writes a task to your vault",
+    body: "Single markdown file dropped in AI Hub/Task Queue/pending/ via the bridge. Plain text. Versioned. You can read it from any device.",
+  },
+  {
+    n: "03",
+    title: "Your desktop picks it up automatically",
+    body: "launchd watches the pending folder. New file fires the task-queue-worker. Task moves to in-progress/. Notification on your Mac.",
+  },
+  {
+    n: "04",
+    title: "Claude Code executes it headless",
+    body: "Full agentic loop. Read files. Write code. Run commands. Test. Inside your vault context. No babysitting. Built-in budget cap.",
+  },
+  {
+    n: "05",
+    title: "Voice-friendly result lands in completed/",
+    body: "Short sentences. No markdown. Phone Claude reads it to you on your next check-in. Conversation continues. More tasks queue. Loop.",
+  },
+];
+
+const USE_CASES = [
+  {
+    title: "The walk that built the feature",
+    body: "You leave the laptop, voice-mode through a build session, agree on the next ship. Phone Claude writes the task. Desktop builds it. You walk home to a passing test suite and a voice readback of what landed.",
+  },
+  {
+    title: "Five specialist Projects, one vault",
+    body: "Discovery Co-pilot knows your current thinking. Build Co-pilot defends your scope. Sales Co-pilot remembers Monday's call. Content Co-pilot has your voice fingerprint. Personal-Memory Co-pilot is the mirror. None of them ask 'what are you working on?'",
+  },
+  {
+    title: "One tunnel, every tool",
+    body: "Obsidian, Stripe, GitHub, Supabase, custom MCPs — exposed through one phone. Same launchd pattern, different ports. Your phone becomes the remote for your whole stack.",
+  },
+  {
+    title: "Self-healing infrastructure",
+    body: "launchd KeepAlive on every daemon. cloudflared auto-reconnect on network blips. Obsidian keepalive auto-relaunches if you closed it by habit. Worker concurrency lock prevents stacked invocations. 9 silent-failure modes documented + solved.",
+  },
+];
 
 const PACK_CONTENTS = [
   {
@@ -39,28 +96,39 @@ const PACK_CONTENTS = [
       "bridge/mcp-obsidian-wrapper.example.sh — worked Obsidian example",
       "bridge/plists/com.YOURNAME.mcp-proxy.plist + cloudflared-mcp.plist",
       "bridge/smoke-test.sh — 5-layer health check (auto-detects URL)",
-      "bridge/troubleshooting.md — 7 silent-failure modes documented",
+      "bridge/troubleshooting.md — 9 silent-failure modes documented",
       "bridge/named-tunnel-setup.md — permanent URL via your subdomain",
     ],
   },
   {
-    section: "02 / PLAYBOOK",
+    section: "02 / ASYNC WORKER",
+    files: [
+      "worker/task-queue-worker.sh — headless Claude Code execution",
+      "worker/com.YOURNAME.task-queue-watcher.plist — launchd WatchPaths",
+      "worker/obsidian-keepalive-check.sh — 4-layer disconnect prevention",
+      "worker/com.YOURNAME.obsidian-keepalive.plist — 30-sec interval",
+      "worker/voice-friendly-system-prompt.md — output format enforcement",
+    ],
+  },
+  {
+    section: "03 / PLAYBOOK",
     files: [
       "playbook/Project-Design-Playbook.md — full methodology (13 sections, 2200 words)",
     ],
   },
   {
-    section: "03 / VAULT TEMPLATE",
+    section: "04 / VAULT TEMPLATE",
     files: [
       "vault-template/README.md — install + why this structure works",
       "vault-template/Atomic-Node-Spec.md — decision/inference/context/test schema",
       "vault-template/Relay-Protocol.md — session activity feed rules",
       "vault-template/Handoff-Pattern.md — per-project handoff format",
+      "vault-template/AI Hub/Task Queue/ — pending/in-progress/completed folders",
       "vault-template/AI Hub/ — 8 starter folders + Active-Work-Log stub + atomic-node-template",
     ],
   },
   {
-    section: "04 / STARTER PROJECTS",
+    section: "05 / STARTER PROJECTS",
     files: [
       "templates/01-discovery — voice-driven discovery + ideation",
       "templates/02-build — sprint planning + scope-defending",
@@ -101,31 +169,24 @@ const SILENT_FAILURES = [
     name: "Wrong-package endpoint paths (404 on every tool)",
     fix: "Pick MCP server actively maintained in last 60 days",
   },
-];
-
-const USE_CASES = [
   {
-    title: "The walk that didn't happen",
-    body: "Walking, driving, work-without-laptop — your voice can already drive Claude. With this, voice can drive your vault too. The idea you had at the gym makes it into your decisions folder before you forget it.",
+    name: "macOS TCC blocks launchd from Desktop folder",
+    fix: "Grant Full Disk Access to worker script + /bin/bash",
   },
   {
-    title: "Stop re-explaining yourself",
-    body: "Five specialist Projects, each with its own system instructions. All reading your vault. Discovery Co-pilot knows your current thinking. Build Co-pilot defends your scope. Sales Co-pilot remembers who you called Monday. None of them ask 'what are you working on?'",
-  },
-  {
-    title: "One tunnel, every tool",
-    body: "Obsidian, Stripe, GitHub, Supabase, custom — exposed through one phone. Same launchd pattern, different ports. Your phone becomes the remote for your whole stack.",
-  },
-  {
-    title: "Set up once. Forget it.",
-    body: "launchd KeepAlive. cloudflared auto-reconnect. Your bridge stays up while you're away. No babysitting. No 3am restarts.",
+    name: "Obsidian closes mid-session — phone Co-pilot tools vanish",
+    fix: "4-layer keepalive stack: login items + launchd interval + URI scheme launch + 3-strike escalation",
   },
 ];
 
 const FAQ = [
   {
+    q: "What does the async-worker pattern actually do?",
+    a: "Phone Claude voice mode can already talk. With the bridge, it can read your vault. With the worker, it can dispatch real work. Conversation hits a doable next step → phone Claude writes a markdown task file into your vault → desktop launchd watcher fires → Claude Code executes headless inside your vault context using all its tools (Read, Write, Edit, Bash) → voice-friendly result lands in completed/. Your phone reads it back on your next check-in. The vault is the inbox. The worker is the hands. The bridge is the wire.",
+  },
+  {
     q: "Why is this free? You used to charge $79.",
-    a: "Distribution matters more than price for a niche operator product. The pack itself is solid — the pricing was the wrong shape for discovery. Free unlocks GitHub stars + Reddit + Hacker News distribution that the $79 SKU blocked. If it's useful, the SDS Operator Install ($2,500) is the next tier — but the pack stands on its own.",
+    a: "Distribution matters more than price for a niche operator product. Free unlocks GitHub stars + Reddit + Hacker News + awesome-lists distribution that the $79 SKU blocked. The pack stands on its own. If you want it installed for you with custom Project setup, the SDS Operator Install ($2,500) is the revenue tier.",
   },
   {
     q: "Mac only. What about Linux / Windows?",
@@ -133,11 +194,19 @@ const FAQ = [
   },
   {
     q: "Anthropic just announced MCP Tunnels. Why not wait?",
-    a: "Anthropic shipped MCP Tunnels for Managed Agents enterprise customers on 2026-05-19. Doesn't extend to consumer Claude.ai yet. Likely will in 6-12 months. When it does, the bridge piece of this pack sunsets cleanly — point your Claude.ai connector at Anthropic's hosted endpoint instead of your tunnel URL. The Playbook, the vault structure, the 5 starter Projects don't go away. The methodology is the durable asset.",
+    a: "Anthropic shipped MCP Tunnels for Managed Agents enterprise customers on 2026-05-19. Doesn't extend to consumer Claude.ai yet. Likely will in 6-12 months. When it does, the bridge piece sunsets cleanly — point your Claude.ai connector at Anthropic's hosted endpoint instead. The Playbook, the vault structure, the async-worker pattern, the 5 starter Projects don't go away. The methodology + worker pattern are the durable assets.",
+  },
+  {
+    q: "What stops the worker from running away with my time or money?",
+    a: "Three guardrails ship in the worker script. (1) Concurrency lock — only one worker runs at a time, max 30-min lock age before stale clear. (2) Per-task budget cap — --max-budget-usd 2 by default, configurable. (3) Voice-friendly output system prompt forces final response to be the readback, no work logs or technical traces. Worker failures get logged to completed/ as a failure note so phone Claude can report it; the task file stays in in-progress/ so you can retry.",
+  },
+  {
+    q: "What about disconnects? Obsidian closes and the pack breaks?",
+    a: "Solved. v2 ships a 4-layer keepalive stack: macOS Login Items (auto-boot on startup) + launchd agent firing every 30 sec + URI scheme launch (`obsidian://open?vault=NAME` forces vault to open, not just app process) + 3-strike escalation (kill + force-relaunch after 3 consecutive REST failures). Verified: kill Obsidian, REST API back to 200 in 20 sec. Documented as silent failure #9 in bridge/troubleshooting.md.",
   },
   {
     q: "What stdio MCPs does the bridge work with?",
-    a: "Any of them. The wrapper template is generic — swap the MCP_SERVER_BINARY path + Keychain service name and you're done. Worked Obsidian example included. The pack ships starter Projects for Obsidian as the canonical case (because the vault structure pattern depends on it) but the bridge itself is service-agnostic.",
+    a: "Any of them. The wrapper template is generic — swap the MCP_SERVER_BINARY path + Keychain service name and you're done. Worked Obsidian example included. The async-worker pattern depends on the vault being writable from phone Claude, so Obsidian is the canonical case, but the bridge itself is service-agnostic.",
   },
   {
     q: "Security — anyone with the tunnel URL can read my data?",
@@ -145,7 +214,7 @@ const FAQ = [
   },
   {
     q: "Want this installed for you?",
-    a: "$2,500 Starter — SDS Operator Install. One-on-one install call, custom Project setup, vault structure migration, 30-day support. Two-week engagement, end to end. Reply to dailenhuntley@gmail.com with 'Operator Install' in the subject if interested.",
+    a: "$2,500 Starter — SDS Operator Install. One-on-one install call, bridge + worker + keepalive stack provisioned, Full Disk Access verified, custom Project setup, vault structure migration, 30-day support. Two-week engagement, end to end. Reply to dailenhuntley@gmail.com with 'Operator Install' in the subject if interested.",
   },
 ];
 
@@ -172,15 +241,15 @@ export default function VoiceNetworkPackPage() {
             className="text-4xl md:text-5xl font-bold mb-4 leading-tight"
             style={{ color: "var(--bv3-ink)" }}
           >
-            Stop typing on your phone.<br />
-            Stop the back-and-forth with Claude.<br />
-            Start the conversation.
+            Tell your phone Claude what to build.<br />
+            Your desktop builds it while you walk.<br />
+            The vault is the inbox.
           </h1>
           <p
             className="text-lg leading-relaxed"
             style={{ color: "var(--bv3-ink-muted)", maxWidth: "62ch" }}
           >
-            Voice mode on phone Claude.ai. Voice mode in Claude Code. Both reading your actual vault. Both talking to your real tools. The bridge makes both work.
+            Voice-mode dispatcher on your phone. Headless Claude Code worker on your desktop. Connected by a markdown task queue in your vault. Built once, runs while you sleep.
           </p>
           <div className="mt-8 flex items-center gap-4 flex-wrap">
             <a
@@ -198,37 +267,90 @@ export default function VoiceNetworkPackPage() {
               className="bv3-mono text-xs"
               style={{ color: "var(--bv3-ink-dim)", letterSpacing: "0.14em" }}
             >
-              VERSION 1.0.2 / 32 FILES / MAC ONLY / NO CREDIT CARD
+              VERSION 2.0 / MAC ONLY / NO CREDIT CARD
             </p>
           </div>
         </header>
 
-        {/* Why this exists */}
+        {/* How it works */}
         <section className="mb-16">
           <p
             className="bv3-mono mb-3 text-xs"
             style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
           >
-            01 / WHY THIS EXISTS
+            01 / HOW IT WORKS
+          </p>
+          <h2
+            className="text-2xl font-bold mb-6"
+            style={{ color: "var(--bv3-ink)" }}
+          >
+            Voice conversation in. Real work out.
+          </h2>
+          <div className="space-y-4">
+            {HOW_IT_WORKS.map((step) => (
+              <div
+                key={step.n}
+                className="flex gap-4 p-4 border"
+                style={{
+                  borderColor: "var(--bv3-border-subtle)",
+                  borderRadius: "0.25rem",
+                }}
+              >
+                <p
+                  className="bv3-mono text-xs flex-shrink-0"
+                  style={{
+                    letterSpacing: "0.14em",
+                    color: "var(--bv3-gold)",
+                    minWidth: "2rem",
+                  }}
+                >
+                  {step.n}
+                </p>
+                <div>
+                  <p
+                    className="text-base font-semibold mb-1"
+                    style={{ color: "var(--bv3-ink)" }}
+                  >
+                    {step.title}
+                  </p>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "var(--bv3-ink-muted)" }}
+                  >
+                    {step.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* The wall (kept from v1 as why-this-exists) */}
+        <section className="mb-16">
+          <p
+            className="bv3-mono mb-3 text-xs"
+            style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+          >
+            02 / WHY THIS EXISTS
           </p>
           <h2
             className="text-2xl font-bold mb-4"
             style={{ color: "var(--bv3-ink)" }}
           >
-            The wall.
+            The gap nothing else closes.
           </h2>
           <div
             className="leading-relaxed space-y-3"
             style={{ color: "var(--bv3-ink-muted)", maxWidth: "64ch" }}
           >
             <p>
-              Your vault has six months of decisions, two months of project notes, and tomorrow&apos;s plan written down. Voice mode on phone Claude.ai can&apos;t touch any of it. You can ask voice mode to be a poet. You can&apos;t ask it to fetch what you wrote yesterday.
+              Phone Claude voice mode can already think with you. It can&apos;t reach your vault. It can&apos;t fire your desktop. It can&apos;t run a build while you walk.
             </p>
             <p>
-              The bridge fixes that. Anthropic&apos;s enterprise MCP Tunnels does this for Managed Agents customers — doesn&apos;t reach consumer Claude.ai. This pack is the consumer-Claude version, plus the methodology layer so the bridge actually does something useful when wired up.
+              Anthropic&apos;s enterprise MCP Tunnels solves the bridge piece for Managed Agents customers. Doesn&apos;t reach consumer Claude.ai. Doesn&apos;t ship a worker. Doesn&apos;t ship the Playbook that makes the worker useful. This pack is the consumer-Claude version plus the methodology plus the async-worker pattern.
             </p>
             <p>
-              Built once. Used daily. Survives reboot. Ships with the 7 silent failures that ate the original build session — so you don&apos;t lose the 3 hours.
+              Built once. Used daily. Survives reboot, network blips, and the user habit of closing apps. Ships with 9 silent failures already solved — so you don&apos;t lose the 3 hours.
             </p>
           </div>
         </section>
@@ -239,7 +361,7 @@ export default function VoiceNetworkPackPage() {
             className="bv3-mono mb-3 text-xs"
             style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
           >
-            02 / WHAT YOU GET BACK
+            03 / WHAT YOU GET BACK
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {USE_CASES.map((c) => (
@@ -275,13 +397,13 @@ export default function VoiceNetworkPackPage() {
             className="bv3-mono mb-3 text-xs"
             style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
           >
-            03 / WHAT&apos;S IN THE PACK
+            04 / WHAT&apos;S IN THE PACK
           </p>
           <h2
             className="text-2xl font-bold mb-6"
             style={{ color: "var(--bv3-ink)" }}
           >
-            32 files. Four layers.
+            Five layers. Bridge + worker + playbook + vault + Projects.
           </h2>
           <div className="space-y-6">
             {PACK_CONTENTS.map((section) => (
@@ -314,19 +436,19 @@ export default function VoiceNetworkPackPage() {
             className="bv3-mono mb-3 text-xs"
             style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
           >
-            04 / THE 7-FAILURE LIBRARY
+            05 / THE 9-FAILURE LIBRARY
           </p>
           <h2
             className="text-2xl font-bold mb-4"
             style={{ color: "var(--bv3-ink)" }}
           >
-            Seven silent failures. Documented nowhere else in one place.
+            Nine silent failures. Documented nowhere else in one place.
           </h2>
           <p
             className="mb-6 leading-relaxed"
             style={{ color: "var(--bv3-ink-muted)", maxWidth: "62ch" }}
           >
-            Tonight&apos;s build hit each of these. Generic error messages, no stack traces, no path forward. The troubleshooting library lists symptom, root cause, and fix for all seven.
+            Building this stack hit each of these. Generic error messages, no stack traces, no path forward. The troubleshooting library lists symptom, root cause, and fix for all nine — including the two that emerged from the async-worker pattern (TCC + Obsidian disconnect).
           </p>
           <div className="space-y-3">
             {SILENT_FAILURES.map((f, i) => (
@@ -367,7 +489,7 @@ export default function VoiceNetworkPackPage() {
             className="bv3-mono mb-3 text-xs"
             style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
           >
-            05 / FAQ
+            06 / FAQ
           </p>
           <div className="space-y-6">
             {FAQ.map((f) => (
@@ -402,7 +524,7 @@ export default function VoiceNetworkPackPage() {
             className="bv3-mono mb-3 text-xs"
             style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
           >
-            06 / GET THE PACK
+            07 / GET THE PACK
           </p>
           <h2
             className="text-2xl font-bold mb-3"
@@ -414,7 +536,7 @@ export default function VoiceNetworkPackPage() {
             className="mb-6 leading-relaxed"
             style={{ color: "var(--bv3-ink-muted)", maxWidth: "62ch" }}
           >
-            Mac only (Monterey+). The 32-file pack on GitHub. Workshop tier of the SDS Operator System. If you want it installed for you, the SDS Operator Install ($2,500) is the next tier — but the pack stands on its own.
+            Mac only (Monterey+). Full pack on GitHub. Workshop tier of the SDS Operator System. If you want it installed for you, the SDS Operator Install ($2,500) is the next tier — but the pack stands on its own.
           </p>
           <div className="flex flex-wrap gap-3">
             <a
@@ -455,7 +577,7 @@ export default function VoiceNetworkPackPage() {
             className="mt-6 text-xs leading-relaxed"
             style={{ color: "var(--bv3-ink-muted)", maxWidth: "60ch" }}
           >
-            If you operate multiple AI tools daily and want the persistent-Project pattern: the pack is free, install when you&apos;re ready. If you want it set up for you: Operator Install. If you&apos;re building serious agentic software: add the Stack.
+            If you operate multiple AI tools daily and want the voice-dispatcher pattern: the pack is free, install when you&apos;re ready. If you want it set up for you: Operator Install. If you&apos;re building serious agentic software: add the Stack.
           </p>
         </section>
 
@@ -468,7 +590,7 @@ export default function VoiceNetworkPackPage() {
           }}
         >
           <p className="bv3-mono" style={{ letterSpacing: "0.14em" }}>
-            VNP / V1.0 / DAILEN HUNTLEY / SYNAPSE DYNAMICS SEGMENTED
+            VNP / V2.0 / DAILEN HUNTLEY / SYNAPSE DYNAMICS SEGMENTED
           </p>
           <p>
             <a
