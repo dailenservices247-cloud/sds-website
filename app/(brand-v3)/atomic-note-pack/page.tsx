@@ -1,24 +1,33 @@
 // app/(brand-v3)/atomic-note-pack/page.tsx
 //
-// Buy page for the M1 Atomic Note Template Pack.
-// Free on GitHub under MIT; $19 Stripe Payment Link as honor-system tip.
+// Atomic Note Template Pack landing — FREE distribution (flipped 2026-05-28).
+//
+// v1 framed the pack as "Free on GitHub or $19 tip-jar." Skills pivot
+// (2026-05-26) flipped all packs to free distribution. Day One AI #1
+// outro CTA points here as "free pack." Revenue layer is SDS Operator
+// Install ($2,500).
+//
+// Decision context:
+//   AI Hub/Decisions/decision-2026-05-26-skills-pivot-locked.md
+//   AI Hub/Decisions/decision-2026-05-28-atomic-note-pack-flip-zero-before-day-one-ai-record.md
+//
 // Lives under the brand-v3 route group so it inherits the matte-gray shell.
 
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site-config";
 
-// REPLACE BEFORE LIVE: paste the Stripe Payment Link URL here once created
-// in the Stripe dashboard. Until then the button degrades to a mailto.
-const STRIPE_PAYMENT_LINK =
-  "https://buy.stripe.com/dRmeV50QV8KM0O647xbjW01";
 const GITHUB_ZIP =
   "https://github.com/dailenservices247-cloud/atomic-note-pack/archive/refs/heads/main.zip";
 const GITHUB_REPO =
   "https://github.com/dailenservices247-cloud/atomic-note-pack";
+const OPERATOR_INSTALL_MAILTO =
+  "mailto:dailenhuntley@gmail.com?subject=Operator%20Install";
 
 export const metadata: Metadata = {
   title: "Atomic Note Template Pack — Synapse Dynamics Segmented",
   description:
-    "Five Obsidian-ready markdown templates for graph-native vault memory. Four atom types plus a retrieval contract. Free on GitHub or pay $19 to support the work.",
+    "Five Obsidian-ready markdown templates for graph-native vault memory. Four atom types plus a retrieval contract. Free. MIT licensed. From production work in Black Sheep 247 LLC.",
+  alternates: { canonical: `${SITE_URL}/atomic-note-pack` },
 };
 
 export default function AtomicNotePackPage() {
@@ -55,10 +64,10 @@ export default function AtomicNotePackPage() {
           className="bv3-mono mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs"
           style={{ color: "var(--bv3-ink-muted)", letterSpacing: "0.12em" }}
         >
-          <li>FREE ON GITHUB</li>
-          <li>$19 TO SUPPORT</li>
+          <li>FREE PACK</li>
           <li>MIT LICENSED</li>
-          <li>SAME CONTENT EITHER PATH</li>
+          <li>FROM PRODUCTION WORK</li>
+          <li>NO CREDIT CARD</li>
         </ul>
 
         <section
@@ -147,34 +156,72 @@ export default function AtomicNotePackPage() {
           </p>
         </section>
 
+        {/* Primary CTA */}
         <section className="mt-16 flex flex-col gap-4 sm:flex-row sm:items-center">
           <a
-            href={STRIPE_PAYMENT_LINK}
+            href={GITHUB_ZIP}
             className="rounded-md px-6 py-4 text-base font-medium transition-opacity hover:opacity-90"
             style={{
               backgroundColor: "var(--bv3-gold)",
               color: "var(--bv3-shell)",
             }}
           >
-            Pay $19, support the work
+            Download free (ZIP)
           </a>
           <a
-            href={GITHUB_ZIP}
+            href={GITHUB_REPO}
             className="rounded-md px-6 py-4 text-base"
             style={{
               border: "1px solid var(--bv3-border-strong)",
               color: "var(--bv3-ink)",
             }}
           >
-            Or grab it free (ZIP)
-          </a>
-          <a
-            href={GITHUB_REPO}
-            className="text-sm underline"
-            style={{ color: "var(--bv3-ink-muted)" }}
-          >
             View on GitHub
           </a>
+        </section>
+
+        {/* Operator Install upsell */}
+        <section
+          className="mt-16 rounded-md p-6 md:p-8"
+          style={{
+            backgroundColor: "var(--bv3-bg-elevated)",
+            border: "1px solid var(--bv3-border)",
+          }}
+        >
+          <p
+            className="bv3-mono mb-3 text-xs"
+            style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+          >
+            REVENUE LAYER
+          </p>
+          <h2
+            className="bv3-display text-2xl md:text-3xl"
+            style={{ color: "var(--bv3-ink-strong)" }}
+          >
+            Want me installing this in your stack?
+          </h2>
+          <p
+            className="mt-4 leading-relaxed"
+            style={{ color: "var(--bv3-ink-muted)", maxWidth: "62ch" }}
+          >
+            SDS Operator Install — $2,500. Vault migrated to atomic-node
+            format, four atom types live, retrieval contract tuned to your
+            agent's workload, five filled-in production examples seeded from
+            your real decisions. Two-week engagement, end to end. One-on-one
+            install call, 30-day support.
+          </p>
+          <div className="mt-6">
+            <a
+              href={OPERATOR_INSTALL_MAILTO}
+              className="rounded-md px-6 py-4 text-base font-medium"
+              style={{
+                border: "1px solid var(--bv3-border-strong)",
+                color: "var(--bv3-ink)",
+              }}
+            >
+              Install service — $2,500
+            </a>
+          </div>
         </section>
 
         {/* Cross-sell — other SDS packs */}
@@ -194,7 +241,7 @@ export default function AtomicNotePackPage() {
                 color: "var(--bv3-ink)",
               }}
             >
-              Claude Voice Network Pack — $79
+              Claude Voice Network Pack — Free
             </a>
             <a
               href="/anti-slop"

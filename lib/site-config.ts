@@ -28,23 +28,26 @@ export const STRIPE_O1_REVIEW_STANDARD_LINK =
 // Created 2026-05-20 via Stripe MCP per tier-ladder decision.
 export const STRIPE_O1_REVIEW_PREMIUM_LINK =
   "https://buy.stripe.com/bJeeV5eHL3qsdASavVbjW06";
-// Stripe Payment Link: Atomic Note Template Pack, $19 one-time.
-// Product: prod_UW8HDFDCGh1cBg | Price: price_1TX61P0OE14HosLEMmAgXsDE
+// Stripe Payment Link: Atomic Note Template Pack, FREE (flipped 2026-05-28).
+// Product: prod_UW8HDFDCGh1cBg | Price: price_1TcBkw0OE14HosLEj7li2w4E ($0)
+// Old paid link (price_1TX61P0OE14HosLEMmAgXsDE / $19): dRmeV50QV8KM0O647xbjW01
+// Flip decision: AI Hub/Decisions/decision-2026-05-28-atomic-note-pack-flip-zero-before-day-one-ai-record.md
 export const STRIPE_ATOMIC_NOTE_PACK_LINK =
-  "https://buy.stripe.com/dRmeV50QV8KM0O647xbjW01";
+  "https://buy.stripe.com/8x2bITbvzaSUcwO47xbjW0b";
 // Stripe Payment Link: SDS Anti-Slop Skill Pack v1, $49 one-time.
 // Product: prod_UYHepwPCSLkGHn | Price: price_1TZB5h0OE14HosLExW7omrAZ
 // Created 2026-05-20 via Stripe MCP. ICP overlap with Stack v1
 // (per decision-2026-05-20-stack-v1-icp-solo-ai-builder-context-drift.md).
 export const STRIPE_ANTI_SLOP_SKILL_PACK_LINK =
   "https://buy.stripe.com/3cI3cnbvzf9a0O647xbjW07";
-// Stripe Payment Link: Claude Voice Network Pack v1, $79 one-time.
-// Product: prod_UYo2LbyJkBL7RL | Price: price_1TZgQh0OE14HosLEYNtglVM1
-// Created 2026-05-21 via Stripe CLI. Metadata: product=voice_network_pack.
+// Stripe Payment Link: Claude Voice Network Pack v1, FREE (flipped 2026-05-28).
+// Product: prod_UYo2LbyJkBL7RL | Price: price_1TcBkv0OE14HosLEH4NBXXng ($0)
+// Old paid link (price_1TZgQh0OE14HosLEYNtglVM1 / $79): aFa28jeHL5yA1Sa9rRbjW09
+// Flip decision: AI Hub/Decisions/decision-2026-05-28-voice-network-pack-flip-zero-day-of-distribution.md
 // Bundles bridge installer + Project Design Playbook + Vault Template +
-// 5 starter Project templates. Cross-sell to Anti-Slop + Stack v1.
+// 5 starter Project templates. Upsell = SDS Operator Install ($2,500).
 export const STRIPE_VOICE_NETWORK_PACK_LINK =
-  "https://buy.stripe.com/aFa28jeHL5yA1Sa9rRbjW09";
+  "https://buy.stripe.com/aFa6oz8jn1ikfJ0dI7bjW0a";
 // Stripe Payment Link: Peer Operator's Stack v1, $149 one-time.
 // Product: prod_UWlvMzls8Yi1wO. Recreated via Dashboard 2026-05-16 to attach
 // confirmation message (markdown) + custom field "Where did you hear about
