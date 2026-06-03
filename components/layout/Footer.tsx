@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { Container } from "./Container";
+import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
 
 const footerGroups = [
   {
@@ -22,6 +23,7 @@ const footerGroups = [
       { href: "/foundation", label: "Foundation Subscription" },
       { href: "/matchmaker", label: "AI Business Matchmaker" },
       { href: "/lab", label: "The Lab" },
+      { href: SKOOL_SYNAPSE_STUDIO, label: "Community (Skool)" },
     ],
   },
   {
@@ -70,16 +72,22 @@ export function Footer() {
                   {group.title}
                 </h3>
                 <ul className="mt-4 space-y-3">
-                  {group.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className="text-sm text-ink-muted transition-colors hover:text-ink-primary"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
+                  {group.links.map((link) => {
+                    const isExternal = link.href.startsWith("http");
+                    return (
+                      <li key={link.label}>
+                        <Link
+                          href={link.href}
+                          {...(isExternal
+                            ? { target: "_blank", rel: "noopener noreferrer" }
+                            : {})}
+                          className="text-sm text-ink-muted transition-colors hover:text-ink-primary"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}

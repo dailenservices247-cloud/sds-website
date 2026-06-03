@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { Container } from "./Container";
 import { cn } from "@/lib/utils";
+import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
 
 const navLinks = [
   { href: "/portfolio", label: "Portfolio" },
@@ -14,6 +15,7 @@ const navLinks = [
   { href: "/matchmaker", label: "Matchmaker" },
   { href: "/foundation", label: "Foundation" },
   { href: "/services", label: "Services" },
+  { href: SKOOL_SYNAPSE_STUDIO, label: "Community" },
 ];
 
 export function Nav() {
@@ -41,6 +43,9 @@ export function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
+                {...(link.href.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
                 className="rounded-md px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-ink-primary whitespace-nowrap"
               >
                 {link.label}
@@ -77,6 +82,9 @@ export function Nav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
+                {...(link.href.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
                 className="rounded-md px-3 py-3 text-base font-medium text-ink-muted hover:bg-bg-surface hover:text-ink-primary"
               >
                 {link.label}
