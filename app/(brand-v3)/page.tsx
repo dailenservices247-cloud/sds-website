@@ -26,6 +26,7 @@ import { useMemo } from "react";
 import { Nox } from "@/components/brand-v3/Nox";
 import { projectsByStatus } from "@/lib/content/portfolio";
 import { services } from "@/lib/content/services";
+import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
 
 // ---------------------------------------------------------------------------
 // Cursor's "timeline state colors" mapped to brand v3 palette
@@ -231,6 +232,15 @@ export default function CursorVariantHome() {
             </span>
           </div>
           <div className="flex items-center gap-3">
+            <Link
+              href={SKOOL_SYNAPSE_STUDIO}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bv3-mono hidden items-center text-sm transition-colors hover:opacity-80 sm:inline-flex"
+              style={{ color: "var(--bv3-ink-muted)" }}
+            >
+              Community
+            </Link>
             <Link
               href="/contact"
               className="group inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-all"
