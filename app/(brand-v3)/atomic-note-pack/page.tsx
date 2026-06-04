@@ -206,7 +206,7 @@ export default function AtomicNotePackPage() {
           >
             SDS Operator Install — $2,500. Vault migrated to atomic-node
             format, four atom types live, retrieval contract tuned to your
-            agent's workload, five filled-in production examples seeded from
+            agent&apos;s workload, five filled-in production examples seeded from
             your real decisions. Two-week engagement, end to end. One-on-one
             install call, 30-day support.
           </p>
