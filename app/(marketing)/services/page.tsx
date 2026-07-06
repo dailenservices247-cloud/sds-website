@@ -45,7 +45,7 @@ export default function ServicesIndexPage() {
                       className="absolute inset-0"
                       style={{
                         backgroundImage:
-                          "linear-gradient(135deg, rgba(34,197,94,0.06) 0%, transparent 60%), radial-gradient(circle at 30% 30%, rgba(34,197,94,0.12) 0%, transparent 50%)",
+                          "linear-gradient(135deg, rgba(200,162,62,0.06) 0%, transparent 60%), radial-gradient(circle at 30% 30%, rgba(200,162,62,0.12) 0%, transparent 50%)",
                       }}
                     />
                     <div className="relative text-center">

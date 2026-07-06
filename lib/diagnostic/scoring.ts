@@ -8,6 +8,8 @@
 // Each question probes one structural dimension a Peer Operator's stack either has
 // or doesn't.
 
+import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
+
 export type DiagnosticAnswer = 1 | 2 | 3 | 4 | 5;
 
 export type DiagnosticAnswers = {
@@ -136,7 +138,7 @@ export const BUCKET_COPY: Record<
       "Your agent runs one prompt at a time. Useful for tasks, but every session restarts the clock. The biggest near-term win is the Setup Session: one week, one configured stack, one set of governing decisions the agent loads automatically from then on.",
     primaryCta: {
       label: "Book the Setup Session",
-      href: "/v1-garden#offers",
+      href: "/foundation",
     },
   },
   building: {
@@ -145,7 +147,7 @@ export const BUCKET_COPY: Record<
       "You have pieces in place. The gap is consistency: decisions get made but not banked, output gets shipped but not gated, plans get written but not followed. Foundation Subscription closes those gaps incrementally each week without rebuilding everything.",
     primaryCta: {
       label: "See Foundation Subscription",
-      href: "/v1-garden#offers",
+      href: "/foundation",
     },
     secondaryCta: {
       label: "Or grab the Atomic Note Template Pack",
@@ -158,11 +160,11 @@ export const BUCKET_COPY: Record<
       "Your stack is the asset, not the bottleneck. The next leverage layer is Headless Architect: a 10-client capped cohort retainer with monthly architecture review, governance you can hand to your own clients, and a value-back guarantee if the month does not move the work forward. Pairs with the Operator community tier for peer pressure at the same maturity level.",
     primaryCta: {
       label: "Talk about Headless Architect",
-      href: "/v1-garden#offers",
+      href: "/work",
     },
     secondaryCta: {
       label: "Join the Operator community",
-      href: "/v1-garden#offers",
+      href: SKOOL_SYNAPSE_STUDIO,
     },
   },
 };

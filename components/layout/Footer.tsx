@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { Container } from "./Container";
 import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
@@ -38,16 +37,6 @@ const footerGroups = [
 ];
 
 export function Footer() {
-  const pathname = usePathname();
-  // Suppress brand-v2 footer on brand-v3 variant routes — those use their own footer.
-  if (
-    pathname.startsWith("/v1-") ||
-    pathname.startsWith("/v2-") ||
-    pathname.startsWith("/v3-")
-  ) {
-    return null;
-  }
-
   return (
     <footer className="border-t border-[color:var(--border-subtle)] bg-bg-primary">
       <Container className="py-16 md:py-20">

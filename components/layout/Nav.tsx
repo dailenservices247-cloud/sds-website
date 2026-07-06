@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { Container } from "./Container";
@@ -20,11 +19,6 @@ const navLinks = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-
-  if (pathname.startsWith("/v1-") || pathname.startsWith("/v2-") || pathname.startsWith("/v3-")) {
-    return null;
-  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[color:var(--border-subtle)] bg-bg-primary/80 backdrop-blur supports-[backdrop-filter]:bg-bg-primary/60">

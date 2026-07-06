@@ -10,11 +10,9 @@
 // warm cream — that violates brand v3 lock). Only Cursor's STRUCTURAL +
 // INTERACTION patterns applied.
 //
-// Sibling preview routes (kept in-repo as revival templates):
-//   /v1-garden — Immersive Garden direction
-//   /v2-linear — Linear typography-minimal (revival template for /work or
-//                /services if conversion data signals consulting-buyer mismatch)
-//   /v3-cursor — same content as this homepage (preview route preserved)
+// Sibling preview routes (v1-garden / v2-linear / v3-cursor / preview) were
+// removed from prod 2026-07-06 (coherence migration). Revival templates live
+// in git history before commit "redesign/v3-coherence".
 //
 // Brand v3 tokens preserved. PRD: AI Hub/PRDs/sds-brand-v3-rebuild-prd.md
 
@@ -370,7 +368,7 @@ export default function CursorVariantHome() {
                   className="bv3-mono"
                   style={{ color: "var(--bv3-ink-dim)" }}
                 >
-                  nox.studio.live
+                  lux.studio.live
                 </span>
               </div>
 
@@ -385,7 +383,7 @@ export default function CursorVariantHome() {
                   height={848}
                   priority
                   className="block h-auto w-full object-contain"
-                  alt="Nox — working pose"
+                  alt="Lux — working pose"
                 />
               </div>
 
@@ -476,6 +474,78 @@ export default function CursorVariantHome() {
             style={{ color: "var(--bv3-gold)", letterSpacing: "0.08em" }}
           >
             SEE ALL 12 → <KbdHint keys={["⌘", "P"]} />
+          </Link>
+        </section>
+
+        {/* =================================================================
+            2b. RECEIPTS — honest proof strip (2026-07-06, war-game R4:
+            proof by demonstration, not borrowed testimonials)
+            ================================================================= */}
+        <section
+          id="receipts"
+          className="border-t py-16"
+          style={{ borderColor: "var(--bv3-border-subtle)" }}
+          aria-label="Proof"
+        >
+          <CommandLine
+            command="cat receipts.txt"
+            result="proof you can click, not claims"
+          />
+
+          <h2
+            className="mb-10 text-balance"
+            style={{
+              fontFamily: "var(--font-bricolage), system-ui, sans-serif",
+              fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
+              fontWeight: 700,
+              lineHeight: 1.05,
+              letterSpacing: "-0.025em",
+              color: "var(--bv3-cream)",
+            }}
+          >
+            Receipts, not promises.
+          </h2>
+
+          <motion.ol
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-10%" }}
+            className="border-b"
+            style={{ borderColor: "var(--bv3-border-subtle)" }}
+          >
+            <motion.div variants={fadeIn} className="contents">
+              <LineNumberItem
+                index={1}
+                state="grep"
+                label="Scrlpets is live"
+                body="A full-stack social marketplace for animal breeders, built end-to-end in-house and running in pre-beta right now. Click around — it's real."
+              />
+            </motion.div>
+            <motion.div variants={fadeIn} className="contents">
+              <LineNumberItem
+                index={2}
+                state="read"
+                label="This site is the demo"
+                body="Same stack, same process we install for clients. The pitch and the product are the same artifact."
+              />
+            </motion.div>
+            <motion.div variants={fadeIn} className="contents">
+              <LineNumberItem
+                index={3}
+                state="thinking"
+                label="No logo wall"
+                body="Zero borrowed testimonials. Until the first case studies land, the proof is shipped product — not quotes we wrote ourselves."
+              />
+            </motion.div>
+          </motion.ol>
+
+          <Link
+            href="/lab/scrlpets"
+            className="bv3-mono mt-6 inline-flex items-center gap-2 text-sm"
+            style={{ color: "var(--bv3-gold)", letterSpacing: "0.08em" }}
+          >
+            READ THE SCRLPETS BUILD →
           </Link>
         </section>
 

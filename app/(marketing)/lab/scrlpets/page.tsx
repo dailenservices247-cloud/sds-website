@@ -86,7 +86,7 @@ export default function ScrlpetsCaseStudyPage() {
           className="absolute inset-0 -z-10"
           style={{
             background:
-              "radial-gradient(ellipse at top, rgba(34,197,94,0.08) 0%, transparent 55%)",
+              "radial-gradient(ellipse at top, rgba(200,162,62,0.08) 0%, transparent 55%)",
           }}
         />
         <Container>
@@ -318,7 +318,7 @@ export default function ScrlpetsCaseStudyPage() {
                   href="https://scrlpets.lovable.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-base font-semibold text-bg-primary transition-all hover:bg-accent-bright hover:shadow-[0_0_0_4px_rgba(34,197,94,0.15)]"
+                  className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-base font-semibold text-bg-primary transition-all hover:bg-accent-bright hover:shadow-[0_0_0_4px_rgba(200,162,62,0.15)]"
                 >
                   See it live
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

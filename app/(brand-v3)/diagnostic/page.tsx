@@ -60,7 +60,7 @@ export default function DiagnosticPage() {
         <p>
           Built by{" "}
           <a
-            href="/v1-garden"
+            href="/"
             style={{ color: "var(--bv3-gold)", textDecoration: "underline" }}
           >
             Synapse Dynamics Segmented
