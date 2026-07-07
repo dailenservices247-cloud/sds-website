@@ -115,7 +115,7 @@ export function Stage() {
       >
         <p
           className="bv3-mono mb-3"
-          style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+          style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
         >
           VOL. 03 / ISSUE Nº 01
         </p>
@@ -138,7 +138,7 @@ export function Stage() {
           <span style={{ marginRight: "3ch", color: "var(--bv3-cream)" }}>
             Synapse
           </span>
-          <span style={{ marginRight: "1.5ch", color: "var(--bv3-gold)" }}>
+          <span style={{ marginRight: "1.5ch", color: "var(--bv3-wine-text)" }}>
             Dynamics
           </span>
           <span style={{ marginRight: "0", color: "var(--bv3-spine-bright)" }}>

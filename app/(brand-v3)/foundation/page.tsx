@@ -120,7 +120,7 @@ export default function FoundationPage() {
               <strong className="text-ink-primary font-semibold">Already shipped:</strong>{" "}
               <a
                 href="https://scrlpets.com"
-                className="text-accent hover:text-accent-bright underline underline-offset-4 decoration-1"
+                className="text-accent-ink hover:text-accent-bright underline underline-offset-4 decoration-1"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -129,7 +129,7 @@ export default function FoundationPage() {
               (animal-breeder marketplace, live), this site (
               <a
                 href="https://synapsedynamics.io"
-                className="text-accent hover:text-accent-bright underline underline-offset-4 decoration-1"
+                className="text-accent-ink hover:text-accent-bright underline underline-offset-4 decoration-1"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -138,7 +138,7 @@ export default function FoundationPage() {
               ), and the founder channel at{" "}
               <a
                 href="https://www.youtube.com/@allday24seven"
-                className="text-accent hover:text-accent-bright underline underline-offset-4 decoration-1"
+                className="text-accent-ink hover:text-accent-bright underline underline-offset-4 decoration-1"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -155,7 +155,7 @@ export default function FoundationPage() {
           <div className="mt-7 pt-6 border-t border-border-subtle flex flex-wrap gap-x-6 gap-y-2 text-sm">
             <a
               href="https://www.linkedin.com/company/synapse-dynamics-segmented"
-              className="text-ink-primary hover:text-accent transition-colors inline-flex items-center gap-1.5"
+              className="text-ink-primary hover:text-accent-ink transition-colors inline-flex items-center gap-1.5"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -164,7 +164,7 @@ export default function FoundationPage() {
             </a>
             <a
               href="https://www.linkedin.com/in/dailenhuntley"
-              className="text-ink-primary hover:text-accent transition-colors inline-flex items-center gap-1.5"
+              className="text-ink-primary hover:text-accent-ink transition-colors inline-flex items-center gap-1.5"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -173,7 +173,7 @@ export default function FoundationPage() {
             </a>
             <a
               href="https://x.com/synapse_dynamic"
-              className="text-ink-primary hover:text-accent transition-colors inline-flex items-center gap-1.5"
+              className="text-ink-primary hover:text-accent-ink transition-colors inline-flex items-center gap-1.5"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -394,7 +394,7 @@ export default function FoundationPage() {
               <form action={startFoundationCheckout}>
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-accent text-bg-primary px-7 py-4 font-semibold hover:bg-accent-bright transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-accent text-accent-contrast px-7 py-4 font-semibold hover:bg-accent-bright transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
                   Subscribe — $19/mo
                   <span aria-hidden="true">→</span>
@@ -403,7 +403,7 @@ export default function FoundationPage() {
               <form action={startSetupCheckout}>
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-border-subtle text-ink-primary px-7 py-4 font-medium hover:border-accent hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-border-subtle text-ink-primary px-7 py-4 font-medium hover:border-accent hover:text-accent-ink transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
                   Setup Session — $297
                 </button>

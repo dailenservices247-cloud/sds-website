@@ -67,7 +67,7 @@ function PanelBrand() {
     <div>
       <p
         className="bv3-mono mb-4"
-        style={{ color: "var(--bv3-gold)" }}
+        style={{ color: "var(--bv3-wine-text)" }}
       >
         I. The brand
       </p>
@@ -133,7 +133,7 @@ function PanelMotion() {
     <div>
       <p
         className="bv3-mono mb-4"
-        style={{ color: "var(--bv3-gold)" }}
+        style={{ color: "var(--bv3-wine-text)" }}
       >
         II. The motion
       </p>
@@ -276,7 +276,7 @@ function PanelNox() {
     <div>
       <p
         className="bv3-mono mb-4"
-        style={{ color: "var(--bv3-gold)" }}
+        style={{ color: "var(--bv3-wine-text)" }}
       >
         III. The Nox
       </p>
@@ -323,7 +323,7 @@ function PanelNox() {
             </div>
             <p
               className="bv3-mono mb-1"
-              style={{ color: "var(--bv3-gold)" }}
+              style={{ color: "var(--bv3-wine-text)" }}
             >
               {p.date}
             </p>
@@ -389,7 +389,7 @@ export function BackstageLayer() {
         className="bv3-mono fixed bottom-6 right-6 z-40 rounded-full px-4 py-2 transition-all"
         style={{
           background: "var(--bv3-shell-deep)",
-          color: "var(--bv3-gold)",
+          color: "var(--bv3-wine-text)",
           border: "1px solid var(--bv3-border-strong)",
         }}
       >
@@ -427,7 +427,7 @@ export function BackstageLayer() {
             <div className="mb-12">
               <p
                 className="bv3-mono mb-2"
-                style={{ color: "var(--bv3-gold)" }}
+                style={{ color: "var(--bv3-wine-text)" }}
               >
                 BACKSTAGE — VOL. 03 / ISSUE Nº 01
               </p>

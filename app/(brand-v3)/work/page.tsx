@@ -87,7 +87,7 @@ export default function WorkPage() {
         {/* Header */}
         <p
           className="bv3-mono"
-          style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+          style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
         >
           CONSULTING / WORK WITH SDS
         </p>
@@ -130,7 +130,7 @@ export default function WorkPage() {
         >
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             PICK A STARTING POINT
           </p>
@@ -173,7 +173,7 @@ export default function WorkPage() {
                 <span
                   className="bv3-mono mt-1 shrink-0 rounded px-2 py-0.5 text-xs"
                   style={{
-                    color: "var(--bv3-gold-bright)",
+                    color: "var(--bv3-wine-text)",
                     border: "1px solid var(--bv3-border-subtle)",
                   }}
                 >
@@ -194,7 +194,7 @@ export default function WorkPage() {
                     <a
                       href={row.href}
                       style={{
-                        color: "var(--bv3-gold)",
+                        color: "var(--bv3-wine-text)",
                         textDecoration: "underline",
                       }}
                     >
@@ -211,7 +211,7 @@ export default function WorkPage() {
         <section className="mt-20">
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             THREE TRACKS / 09 ENGAGEMENT MODELS
           </p>
@@ -235,7 +235,7 @@ export default function WorkPage() {
                 <p
                   className="bv3-mono text-xs"
                   style={{
-                    color: "var(--bv3-gold-bright)",
+                    color: "var(--bv3-wine-text)",
                     letterSpacing: "0.14em",
                   }}
                 >
@@ -261,7 +261,7 @@ export default function WorkPage() {
                   <span
                     className="bv3-mono text-xs"
                     style={{
-                      color: "var(--bv3-gold-bright)",
+                      color: "var(--bv3-wine-text)",
                       letterSpacing: "0.14em",
                     }}
                   >
@@ -279,7 +279,7 @@ export default function WorkPage() {
                       <span
                         className="bv3-mono mt-1 shrink-0 rounded px-2 py-0.5 text-xs"
                         style={{
-                          color: "var(--bv3-gold-bright)",
+                          color: "var(--bv3-wine-text)",
                           border: "1px solid var(--bv3-border-subtle)",
                         }}
                       >
@@ -307,7 +307,7 @@ export default function WorkPage() {
                   <a
                     href={track.href}
                     style={{
-                      color: "var(--bv3-gold)",
+                      color: "var(--bv3-wine-text)",
                       textDecoration: "underline",
                     }}
                   >
@@ -329,7 +329,7 @@ export default function WorkPage() {
         >
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             AI-SPECIFIC AUDIT / 3-TIER
           </p>
@@ -364,8 +364,8 @@ export default function WorkPage() {
               href={STRIPE_O1_REVIEW_STANDARD_LINK}
               className="rounded-md px-4 py-3 text-center text-sm font-medium transition-opacity hover:opacity-90"
               style={{
-                backgroundColor: "var(--bv3-gold)",
-                color: "var(--bv3-shell)",
+                backgroundColor: "var(--bv3-wine)",
+                color: "var(--bv3-on-wine)",
               }}
             >
               Standard — $2,500
@@ -386,7 +386,7 @@ export default function WorkPage() {
             <a
               href="/o1-review"
               style={{
-                color: "var(--bv3-gold)",
+                color: "var(--bv3-wine-text)",
                 textDecoration: "underline",
               }}
             >
@@ -399,7 +399,7 @@ export default function WorkPage() {
         <section className="mt-20">
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             R1 / BANKED
           </p>
@@ -424,7 +424,7 @@ export default function WorkPage() {
         <section className="mt-20">
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             HOW IT WORKS
           </p>
@@ -467,7 +467,7 @@ export default function WorkPage() {
                 <span
                   className="bv3-mono shrink-0 rounded-md px-3 py-1 text-xs"
                   style={{
-                    color: "var(--bv3-gold-bright)",
+                    color: "var(--bv3-wine-text)",
                     border: "1px solid var(--bv3-border-subtle)",
                     letterSpacing: "0.14em",
                   }}
@@ -496,7 +496,7 @@ export default function WorkPage() {
         <section className="mt-20">
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             REFUND POLICY
           </p>
@@ -534,7 +534,7 @@ export default function WorkPage() {
         >
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             START HERE
           </p>
@@ -559,8 +559,8 @@ export default function WorkPage() {
               href={STRIPE_O1_REVIEW_ESSENTIALS_LINK}
               className="rounded-md px-6 py-4 text-base font-medium transition-opacity hover:opacity-90"
               style={{
-                backgroundColor: "var(--bv3-gold)",
-                color: "var(--bv3-shell)",
+                backgroundColor: "var(--bv3-wine)",
+                color: "var(--bv3-on-wine)",
               }}
             >
               Book O1 Review Essentials — $1,500
@@ -602,7 +602,7 @@ export default function WorkPage() {
           <p>
             <a
               href="/"
-              style={{ color: "var(--bv3-gold)", textDecoration: "underline" }}
+              style={{ color: "var(--bv3-wine-text)", textDecoration: "underline" }}
             >
               ← Synapse Dynamics
             </a>

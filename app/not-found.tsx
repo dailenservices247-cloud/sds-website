@@ -18,7 +18,7 @@ export default function NotFound() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(ellipse at top, rgba(200,162,62,0.08) 0%, transparent 55%)",
+            "radial-gradient(ellipse at top, rgba(126,48,58,0.08) 0%, transparent 55%)",
         }}
       />
       <div
@@ -46,14 +46,14 @@ export default function NotFound() {
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/"
-              className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-base font-semibold text-bg-primary transition-all hover:bg-accent-bright hover:shadow-[0_0_0_4px_rgba(200,162,62,0.15)]"
+              className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-base font-semibold text-accent-contrast transition-all hover:bg-accent-bright hover:shadow-[0_0_0_4px_rgba(126,48,58,0.15)]"
             >
               Back to home
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-md border border-[color:var(--border-subtle)] px-6 py-3 text-base font-semibold text-ink-primary transition-colors hover:border-accent hover:text-accent"
+              className="inline-flex items-center justify-center rounded-md border border-[color:var(--border-subtle)] px-6 py-3 text-base font-semibold text-ink-primary transition-colors hover:border-accent hover:text-accent-ink"
             >
               Start a project
             </Link>
@@ -74,7 +74,7 @@ export default function NotFound() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-ink-muted transition-colors hover:text-accent"
+                    className="text-ink-muted transition-colors hover:text-accent-ink"
                   >
                     {link.label} →
                   </Link>

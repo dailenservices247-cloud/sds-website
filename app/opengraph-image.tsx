@@ -17,7 +17,7 @@ export default async function OGImage() {
           justifyContent: "space-between",
           backgroundColor: "#0a0f0c",
           backgroundImage:
-            "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(200,162,62,0.18) 0%, transparent 65%)",
+            "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(126,48,58,0.22) 0%, transparent 65%)",
           padding: "80px",
           fontFamily: "system-ui, -apple-system, sans-serif",
           color: "#F0FDF4",
@@ -34,7 +34,7 @@ export default async function OGImage() {
             <path
               d="M 52 20 C 52 4, 8 4, 8 30 C 8 50, 52 50, 52 70 C 52 96, 8 96, 8 80"
               fill="none"
-              stroke="#c8a23e"
+              stroke="#a0414e"
               strokeWidth={14}
               strokeLinecap="round"
             />
@@ -58,7 +58,7 @@ export default async function OGImage() {
               fontSize: 24,
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              color: "#c8a23e",
+              color: "#e09aa4",
               fontFamily: "ui-monospace, monospace",
               margin: 0,
               marginBottom: 24,
@@ -85,7 +85,7 @@ export default async function OGImage() {
               letterSpacing: "-0.03em",
               lineHeight: 1.02,
               margin: 0,
-              color: "#c8a23e",
+              color: "#e09aa4",
             }}
           >
             actually works.

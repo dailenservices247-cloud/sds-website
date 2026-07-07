@@ -256,7 +256,7 @@ export default function VoiceNetworkPackPage() {
               href="https://github.com/dailenservices247-cloud/voice-network-pack"
               className="inline-block px-6 py-3 font-semibold text-sm"
               style={{
-                backgroundColor: "var(--bv3-gold)",
+                backgroundColor: "var(--bv3-wine)",
                 color: "var(--bv3-bg)",
                 borderRadius: "0.25rem",
               }}
@@ -276,7 +276,7 @@ export default function VoiceNetworkPackPage() {
         <section className="mb-16">
           <p
             className="bv3-mono mb-3 text-xs"
-            style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+            style={{ letterSpacing: "0.14em", color: "var(--bv3-wine-text)" }}
           >
             01 / HOW IT WORKS
           </p>
@@ -300,7 +300,7 @@ export default function VoiceNetworkPackPage() {
                   className="bv3-mono text-xs flex-shrink-0"
                   style={{
                     letterSpacing: "0.14em",
-                    color: "var(--bv3-gold)",
+                    color: "var(--bv3-wine-text)",
                     minWidth: "2rem",
                   }}
                 >
@@ -329,7 +329,7 @@ export default function VoiceNetworkPackPage() {
         <section className="mb-16">
           <p
             className="bv3-mono mb-3 text-xs"
-            style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+            style={{ letterSpacing: "0.14em", color: "var(--bv3-wine-text)" }}
           >
             02 / WHY THIS EXISTS
           </p>
@@ -359,7 +359,7 @@ export default function VoiceNetworkPackPage() {
         <section className="mb-16">
           <p
             className="bv3-mono mb-3 text-xs"
-            style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+            style={{ letterSpacing: "0.14em", color: "var(--bv3-wine-text)" }}
           >
             03 / WHAT YOU GET BACK
           </p>
@@ -395,7 +395,7 @@ export default function VoiceNetworkPackPage() {
         <section className="mb-16">
           <p
             className="bv3-mono mb-3 text-xs"
-            style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+            style={{ letterSpacing: "0.14em", color: "var(--bv3-wine-text)" }}
           >
             04 / WHAT&apos;S IN THE PACK
           </p>
@@ -410,7 +410,7 @@ export default function VoiceNetworkPackPage() {
               <div key={section.section}>
                 <p
                   className="bv3-mono mb-2 text-xs"
-                  style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+                  style={{ letterSpacing: "0.14em", color: "var(--bv3-wine-text)" }}
                 >
                   {section.section}
                 </p>
@@ -434,7 +434,7 @@ export default function VoiceNetworkPackPage() {
         <section className="mb-16">
           <p
             className="bv3-mono mb-3 text-xs"
-            style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+            style={{ letterSpacing: "0.14em", color: "var(--bv3-wine-text)" }}
           >
             05 / THE 9-FAILURE LIBRARY
           </p>
@@ -462,7 +462,7 @@ export default function VoiceNetworkPackPage() {
               >
                 <p
                   className="bv3-mono text-xs mb-1"
-                  style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+                  style={{ letterSpacing: "0.14em", color: "var(--bv3-wine-text)" }}
                 >
                   #{i + 1}
                 </p>
@@ -487,7 +487,7 @@ export default function VoiceNetworkPackPage() {
         <section className="mb-16">
           <p
             className="bv3-mono mb-3 text-xs"
-            style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+            style={{ letterSpacing: "0.14em", color: "var(--bv3-wine-text)" }}
           >
             06 / FAQ
           </p>
@@ -522,7 +522,7 @@ export default function VoiceNetworkPackPage() {
         >
           <p
             className="bv3-mono mb-3 text-xs"
-            style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+            style={{ letterSpacing: "0.14em", color: "var(--bv3-wine-text)" }}
           >
             07 / GET THE PACK
           </p>
@@ -543,7 +543,7 @@ export default function VoiceNetworkPackPage() {
               href="https://github.com/dailenservices247-cloud/voice-network-pack"
               className="inline-block px-6 py-3 font-semibold text-sm"
               style={{
-                backgroundColor: "var(--bv3-gold)",
+                backgroundColor: "var(--bv3-wine)",
                 color: "var(--bv3-bg)",
                 borderRadius: "0.25rem",
               }}
@@ -595,7 +595,7 @@ export default function VoiceNetworkPackPage() {
           <p>
             <a
               href="/"
-              style={{ color: "var(--bv3-gold)", textDecoration: "underline" }}
+              style={{ color: "var(--bv3-wine-text)", textDecoration: "underline" }}
             >
               ← Synapse Dynamics
             </a>

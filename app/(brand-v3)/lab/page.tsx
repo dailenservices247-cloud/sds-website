@@ -129,7 +129,7 @@ export default function LabIndex() {
                     {p.name}
                   </h3>
                   <p className="text-base text-ink-muted leading-relaxed">{p.tagline}</p>
-                  <p className="mt-5 text-sm font-medium text-accent inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                  <p className="mt-5 text-sm font-medium text-accent-ink inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                     Visit Lab
                     <span aria-hidden="true">→</span>
                   </p>
@@ -166,7 +166,7 @@ export default function LabIndex() {
                   {p.name}
                 </h3>
                 <p className="text-base text-ink-muted leading-relaxed">{p.tagline}</p>
-                <p className="mt-5 text-sm font-medium text-accent inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                <p className="mt-5 text-sm font-medium text-accent-ink inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                   Read more
                   <span aria-hidden="true">→</span>
                 </p>

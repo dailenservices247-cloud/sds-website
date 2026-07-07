@@ -43,7 +43,7 @@ export default function StackPage() {
         {/* Header: mono-prefixed product label (V3 Cursor register) */}
         <p
           className="bv3-mono"
-          style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+          style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
         >
           OPERATOR LIBRARY / S1
         </p>
@@ -84,8 +84,8 @@ export default function StackPage() {
             href={STRIPE_PEER_OPERATOR_STACK_LINK}
             className="rounded-md px-6 py-4 text-base font-medium transition-opacity hover:opacity-90"
             style={{
-              backgroundColor: "var(--bv3-gold)",
-              color: "var(--bv3-shell)",
+              backgroundColor: "var(--bv3-wine)",
+              color: "var(--bv3-on-wine)",
             }}
           >
             Buy the Stack — $149
@@ -114,7 +114,7 @@ export default function StackPage() {
           <p
             className="bv3-mono text-xs"
             style={{
-              color: "var(--bv3-gold)",
+              color: "var(--bv3-wine-text)",
               letterSpacing: "0.18em",
             }}
           >
@@ -132,7 +132,7 @@ export default function StackPage() {
               <p
                 className="bv3-mono text-xs"
                 style={{
-                  color: "var(--bv3-gold-bright)",
+                  color: "var(--bv3-wine-text)",
                   letterSpacing: "0.14em",
                 }}
               >
@@ -151,7 +151,7 @@ export default function StackPage() {
                     <span
                       className="bv3-mono mt-1 shrink-0 rounded px-2 py-0.5 text-xs"
                       style={{
-                        color: "var(--bv3-gold-bright)",
+                        color: "var(--bv3-wine-text)",
                         border: "1px solid var(--bv3-border-subtle)",
                       }}
                     >
@@ -183,7 +183,7 @@ export default function StackPage() {
           <p
             className="bv3-mono text-xs"
             style={{
-              color: "var(--bv3-gold)",
+              color: "var(--bv3-wine-text)",
               letterSpacing: "0.18em",
             }}
           >
@@ -234,7 +234,7 @@ export default function StackPage() {
             <p
               className="bv3-mono text-xs"
               style={{
-                color: "var(--bv3-gold-bright)",
+                color: "var(--bv3-wine-text)",
                 letterSpacing: "0.14em",
               }}
             >
@@ -316,7 +316,7 @@ export default function StackPage() {
           <p
             className="bv3-mono text-xs"
             style={{
-              color: "var(--bv3-gold)",
+              color: "var(--bv3-wine-text)",
               letterSpacing: "0.18em",
             }}
           >
@@ -342,8 +342,8 @@ export default function StackPage() {
               href={STRIPE_PEER_OPERATOR_STACK_LINK}
               className="rounded-md px-6 py-4 text-base font-medium transition-opacity hover:opacity-90"
               style={{
-                backgroundColor: "var(--bv3-gold)",
-                color: "var(--bv3-shell)",
+                backgroundColor: "var(--bv3-wine)",
+                color: "var(--bv3-on-wine)",
               }}
             >
               Buy the Stack — $149
@@ -385,7 +385,7 @@ export default function StackPage() {
           <p>
             <a
               href="/"
-              style={{ color: "var(--bv3-gold)", textDecoration: "underline" }}
+              style={{ color: "var(--bv3-wine-text)", textDecoration: "underline" }}
             >
               ← Synapse Dynamics
             </a>

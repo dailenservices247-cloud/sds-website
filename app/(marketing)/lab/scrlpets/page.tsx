@@ -86,7 +86,7 @@ export default function ScrlpetsCaseStudyPage() {
           className="absolute inset-0 -z-10"
           style={{
             background:
-              "radial-gradient(ellipse at top, rgba(200,162,62,0.08) 0%, transparent 55%)",
+              "radial-gradient(ellipse at top, rgba(126,48,58,0.08) 0%, transparent 55%)",
           }}
         />
         <Container>
@@ -101,7 +101,7 @@ export default function ScrlpetsCaseStudyPage() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-mono font-medium uppercase tracking-[0.15em] text-accent">
+              <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-mono font-medium uppercase tracking-[0.15em] text-accent-ink">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
                 Live in pre-beta
               </span>
@@ -150,7 +150,7 @@ export default function ScrlpetsCaseStudyPage() {
                   href="https://scrlpets.lovable.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-accent hover:underline"
+                  className="font-semibold text-accent-ink hover:underline"
                 >
                   scrlpets.lovable.app
                 </a>
@@ -234,7 +234,7 @@ export default function ScrlpetsCaseStudyPage() {
                 key={group.label}
                 className="flex flex-col gap-3 bg-bg-surface p-6 md:p-8"
               >
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent-ink">
                   {group.label}
                 </p>
                 <p className="text-base leading-relaxed text-ink-primary md:text-lg">
@@ -268,7 +268,7 @@ export default function ScrlpetsCaseStudyPage() {
                 key={item.title}
                 className="grid gap-6 md:grid-cols-[auto_1fr] md:gap-12"
               >
-                <p className="font-mono text-5xl font-bold leading-none text-accent/30 md:text-7xl">
+                <p className="font-mono text-5xl font-bold leading-none text-accent-ink/30 md:text-7xl">
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <div className="rounded-2xl border border-[color:var(--border-subtle)] bg-bg-primary p-6 md:p-8">
@@ -291,7 +291,7 @@ export default function ScrlpetsCaseStudyPage() {
           <div className="grid gap-12 md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="md:sticky md:top-28 md:self-start">
               <p className="meta-label">05 — Status</p>
-              <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-mono font-medium uppercase tracking-[0.15em] text-accent">
+              <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-mono font-medium uppercase tracking-[0.15em] text-accent-ink">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
                 Pre-beta
               </div>
@@ -318,14 +318,14 @@ export default function ScrlpetsCaseStudyPage() {
                   href="https://scrlpets.lovable.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-base font-semibold text-bg-primary transition-all hover:bg-accent-bright hover:shadow-[0_0_0_4px_rgba(200,162,62,0.15)]"
+                  className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-base font-semibold text-accent-contrast transition-all hover:bg-accent-bright hover:shadow-[0_0_0_4px_rgba(126,48,58,0.15)]"
                 >
                   See it live
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center justify-center gap-2 rounded-md border border-[color:var(--border-subtle)] px-6 py-3 text-base font-semibold text-ink-primary transition-colors hover:border-accent hover:text-accent"
+                  className="group inline-flex items-center justify-center gap-2 rounded-md border border-[color:var(--border-subtle)] px-6 py-3 text-base font-semibold text-ink-primary transition-colors hover:border-accent hover:text-accent-ink"
                 >
                   Start a project with SDS
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

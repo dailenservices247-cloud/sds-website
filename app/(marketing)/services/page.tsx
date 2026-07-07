@@ -45,14 +45,14 @@ export default function ServicesIndexPage() {
                       className="absolute inset-0"
                       style={{
                         backgroundImage:
-                          "linear-gradient(135deg, rgba(200,162,62,0.06) 0%, transparent 60%), radial-gradient(circle at 30% 30%, rgba(200,162,62,0.12) 0%, transparent 50%)",
+                          "linear-gradient(135deg, rgba(126,48,58,0.06) 0%, transparent 60%), radial-gradient(circle at 30% 30%, rgba(126,48,58,0.12) 0%, transparent 50%)",
                       }}
                     />
                     <div className="relative text-center">
-                      <p className="font-mono text-[10rem] font-bold leading-none text-accent/20 md:text-[12rem]">
+                      <p className="font-mono text-[10rem] font-bold leading-none text-accent-ink/20 md:text-[12rem]">
                         {service.numeral}
                       </p>
-                      <div className="mt-6 inline-flex h-14 w-14 items-center justify-center rounded-xl border border-accent/30 bg-bg-primary text-accent">
+                      <div className="mt-6 inline-flex h-14 w-14 items-center justify-center rounded-xl border border-accent/30 bg-bg-primary text-accent-ink">
                         <Icon className="h-6 w-6" />
                       </div>
                     </div>
@@ -64,7 +64,7 @@ export default function ServicesIndexPage() {
                     <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink-primary md:text-5xl">
                       {service.name}
                     </h2>
-                    <p className="mt-4 text-lg font-medium text-accent">
+                    <p className="mt-4 text-lg font-medium text-accent-ink">
                       {service.tagline}
                     </p>
                     <p className="mt-6 text-base leading-relaxed text-ink-muted text-pretty">
@@ -77,7 +77,7 @@ export default function ServicesIndexPage() {
                           key={offering}
                           className="flex items-start gap-2 text-sm text-ink-muted"
                         >
-                          <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
+                          <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent-ink" />
                           <span>{offering}</span>
                         </li>
                       ))}
@@ -85,7 +85,7 @@ export default function ServicesIndexPage() {
 
                     <Link
                       href={`/services/${service.slug}`}
-                      className="group mt-10 inline-flex items-center gap-2 rounded-md border border-accent px-5 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent hover:text-bg-primary"
+                      className="group mt-10 inline-flex items-center gap-2 rounded-md border border-accent px-5 py-3 text-sm font-semibold text-accent-ink transition-colors hover:bg-accent hover:text-accent-contrast"
                     >
                       Explore {service.name}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

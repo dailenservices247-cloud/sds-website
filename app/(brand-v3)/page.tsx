@@ -36,10 +36,10 @@ import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
 // ---------------------------------------------------------------------------
 
 const STATE_COLOR = {
-  thinking: "var(--bv3-gold)",
+  thinking: "var(--bv3-wine-text)",
   read: "var(--bv3-spine)",
   grep: "var(--bv3-spine-bright)",
-  edit: "var(--bv3-wine)",
+  edit: "var(--bv3-wine-bright)",
 };
 
 // ---------------------------------------------------------------------------
@@ -60,7 +60,7 @@ function CommandLine({
     <div className="bv3-mono mb-6">
       <div className="flex items-baseline gap-2">
         <span style={{ color: "var(--bv3-spine-bright)" }}>$</span>
-        <span style={{ color: "var(--bv3-gold)", letterSpacing: "0.06em" }}>
+        <span style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.06em" }}>
           {command}
         </span>
       </div>
@@ -243,8 +243,8 @@ export default function CursorVariantHome() {
               href="/contact"
               className="group inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-all"
               style={{
-                background: "var(--bv3-gold)",
-                color: "var(--bv3-shell)",
+                background: "var(--bv3-wine)",
+                color: "var(--bv3-on-wine)",
               }}
             >
               Start a project
@@ -288,7 +288,7 @@ export default function CursorVariantHome() {
               }}
             >
               Think before you{" "}
-              <span style={{ color: "var(--bv3-gold)" }}>code</span>.
+              <span style={{ color: "var(--bv3-wine-text)" }}>code</span>.
             </motion.h1>
 
             <motion.p
@@ -309,8 +309,8 @@ export default function CursorVariantHome() {
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-all"
                 style={{
-                  background: "var(--bv3-gold)",
-                  color: "var(--bv3-shell)",
+                  background: "var(--bv3-wine)",
+                  color: "var(--bv3-on-wine)",
                 }}
               >
                 Start a project
@@ -357,7 +357,7 @@ export default function CursorVariantHome() {
                   />
                   <span
                     className="h-2.5 w-2.5 rounded-full"
-                    style={{ background: "var(--bv3-gold)" }}
+                    style={{ background: "var(--bv3-wine)" }}
                   />
                   <span
                     className="h-2.5 w-2.5 rounded-full"
@@ -471,7 +471,7 @@ export default function CursorVariantHome() {
           <Link
             href="/portfolio"
             className="bv3-mono mt-6 inline-flex items-center gap-2 text-sm"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.08em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.08em" }}
           >
             SEE ALL 12 → <KbdHint keys={["⌘", "P"]} />
           </Link>
@@ -543,7 +543,7 @@ export default function CursorVariantHome() {
           <Link
             href="/lab/scrlpets"
             className="bv3-mono mt-6 inline-flex items-center gap-2 text-sm"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.08em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.08em" }}
           >
             READ THE SCRLPETS BUILD →
           </Link>
@@ -600,7 +600,7 @@ export default function CursorVariantHome() {
                   <span aria-hidden="true">→</span>
                   <span
                     className="bv3-mono ml-2"
-                    style={{ color: "var(--bv3-gold)" }}
+                    style={{ color: "var(--bv3-wine-text)" }}
                   >
                     $3,500/mo
                   </span>
@@ -695,7 +695,7 @@ export default function CursorVariantHome() {
             }}
           >
             Architect.{" "}
-            <span style={{ color: "var(--bv3-gold)" }}>Automate.</span>{" "}
+            <span style={{ color: "var(--bv3-wine-text)" }}>Automate.</span>{" "}
             <span style={{ color: "var(--bv3-spine-bright)" }}>Strategize.</span>
           </h2>
 
@@ -761,7 +761,7 @@ export default function CursorVariantHome() {
                     </div>
                     <div className="mt-1 flex items-baseline justify-between">
                       <span style={{ color: "var(--bv3-ink-dim)" }}>price</span>
-                      <span style={{ color: "var(--bv3-gold)" }}>
+                      <span style={{ color: "var(--bv3-wine-text)" }}>
                         {tier?.price}
                       </span>
                     </div>
@@ -966,7 +966,7 @@ export default function CursorVariantHome() {
               }}
             >
               <div className="mb-2 flex items-baseline justify-between">
-                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-gold)", letterSpacing: "0.14em" }}>
+                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.14em" }}>
                   [NEW] CLAUDE VOICE NETWORK PACK
                 </span>
                 <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$79</span>
@@ -984,7 +984,7 @@ export default function CursorVariantHome() {
               }}
             >
               <div className="mb-2 flex items-baseline justify-between">
-                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-gold)", letterSpacing: "0.14em" }}>
+                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.14em" }}>
                   PEER OPERATOR&apos;S STACK V1
                 </span>
                 <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$149</span>
@@ -1002,7 +1002,7 @@ export default function CursorVariantHome() {
               }}
             >
               <div className="mb-2 flex items-baseline justify-between">
-                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-gold)", letterSpacing: "0.14em" }}>
+                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.14em" }}>
                   ANTI-SLOP SKILL PACK V1
                 </span>
                 <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$49</span>
@@ -1020,7 +1020,7 @@ export default function CursorVariantHome() {
               }}
             >
               <div className="mb-2 flex items-baseline justify-between">
-                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-gold)", letterSpacing: "0.14em" }}>
+                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.14em" }}>
                   ATOMIC NOTE TEMPLATE PACK
                 </span>
                 <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$19 tip</span>

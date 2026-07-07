@@ -114,7 +114,7 @@ export function DiagnosticForm() {
             <legend className="flex flex-col gap-2">
               <span
                 className="bv3-mono"
-                style={{ color: "var(--bv3-gold)", letterSpacing: "0.12em" }}
+                style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.12em" }}
               >
                 QUESTION {idx + 1} / {QUESTIONS.length}
               </span>
@@ -155,13 +155,13 @@ export function DiagnosticForm() {
                       checked={selected}
                       onChange={() => setAnswer(q.key, option.value)}
                       className="mt-1"
-                      style={{ accentColor: "var(--bv3-gold)" }}
+                      style={{ accentColor: "var(--bv3-wine-bright)" }}
                     />
                     <span className="flex flex-col gap-1">
                       <span
                         className="bv3-mono text-xs"
                         style={{
-                          color: selected ? "var(--bv3-gold-bright)" : "var(--bv3-ink-muted)",
+                          color: selected ? "var(--bv3-wine-bright)" : "var(--bv3-ink-muted)",
                         }}
                       >
                         {option.value} / 5
@@ -220,8 +220,8 @@ export function DiagnosticForm() {
           disabled={!allAnswered || submitting}
           className="rounded-md px-6 py-4 text-base font-medium transition-opacity disabled:cursor-not-allowed disabled:opacity-40"
           style={{
-            backgroundColor: "var(--bv3-gold)",
-            color: "var(--bv3-shell)",
+            backgroundColor: "var(--bv3-wine)",
+            color: "var(--bv3-on-wine)",
           }}
         >
           {submitting
@@ -250,7 +250,7 @@ function ProgressBar({ answered, total }: { answered: number; total: number }) {
         className="h-full transition-all duration-300"
         style={{
           width: `${pct}%`,
-          backgroundColor: "var(--bv3-gold)",
+          backgroundColor: "var(--bv3-wine)",
         }}
       />
     </div>
@@ -268,7 +268,7 @@ function DiagnosticResult({ result }: { result: ResultData }) {
     >
       <div
         className="bv3-mono"
-        style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+        style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
       >
         YOUR RESULT
       </div>
@@ -297,7 +297,7 @@ function DiagnosticResult({ result }: { result: ResultData }) {
       <div className="mt-10 flex flex-col gap-2">
         <div
           className="bv3-mono mb-2"
-          style={{ color: "var(--bv3-gold)", letterSpacing: "0.12em" }}
+          style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.12em" }}
         >
           PER-DIMENSION
         </div>
@@ -324,7 +324,7 @@ function DiagnosticResult({ result }: { result: ResultData }) {
                 className="bv3-mono w-12 shrink-0"
                 style={{
                   color: isStrongest
-                    ? "var(--bv3-gold-bright)"
+                    ? "var(--bv3-wine-bright)"
                     : isWeakest
                       ? "var(--bv3-cream)"
                       : "var(--bv3-ink-muted)",
@@ -346,7 +346,7 @@ function DiagnosticResult({ result }: { result: ResultData }) {
               {isStrongest ? (
                 <span
                   className="bv3-mono ml-auto text-xs"
-                  style={{ color: "var(--bv3-gold-bright)" }}
+                  style={{ color: "var(--bv3-wine-text)" }}
                 >
                   STRONGEST
                 </span>
@@ -361,8 +361,8 @@ function DiagnosticResult({ result }: { result: ResultData }) {
           href={copy.primaryCta.href}
           className="rounded-md px-6 py-4 text-base font-medium transition-opacity hover:opacity-90"
           style={{
-            backgroundColor: "var(--bv3-gold)",
-            color: "var(--bv3-shell)",
+            backgroundColor: "var(--bv3-wine)",
+            color: "var(--bv3-on-wine)",
           }}
           onClick={() => track("diagnostic_cta_primary", { bucket: result.bucket })}
         >

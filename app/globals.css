@@ -22,6 +22,10 @@
   /* Borders */
   --border-subtle: #242e2a;
   --border-accent: #2d8f50;
+
+  /* Accent role tokens (bridged per-theme; v2 defaults) */
+  --accent-ink: var(--accent-primary);
+  --accent-contrast: var(--bg-primary);
 }
 
 /* ============================================================================
@@ -294,9 +298,13 @@ body {
   /* Brand accents — petrol green primary, antique gold accent, wine emotion */
   --bv3-spine:       #2a6055;  /* petrol green — primary accent */
   --bv3-spine-bright:#347466;
-  --bv3-gold:        #c8a23e;  /* antique gold — secondary accent */
+  --bv3-gold:        #c8a23e;  /* RESERVE accent — sparse chips only (demoted 2026-06-10 swap) */
   --bv3-gold-bright: #d8b85a;
-  --bv3-wine:        #7e303a;  /* emotion accent (sparingly) */
+  --bv3-wine:        #7e303a;  /* PRIMARY accent — fills/badges/buttons/borders (Brand House v1 swap 2026-06-10, retrofitted 2026-07-06) */
+  --bv3-wine-bright: #a0414e;  /* hover / live indicators */
+  --bv3-wine-text:   #e09aa4;  /* text-level accent on dark — AA pass (wine itself is FILL-ONLY on dark) */
+  --bv3-on-wine:     #f3cdd3;  /* text on wine fills */
+  --bv3-destructive: #e24b4a;  /* errors — never wine */
 
   /* Ink */
   --bv3-ink:         #efede5;  /* light text on shell ground */
@@ -340,22 +348,24 @@ body {
   --text-on-dark:      var(--bv3-ink);
   --text-on-dark-soft: var(--bv3-ink-muted);
 
-  --accent-primary:    var(--bv3-gold);
-  --accent-bright:     var(--bv3-gold-bright);
+  --accent-primary:    var(--bv3-wine);
+  --accent-bright:     var(--bv3-wine-bright);
   --accent-deep:       var(--bv3-spine);
-  --accent-live:       var(--bv3-gold);
-  --accent-live-bright:var(--bv3-gold-bright);
+  --accent-live:       var(--bv3-wine-bright);
+  --accent-live-bright:var(--bv3-wine-bright);
+  --accent-ink:        var(--bv3-wine-text);  /* text-level accent on dark */
+  --accent-contrast:   var(--bv3-on-wine);    /* text on accent fills */
 
   --border-subtle:     var(--bv3-border-subtle);
   --border-soft:       var(--bv3-border-subtle);
   --border-accent:     var(--bv3-spine);
 
-  --link-decoration:   var(--bv3-gold);
+  --link-decoration:   var(--bv3-wine-text);
 
   /* Gradient legacy mapping — emerald gradient becomes gold/spine gradient */
   --gradient-blaze-from: var(--bv3-spine);
   --gradient-blaze-via:  var(--bv3-spine-bright);
-  --gradient-blaze-to:   var(--bv3-gold);
+  --gradient-blaze-to:   var(--bv3-wine);
 }
 
 [data-theme="brand-v3"] body,
@@ -380,8 +390,8 @@ body:has([data-theme="brand-v3"]) {
 }
 
 [data-theme="brand-v3"] ::selection {
-  background: var(--bv3-gold);
-  color: var(--bv3-shell);
+  background: var(--bv3-wine);
+  color: var(--bv3-on-wine);
 }
 
 /* Display register — condensed-bold "Akira Expanded" stand-in via Bricolage. */
@@ -409,7 +419,7 @@ body:has([data-theme="brand-v3"]) {
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--bv3-gold);
+  color: var(--bv3-wine-text);
 }
 
 /* Cream-ground section utility — flips ink + bg for warm panels */
@@ -418,7 +428,7 @@ body:has([data-theme="brand-v3"]) {
   color: var(--bv3-ink-cream);
 }
 [data-theme="brand-v3"] .bv3-section-cream .bv3-mono {
-  color: var(--bv3-spine);
+  color: var(--bv3-wine);
 }
 
 /* Petrol-spine accent rule — thin horizontal divider */

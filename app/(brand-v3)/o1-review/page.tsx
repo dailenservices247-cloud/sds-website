@@ -123,7 +123,7 @@ export default function O1ReviewPage() {
         {/* Header */}
         <p
           className="bv3-mono"
-          style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+          style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
         >
           ARCHITECT REVIEW / 3-TIER LADDER
         </p>
@@ -170,7 +170,7 @@ export default function O1ReviewPage() {
               <p
                 className="bv3-mono text-xs"
                 style={{
-                  color: "var(--bv3-gold-bright)",
+                  color: "var(--bv3-wine-text)",
                   letterSpacing: "0.14em",
                 }}
               >
@@ -184,7 +184,7 @@ export default function O1ReviewPage() {
               </h2>
               <p
                 className="bv3-display mt-1 text-2xl"
-                style={{ color: "var(--bv3-gold)" }}
+                style={{ color: "var(--bv3-wine-text)" }}
               >
                 {tier.price}
               </p>
@@ -204,7 +204,7 @@ export default function O1ReviewPage() {
                   <li key={d} className="flex items-start gap-2">
                     <span
                       className="bv3-mono mt-1 shrink-0 text-xs"
-                      style={{ color: "var(--bv3-gold-bright)" }}
+                      style={{ color: "var(--bv3-wine-text)" }}
                     >
                       ▸
                     </span>
@@ -238,8 +238,8 @@ export default function O1ReviewPage() {
                 href={tier.stripeUrl}
                 className="mt-6 rounded-md px-4 py-3 text-center text-sm font-medium transition-opacity hover:opacity-90"
                 style={{
-                  backgroundColor: "var(--bv3-gold)",
-                  color: "var(--bv3-shell)",
+                  backgroundColor: "var(--bv3-wine)",
+                  color: "var(--bv3-on-wine)",
                 }}
               >
                 Book {tier.name}
@@ -252,7 +252,7 @@ export default function O1ReviewPage() {
         <section className="mt-20">
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             STANDARD + PREMIUM DELIVERABLE
           </p>
@@ -287,7 +287,7 @@ export default function O1ReviewPage() {
                   <span
                     className="bv3-mono text-xs"
                     style={{
-                      color: "var(--bv3-gold-bright)",
+                      color: "var(--bv3-wine-text)",
                       letterSpacing: "0.14em",
                     }}
                   >
@@ -318,7 +318,7 @@ export default function O1ReviewPage() {
         <section className="mt-20">
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             HOW IT WORKS
           </p>
@@ -361,7 +361,7 @@ export default function O1ReviewPage() {
                 <span
                   className="bv3-mono shrink-0 rounded-md px-3 py-1 text-xs"
                   style={{
-                    color: "var(--bv3-gold-bright)",
+                    color: "var(--bv3-wine-text)",
                     border: "1px solid var(--bv3-border-subtle)",
                     letterSpacing: "0.14em",
                   }}
@@ -391,7 +391,7 @@ export default function O1ReviewPage() {
         <section className="mt-20">
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             REFUND POLICY
           </p>
@@ -423,7 +423,7 @@ export default function O1ReviewPage() {
         >
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             START HERE
           </p>
@@ -459,8 +459,8 @@ export default function O1ReviewPage() {
               href={STRIPE_O1_REVIEW_STANDARD_LINK}
               className="rounded-md px-4 py-3 text-center text-sm font-medium transition-opacity hover:opacity-90"
               style={{
-                backgroundColor: "var(--bv3-gold)",
-                color: "var(--bv3-shell)",
+                backgroundColor: "var(--bv3-wine)",
+                color: "var(--bv3-on-wine)",
               }}
             >
               Standard — $2,500
@@ -492,7 +492,7 @@ export default function O1ReviewPage() {
           <p>
             <a
               href="/"
-              style={{ color: "var(--bv3-gold)", textDecoration: "underline" }}
+              style={{ color: "var(--bv3-wine-text)", textDecoration: "underline" }}
             >
               ← Synapse Dynamics
             </a>

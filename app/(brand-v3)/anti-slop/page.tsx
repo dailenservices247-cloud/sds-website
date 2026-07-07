@@ -101,7 +101,7 @@ export default function AntiSlopPage() {
         {/* Header */}
         <p
           className="bv3-mono"
-          style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+          style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
         >
           MICRO PRODUCT / A1
         </p>
@@ -141,8 +141,8 @@ export default function AntiSlopPage() {
             href={STRIPE_ANTI_SLOP_SKILL_PACK_LINK}
             className="rounded-md px-6 py-4 text-base font-medium transition-opacity hover:opacity-90"
             style={{
-              backgroundColor: "var(--bv3-gold)",
-              color: "var(--bv3-shell)",
+              backgroundColor: "var(--bv3-wine)",
+              color: "var(--bv3-on-wine)",
             }}
           >
             Buy the Pack — $49
@@ -170,7 +170,7 @@ export default function AntiSlopPage() {
         >
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             FIVE PROBLEMS NAMED
           </p>
@@ -187,7 +187,7 @@ export default function AntiSlopPage() {
                 <span
                   className="bv3-mono mt-1 shrink-0 rounded px-2 py-0.5 text-xs"
                   style={{
-                    color: "var(--bv3-gold-bright)",
+                    color: "var(--bv3-wine-text)",
                     border: "1px solid var(--bv3-border-subtle)",
                   }}
                 >
@@ -216,7 +216,7 @@ export default function AntiSlopPage() {
         <section className="mt-16">
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             INVENTORY / 8 FILES
           </p>
@@ -233,7 +233,7 @@ export default function AntiSlopPage() {
                 <span
                   className="bv3-mono mt-1 shrink-0 rounded px-2 py-0.5 text-xs"
                   style={{
-                    color: "var(--bv3-gold-bright)",
+                    color: "var(--bv3-wine-text)",
                     border: "1px solid var(--bv3-border-subtle)",
                   }}
                 >
@@ -262,7 +262,7 @@ export default function AntiSlopPage() {
         <section className="mt-16">
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             HOW TO USE
           </p>
@@ -302,7 +302,7 @@ export default function AntiSlopPage() {
                 <span
                   className="bv3-mono shrink-0 rounded-md px-3 py-1 text-xs"
                   style={{
-                    color: "var(--bv3-gold-bright)",
+                    color: "var(--bv3-wine-text)",
                     border: "1px solid var(--bv3-border-subtle)",
                     letterSpacing: "0.14em",
                   }}
@@ -339,7 +339,7 @@ export default function AntiSlopPage() {
         <section className="mt-16">
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             FORK IT
           </p>
@@ -388,7 +388,7 @@ export default function AntiSlopPage() {
         >
           <p
             className="bv3-mono text-xs"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
           >
             NEXT STEP
           </p>
@@ -412,8 +412,8 @@ export default function AntiSlopPage() {
               href={STRIPE_ANTI_SLOP_SKILL_PACK_LINK}
               className="rounded-md px-6 py-4 text-base font-medium transition-opacity hover:opacity-90"
               style={{
-                backgroundColor: "var(--bv3-gold)",
-                color: "var(--bv3-shell)",
+                backgroundColor: "var(--bv3-wine)",
+                color: "var(--bv3-on-wine)",
               }}
             >
               Buy the Pack — $49
@@ -464,7 +464,7 @@ export default function AntiSlopPage() {
           <p>
             <a
               href="/"
-              style={{ color: "var(--bv3-gold)", textDecoration: "underline" }}
+              style={{ color: "var(--bv3-wine-text)", textDecoration: "underline" }}
             >
               ← Synapse Dynamics
             </a>

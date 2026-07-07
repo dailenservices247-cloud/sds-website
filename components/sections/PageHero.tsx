@@ -23,7 +23,7 @@ export function PageHero({
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(ellipse at top, rgba(200,162,62,0.08) 0%, transparent 55%)",
+            "radial-gradient(ellipse at top, rgba(126,48,58,0.08) 0%, transparent 55%)",
         }}
       />
       <Container>

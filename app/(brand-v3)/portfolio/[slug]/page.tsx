@@ -43,7 +43,7 @@ export default function ProjectPage({ params }: PageProps) {
       <div className="container-x pt-12 pb-2">
         <Link
           href="/portfolio"
-          className="mono-label hover:text-accent transition-colors inline-flex items-center gap-1"
+          className="mono-label hover:text-accent-ink transition-colors inline-flex items-center gap-1"
         >
           <span aria-hidden="true">←</span> Portfolio
         </Link>
@@ -130,7 +130,7 @@ export default function ProjectPage({ params }: PageProps) {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent text-bg-primary px-7 py-3.5 font-medium hover:bg-accent-bright transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent text-accent-contrast px-7 py-3.5 font-medium hover:bg-accent-bright transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             Visit {project.name}
             <span aria-hidden="true">↗</span>

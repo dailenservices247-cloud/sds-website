@@ -66,20 +66,20 @@ export default function HowItWorksPage() {
                 className="grid gap-8 md:grid-cols-[auto_1fr] md:gap-16"
               >
                 <div className="md:sticky md:top-28 md:self-start">
-                  <p className="font-mono text-6xl font-bold leading-none text-accent/30 md:text-8xl">
+                  <p className="font-mono text-6xl font-bold leading-none text-accent-ink/30 md:text-8xl">
                     {step.num}
                   </p>
                   <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink-primary md:text-5xl">
                     {step.name}
                   </h2>
-                  <p className="mt-3 max-w-xs text-sm font-medium text-accent">
+                  <p className="mt-3 max-w-xs text-sm font-medium text-accent-ink">
                     {step.promise}
                   </p>
                 </div>
 
                 <div className="space-y-8">
                   <div className="rounded-2xl border border-[color:var(--border-subtle)] bg-bg-surface p-8">
-                    <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+                    <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent-ink">
                       What happens
                     </p>
                     <p className="mt-3 text-base leading-relaxed text-ink-primary">
@@ -89,7 +89,7 @@ export default function HowItWorksPage() {
 
                   <div className="grid gap-5 md:grid-cols-2">
                     <div className="rounded-2xl border border-[color:var(--border-subtle)] bg-bg-surface p-6">
-                      <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+                      <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent-ink">
                         What you do
                       </p>
                       <p className="mt-3 text-sm leading-relaxed text-ink-muted">
@@ -97,7 +97,7 @@ export default function HowItWorksPage() {
                       </p>
                     </div>
                     <div className="rounded-2xl border border-[color:var(--border-subtle)] bg-bg-surface p-6">
-                      <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+                      <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent-ink">
                         What we deliver
                       </p>
                       <p className="mt-3 text-sm leading-relaxed text-ink-muted">
