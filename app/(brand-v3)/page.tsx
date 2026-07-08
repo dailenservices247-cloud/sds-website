@@ -10,11 +10,9 @@
 // warm cream — that violates brand v3 lock). Only Cursor's STRUCTURAL +
 // INTERACTION patterns applied.
 //
-// Sibling preview routes (kept in-repo as revival templates):
-//   /v1-garden — Immersive Garden direction
-//   /v2-linear — Linear typography-minimal (revival template for /work or
-//                /services if conversion data signals consulting-buyer mismatch)
-//   /v3-cursor — same content as this homepage (preview route preserved)
+// Sibling preview routes (v1-garden / v2-linear / v3-cursor / preview) were
+// removed from prod 2026-07-06 (coherence migration). Revival templates live
+// in git history before commit "redesign/v3-coherence".
 //
 // Brand v3 tokens preserved. PRD: AI Hub/PRDs/sds-brand-v3-rebuild-prd.md
 
@@ -38,10 +36,10 @@ import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
 // ---------------------------------------------------------------------------
 
 const STATE_COLOR = {
-  thinking: "var(--bv3-gold)",
+  thinking: "var(--bv3-wine-text)",
   read: "var(--bv3-spine)",
   grep: "var(--bv3-spine-bright)",
-  edit: "var(--bv3-wine)",
+  edit: "var(--bv3-wine-bright)",
 };
 
 // ---------------------------------------------------------------------------
@@ -62,7 +60,7 @@ function CommandLine({
     <div className="bv3-mono mb-6">
       <div className="flex items-baseline gap-2">
         <span style={{ color: "var(--bv3-spine-bright)" }}>$</span>
-        <span style={{ color: "var(--bv3-gold)", letterSpacing: "0.06em" }}>
+        <span style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.06em" }}>
           {command}
         </span>
       </div>
@@ -245,8 +243,8 @@ export default function CursorVariantHome() {
               href="/contact"
               className="group inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-all"
               style={{
-                background: "var(--bv3-gold)",
-                color: "var(--bv3-shell)",
+                background: "var(--bv3-spine)",
+                color: "var(--bv3-on-spine)",
               }}
             >
               Start a project
@@ -290,7 +288,7 @@ export default function CursorVariantHome() {
               }}
             >
               Think before you{" "}
-              <span style={{ color: "var(--bv3-gold)" }}>code</span>.
+              <span style={{ color: "var(--bv3-wine-text)" }}>code</span>.
             </motion.h1>
 
             <motion.p
@@ -311,8 +309,8 @@ export default function CursorVariantHome() {
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-all"
                 style={{
-                  background: "var(--bv3-gold)",
-                  color: "var(--bv3-shell)",
+                  background: "var(--bv3-spine)",
+                  color: "var(--bv3-on-spine)",
                 }}
               >
                 Start a project
@@ -359,7 +357,7 @@ export default function CursorVariantHome() {
                   />
                   <span
                     className="h-2.5 w-2.5 rounded-full"
-                    style={{ background: "var(--bv3-gold)" }}
+                    style={{ background: "var(--bv3-wine)" }}
                   />
                   <span
                     className="h-2.5 w-2.5 rounded-full"
@@ -370,22 +368,37 @@ export default function CursorVariantHome() {
                   className="bv3-mono"
                   style={{ color: "var(--bv3-ink-dim)" }}
                 >
-                  nox.studio.live
+                  lux.studio.live
                 </span>
               </div>
 
-              {/* Inline working Nox */}
+              {/* Lux live feed — cosmos-dig loop (Kling 3.0, locked mascot).
+                  Poster = working pose so first paint is instant; video streams in.
+                  prefers-reduced-motion users keep the still via the media query
+                  in globals.css (.bv3-hero-video). */}
               <div
                 className="relative mb-3 overflow-hidden rounded-md"
-                style={{ background: "var(--bv3-cream)" }}
+                style={{ background: "var(--bv3-shell-deep)" }}
               >
+                <video
+                  className="bv3-hero-video block h-auto w-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  poster="/brand-v3/nox-pose-WORKING-LOCKED.png"
+                  aria-label="Lux — Synapse Dynamics mascot, moving through a cosmos scene"
+                >
+                  <source src="/brand-v3/lux-cosmos-dig.mp4" type="video/mp4" />
+                </video>
+                {/* Reduced-motion fallback still */}
                 <Nox
                   variant="working"
                   width={1264}
                   height={848}
-                  priority
-                  className="block h-auto w-full object-contain"
-                  alt="Nox — working pose"
+                  className="bv3-hero-video-still block h-auto w-full object-contain"
+                  alt="Lux — working pose"
                 />
               </div>
 
@@ -473,9 +486,81 @@ export default function CursorVariantHome() {
           <Link
             href="/portfolio"
             className="bv3-mono mt-6 inline-flex items-center gap-2 text-sm"
-            style={{ color: "var(--bv3-gold)", letterSpacing: "0.08em" }}
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.08em" }}
           >
             SEE ALL 12 → <KbdHint keys={["⌘", "P"]} />
+          </Link>
+        </section>
+
+        {/* =================================================================
+            2b. RECEIPTS — honest proof strip (2026-07-06, war-game R4:
+            proof by demonstration, not borrowed testimonials)
+            ================================================================= */}
+        <section
+          id="receipts"
+          className="border-t py-16"
+          style={{ borderColor: "var(--bv3-border-subtle)" }}
+          aria-label="Proof"
+        >
+          <CommandLine
+            command="cat receipts.txt"
+            result="proof you can click, not claims"
+          />
+
+          <h2
+            className="mb-10 text-balance"
+            style={{
+              fontFamily: "var(--font-bricolage), system-ui, sans-serif",
+              fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
+              fontWeight: 700,
+              lineHeight: 1.05,
+              letterSpacing: "-0.025em",
+              color: "var(--bv3-cream)",
+            }}
+          >
+            Receipts, not promises.
+          </h2>
+
+          <motion.ol
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-10%" }}
+            className="border-b"
+            style={{ borderColor: "var(--bv3-border-subtle)" }}
+          >
+            <motion.div variants={fadeIn} className="contents">
+              <LineNumberItem
+                index={1}
+                state="grep"
+                label="Scrlpets is live"
+                body="A full-stack social marketplace for animal breeders, built end-to-end in-house and running in pre-beta right now. Click around — it's real."
+              />
+            </motion.div>
+            <motion.div variants={fadeIn} className="contents">
+              <LineNumberItem
+                index={2}
+                state="read"
+                label="This site is the demo"
+                body="Same stack, same process we install for clients. The pitch and the product are the same artifact."
+              />
+            </motion.div>
+            <motion.div variants={fadeIn} className="contents">
+              <LineNumberItem
+                index={3}
+                state="thinking"
+                label="No logo wall"
+                body="Zero borrowed testimonials. Until the first case studies land, the proof is shipped product — not quotes we wrote ourselves."
+              />
+            </motion.div>
+          </motion.ol>
+
+          <Link
+            href="/lab/scrlpets"
+            className="bv3-mono mt-6 inline-flex items-center gap-2 text-sm"
+            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.08em" }}
+          >
+            READ THE SCRLPETS BUILD →
           </Link>
         </section>
 
@@ -530,7 +615,7 @@ export default function CursorVariantHome() {
                   <span aria-hidden="true">→</span>
                   <span
                     className="bv3-mono ml-2"
-                    style={{ color: "var(--bv3-gold)" }}
+                    style={{ color: "var(--bv3-wine-text)" }}
                   >
                     $3,500/mo
                   </span>
@@ -625,7 +710,7 @@ export default function CursorVariantHome() {
             }}
           >
             Architect.{" "}
-            <span style={{ color: "var(--bv3-gold)" }}>Automate.</span>{" "}
+            <span style={{ color: "var(--bv3-wine-text)" }}>Automate.</span>{" "}
             <span style={{ color: "var(--bv3-spine-bright)" }}>Strategize.</span>
           </h2>
 
@@ -691,7 +776,7 @@ export default function CursorVariantHome() {
                     </div>
                     <div className="mt-1 flex items-baseline justify-between">
                       <span style={{ color: "var(--bv3-ink-dim)" }}>price</span>
-                      <span style={{ color: "var(--bv3-gold)" }}>
+                      <span style={{ color: "var(--bv3-wine-text)" }}>
                         {tier?.price}
                       </span>
                     </div>
@@ -896,7 +981,7 @@ export default function CursorVariantHome() {
               }}
             >
               <div className="mb-2 flex items-baseline justify-between">
-                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-gold)", letterSpacing: "0.14em" }}>
+                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.14em" }}>
                   [NEW] CLAUDE VOICE NETWORK PACK
                 </span>
                 <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$79</span>
@@ -914,7 +999,7 @@ export default function CursorVariantHome() {
               }}
             >
               <div className="mb-2 flex items-baseline justify-between">
-                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-gold)", letterSpacing: "0.14em" }}>
+                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.14em" }}>
                   PEER OPERATOR&apos;S STACK V1
                 </span>
                 <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$149</span>
@@ -932,7 +1017,7 @@ export default function CursorVariantHome() {
               }}
             >
               <div className="mb-2 flex items-baseline justify-between">
-                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-gold)", letterSpacing: "0.14em" }}>
+                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.14em" }}>
                   ANTI-SLOP SKILL PACK V1
                 </span>
                 <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$49</span>
@@ -950,7 +1035,7 @@ export default function CursorVariantHome() {
               }}
             >
               <div className="mb-2 flex items-baseline justify-between">
-                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-gold)", letterSpacing: "0.14em" }}>
+                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.14em" }}>
                   ATOMIC NOTE TEMPLATE PACK
                 </span>
                 <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$19 tip</span>

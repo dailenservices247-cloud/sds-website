@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-// NodalWorm removed 2026-04-30 — asset deprecated by Dailen
+import { Nox } from "@/components/brand-v3/Nox";
+// NodalWorm removed 2026-04-30 — asset deprecated by Dailen.
+// Lux resting pose added 2026-07-06 (coherence migration).
 
 export const metadata = {
   title: "404 — Not found",
@@ -16,10 +18,16 @@ export default function NotFound() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(ellipse at top, rgba(34,197,94,0.08) 0%, transparent 55%)",
+            "radial-gradient(ellipse at top, rgba(126,48,58,0.08) 0%, transparent 55%)",
         }}
       />
-      {/* (NodalWorm decoration removed 2026-04-30 per Dailen) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-8 top-1/2 hidden -translate-y-1/2 overflow-hidden rounded-3xl opacity-90 lg:block xl:right-24"
+        style={{ boxShadow: "var(--bv3-shadow-mid, 0 8px 20px rgba(0,0,0,0.32))" }}
+      >
+        <Nox variant="resting" width={340} height={228} alt="" />
+      </div>
 
       <Container>
         <div className="max-w-2xl">
@@ -38,14 +46,14 @@ export default function NotFound() {
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/"
-              className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-base font-semibold text-bg-primary transition-all hover:bg-accent-bright hover:shadow-[0_0_0_4px_rgba(34,197,94,0.15)]"
+              className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-base font-semibold text-accent-contrast transition-all hover:bg-accent-bright hover:shadow-[0_0_0_4px_rgba(42,96,85,0.28)]"
             >
               Back to home
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-md border border-[color:var(--border-subtle)] px-6 py-3 text-base font-semibold text-ink-primary transition-colors hover:border-accent hover:text-accent"
+              className="inline-flex items-center justify-center rounded-md border border-[color:var(--border-subtle)] px-6 py-3 text-base font-semibold text-ink-primary transition-colors hover:border-accent hover:text-accent-ink"
             >
               Start a project
             </Link>
@@ -66,7 +74,7 @@ export default function NotFound() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-ink-muted transition-colors hover:text-accent"
+                    className="text-ink-muted transition-colors hover:text-accent-ink"
                   >
                     {link.label} →
                   </Link>

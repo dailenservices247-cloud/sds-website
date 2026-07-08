@@ -16,12 +16,12 @@ export function ServiceDetail({ service }: { service: Service }) {
         description={service.longDescription}
       >
         <div className="flex items-center gap-4">
-          <span className="inline-flex h-14 w-14 items-center justify-center rounded-xl border border-accent/30 bg-bg-surface text-accent">
+          <span className="inline-flex h-14 w-14 items-center justify-center rounded-xl border border-accent/30 bg-bg-surface text-accent-ink">
             <Icon className="h-6 w-6" />
           </span>
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-sm font-semibold text-bg-primary transition-all hover:bg-accent-bright"
+            className="group inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-sm font-semibold text-accent-contrast transition-all hover:bg-accent-bright"
           >
             Start a {service.name.toLowerCase()} project
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -49,7 +49,7 @@ export function ServiceDetail({ service }: { service: Service }) {
                 key={useCase.title}
                 className="rounded-2xl border border-[color:var(--border-subtle)] bg-bg-surface p-8 transition-colors hover:border-accent"
               >
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent-ink">
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <h3 className="mt-4 text-xl font-semibold text-ink-primary">
@@ -85,7 +85,7 @@ export function ServiceDetail({ service }: { service: Service }) {
                 key={model.name}
                 className="flex flex-col rounded-2xl border border-[color:var(--border-subtle)] bg-bg-primary p-8 transition-colors hover:border-accent"
               >
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent-ink">
                   {String(i + 1).padStart(2, "0")} · Model
                 </p>
                 <h3 className="mt-4 text-2xl font-semibold text-ink-primary">
@@ -113,7 +113,7 @@ export function ServiceDetail({ service }: { service: Service }) {
 
                 <Link
                   href="/contact"
-                  className="group mt-auto flex items-center gap-2 pt-8 text-sm font-semibold text-accent"
+                  className="group mt-auto flex items-center gap-2 pt-8 text-sm font-semibold text-accent-ink"
                 >
                   Inquire
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -139,7 +139,7 @@ export function ServiceDetail({ service }: { service: Service }) {
             </p>
             <Link
               href="/"
-              className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-accent"
+              className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-accent-ink"
             >
               See the Scrlpets case study preview
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -153,7 +153,7 @@ export function ServiceDetail({ service }: { service: Service }) {
                   key={item}
                   className="inline-flex items-center gap-2 rounded-full border border-[color:var(--border-subtle)] bg-bg-surface px-4 py-2 text-xs font-mono uppercase tracking-[0.15em] text-ink-muted"
                 >
-                  <Check className="h-3 w-3 text-accent" />
+                  <Check className="h-3 w-3 text-accent-ink" />
                   {item}
                 </span>
               )

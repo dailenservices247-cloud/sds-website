@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { Container } from "./Container";
@@ -20,11 +19,6 @@ const navLinks = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-
-  if (pathname.startsWith("/v1-") || pathname.startsWith("/v2-") || pathname.startsWith("/v3-")) {
-    return null;
-  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[color:var(--border-subtle)] bg-bg-primary/80 backdrop-blur supports-[backdrop-filter]:bg-bg-primary/60">
@@ -53,7 +47,7 @@ export function Nav() {
             ))}
             <Link
               href="/contact"
-              className="ml-2 inline-flex items-center rounded-md border border-accent px-3.5 py-2 text-sm font-semibold text-accent transition-colors hover:bg-accent hover:text-bg-primary whitespace-nowrap"
+              className="ml-2 inline-flex items-center rounded-md border border-accent px-3.5 py-2 text-sm font-semibold text-accent-ink transition-colors hover:bg-accent hover:text-accent-contrast whitespace-nowrap"
             >
               Start a project
             </Link>
@@ -93,7 +87,7 @@ export function Nav() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center rounded-md border border-accent px-4 py-3 text-base font-semibold text-accent hover:bg-accent hover:text-bg-primary"
+              className="mt-2 inline-flex items-center justify-center rounded-md border border-accent px-4 py-3 text-base font-semibold text-accent-ink hover:bg-accent hover:text-accent-contrast"
             >
               Start a project
             </Link>

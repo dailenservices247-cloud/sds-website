@@ -231,7 +231,7 @@ export default function ApotheosisProPage() {
           <p>
             There&rsquo;s exactly one path to Apotheosis Pro at $19/mo: be a Foundation
             Subscriber on the day it launches. Foundation Subscription is{" "}
-            <Link href="/foundation" className="text-accent hover:text-accent-bright underline underline-offset-4 decoration-1">
+            <Link href="/foundation" className="text-accent-ink hover:text-accent-bright underline underline-offset-4 decoration-1">
               $19/mo, open now
             </Link>
             , and every active subscription on launch day rolls into Apotheosis Pro
@@ -299,14 +299,14 @@ export default function ApotheosisProPage() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/foundation"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-accent text-bg-primary px-7 py-4 font-semibold hover:bg-accent-bright transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-accent text-accent-contrast px-7 py-4 font-semibold hover:bg-accent-bright transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               {PRE_LAUNCH ? "Join Foundation — $19/mo, locks forever" : "See Foundation Subscription"}
               <span aria-hidden="true">→</span>
             </Link>
             <Link
               href="/about"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-border-subtle text-ink-primary px-7 py-4 font-medium hover:border-accent hover:text-accent transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-border-subtle text-ink-primary px-7 py-4 font-medium hover:border-accent hover:text-accent-ink transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               About SDS
             </Link>

@@ -147,7 +147,14 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} ${bricolage.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
-      <body className="bg-bg-primary text-ink-primary font-sans antialiased">
+      {/* data-theme="brand-v3" scopes the legacy-token bridge in globals.css
+          to the whole site — Nav, Footer, and all (marketing) routes inherit
+          the matte-gray v3 register without per-page rewrites (2026-07-06
+          coherence migration; war game AI Hub/Research/2026-07-06-sds-redesign-war-game.md). */}
+      <body
+        data-theme="brand-v3"
+        className="bg-bg-primary text-ink-primary font-sans antialiased"
+      >
         <Script
           id="synapse-dynamics-org"
           type="application/ld+json"

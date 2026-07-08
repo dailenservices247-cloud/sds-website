@@ -29,10 +29,10 @@ export default function ContactPage() {
             <aside className="order-1 space-y-6 lg:order-2">
               <div className="rounded-2xl border border-[color:var(--border-subtle)] bg-bg-surface p-6">
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[color:var(--border-subtle)] bg-bg-primary text-accent">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[color:var(--border-subtle)] bg-bg-primary text-accent-ink">
                     <Clock className="h-4 w-4" />
                   </span>
-                  <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-accent">
+                  <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-accent-ink">
                     Response time
                   </h3>
                 </div>
@@ -44,10 +44,10 @@ export default function ContactPage() {
 
               <div className="rounded-2xl border border-[color:var(--border-subtle)] bg-bg-surface p-6">
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[color:var(--border-subtle)] bg-bg-primary text-accent">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[color:var(--border-subtle)] bg-bg-primary text-accent-ink">
                     <MessageSquare className="h-4 w-4" />
                   </span>
-                  <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-accent">
+                  <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-accent-ink">
                     What to include
                   </h3>
                 </div>
@@ -61,10 +61,10 @@ export default function ContactPage() {
 
               <div className="rounded-2xl border border-[color:var(--border-subtle)] bg-bg-surface p-6">
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[color:var(--border-subtle)] bg-bg-primary text-accent">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[color:var(--border-subtle)] bg-bg-primary text-accent-ink">
                     <Mail className="h-4 w-4" />
                   </span>
-                  <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-accent">
+                  <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-accent-ink">
                     Direct
                   </h3>
                 </div>
@@ -72,7 +72,7 @@ export default function ContactPage() {
                   Prefer email? Reach us at{" "}
                   <a
                     href="mailto:hello@synapsedynamics.com"
-                    className="text-ink-primary underline decoration-accent/40 underline-offset-2 transition-colors hover:text-accent"
+                    className="text-ink-primary underline decoration-accent/40 underline-offset-2 transition-colors hover:text-accent-ink"
                   >
                     hello@synapsedynamics.com
                   </a>

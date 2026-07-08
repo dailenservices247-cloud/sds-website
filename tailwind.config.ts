@@ -32,6 +32,8 @@ const config: Config = {
           deep: "var(--accent-deep)",
           live: "var(--accent-live, #22c55e)",
           "live-bright": "var(--accent-live-bright, #34d880)",
+          ink: "var(--accent-ink, var(--accent-primary))",
+          contrast: "var(--accent-contrast, var(--bg-primary))",
         },
         "border-subtle": "var(--border-subtle)",
         "border-soft": "var(--border-soft, var(--border-subtle))",

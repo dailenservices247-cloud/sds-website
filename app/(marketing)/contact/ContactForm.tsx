@@ -23,7 +23,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="group mt-2 inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent px-6 py-4 text-base font-semibold text-bg-primary transition-all hover:bg-accent-bright disabled:opacity-60 sm:w-auto"
+      className="group mt-2 inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent px-6 py-4 text-base font-semibold text-accent-contrast transition-all hover:bg-accent-bright disabled:opacity-60 sm:w-auto"
     >
       {pending ? (
         <>
@@ -46,7 +46,7 @@ export function ContactForm() {
     return (
       <div className="rounded-2xl border border-accent/40 bg-accent/5 p-10 text-center">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-accent/50 bg-bg-primary">
-          <CheckCircle2 className="h-7 w-7 text-accent" />
+          <CheckCircle2 className="h-7 w-7 text-accent-ink" />
         </div>
         <h2 className="mt-6 text-2xl font-bold text-ink-primary">Got it.</h2>
         <p className="mt-3 text-base text-ink-muted">
@@ -87,7 +87,7 @@ export function ContactForm() {
             htmlFor="name"
             className="block text-sm font-medium text-ink-primary"
           >
-            Name <span className="text-accent">*</span>
+            Name <span className="text-accent-ink">*</span>
           </label>
           <input
             id="name"
@@ -108,7 +108,7 @@ export function ContactForm() {
             htmlFor="email"
             className="block text-sm font-medium text-ink-primary"
           >
-            Email <span className="text-accent">*</span>
+            Email <span className="text-accent-ink">*</span>
           </label>
           <input
             id="email"
@@ -149,7 +149,7 @@ export function ContactForm() {
             htmlFor="projectType"
             className="block text-sm font-medium text-ink-primary"
           >
-            Project type <span className="text-accent">*</span>
+            Project type <span className="text-accent-ink">*</span>
           </label>
           <select
             id="projectType"
@@ -173,7 +173,7 @@ export function ContactForm() {
             htmlFor="budget"
             className="block text-sm font-medium text-ink-primary"
           >
-            Budget range <span className="text-accent">*</span>
+            Budget range <span className="text-accent-ink">*</span>
           </label>
           <select
             id="budget"
@@ -199,7 +199,7 @@ export function ContactForm() {
           htmlFor="message"
           className="block text-sm font-medium text-ink-primary"
         >
-          Project details <span className="text-accent">*</span>
+          Project details <span className="text-accent-ink">*</span>
         </label>
         <textarea
           id="message"

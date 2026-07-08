@@ -19,7 +19,7 @@ export default function FoundationSuccessPage({
 
   return (
     <article className="container-x py-24 md:py-40 max-w-3xl text-center">
-      <p className="mono-label mb-6 mx-auto inline-block text-accent">
+      <p className="mono-label mb-6 mx-auto inline-block text-accent-ink">
         ✓ Payment received
       </p>
 
@@ -60,14 +60,14 @@ export default function FoundationSuccessPage({
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Link
           href="/portfolio"
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-accent text-bg-primary px-7 py-3 font-medium hover:bg-accent-bright transition-colors"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-accent text-accent-contrast px-7 py-3 font-medium hover:bg-accent-bright transition-colors"
         >
           Explore the portfolio
           <span aria-hidden="true">→</span>
         </Link>
         <Link
           href="/"
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-border-subtle px-7 py-3 font-medium hover:border-accent hover:text-accent transition-colors"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-border-subtle px-7 py-3 font-medium hover:border-accent hover:text-accent-ink transition-colors"
         >
           Back to home
         </Link>

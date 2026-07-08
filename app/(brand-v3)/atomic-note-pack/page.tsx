@@ -39,7 +39,7 @@ export default function AtomicNotePackPage() {
       <div className="mx-auto w-full max-w-3xl">
         <p
           className="bv3-mono"
-          style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+          style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
         >
           MICRO PRODUCT / M1
         </p>
@@ -90,7 +90,7 @@ export default function AtomicNotePackPage() {
                 <span
                   className="bv3-mono mt-1 shrink-0 rounded px-2 py-0.5 text-xs"
                   style={{
-                    color: "var(--bv3-gold-bright)",
+                    color: "var(--bv3-wine-text)",
                     border: "1px solid var(--bv3-border-subtle)",
                   }}
                 >
@@ -162,8 +162,8 @@ export default function AtomicNotePackPage() {
             href={GITHUB_ZIP}
             className="rounded-md px-6 py-4 text-base font-medium transition-opacity hover:opacity-90"
             style={{
-              backgroundColor: "var(--bv3-gold)",
-              color: "var(--bv3-shell)",
+              backgroundColor: "var(--bv3-spine)",
+              color: "var(--bv3-on-spine)",
             }}
           >
             Download free (ZIP)
@@ -190,7 +190,7 @@ export default function AtomicNotePackPage() {
         >
           <p
             className="bv3-mono mb-3 text-xs"
-            style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+            style={{ letterSpacing: "0.14em", color: "var(--bv3-wine-text)" }}
           >
             REVENUE LAYER
           </p>
@@ -228,7 +228,7 @@ export default function AtomicNotePackPage() {
         <section className="mt-12">
           <p
             className="bv3-mono mb-3 text-xs"
-            style={{ letterSpacing: "0.14em", color: "var(--bv3-gold)" }}
+            style={{ letterSpacing: "0.14em", color: "var(--bv3-wine-text)" }}
           >
             RELATED PACKS
           </p>
@@ -273,8 +273,8 @@ export default function AtomicNotePackPage() {
           <p>
             Built by{" "}
             <a
-              href="/v1-garden"
-              style={{ color: "var(--bv3-gold)", textDecoration: "underline" }}
+              href="/"
+              style={{ color: "var(--bv3-wine-text)", textDecoration: "underline" }}
             >
               Synapse Dynamics Segmented
             </a>

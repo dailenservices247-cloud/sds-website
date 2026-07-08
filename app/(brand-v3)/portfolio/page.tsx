@@ -131,7 +131,7 @@ export default function PortfolioIndex() {
                     </p>
                   )}
 
-                  <p className="mt-6 text-sm font-medium text-accent inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                  <p className="mt-6 text-sm font-medium text-accent-ink inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                     Learn more
                     <span aria-hidden="true">→</span>
                   </p>

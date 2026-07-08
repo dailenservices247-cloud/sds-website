@@ -47,7 +47,7 @@ export default function EightLayerDiagnosticPage() {
       <article className="mx-auto w-full max-w-3xl">
         <p
           className="bv3-mono"
-          style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+          style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
         >
           METHODOLOGY / FREE
         </p>
@@ -316,7 +316,7 @@ export default function EightLayerDiagnosticPage() {
               href={STRIPE_PEER_OPERATOR_STACK_LINK}
               className="inline-block rounded px-6 py-3 text-base font-semibold"
               style={{
-                background: "var(--bv3-gold)",
+                background: "var(--bv3-wine)",
                 color: "var(--bv3-ink-strong)",
               }}
             >

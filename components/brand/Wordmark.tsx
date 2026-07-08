@@ -40,7 +40,7 @@ function CoilS({
       <path
         d="M 60 18 Q 60 10, 48 10 L 32 10 Q 20 10, 20 22 Q 20 34, 32 34 L 48 34 Q 60 34, 60 46 Q 60 58, 48 58 L 32 58 Q 20 58, 20 70"
         fill="none"
-        stroke="var(--accent-primary)"
+        stroke="var(--bv3-wine-bright, var(--accent-bright))"
         strokeWidth={13}
         strokeLinecap="round"
         strokeLinejoin="round"

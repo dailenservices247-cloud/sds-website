@@ -5,20 +5,21 @@
 2. If `~/.claude/` is mounted in this Cowork project, prefer reading `~/.claude/handoffs/synapse.md` directly (authoritative source)
 
 ## Canonical paths
-- Repo root: `~/Desktop/sds-website`
+- Repo root: `~/black-sheep-247/ventures/sds-website` (moved off Desktop 2026-06-28)
 - GitHub: github.com/dailenservices247-cloud/sds-website
 - Vercel project: `dailenhuntley-8809s-projects/sds-website` (ID: `prj_kfRBaDj25uJtXAIP9Egg3lAdUCWH`)
-- Live production: https://synapsedynamics.vercel.app
+- Live production: https://synapsedynamics.io (apex, Cloudflare → Vercel; synapsedynamics.vercel.app also aliases)
 
-## Redeploy procedure (LOCKED — never shortcut)
+## Redeploy procedure (corrected 2026-06-04 — git integration is live)
 ```
-cd ~/Desktop/sds-website
-git add -A && git commit -m "..." && git push
-npx vercel@latest --prod --yes
-npx vercel@latest alias set <new-deploy-url> synapsedynamics.vercel.app
+npm run build        # MANDATORY first — Vercel enforces ESLint-as-error; tsc/dev don't catch it
+git add -A && git commit -m "..." && git push origin main
 ```
+`git push origin main` auto-deploys AND aliases via Vercel git integration. **Pushing to main = shipping to production.**
 
-The alias step is REQUIRED — `--prod --yes` only sets the swart alias, not the custom domain.
+After every push touching new routes or imports: verify latest deployment is READY (not ERROR) via Vercel MCP `list_deployments`. Never trust curl probes alone — CDN-cached 404s mask deploy state. Two multi-day silent outages (May + June 2026) came from skipping the local build step.
+
+(The old manual `npx vercel --prod --yes` + `alias set` procedure is STALE — kept working until git integration was connected. Use it only if git integration breaks.)
 
 ## Tech Stack
 - Next.js 14 (App Router)
@@ -31,10 +32,10 @@ The alias step is REQUIRED — `--prod --yes` only sets the swart alias, not the
 - @vercel/analytics wired into root layout
 
 ## Brand — LOCKED (do not drift)
-- **Brand color:** SDS emerald `#22C55E` (distinct from Scrlpets coral)
-- **Identity source:** `BRAND.md` (repo root)
-- **Asset license:** `BRAND-ASSETS-LICENSE.md` — logos/SVGs proprietary to BS247
-- **Brand v2 locked 2026-04-10** — do not regenerate logos, wordmark, monogram, or NodalWorm without explicit Dailen approval
+- **Brand v3 (LIVE sitewide since 2026-07-06):** matte gray `#3a3b3d` ground + antique gold `#c8a23e` + petrol green `#2a6055` + warm cream `#efede5`. Tokens: `--bv3-*` in `app/globals.css`; legacy v2 tokens bridge to v3 via `[data-theme="brand-v3"]` on `<body>` (app/layout.tsx).
+- **Mascot:** Lux (name locked 2026-07-06; working name was Nox — component/files keep `Nox` naming). 7 locked pose artifacts in `public/brand-v3/`, source of truth in vault `AI Hub/Brand/sds-brand-v3-LOCKED/`. Do not regenerate without explicit Dailen approval.
+- **Brand v2 (emerald `#22C55E`) superseded 2026-05-08** — v2 SVG components (Wordmark, Monogram) still render but inherit v3 colors via currentColor/tokens.
+- **Asset license:** `BRAND-ASSETS-LICENSE.md` — logos/SVGs/mascot art proprietary to BS247
 
 ## Locked service tier pricing (live on /services/*)
 | Series | Tier 1 | Tier 2 | Tier 3 |

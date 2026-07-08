@@ -216,14 +216,14 @@ export default function AboutPage() {
           <div className="flex flex-wrap gap-4">
             <Link
               href="/foundation"
-              className="inline-flex items-center gap-2 rounded-full bg-accent text-bg-primary px-6 py-3 font-medium hover:bg-accent-bright transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-contrast px-6 py-3 font-medium hover:bg-accent-bright transition-colors"
             >
               Foundation Subscription
               <span aria-hidden="true">→</span>
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 rounded-full border border-border-subtle px-6 py-3 font-medium hover:border-accent hover:text-accent transition-colors"
+              className="inline-flex items-center gap-2 rounded-full border border-border-subtle px-6 py-3 font-medium hover:border-accent hover:text-accent-ink transition-colors"
             >
               SDS Consulting
             </Link>

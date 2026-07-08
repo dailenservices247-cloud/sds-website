@@ -22,7 +22,7 @@ export default function DiagnosticPage() {
       <header className="mx-auto mb-12 w-full max-w-3xl md:mb-16">
         <p
           className="bv3-mono"
-          style={{ color: "var(--bv3-gold)", letterSpacing: "0.18em" }}
+          style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
         >
           LEAD MAGNET / DIAGNOSTIC
         </p>
@@ -60,8 +60,8 @@ export default function DiagnosticPage() {
         <p>
           Built by{" "}
           <a
-            href="/v1-garden"
-            style={{ color: "var(--bv3-gold)", textDecoration: "underline" }}
+            href="/"
+            style={{ color: "var(--bv3-wine-text)", textDecoration: "underline" }}
           >
             Synapse Dynamics Segmented
           </a>
