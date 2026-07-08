@@ -22,7 +22,6 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
 import { Nox } from "@/components/brand-v3/Nox";
-import { CosmosVideo } from "@/components/brand-v3/CosmosVideo";
 import { projectsByStatus } from "@/lib/content/portfolio";
 import { services } from "@/lib/content/services";
 import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
@@ -197,10 +196,11 @@ export default function CursorVariantHome() {
 
   return (
     <div className="relative">
-      {/* Full-bleed scroll-scrubbed Lux dig — the showpiece layer (2026-07-08).
-          Fixed -z-10; top of page = frame 0, bottom = final dive. Content
-          sections float over it as glass panels. */}
-      <CosmosVideo />
+      {/* Showpiece backdrop UNMOUNTED 2026-07-08 (Dailen): the May cosmos-dig
+          video is a space scene — blues/blacks drowned the Brand House matte
+          ground. Remounts when the brand-native motion visual (matte gray +
+          petrol/gold/wine, generating via Higgsfield) is approved.
+          <CosmosVideo /> */}
 
       {/* ===================================================================
           File-tree sidebar nav — dev-tool signature.
