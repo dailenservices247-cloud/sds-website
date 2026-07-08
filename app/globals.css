@@ -483,3 +483,16 @@ body:has([data-theme="brand-v3"]) {
     scroll-behavior: auto !important;
   }
 }
+
+/* Lux hero video — reduced-motion users get the still instead */
+.bv3-hero-video-still {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bv3-hero-video {
+    display: none;
+  }
+  .bv3-hero-video-still {
+    display: block;
+  }
+}

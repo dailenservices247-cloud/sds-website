@@ -372,17 +372,32 @@ export default function CursorVariantHome() {
                 </span>
               </div>
 
-              {/* Inline working Nox */}
+              {/* Lux live feed — cosmos-dig loop (Kling 3.0, locked mascot).
+                  Poster = working pose so first paint is instant; video streams in.
+                  prefers-reduced-motion users keep the still via the media query
+                  in globals.css (.bv3-hero-video). */}
               <div
                 className="relative mb-3 overflow-hidden rounded-md"
-                style={{ background: "var(--bv3-cream)" }}
+                style={{ background: "var(--bv3-shell-deep)" }}
               >
+                <video
+                  className="bv3-hero-video block h-auto w-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  poster="/brand-v3/nox-pose-WORKING-LOCKED.png"
+                  aria-label="Lux — Synapse Dynamics mascot, moving through a cosmos scene"
+                >
+                  <source src="/brand-v3/lux-cosmos-dig.mp4" type="video/mp4" />
+                </video>
+                {/* Reduced-motion fallback still */}
                 <Nox
                   variant="working"
                   width={1264}
                   height={848}
-                  priority
-                  className="block h-auto w-full object-contain"
+                  className="bv3-hero-video-still block h-auto w-full object-contain"
                   alt="Lux — working pose"
                 />
               </div>
