@@ -507,3 +507,17 @@ body:has([data-theme="brand-v3"]) {
 .footer-link:hover {
   color: var(--bv3-wine-text, var(--accent-primary));
 }
+
+/* Showpiece glass panels — homepage sections floating over the cosmos dig */
+[data-theme="brand-v3"] .bv3-glass {
+  background: rgba(42, 42, 45, 0.68);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--bv3-border-subtle);
+  border-radius: 14px;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="brand-v3"] .bv3-glass {
+    background: var(--bv3-shell-deep);
+  }
+}

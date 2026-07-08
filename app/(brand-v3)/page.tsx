@@ -22,6 +22,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
 import { Nox } from "@/components/brand-v3/Nox";
+import { CosmosVideo } from "@/components/brand-v3/CosmosVideo";
 import { projectsByStatus } from "@/lib/content/portfolio";
 import { services } from "@/lib/content/services";
 import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
@@ -196,6 +197,11 @@ export default function CursorVariantHome() {
 
   return (
     <div className="relative">
+      {/* Full-bleed scroll-scrubbed Lux dig — the showpiece layer (2026-07-08).
+          Fixed -z-10; top of page = frame 0, bottom = final dive. Content
+          sections float over it as glass panels. */}
+      <CosmosVideo />
+
       {/* ===================================================================
           File-tree sidebar nav — dev-tool signature.
           Sticky-left on desktop, top bar on mobile.
@@ -432,8 +438,7 @@ export default function CursorVariantHome() {
             ================================================================= */}
         <section
           id="portfolio"
-          className="border-t py-16"
-          style={{ borderColor: "var(--bv3-border-subtle)" }}
+          className="bv3-glass my-10 px-6 py-12 md:px-10"
           aria-label="Portfolio"
         >
           <CommandLine
@@ -498,8 +503,7 @@ export default function CursorVariantHome() {
             ================================================================= */}
         <section
           id="receipts"
-          className="border-t py-16"
-          style={{ borderColor: "var(--bv3-border-subtle)" }}
+          className="bv3-glass my-10 px-6 py-12 md:px-10"
           aria-label="Proof"
         >
           <CommandLine
@@ -569,8 +573,7 @@ export default function CursorVariantHome() {
             ================================================================= */}
         <section
           id="foundation"
-          className="border-t py-16"
-          style={{ borderColor: "var(--bv3-border-subtle)" }}
+          className="bv3-glass my-10 px-6 py-12 md:px-10"
           aria-label="Foundation"
         >
           <CommandLine
@@ -689,8 +692,7 @@ export default function CursorVariantHome() {
             4. SERVICES — 3 panels, asymmetric, with state badges
             ================================================================= */}
         <section
-          className="border-t py-16"
-          style={{ borderColor: "var(--bv3-border-subtle)" }}
+          className="bv3-glass my-10 px-6 py-12 md:px-10"
           aria-label="Services"
         >
           <CommandLine
@@ -791,8 +793,7 @@ export default function CursorVariantHome() {
             5. NOW / NEXT / LATER — line-numbered todo list
             ================================================================= */}
         <section
-          className="border-t py-16"
-          style={{ borderColor: "var(--bv3-border-subtle)" }}
+          className="bv3-glass my-10 px-6 py-12 md:px-10"
           aria-label="Roadmap"
         >
           <CommandLine
@@ -856,8 +857,7 @@ export default function CursorVariantHome() {
             6. CHANNELS — 2-col with command-prompt accents
             ================================================================= */}
         <section
-          className="border-t py-16"
-          style={{ borderColor: "var(--bv3-border-subtle)" }}
+          className="bv3-glass my-10 px-6 py-12 md:px-10"
           aria-label="Channels"
         >
           <CommandLine

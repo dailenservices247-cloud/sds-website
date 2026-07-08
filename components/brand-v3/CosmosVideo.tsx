@@ -31,7 +31,7 @@ interface CosmosVideoProps {
 }
 
 export function CosmosVideo({
-  src = "/brand-v3/nox-cosmos-dig.mp4",
+  src = "/brand-v3/lux-cosmos-dig.mp4",
   reducedMotionPoster = "/brand-v3/nox-PRIMARY-LOCKED.png",
 }: CosmosVideoProps) {
   const reducedMotion = useReducedMotion();
@@ -81,7 +81,7 @@ export function CosmosVideo({
       v.removeEventListener("loadeddata", onReady);
       if (unsub) unsub();
     };
-  }, [scrollYProgress, reducedMotion]);
+  }, [scrollYProgress, reducedMotion, mounted]);
 
   useEffect(() => {
     setMounted(true);
