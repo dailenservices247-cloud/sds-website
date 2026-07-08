@@ -296,8 +296,10 @@ body {
   --bv3-cream-deep:  #e0ddd0;
 
   /* Brand accents — petrol green primary, antique gold accent, wine emotion */
-  --bv3-spine:       #2a6055;  /* petrol green — primary accent */
+  --bv3-spine:       #2a6055;  /* petrol green — ACTION accent: buttons/pills/live (Dailen 2026-07-08) */
   --bv3-spine-bright:#347466;
+  --bv3-spine-text:  #8fc0b5;  /* text-level petrol on dark — AA-safe */
+  --bv3-on-spine:    #e9f2ef;  /* text on spine fills */
   --bv3-gold:        #c8a23e;  /* RESERVE accent — sparse chips only (demoted 2026-06-10 swap) */
   --bv3-gold-bright: #d8b85a;
   --bv3-wine:        #7e303a;  /* PRIMARY accent — fills/badges/buttons/borders (Brand House v1 swap 2026-06-10, retrofitted 2026-07-06) */
@@ -348,13 +350,17 @@ body {
   --text-on-dark:      var(--bv3-ink);
   --text-on-dark-soft: var(--bv3-ink-muted);
 
-  --accent-primary:    var(--bv3-wine);
-  --accent-bright:     var(--bv3-wine-bright);
+  /* ACTION system (Tailwind accent.*): petrol green — every button, pill,
+     live dot, focus ring. Wine stays the IDENTITY accent (eyebrows, links,
+     coil-S, selection) via direct --bv3-wine-* references. Role split per
+     Dailen 2026-07-08 ("CTAs = brand house green; place color strategically"). */
+  --accent-primary:    var(--bv3-spine);
+  --accent-bright:     var(--bv3-spine-bright);
   --accent-deep:       var(--bv3-spine);
-  --accent-live:       var(--bv3-wine-bright);
-  --accent-live-bright:var(--bv3-wine-bright);
-  --accent-ink:        var(--bv3-wine-text);  /* text-level accent on dark */
-  --accent-contrast:   var(--bv3-on-wine);    /* text on accent fills */
+  --accent-live:       var(--bv3-spine-bright);
+  --accent-live-bright:var(--bv3-spine-bright);
+  --accent-ink:        var(--bv3-spine-text);  /* text on outline buttons / terminal commands */
+  --accent-contrast:   var(--bv3-on-spine);    /* text on action fills */
 
   --border-subtle:     var(--bv3-border-subtle);
   --border-soft:       var(--bv3-border-subtle);
@@ -495,4 +501,9 @@ body:has([data-theme="brand-v3"]) {
   .bv3-hero-video-still {
     display: block;
   }
+}
+
+/* Footer directory links — identity accent on hover (wine, not action green) */
+.footer-link:hover {
+  color: var(--bv3-wine-text, var(--accent-primary));
 }

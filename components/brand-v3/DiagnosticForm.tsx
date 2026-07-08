@@ -220,8 +220,8 @@ export function DiagnosticForm() {
           disabled={!allAnswered || submitting}
           className="rounded-md px-6 py-4 text-base font-medium transition-opacity disabled:cursor-not-allowed disabled:opacity-40"
           style={{
-            backgroundColor: "var(--bv3-wine)",
-            color: "var(--bv3-on-wine)",
+            backgroundColor: "var(--bv3-spine)",
+            color: "var(--bv3-on-spine)",
           }}
         >
           {submitting
@@ -361,8 +361,8 @@ function DiagnosticResult({ result }: { result: ResultData }) {
           href={copy.primaryCta.href}
           className="rounded-md px-6 py-4 text-base font-medium transition-opacity hover:opacity-90"
           style={{
-            backgroundColor: "var(--bv3-wine)",
-            color: "var(--bv3-on-wine)",
+            backgroundColor: "var(--bv3-spine)",
+            color: "var(--bv3-on-spine)",
           }}
           onClick={() => track("diagnostic_cta_primary", { bucket: result.bucket })}
         >

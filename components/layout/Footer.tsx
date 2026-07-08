@@ -55,7 +55,8 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 pb-10 pt-6 sm:grid-cols-3">
           {footerGroups.map((group) => (
             <div key={group.title}>
-              <p className="mb-3 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-accent-ink">
+              <p className="mb-3 font-mono text-[0.65rem] uppercase tracking-[0.12em]"
+                style={{ color: "var(--bv3-wine-text)" }}>
                 {group.title}
               </p>
               <ul className="space-y-2 font-mono text-sm">
@@ -68,7 +69,7 @@ export function Footer() {
                         {...(isExternal
                           ? { target: "_blank", rel: "noopener noreferrer" }
                           : {})}
-                        className="text-ink-primary transition-colors hover:text-accent-ink"
+                        className="footer-link text-ink-primary transition-colors"
                       >
                         {link.label}
                       </Link>

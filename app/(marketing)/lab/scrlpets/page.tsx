@@ -318,7 +318,7 @@ export default function ScrlpetsCaseStudyPage() {
                   href="https://scrlpets.lovable.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-base font-semibold text-accent-contrast transition-all hover:bg-accent-bright hover:shadow-[0_0_0_4px_rgba(126,48,58,0.15)]"
+                  className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-base font-semibold text-accent-contrast transition-all hover:bg-accent-bright hover:shadow-[0_0_0_4px_rgba(42,96,85,0.28)]"
                 >
                   See it live
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

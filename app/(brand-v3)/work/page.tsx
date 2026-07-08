@@ -364,8 +364,8 @@ export default function WorkPage() {
               href={STRIPE_O1_REVIEW_STANDARD_LINK}
               className="rounded-md px-4 py-3 text-center text-sm font-medium transition-opacity hover:opacity-90"
               style={{
-                backgroundColor: "var(--bv3-wine)",
-                color: "var(--bv3-on-wine)",
+                backgroundColor: "var(--bv3-spine)",
+                color: "var(--bv3-on-spine)",
               }}
             >
               Standard — $2,500
@@ -559,8 +559,8 @@ export default function WorkPage() {
               href={STRIPE_O1_REVIEW_ESSENTIALS_LINK}
               className="rounded-md px-6 py-4 text-base font-medium transition-opacity hover:opacity-90"
               style={{
-                backgroundColor: "var(--bv3-wine)",
-                color: "var(--bv3-on-wine)",
+                backgroundColor: "var(--bv3-spine)",
+                color: "var(--bv3-on-spine)",
               }}
             >
               Book O1 Review Essentials — $1,500

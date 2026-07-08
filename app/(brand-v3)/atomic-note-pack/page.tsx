@@ -162,8 +162,8 @@ export default function AtomicNotePackPage() {
             href={GITHUB_ZIP}
             className="rounded-md px-6 py-4 text-base font-medium transition-opacity hover:opacity-90"
             style={{
-              backgroundColor: "var(--bv3-wine)",
-              color: "var(--bv3-on-wine)",
+              backgroundColor: "var(--bv3-spine)",
+              color: "var(--bv3-on-spine)",
             }}
           >
             Download free (ZIP)

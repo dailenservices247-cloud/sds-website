@@ -243,8 +243,8 @@ export default function CursorVariantHome() {
               href="/contact"
               className="group inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-all"
               style={{
-                background: "var(--bv3-wine)",
-                color: "var(--bv3-on-wine)",
+                background: "var(--bv3-spine)",
+                color: "var(--bv3-on-spine)",
               }}
             >
               Start a project
@@ -309,8 +309,8 @@ export default function CursorVariantHome() {
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-all"
                 style={{
-                  background: "var(--bv3-wine)",
-                  color: "var(--bv3-on-wine)",
+                  background: "var(--bv3-spine)",
+                  color: "var(--bv3-on-spine)",
                 }}
               >
                 Start a project

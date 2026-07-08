@@ -141,8 +141,8 @@ export default function AntiSlopPage() {
             href={STRIPE_ANTI_SLOP_SKILL_PACK_LINK}
             className="rounded-md px-6 py-4 text-base font-medium transition-opacity hover:opacity-90"
             style={{
-              backgroundColor: "var(--bv3-wine)",
-              color: "var(--bv3-on-wine)",
+              backgroundColor: "var(--bv3-spine)",
+              color: "var(--bv3-on-spine)",
             }}
           >
             Buy the Pack — $49
@@ -412,8 +412,8 @@ export default function AntiSlopPage() {
               href={STRIPE_ANTI_SLOP_SKILL_PACK_LINK}
               className="rounded-md px-6 py-4 text-base font-medium transition-opacity hover:opacity-90"
               style={{
-                backgroundColor: "var(--bv3-wine)",
-                color: "var(--bv3-on-wine)",
+                backgroundColor: "var(--bv3-spine)",
+                color: "var(--bv3-on-spine)",
               }}
             >
               Buy the Pack — $49

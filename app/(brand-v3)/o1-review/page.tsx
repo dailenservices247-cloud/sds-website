@@ -238,8 +238,8 @@ export default function O1ReviewPage() {
                 href={tier.stripeUrl}
                 className="mt-6 rounded-md px-4 py-3 text-center text-sm font-medium transition-opacity hover:opacity-90"
                 style={{
-                  backgroundColor: "var(--bv3-wine)",
-                  color: "var(--bv3-on-wine)",
+                  backgroundColor: "var(--bv3-spine)",
+                  color: "var(--bv3-on-spine)",
                 }}
               >
                 Book {tier.name}
@@ -459,8 +459,8 @@ export default function O1ReviewPage() {
               href={STRIPE_O1_REVIEW_STANDARD_LINK}
               className="rounded-md px-4 py-3 text-center text-sm font-medium transition-opacity hover:opacity-90"
               style={{
-                backgroundColor: "var(--bv3-wine)",
-                color: "var(--bv3-on-wine)",
+                backgroundColor: "var(--bv3-spine)",
+                color: "var(--bv3-on-spine)",
               }}
             >
               Standard — $2,500
