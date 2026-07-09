@@ -1,9 +1,12 @@
 // components/brand-v3/LuxShowpiece.tsx
-// Persistent right-side Lux stage (Dailen spec 2026-07-09):
-// the sneaky-dig plays ONCE on page load, holds its final resting-coil
-// frame, then the wordmark rises above the coil — and both stay for the
-// remainder of the visit. Fixed to the viewport's bottom-right; content
-// scrolls past underneath (pointer-events disabled).
+// The Lux stage (Dailen spec 2026-07-09): the sneaky-dig plays ONCE,
+// Lux settles into his coil, the wordmark rises above him, and both
+// persist for the rest of the visit.
+//
+// Desktop (lg+): fixed to the viewport's bottom-right — the "right
+// panel" that stays put while the page content scrolls past it.
+// Mobile (<lg): in-flow inside the hero — plays, settles, stays in
+// the hero as you scroll on.
 //
 // Video file: public/brand-v3/lux-sneaky-dig.mp4 is the WATERMARKED
 // placeholder render. Swap the file for the clean regen — no code change.
@@ -16,18 +19,29 @@ import { Nox } from "./Nox";
 export function LuxShowpiece() {
   const reduce = useReducedMotion();
   const [settled, setSettled] = useState(false);
+  const [still, setStill] = useState(false); // reduced-motion or autoplay-blocked
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Reveal the wordmark once playback ends (or immediately under
-  // reduced motion). The <video> has no loop attr, so the browser
-  // holds the final frame on its own.
   useEffect(() => {
     if (reduce) {
+      setStill(true);
       setSettled(true);
       return;
     }
     const v = videoRef.current;
     if (!v) return;
+
+    // Some browsers block autoplay even muted (e.g. Low Power Mode).
+    // If play() rejects, skip straight to the settled still — Lux must
+    // never be invisible.
+    const p = v.play();
+    if (p) {
+      p.catch(() => {
+        setStill(true);
+        setSettled(true);
+      });
+    }
+
     if (v.ended) {
       setSettled(true);
       return;
@@ -40,8 +54,7 @@ export function LuxShowpiece() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed right-0 z-20 hidden lg:block"
-      style={{ width: "min(44vw, 780px)", bottom: "42px" }}
+      className="pointer-events-none relative mx-auto w-full max-w-md pt-16 lg:fixed lg:bottom-[42px] lg:right-0 lg:z-20 lg:mx-0 lg:w-[min(44vw,780px)] lg:max-w-none lg:pt-0"
     >
       {/* Wordmark — rises above the settled coil */}
       <div
@@ -64,7 +77,7 @@ export function LuxShowpiece() {
         <span style={{ color: "var(--bv3-wine-text)" }}>SEGMENTED</span>
       </div>
 
-      {reduce ? (
+      {still ? (
         <Nox
           variant="resting"
           width={1000}

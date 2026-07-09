@@ -197,11 +197,6 @@ export default function CursorVariantHome() {
 
   return (
     <div className="relative">
-      {/* Lux stage — the sneaky-dig plays once, settles bottom-right, and
-          the wordmark rises above the coil; both persist (Dailen 2026-07-09).
-          (The 2026-07-08 full-bleed cosmos-dig backdrop was unmounted for
-          drowning the Brand House palette; CosmosVideo remains banked.) */}
-      <LuxShowpiece />
 
       {/* ===================================================================
           File-tree sidebar nav — dev-tool signature.
@@ -338,6 +333,10 @@ export default function CursorVariantHome() {
             </motion.div>
           </motion.div>
 
+          {/* Lux stage — sneaky-dig plays once, settles, wordmark persists.
+              In-flow here on mobile; lg:fixed bottom-right on desktop
+              (Dailen 2026-07-09). CosmosVideo scroll-scrub remains banked. */}
+          <LuxShowpiece />
         </section>
 
         {/* =================================================================
