@@ -264,12 +264,12 @@ export default function CursorVariantHome() {
             ================================================================= */}
         <section
           aria-label="Hero"
-          className="relative pb-20 lg:left-1/2 lg:-ml-[50vw] lg:w-screen lg:overflow-hidden lg:pb-0"
+          className="relative pb-20 lg:left-1/2 lg:-ml-[50vw] lg:-mt-20 lg:w-screen lg:overflow-hidden lg:pb-0"
         >
           {/* Full-bleed Lux hero footage (lg+) — Ferdy-style: video is the
               hero's atmosphere, headline overlays the calm left third. */}
           <LuxShowpiece variant="heroBg" />
-          <div className="relative z-10 lg:mx-auto lg:flex lg:min-h-[86vh] lg:max-w-7xl lg:flex-col lg:justify-center lg:px-10">
+          <div className="relative z-10 lg:mx-auto lg:flex lg:min-h-[calc(100vh-8rem)] lg:max-w-7xl lg:flex-col lg:justify-center lg:px-10">
           <motion.div
             variants={stagger}
             initial="hidden"

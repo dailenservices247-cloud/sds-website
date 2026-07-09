@@ -122,8 +122,8 @@ export function LuxShowpiece({
           }}
         />
         {/* Wordmark above the lower-right coil */}
-        <div className="absolute bottom-[38%] right-[6%] w-[30%]">
-          <div style={{ fontSize: "clamp(1.4rem, 2.2vw, 2.4rem)" }}>
+        <div className="absolute bottom-[44%] right-[5%] w-[38%]">
+          <div style={{ fontSize: "clamp(2rem, 3.6vw, 3.8rem)" }}>
             <Wordmark settled={settled} />
           </div>
         </div>
