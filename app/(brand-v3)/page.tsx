@@ -22,6 +22,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
 import { Nox } from "@/components/brand-v3/Nox";
+import { LuxShowpiece } from "@/components/brand-v3/LuxShowpiece";
 import { projectsByStatus } from "@/lib/content/portfolio";
 import { services } from "@/lib/content/services";
 import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
@@ -196,11 +197,11 @@ export default function CursorVariantHome() {
 
   return (
     <div className="relative">
-      {/* Showpiece backdrop UNMOUNTED 2026-07-08 (Dailen): the May cosmos-dig
-          video is a space scene — blues/blacks drowned the Brand House matte
-          ground. Remounts when the brand-native motion visual (matte gray +
-          petrol/gold/wine, generating via Higgsfield) is approved.
-          <CosmosVideo /> */}
+      {/* Lux stage — the sneaky-dig plays once, settles bottom-right, and
+          the wordmark rises above the coil; both persist (Dailen 2026-07-09).
+          (The 2026-07-08 full-bleed cosmos-dig backdrop was unmounted for
+          drowning the Brand House palette; CosmosVideo remains banked.) */}
+      <LuxShowpiece />
 
       {/* ===================================================================
           File-tree sidebar nav — dev-tool signature.
@@ -337,100 +338,6 @@ export default function CursorVariantHome() {
             </motion.div>
           </motion.div>
 
-          {/* Right column — inline working-Nox + terminal status block */}
-          <motion.aside
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
-            className="lg:col-span-5"
-          >
-            <div
-              className="rounded-lg border p-4"
-              style={{
-                background: "var(--bv3-shell-deep)",
-                borderColor: "var(--bv3-border-subtle)",
-              }}
-            >
-              {/* Terminal title bar */}
-              <div
-                className="mb-3 flex items-center justify-between border-b pb-3"
-                style={{ borderColor: "var(--bv3-border-subtle)" }}
-              >
-                <div className="flex items-center gap-2">
-                  <span
-                    className="h-2.5 w-2.5 rounded-full"
-                    style={{ background: "var(--bv3-wine)" }}
-                  />
-                  <span
-                    className="h-2.5 w-2.5 rounded-full"
-                    style={{ background: "var(--bv3-wine)" }}
-                  />
-                  <span
-                    className="h-2.5 w-2.5 rounded-full"
-                    style={{ background: "var(--bv3-spine-bright)" }}
-                  />
-                </div>
-                <span
-                  className="bv3-mono"
-                  style={{ color: "var(--bv3-ink-dim)" }}
-                >
-                  lux.studio.live
-                </span>
-              </div>
-
-              {/* Lux live feed — cosmos-dig loop (Kling 3.0, locked mascot).
-                  Poster = working pose so first paint is instant; video streams in.
-                  prefers-reduced-motion users keep the still via the media query
-                  in globals.css (.bv3-hero-video). */}
-              <div
-                className="relative mb-3 overflow-hidden rounded-md"
-                style={{ background: "var(--bv3-shell-deep)" }}
-              >
-                <video
-                  className="bv3-hero-video block h-auto w-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  poster="/brand-v3/nox-pose-WORKING-LOCKED.png"
-                  aria-label="Lux — Synapse Dynamics mascot, moving through a cosmos scene"
-                >
-                  <source src="/brand-v3/lux-cosmos-dig.mp4" type="video/mp4" />
-                </video>
-                {/* Reduced-motion fallback still */}
-                <Nox
-                  variant="working"
-                  width={1264}
-                  height={848}
-                  className="bv3-hero-video-still block h-auto w-full object-contain"
-                  alt="Lux — working pose"
-                />
-              </div>
-
-              {/* Status lines */}
-              <div className="space-y-1">
-                <div className="flex items-baseline justify-between bv3-mono text-xs">
-                  <span style={{ color: STATE_COLOR.thinking }}>[THINKING]</span>
-                  <span style={{ color: "var(--bv3-ink-muted)" }}>
-                    architecture decisions
-                  </span>
-                </div>
-                <div className="flex items-baseline justify-between bv3-mono text-xs">
-                  <span style={{ color: STATE_COLOR.read }}>[READ]</span>
-                  <span style={{ color: "var(--bv3-ink-muted)" }}>
-                    PRODUCT.md · DESIGN.md
-                  </span>
-                </div>
-                <div className="flex items-baseline justify-between bv3-mono text-xs">
-                  <span style={{ color: STATE_COLOR.edit }}>[EDIT]</span>
-                  <span style={{ color: "var(--bv3-ink-muted)" }}>
-                    app/(brand-v3)
-                  </span>
-                </div>
-              </div>
-            </div>
-          </motion.aside>
         </section>
 
         {/* =================================================================
