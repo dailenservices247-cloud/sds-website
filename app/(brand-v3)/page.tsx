@@ -262,7 +262,14 @@ export default function CursorVariantHome() {
             1. HERO — asymmetric command-palette feel.
             Big display + inline working-Nox + terminal prompt on right
             ================================================================= */}
-        <section className="grid grid-cols-1 gap-12 pb-20 lg:grid-cols-12 lg:gap-8" aria-label="Hero">
+        <section
+          aria-label="Hero"
+          className="relative pb-20 lg:left-1/2 lg:-ml-[50vw] lg:w-screen lg:overflow-hidden lg:pb-0"
+        >
+          {/* Full-bleed Lux hero footage (lg+) — Ferdy-style: video is the
+              hero's atmosphere, headline overlays the calm left third. */}
+          <LuxShowpiece variant="heroBg" />
+          <div className="relative z-10 lg:mx-auto lg:flex lg:min-h-[86vh] lg:max-w-7xl lg:flex-col lg:justify-center lg:px-10">
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -333,10 +340,9 @@ export default function CursorVariantHome() {
             </motion.div>
           </motion.div>
 
-          {/* Lux stage — sneaky-dig plays once, settles, wordmark persists.
-              In-flow here on mobile; lg:fixed bottom-right on desktop
-              (Dailen 2026-07-09). CosmosVideo scroll-scrub remains banked. */}
-          <LuxShowpiece />
+          {/* Mobile Lux stage — in-flow: plays, settles, wordmark persists. */}
+          <LuxShowpiece variant="inline" />
+          </div>
         </section>
 
         {/* =================================================================
