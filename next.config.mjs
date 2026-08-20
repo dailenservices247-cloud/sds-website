@@ -21,6 +21,20 @@ const nextConfig = {
         destination: "/services",
         permanent: true,
       },
+      // /lab and /lab/scrlpets duplicated /portfolio and /portfolio/scrlpets —
+      // "live products + active builds + internal infrastructure" is the
+      // portfolio's own description. Merged 2026-08-20; both had inbound links,
+      // which were repointed before removal.
+      {
+        source: "/lab/scrlpets",
+        destination: "/portfolio/scrlpets",
+        permanent: true,
+      },
+      {
+        source: "/lab",
+        destination: "/portfolio",
+        permanent: true,
+      },
     ];
   },
 };

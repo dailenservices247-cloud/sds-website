@@ -10,7 +10,7 @@ import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
 
 const navLinks = [
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/lab", label: "Lab" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/matchmaker", label: "Matchmaker" },
   { href: "/foundation", label: "Foundation" },
   { href: "/services", label: "Services" },

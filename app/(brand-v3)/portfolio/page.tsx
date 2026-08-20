@@ -75,15 +75,15 @@ export default function PortfolioIndex() {
                       className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 bv3-mono text-[10px]"
                       style={{
                         backgroundColor: isLive
-                          ? "rgba(34, 197, 94, 0.15)"
+                          ? "rgba(42, 96, 85, 0.22)"
                           : isParked
                           ? "rgba(148, 163, 160, 0.12)"
                           : "rgba(45, 143, 80, 0.12)",
                         color: isLive
-                          ? "#34d880"
+                          ? "var(--bv3-spine-text)"
                           : isParked
                           ? "#94a3a0"
-                          : "#5fcc8a",
+                          : "var(--bv3-wine-text)",
                       }}
                     >
                       <span
@@ -92,10 +92,10 @@ export default function PortfolioIndex() {
                         }`}
                         style={{
                           backgroundColor: isLive
-                            ? "#22c55e"
+                            ? "var(--bv3-spine-bright)"
                             : isParked
                             ? "#5f6b66"
-                            : "#2d8f50",
+                            : "var(--bv3-wine-text)",
                         }}
                         aria-hidden="true"
                       />

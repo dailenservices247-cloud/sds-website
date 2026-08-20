@@ -25,7 +25,7 @@ const footerGroups = [
       { href: "/portfolio", label: "portfolio" },
       { href: "/foundation", label: "foundation" },
       { href: "/matchmaker", label: "matchmaker" },
-      { href: "/lab", label: "the-lab" },
+      { href: "/portfolio", label: "the-portfolio" },
       { href: SKOOL_SYNAPSE_STUDIO, label: "community ↗" },
     ],
   },

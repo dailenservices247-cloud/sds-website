@@ -62,12 +62,18 @@ export default function ProjectPage({ params }: PageProps) {
             <span
               className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 bv3-mono text-xs"
               style={{
+                // Brand-v3 tokens. These were rgba(34,197,94)/#34d880/#5fcc8a —
+                // the brand-v2 emerald family, banned by name in DESIGN.md.
                 backgroundColor: isLive
-                  ? "rgba(34, 197, 94, 0.15)"
+                  ? "rgba(42, 96, 85, 0.22)"
                   : isParked
-                  ? "rgba(148, 163, 160, 0.12)"
-                  : "rgba(45, 143, 80, 0.12)",
-                color: isLive ? "#34d880" : isParked ? "#94a3a0" : "#5fcc8a",
+                  ? "rgba(155, 155, 150, 0.14)"
+                  : "rgba(126, 48, 58, 0.18)",
+                color: isLive
+                  ? "var(--bv3-spine-text)"
+                  : isParked
+                  ? "var(--bv3-ink-muted)"
+                  : "var(--bv3-wine-text)",
               }}
             >
               <span
@@ -75,7 +81,11 @@ export default function ProjectPage({ params }: PageProps) {
                   isLive ? "live-pulse" : ""
                 }`}
                 style={{
-                  backgroundColor: isLive ? "#22c55e" : isParked ? "#5f6b66" : "#2d8f50",
+                  backgroundColor: isLive
+                    ? "var(--bv3-spine-bright)"
+                    : isParked
+                    ? "var(--bv3-ink-dim)"
+                    : "var(--bv3-wine-text)",
                 }}
                 aria-hidden="true"
               />
@@ -125,12 +135,21 @@ export default function ProjectPage({ params }: PageProps) {
           {project.blurb}
         </p>
 
+        {/* The premiere page wears the PRODUCT's colour, not the studio's —
+            Dailen 2026-08-20: "completely decked out in that project's theme."
+            Falls back to the SDS action token when a product has no accent
+            recorded, rather than inventing a palette for it. */}
         {project.liveUrl && (
           <a
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent text-accent-contrast px-7 py-3.5 font-medium hover:bg-accent-bright transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="mt-8 inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-medium transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2"
+            style={{
+              backgroundColor: project.accent ?? "var(--bv3-spine)",
+              color: project.accent ? "#1b1c1e" : "var(--bv3-on-spine)",
+              outlineColor: project.accent ?? "var(--bv3-spine)",
+            }}
           >
             Visit {project.name}
             <span aria-hidden="true">↗</span>

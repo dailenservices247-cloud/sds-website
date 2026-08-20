@@ -470,7 +470,7 @@ export default function CursorVariantHome() {
           </motion.ol>
 
           <Link
-            href="/lab/scrlpets"
+            href="/portfolio/scrlpets"
             className="bv3-mono mt-6 inline-flex items-center gap-2 text-sm"
             style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.08em" }}
           >
