@@ -20,9 +20,10 @@
 import { Canvas } from "@react-three/fiber";
 import { useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Cosmos } from "./Cosmos";
-import { WormPlaceholder } from "./WormPlaceholder";
+import { Helix } from "./Helix";
+import { usePathname as usePathnameForPhase } from "next/navigation";
 
 export function Stage() {
   const reducedMotion = useReducedMotion();
@@ -44,6 +45,13 @@ export function Stage() {
   // The wordmark lockup, however, belongs to the HOME hero only — without this gate
   // it renders fixed-position over every route.
   const isHome = usePathname() === "/";
+
+  // Per-route phase offset — the same creature on the same path, caught at a
+  // different moment. Deterministic from the pathname so a route always looks
+  // like itself.
+  const pathForPhase = usePathnameForPhase() ?? "/";
+  const routePhase =
+    (Array.from(pathForPhase).reduce((a, c) => a + c.charCodeAt(0), 0) % 100) / 100;
   const [scrollProgress, setScrollProgress] = useState(0);
   // Motion-kick intensity 0..1+. Spikes when scroll stops after motion,
   // then exponentially decays to 0 over ~2.5s. The Cosmos shader
@@ -51,7 +59,6 @@ export function Stage() {
   // so the galaxy briefly speeds up when scroll halts — a visible
   // "wake up" cue instead of silently transitioning to slow drift.
   const [motionKick, setMotionKick] = useState(0);
-  const lastBoundaryLogRef = useRef(0);
 
   // Read scroll position + velocity every rAF. When scroll velocity
   // crosses from active (>threshold) to halted (≈0), fire a kick.
@@ -98,16 +105,6 @@ export function Stage() {
     return () => cancelAnimationFrame(raf);
   }, [reducedMotion]);
 
-  // Throttled no-op. The worm emits boundary-hit when its head reaches the
-  // content edge; nothing consumes it yet. Kept as the attach point for the
-  // personality-moment state machine rather than deleted, but it must not
-  // log — this runs on every brand-v3 route.
-  const handleBoundaryHit = () => {
-    const now = performance.now();
-    if (now - lastBoundaryLogRef.current > 2000) {
-      lastBoundaryLogRef.current = now;
-    }
-  };
 
   // Hero wordmark fade — visible at scroll=0, fully gone by 12% scroll.
   // Translates up + fades so the worm has the canvas to itself in dig mode.
@@ -219,13 +216,32 @@ export function Stage() {
           />
         </Suspense>
 
-        {animate ? (
-          <WormPlaceholder
-            scrollProgress={scrollProgress}
-            onBoundaryHit={handleBoundaryHit}
+        {/* Helix, travelling. Each route starts him at a different point on the
+            same dig path, so every page is a different moment of one journey
+            rather than the same loop restarted. */}
+        <Suspense fallback={null}>
+          <Helix
+            scrollProgress={animate ? scrollProgress : 0.18}
+            motionKick={animate ? motionKick : 0}
+            phase={routePhase}
           />
-        ) : null}
+        </Suspense>
       </Canvas>
+
+      {/* Left-third legibility gradient — but only where it is needed.
+          The hero overlays copy on the left, so it needs the scrim. Past the
+          hero the content lives in floating panels that carry their own glass,
+          and holding this gradient at full strength just greys out the cosmos.
+          So it FLOWS OUT with scroll: full at the top, gone by 18%. */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(58,59,61,0.92) 0%, rgba(58,59,61,0.72) 26%, rgba(58,59,61,0.32) 52%, rgba(58,59,61,0.06) 76%, rgba(58,59,61,0) 100%)",
+          opacity: reducedMotion ? 1 : Math.max(0, 1 - scrollProgress / 0.18),
+          transition: "opacity 120ms linear",
+        }}
+      />
 
       {/* Inner-route calm scrim. DESIGN.md: "Calm before bold — quiet sections set
           up loud moments. Without quiet, loud doesn't land." The cosmos is the loud

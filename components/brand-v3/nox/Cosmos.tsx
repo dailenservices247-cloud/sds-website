@@ -197,7 +197,7 @@ void main() {
   float dustNoise = hash(floor(vec2(uv.x * 12.0, uv.y * 4.0 - uTime * 0.8)));
   dustMask *= smoothstep(0.55, 0.9, dustNoise);
   vec3 dustColor = mix(PETROL_BR, WINE_BR, hash(floor(uv * 6.0)));
-  col += dustColor * dustMask * 0.22;
+  col += dustColor * dustMask * 0.30;
 
   // ============================================================
   // SECONDARY DEEP CLOUDS — large, slow-drifting wine + petrol
@@ -213,14 +213,14 @@ void main() {
     0.65 - uScroll * 0.2 + cos(uTime * 0.09) * 0.05
   );
   float cloudField = 1.0 - smoothstep(0.0, 0.55, length(uv - cloudCenter));
-  col = mix(col, WINE, cloudField * 0.22);
+  col = mix(col, WINE, cloudField * 0.30);
 
   vec2 cloud2Center = vec2(
     0.08 + cos(uTime * 0.05) * 0.05,
     0.25 + uScroll * 0.15 + sin(uTime * 0.08) * 0.06
   );
   float cloud2Field = 1.0 - smoothstep(0.0, 0.45, length(uv - cloud2Center));
-  col = mix(col, PETROL, cloud2Field * 0.30);
+  col = mix(col, PETROL, cloud2Field * 0.38);
 
   // ============================================================
   // VIGNETTE + final shell-grade tint.
@@ -238,7 +238,14 @@ void main() {
   // 0.5..1.0 (where worm + wordmark live) is full cosmos.
   // ============================================================
   float readability = smoothstep(0.35, 0.55, uv.x);
-  col = mix(SHELL, col, mix(0.18, 1.0, readability));
+  float readMix = mix(0.18, 1.0, readability);
+  // RELEASE the left-side dim past the hero. This clamp was written when copy
+  // sat on the left at every scroll position; content now floats in centred
+  // glass panels that carry their own legibility, so holding the left third at
+  // 18% just flattens the region the reader is looking THROUGH. Full strength
+  // at the hero, released by ~25% scroll.
+  readMix = mix(readMix, 1.0, smoothstep(0.05, 0.25, uScroll));
+  col = mix(SHELL, col, readMix);
 
   gl_FragColor = vec4(col, 1.0);
 }

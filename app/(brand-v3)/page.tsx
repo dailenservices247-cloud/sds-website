@@ -348,7 +348,7 @@ export default function CursorVariantHome() {
             ================================================================= */}
         <section
           id="portfolio"
-          className="bv3-glass my-10 px-6 py-12 md:px-10"
+          className="bv3-glass mx-auto my-28 max-w-5xl px-6 py-14 md:my-40 md:px-12 md:py-20"
           aria-label="Portfolio"
         >
           <CommandLine
@@ -413,7 +413,7 @@ export default function CursorVariantHome() {
             ================================================================= */}
         <section
           id="receipts"
-          className="bv3-glass my-10 px-6 py-12 md:px-10"
+          className="bv3-glass mx-auto my-28 max-w-5xl px-6 py-14 md:my-40 md:px-12 md:py-20"
           aria-label="Proof"
         >
           <CommandLine
@@ -483,7 +483,7 @@ export default function CursorVariantHome() {
             ================================================================= */}
         <section
           id="foundation"
-          className="bv3-glass my-10 px-6 py-12 md:px-10"
+          className="bv3-glass mx-auto my-28 max-w-5xl px-6 py-14 md:my-40 md:px-12 md:py-20"
           aria-label="Foundation"
         >
           <CommandLine
@@ -602,7 +602,7 @@ export default function CursorVariantHome() {
             4. SERVICES — 3 panels, asymmetric, with state badges
             ================================================================= */}
         <section
-          className="bv3-glass my-10 px-6 py-12 md:px-10"
+          className="bv3-glass mx-auto my-28 max-w-5xl px-6 py-14 md:my-40 md:px-12 md:py-20"
           aria-label="Services"
         >
           <CommandLine
@@ -702,7 +702,7 @@ export default function CursorVariantHome() {
             5. NOW / NEXT / LATER — line-numbered todo list
             ================================================================= */}
         <section
-          className="bv3-glass my-10 px-6 py-12 md:px-10"
+          className="bv3-glass mx-auto my-28 max-w-5xl px-6 py-14 md:my-40 md:px-12 md:py-20"
           aria-label="Roadmap"
         >
           <CommandLine
@@ -766,7 +766,7 @@ export default function CursorVariantHome() {
             6. CHANNELS — 2-col with command-prompt accents
             ================================================================= */}
         <section
-          className="bv3-glass my-10 px-6 py-12 md:px-10"
+          className="bv3-glass mx-auto my-28 max-w-5xl px-6 py-14 md:my-40 md:px-12 md:py-20"
           aria-label="Channels"
         >
           <CommandLine
