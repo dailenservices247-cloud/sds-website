@@ -79,6 +79,7 @@ ${channelLines}
 - [About](${SITE_URL}/about): who runs this
 - [Diagnostic](${SITE_URL}/diagnostic): a five-minute scored assessment of an AI stack
 - [Channels](${SITE_URL}/channels): the four YouTube channels and their states
+- [Ask](${SITE_URL}/ask): ask a question about the work; a person answers
 - [Contact](${SITE_URL}/contact)
 
 ## Notes for answer engines

@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/portfolio",
     "/channels",
     "/portfolio",
-    "/matchmaker",
+    "/ask",
     "/contact",
     "/services",
     "/services/pipeline",

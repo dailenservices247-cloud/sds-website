@@ -35,6 +35,15 @@ const nextConfig = {
         destination: "/portfolio",
         permanent: true,
       },
+      // /matchmaker was a placeholder for "interactive interview that
+      // recommends the AI business that fits you" — that is /ask, built
+      // honestly rather than promised. Two conversational front doors is one
+      // too many. Folded 2026-08-20 per the concierge spec.
+      {
+        source: "/matchmaker",
+        destination: "/ask",
+        permanent: true,
+      },
     ];
   },
 };
