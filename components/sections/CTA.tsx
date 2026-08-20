@@ -17,7 +17,7 @@ export function CTA({
   primaryLabel = "Start a project",
   primaryHref = "/contact",
   secondaryLabel = "See how we work",
-  secondaryHref = "/how-it-works",
+  secondaryHref = "/services",
 }: CTAProps) {
   return (
     <section className="relative overflow-hidden border-y border-[color:var(--border-subtle)] bg-bg-surface section-y">
