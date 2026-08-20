@@ -49,7 +49,6 @@ export default function ApotheosisProPage() {
     <article>
       {/* Hero — same emerald gradient pattern as /foundation, but framed as the destination */}
       <section className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 -z-10 gradient-blaze" aria-hidden="true" />
         <div
           className="absolute inset-0 -z-10 opacity-[0.06] mix-blend-overlay"
           style={{
@@ -64,11 +63,11 @@ export default function ApotheosisProPage() {
             className="mb-8 md:mb-10 text-white"
             style={{ fontSize: "clamp(1.25rem, 2vw, 1.75rem)" }}
           />
-          <p className="mono-label mb-6" style={{ color: "rgba(255,255,255,0.85)" }}>
+          <p className="bv3-mono mb-6" style={{ color: "rgba(255,255,255,0.85)" }}>
             Pre-launch · Target August 2026
           </p>
           <h1
-            className="display text-white text-balance"
+            className="bv3-display text-white text-balance"
             style={{ fontSize: "clamp(3rem, 8vw, 6rem)", maxWidth: "16ch" }}
           >
             Apotheosis Pro.
@@ -94,7 +93,7 @@ export default function ApotheosisProPage() {
       {PRE_LAUNCH && (
         <section className="container-x py-12 max-w-3xl">
           <div className="rounded-xl border-2 border-accent bg-bg-surface p-6 md:p-8">
-            <p className="mono-label mb-2">Launching August 2026</p>
+            <p className="bv3-mono mb-2">Launching August 2026</p>
             <p className="text-base text-ink-primary leading-relaxed">
               Apotheosis Pro is the productized version of the SDS internal stack. It ships when
               the platform is stable enough that one operator can run it without hand-holding —
@@ -119,8 +118,8 @@ export default function ApotheosisProPage() {
       <section className="relative overflow-hidden">
         <Creature slug="planaria" position="top-right" opacity={0.10} tint="muted" />
         <div className="container-x py-20 md:py-28 max-w-3xl relative z-10">
-          <p className="mono-label mb-4">What&rsquo;s coming</p>
-          <h2 className="display-section text-3xl md:text-5xl text-ink-primary mb-10 text-balance">
+          <p className="bv3-mono mb-4">What&rsquo;s coming</p>
+          <h2 className="bv3-display-section text-3xl md:text-5xl text-ink-primary mb-10 text-balance">
             What Apotheosis Pro actually is.
           </h2>
           <ul role="list" className="space-y-6">
@@ -156,7 +155,7 @@ export default function ApotheosisProPage() {
             ].map((item) => (
               <li key={item.label} className="flex gap-5 border-l-2 border-accent pl-6">
                 <div>
-                  <p className="display-section text-xl md:text-2xl text-ink-primary mb-2">
+                  <p className="bv3-display-section text-xl md:text-2xl text-ink-primary mb-2">
                     {item.label}
                   </p>
                   <p
@@ -173,9 +172,9 @@ export default function ApotheosisProPage() {
       {/* Pricing — the anchor section */}
       <section className="container-x py-16 md:py-20 max-w-3xl">
         <div className="rounded-2xl bg-bg-dark p-8 md:p-12 border border-border-subtle">
-          <p className="mono-label mb-4 text-accent-bright">Pricing — locked for Foundation Members</p>
+          <p className="bv3-mono mb-4 text-accent-bright">Pricing — locked for Foundation Members</p>
           <h2
-            className="display text-white text-balance mb-6"
+            className="bv3-display text-white text-balance mb-6"
             style={{ fontSize: "clamp(2.25rem, 5vw, 3.5rem)" }}
           >
             Two prices. One product.
@@ -187,9 +186,9 @@ export default function ApotheosisProPage() {
           </p>
           <div className="grid md:grid-cols-2 gap-5">
             <div className="rounded-xl border-2 border-accent-bright bg-bg-surface p-6 md:p-7">
-              <p className="mono-label mb-3 text-accent-bright">Foundation members</p>
+              <p className="bv3-mono mb-3 text-accent-bright">Foundation members</p>
               <p
-                className="display text-ink-primary mb-3"
+                className="bv3-display text-ink-primary mb-3"
                 style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)" }}
               >
                 $19/mo
@@ -200,9 +199,9 @@ export default function ApotheosisProPage() {
               </p>
             </div>
             <div className="rounded-xl border border-border-subtle bg-bg-surface p-6 md:p-7">
-              <p className="mono-label mb-3">Post-launch subscribers</p>
+              <p className="bv3-mono mb-3">Post-launch subscribers</p>
               <p
-                className="display text-ink-primary mb-3"
+                className="bv3-display text-ink-primary mb-3"
                 style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)" }}
               >
                 {POST_LAUNCH_PRICE_LABEL}
@@ -223,8 +222,8 @@ export default function ApotheosisProPage() {
 
       {/* Auto-conversion explained */}
       <section className="container-x py-16 md:py-20 max-w-3xl">
-        <p className="mono-label mb-4">Auto-conversion</p>
-        <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-6">
+        <p className="bv3-mono mb-4">Auto-conversion</p>
+        <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary mb-6">
           How $19 Apotheosis Pro actually happens.
         </h2>
         <div className="space-y-5 text-ink-muted leading-relaxed text-pretty text-base md:text-lg">
@@ -252,7 +251,7 @@ export default function ApotheosisProPage() {
 
       {/* What this isn't — anti-list */}
       <section className="container-x py-16 md:py-20 max-w-3xl">
-        <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-8">
+        <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary mb-8">
           What Apotheosis Pro isn&rsquo;t.
         </h2>
         <ul role="list" className="space-y-5 text-base md:text-lg text-ink-muted leading-relaxed">
@@ -285,7 +284,7 @@ export default function ApotheosisProPage() {
       {/* CTA */}
       <section className="container-x pb-32 max-w-3xl">
         <div className="rounded-2xl bg-bg-surface border border-border-subtle p-8 md:p-12">
-          <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-4 text-balance">
+          <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary mb-4 text-balance">
             {PRE_LAUNCH
               ? "Lock $19/mo before Apotheosis Pro launches."
               : "Subscribe to Apotheosis Pro."}

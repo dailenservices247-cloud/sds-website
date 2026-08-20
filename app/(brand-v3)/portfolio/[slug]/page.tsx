@@ -43,7 +43,7 @@ export default function ProjectPage({ params }: PageProps) {
       <div className="container-x pt-12 pb-2">
         <Link
           href="/portfolio"
-          className="mono-label hover:text-accent-ink transition-colors inline-flex items-center gap-1"
+          className="bv3-mono hover:text-accent-ink transition-colors inline-flex items-center gap-1"
         >
           <span aria-hidden="true">←</span> Portfolio
         </Link>
@@ -60,7 +60,7 @@ export default function ProjectPage({ params }: PageProps) {
         <div className="container-x pt-8 md:pt-12 pb-16 md:pb-20 relative z-10 max-w-4xl">
           <div className="flex flex-wrap items-center gap-3 mb-6">
             <span
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 mono-label text-xs"
+              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 bv3-mono text-xs"
               style={{
                 backgroundColor: isLive
                   ? "rgba(34, 197, 94, 0.15)"
@@ -81,13 +81,13 @@ export default function ProjectPage({ params }: PageProps) {
               />
               <span>{project.status}</span>
             </span>
-            <span className="mono-label text-xs">
+            <span className="bv3-mono text-xs">
               Layer {project.layer} · {project.parent}
             </span>
           </div>
 
           <h1
-            className="display text-ink-primary text-balance"
+            className="bv3-display text-ink-primary text-balance"
             style={{ fontSize: "clamp(2.75rem, 7vw, 5rem)", maxWidth: "18ch" }}
           >
             {project.name}
@@ -120,7 +120,7 @@ export default function ProjectPage({ params }: PageProps) {
 
       {/* What it is */}
       <section className="container-x py-16 md:py-20 max-w-3xl">
-        <p className="mono-label mb-4">What it is</p>
+        <p className="bv3-mono mb-4">What it is</p>
         <p className="text-lg md:text-xl text-ink-muted leading-relaxed text-pretty">
           {project.blurb}
         </p>
@@ -139,7 +139,7 @@ export default function ProjectPage({ params }: PageProps) {
 
         {project.parkedUntil && (
           <div className="mt-10 rounded-xl border border-border-subtle bg-bg-surface p-6">
-            <p className="mono-label mb-2">Unblocks when</p>
+            <p className="bv3-mono mb-2">Unblocks when</p>
             <p className="text-base text-ink-primary leading-relaxed">
               {project.parkedUntil}
             </p>
@@ -150,13 +150,13 @@ export default function ProjectPage({ params }: PageProps) {
       {/* Mesh connections */}
       {(project.consumesFromMesh.length > 0 || project.contributesToMesh.length > 0) && (
         <section className="container-x py-16 md:py-20 max-w-4xl border-t border-border-subtle">
-          <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-10">
+          <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary mb-10">
             Mesh connections
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {project.consumesFromMesh.length > 0 && (
               <div>
-                <p className="mono-label mb-4">Consumes from the mesh</p>
+                <p className="bv3-mono mb-4">Consumes from the mesh</p>
                 <ul role="list" className="space-y-4">
                   {project.consumesFromMesh.map((conn) => (
                     <li key={conn.target} className="border-l-2 border-accent pl-4">
@@ -169,7 +169,7 @@ export default function ProjectPage({ params }: PageProps) {
             )}
             {project.contributesToMesh.length > 0 && (
               <div>
-                <p className="mono-label mb-4">Contributes to the mesh</p>
+                <p className="bv3-mono mb-4">Contributes to the mesh</p>
                 <ul role="list" className="space-y-4">
                   {project.contributesToMesh.map((conn) => (
                     <li key={conn.target} className="border-l-2 border-accent pl-4">
@@ -187,7 +187,7 @@ export default function ProjectPage({ params }: PageProps) {
       {/* Open questions */}
       {project.openQuestions.length > 0 && (
         <section className="container-x py-16 md:py-20 max-w-3xl border-t border-border-subtle">
-          <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-4">
+          <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary mb-4">
             Open questions
           </h2>
           <p className="text-base text-ink-muted mb-8 leading-relaxed">
@@ -199,7 +199,7 @@ export default function ProjectPage({ params }: PageProps) {
                 key={i}
                 className="flex gap-4 rounded-xl bg-bg-surface border border-border-subtle p-5"
               >
-                <span className="mono-label text-xs flex-shrink-0 mt-1">
+                <span className="bv3-mono text-xs flex-shrink-0 mt-1">
                   Q{String(i + 1).padStart(2, "0")}
                 </span>
                 <p className="text-base text-ink-primary leading-relaxed">{q}</p>
@@ -213,8 +213,8 @@ export default function ProjectPage({ params }: PageProps) {
       {project.notifyMeEnabled && (
         <section className="container-x pb-32 max-w-3xl border-t border-border-subtle pt-16">
           <div className="rounded-xl bg-bg-surface border border-border-subtle p-8 md:p-10">
-            <p className="mono-label mb-4">Stay close</p>
-            <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-4 text-balance">
+            <p className="bv3-mono mb-4">Stay close</p>
+            <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary mb-4 text-balance">
               {project.status === "PARKED"
                 ? "Get notified when it unblocks."
                 : `Get early access to ${project.name}.`}

@@ -76,9 +76,9 @@ export default function LabIndex() {
             className="mb-8 md:mb-10 text-ink-primary"
             style={{ fontSize: "clamp(1.25rem, 2vw, 1.75rem)" }}
           />
-          <p className="mono-label mb-6">The Lab</p>
+          <p className="bv3-mono mb-6">The Lab</p>
           <h1
-            className="display text-ink-primary text-balance"
+            className="bv3-display text-ink-primary text-balance"
             style={{ fontSize: "clamp(2.75rem, 7vw, 5rem)", maxWidth: "16ch" }}
           >
             What&rsquo;s live. What&rsquo;s in motion.
@@ -93,8 +93,8 @@ export default function LabIndex() {
       {/* Live products */}
       <section className="container-x py-20 md:py-28">
         <div className="mb-12">
-          <p className="mono-label mb-3">Live products</p>
-          <h2 className="display-section text-3xl md:text-5xl text-ink-primary text-balance max-w-2xl">
+          <p className="bv3-mono mb-3">Live products</p>
+          <h2 className="bv3-display-section text-3xl md:text-5xl text-ink-primary text-balance max-w-2xl">
             Shipping today.
           </h2>
         </div>
@@ -117,13 +117,13 @@ export default function LabIndex() {
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
                     <span
-                      className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 mono-label text-[10px]"
+                      className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 bv3-mono text-[10px]"
                       style={{ backgroundColor: "rgba(34, 197, 94, 0.15)", color: "#34d880" }}
                     >
                       <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent live-pulse" aria-hidden="true" />
                       LIVE
                     </span>
-                    <span className="mono-label text-[10px]">{p.audience}</span>
+                    <span className="bv3-mono text-[10px]">{p.audience}</span>
                   </div>
                   <h3 className="font-bricolage font-bold text-2xl md:text-3xl text-ink-primary mb-2" style={{ letterSpacing: "-0.02em" }}>
                     {p.name}
@@ -143,8 +143,8 @@ export default function LabIndex() {
       {/* Active builds */}
       <section className="container-x py-20 md:py-28 border-t border-border-subtle">
         <div className="mb-12">
-          <p className="mono-label mb-3">Active builds</p>
-          <h2 className="display-section text-3xl md:text-5xl text-ink-primary text-balance max-w-2xl">
+          <p className="bv3-mono mb-3">Active builds</p>
+          <h2 className="bv3-display-section text-3xl md:text-5xl text-ink-primary text-balance max-w-2xl">
             In motion.
           </h2>
         </div>
@@ -156,7 +156,7 @@ export default function LabIndex() {
                 className="group block h-full rounded-xl border border-border-subtle bg-bg-surface p-6 transition-all hover:border-accent hover:-translate-y-0.5"
               >
                 <span
-                  className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 mono-label text-[10px] mb-5"
+                  className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 bv3-mono text-[10px] mb-5"
                   style={{ backgroundColor: "rgba(45, 143, 80, 0.12)", color: "#5fcc8a" }}
                 >
                   <span className="inline-block h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#2d8f50" }} aria-hidden="true" />
@@ -179,8 +179,8 @@ export default function LabIndex() {
       {/* Internal */}
       <section className="container-x py-20 md:py-28 border-t border-border-subtle pb-32">
         <div className="mb-12">
-          <p className="mono-label mb-3">Internal infrastructure</p>
-          <h2 className="display-section text-3xl md:text-4xl text-ink-primary text-balance max-w-2xl">
+          <p className="bv3-mono mb-3">Internal infrastructure</p>
+          <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary text-balance max-w-2xl">
             What runs underneath.
           </h2>
           <p className="mt-4 text-base md:text-lg text-ink-muted leading-relaxed text-pretty max-w-2xl">
@@ -195,7 +195,7 @@ export default function LabIndex() {
                 className="group block h-full rounded-xl border border-border-subtle bg-bg-surface p-6 transition-all hover:border-accent hover:-translate-y-0.5"
               >
                 <span
-                  className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 mono-label text-[10px] mb-5"
+                  className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 bv3-mono text-[10px] mb-5"
                   style={{ backgroundColor: "rgba(148, 163, 160, 0.12)", color: "#94a3a0" }}
                 >
                   <span className="inline-block h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "#94a3a0" }} aria-hidden="true" />

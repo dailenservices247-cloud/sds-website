@@ -199,7 +199,7 @@ Letter-spacing: `-0.005em` on hero, `0` on section heads — both live in `app/g
 
 Body weights: 400 (default reading), 500 (UI emphasis, navigation, CTAs), 600 (sub-headings only). No thin weights below 400 — they soften the deliberate register.
 
-**Mono: JetBrains Mono** (existing system) for uppercase technical labels, status pills, editorial publication captions ("VOL. 03 / ISSUE Nº 01"), and code blocks. Always uppercase for caption-tier mono. Letter-spacing `0.08em` for caption/label use; normal for code blocks. Color: gold `#c8a23e` on shell ground.
+**Mono: JetBrains Mono** (existing system) for uppercase technical labels, status pills, editorial publication captions ("VOL. 03 / ISSUE Nº 01"), and code blocks. Always uppercase for caption-tier mono. Letter-spacing `0.08em` for caption/label use; normal for code blocks. **Color: `wine-text` `#e09aa4`** — the live value at `app/globals.css` `.bv3-mono`. (Corrected 2026-08-20: this line previously said gold, which predates the 2026-06-10 Brand House swap demoting gold to art-only reserve.)
 
 **Hierarchy via scale + weight contrast** (never via color alone). Scale ratio ~1.25 between steps minimum.
 

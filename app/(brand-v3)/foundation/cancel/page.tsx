@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 export default function FoundationCancelPage() {
   return (
     <article className="container-x py-24 md:py-40 max-w-3xl text-center">
-      <p className="mono-label mb-6 mx-auto inline-block">No charges made</p>
+      <p className="bv3-mono mb-6 mx-auto inline-block">No charges made</p>
 
       <h1
-        className="display text-ink-primary text-balance mb-8 mx-auto"
+        className="bv3-display text-ink-primary text-balance mb-8 mx-auto"
         style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", maxWidth: "20ch" }}
       >
         You stopped before checkout.

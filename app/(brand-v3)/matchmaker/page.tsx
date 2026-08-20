@@ -32,7 +32,6 @@ export default function MatchmakerPage() {
     <article>
       {/* Loud hero */}
       <section className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 -z-10 gradient-blaze" aria-hidden="true" />
         <div
           className="absolute inset-0 -z-10 opacity-[0.06] mix-blend-overlay"
           style={{
@@ -47,11 +46,11 @@ export default function MatchmakerPage() {
             className="mb-8 md:mb-10 text-white"
             style={{ fontSize: "clamp(1.25rem, 2vw, 1.75rem)" }}
           />
-          <p className="mono-label mb-6" style={{ color: "rgba(255,255,255,0.85)" }}>
+          <p className="bv3-mono mb-6" style={{ color: "rgba(255,255,255,0.85)" }}>
             Coming soon · Interactive
           </p>
           <h1
-            className="display text-white text-balance"
+            className="bv3-display text-white text-balance"
             style={{ fontSize: "clamp(3rem, 8vw, 6rem)", maxWidth: "16ch" }}
           >
             AI Business Matchmaker.
@@ -86,7 +85,7 @@ export default function MatchmakerPage() {
               "Email-gates the full plan: first 30 days, tool stack, pricing, first-customer strategy, common pitfalls, and where to go next.",
             ].map((line, i) => (
               <li key={i} className="flex gap-5 border-l-2 border-accent pl-6">
-                <span className="mono-label text-xs flex-shrink-0 mt-1.5">
+                <span className="bv3-mono text-xs flex-shrink-0 mt-1.5">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <p className="text-base md:text-lg text-ink-primary leading-relaxed">{line}</p>
@@ -98,8 +97,8 @@ export default function MatchmakerPage() {
 
       {/* Build status */}
       <section className="container-x py-16 md:py-20 max-w-3xl border-t border-border-subtle">
-        <p className="mono-label mb-3">Build status</p>
-        <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-6">
+        <p className="bv3-mono mb-3">Build status</p>
+        <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary mb-6">
           Phase 1 incoming.
         </h2>
         <p className="text-base md:text-lg text-ink-muted leading-relaxed text-pretty mb-4">
@@ -115,7 +114,7 @@ export default function MatchmakerPage() {
       {/* CTA */}
       <section className="container-x pb-32 max-w-3xl">
         <div className="rounded-2xl bg-bg-surface border border-border-subtle p-8 md:p-10">
-          <h2 className="display-section text-2xl md:text-3xl text-ink-primary mb-4 text-balance">
+          <h2 className="bv3-display-section text-2xl md:text-3xl text-ink-primary mb-4 text-balance">
             Be first to try it.
           </h2>
           <p className="text-base md:text-lg text-ink-muted leading-relaxed mb-6">

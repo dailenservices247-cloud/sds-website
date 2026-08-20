@@ -61,9 +61,9 @@ export default function AboutPage() {
             className="mb-8 md:mb-10 text-ink-primary"
             style={{ fontSize: "clamp(1.25rem, 2vw, 1.75rem)" }}
           />
-          <p className="mono-label mb-6">About</p>
+          <p className="bv3-mono mb-6">About</p>
           <h1
-            className="display text-ink-primary text-balance"
+            className="bv3-display text-ink-primary text-balance"
             style={{ fontSize: "clamp(2.75rem, 7vw, 5rem)", maxWidth: "20ch" }}
           >
             One founder, twelve products, one mesh.
@@ -79,8 +79,8 @@ export default function AboutPage() {
 
       {/* Founder */}
       <section className="container-x py-20 md:py-28 max-w-3xl">
-        <p className="mono-label mb-3">The founder</p>
-        <h2 className="display-section text-3xl md:text-5xl text-ink-primary mb-8 text-balance">
+        <p className="bv3-mono mb-3">The founder</p>
+        <h2 className="bv3-display-section text-3xl md:text-5xl text-ink-primary mb-8 text-balance">
           Dailen Huntley.
         </h2>
 
@@ -118,8 +118,8 @@ export default function AboutPage() {
 
       {/* The company */}
       <section className="container-x py-20 md:py-28 max-w-3xl border-t border-border-subtle">
-        <p className="mono-label mb-3">The company</p>
-        <h2 className="display-section text-3xl md:text-5xl text-ink-primary mb-8 text-balance">
+        <p className="bv3-mono mb-3">The company</p>
+        <h2 className="bv3-display-section text-3xl md:text-5xl text-ink-primary mb-8 text-balance">
           Black Sheep 247 LLC.
         </h2>
         <div className="space-y-5 text-base md:text-lg text-ink-muted leading-relaxed text-pretty">
@@ -143,8 +143,8 @@ export default function AboutPage() {
 
       {/* Why this exists */}
       <section className="container-x py-20 md:py-28 max-w-3xl border-t border-border-subtle">
-        <p className="mono-label mb-3">Why this exists</p>
-        <h2 className="display-section text-3xl md:text-5xl text-ink-primary mb-8 text-balance">
+        <p className="bv3-mono mb-3">Why this exists</p>
+        <h2 className="bv3-display-section text-3xl md:text-5xl text-ink-primary mb-8 text-balance">
           AI tooling assumes you already know.
         </h2>
         <div className="space-y-5 text-base md:text-lg text-ink-muted leading-relaxed text-pretty">
@@ -174,8 +174,8 @@ export default function AboutPage() {
 
       {/* Operating principles */}
       <section className="container-x py-20 md:py-28 max-w-3xl border-t border-border-subtle">
-        <p className="mono-label mb-3">Operating principles</p>
-        <h2 className="display-section text-3xl md:text-5xl text-ink-primary mb-10 text-balance">
+        <p className="bv3-mono mb-3">Operating principles</p>
+        <h2 className="bv3-display-section text-3xl md:text-5xl text-ink-primary mb-10 text-balance">
           Anti-positioning, said out loud.
         </h2>
         <ul role="list" className="space-y-6">
@@ -189,7 +189,7 @@ export default function AboutPage() {
           ].map(([head, body]) => (
             <li key={head} className="flex gap-5 border-l-2 border-accent pl-6">
               <div>
-                <p className="display-section text-xl md:text-2xl text-ink-primary mb-2">
+                <p className="bv3-display-section text-xl md:text-2xl text-ink-primary mb-2">
                   {head}
                 </p>
                 <p className="text-base md:text-lg text-ink-muted leading-relaxed text-pretty">
@@ -204,7 +204,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="container-x pb-32 max-w-3xl">
         <div className="rounded-2xl bg-bg-surface border border-border-subtle p-8 md:p-12">
-          <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-4 text-balance">
+          <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary mb-4 text-balance">
             Want in?
           </h2>
           <p className="text-base md:text-lg text-ink-muted leading-relaxed mb-8">

@@ -43,9 +43,9 @@ export default function PortfolioIndex() {
             className="mb-8 md:mb-10 text-ink-primary"
             style={{ fontSize: "clamp(1.25rem, 2vw, 1.75rem)" }}
           />
-          <p className="mono-label mb-6">The Portfolio</p>
+          <p className="bv3-mono mb-6">The Portfolio</p>
           <h1
-            className="display text-ink-primary text-balance"
+            className="bv3-display text-ink-primary text-balance"
             style={{ fontSize: "clamp(2.75rem, 7vw, 5rem)", maxWidth: "18ch" }}
           >
             Twelve products. One mesh.
@@ -72,7 +72,7 @@ export default function PortfolioIndex() {
                 >
                   <div className="flex items-center justify-between gap-3 mb-6">
                     <span
-                      className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 mono-label text-[10px]"
+                      className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 bv3-mono text-[10px]"
                       style={{
                         backgroundColor: isLive
                           ? "rgba(34, 197, 94, 0.15)"
@@ -101,7 +101,7 @@ export default function PortfolioIndex() {
                       />
                       <span>{project.status}</span>
                     </span>
-                    <span className="mono-label text-[10px]">
+                    <span className="bv3-mono text-[10px]">
                       Layer {project.layer}
                     </span>
                   </div>
@@ -118,14 +118,14 @@ export default function PortfolioIndex() {
 
                   {project.parkedUntil && (
                     <p className="mt-5 pt-4 border-t border-border-soft text-sm text-ink-dim leading-relaxed">
-                      <span className="mono-label text-[10px] block mb-1">Unblocks when</span>
+                      <span className="bv3-mono text-[10px] block mb-1">Unblocks when</span>
                       {project.parkedUntil}
                     </p>
                   )}
 
                   {project.openQuestions.length > 0 && (
                     <p className="mt-5 text-sm text-ink-dim">
-                      <span className="mono-label text-[10px]">
+                      <span className="bv3-mono text-[10px]">
                         Open questions: {project.openQuestions.length}
                       </span>
                     </p>
