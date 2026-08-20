@@ -226,6 +226,19 @@ export function Stage() {
           />
         ) : null}
       </Canvas>
+
+      {/* Inner-route calm scrim. DESIGN.md: "Calm before bold — quiet sections set
+          up loud moments. Without quiet, loud doesn't land." The cosmos is the loud
+          moment and it belongs to the home hero; on inner routes it drops to
+          atmosphere so scanning copy stays the subject. One scrim, no shader change. */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "var(--bv3-shell)",
+          opacity: isHome ? 0 : 0.55,
+          transition: "opacity 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95)",
+        }}
+      />
       </div>
     </>
   );

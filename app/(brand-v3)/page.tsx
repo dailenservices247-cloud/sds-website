@@ -510,8 +510,8 @@ export default function CursorVariantHome() {
                 className="mb-8 max-w-prose text-base leading-relaxed"
                 style={{ color: "var(--bv3-ink-muted)" }}
               >
-                Monthly subscription. Direct access to the strategist, architect,
-                and automator. Decisions get made; momentum stays.
+                Monthly subscription. Direct access across pipeline, security,
+                and build. Decisions get made; momentum stays.
               </p>
               <div className="flex flex-wrap items-center gap-3">
                 <Link
@@ -568,7 +568,7 @@ export default function CursorVariantHome() {
                 >
                   <code>
                     <span style={{ color: "var(--bv3-spine-bright)" }}>
-                      {"+ direct access to strategist + architect + automator"}
+                      {"+ direct access to pipeline + security + build"}
                     </span>
                     {"\n"}
                     <span style={{ color: "var(--bv3-spine-bright)" }}>
@@ -620,9 +620,8 @@ export default function CursorVariantHome() {
               color: "var(--bv3-cream)",
             }}
           >
-            Architect.{" "}
-            <span style={{ color: "var(--bv3-wine-text)" }}>Automate.</span>{" "}
-            <span style={{ color: "var(--bv3-spine-bright)" }}>Strategize.</span>
+            Map it. Secure it.{" "}
+            <span style={{ color: "var(--bv3-wine-text)" }}>Build it.</span>
           </h2>
 
           <motion.div

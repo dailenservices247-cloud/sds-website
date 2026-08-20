@@ -10,6 +10,17 @@ const nextConfig = {
         destination: "/portfolio",
         permanent: true,
       },
+      // /work was a second services-overview surface selling the retired
+      // Architect / Automator / Strategist ladder at its retired prices. The
+      // services retraction (2026-08-20) makes /services the canonical answer
+      // to "what is it like to work with SDS", so /work is removed rather than
+      // merged into /portfolio — it was never portfolio content. It had zero
+      // inbound links; the redirect exists for bookmarks and search equity.
+      {
+        source: "/work",
+        destination: "/services",
+        permanent: true,
+      },
     ];
   },
 };

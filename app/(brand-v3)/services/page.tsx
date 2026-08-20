@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Three ways Synapse Dynamics works: Architect for custom apps, Automator for workflows, Strategist for AI consulting.",
+    "Three things Synapse Dynamics does: a vertical pipeline proven on veterinary, AI security proactive and reactive, and builds — sites, apps, and landing pages.",
 };
 
 export default function ServicesIndexPage() {
@@ -19,7 +19,7 @@ export default function ServicesIndexPage() {
       <PageHero
         eyebrow="Services"
         title="Three ways we work."
-        description="Custom apps, business automation, and strategic consulting. Pick one, or stack them when the problem is bigger than one practice can solve."
+        description="A workflow built for one trade and proven there, security for agents that already have tool access, and software shaped around how the business actually works. Pick one, or stack them when the problem is bigger than one."
       />
 
       <section className="section-y">

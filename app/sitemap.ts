@@ -14,9 +14,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/matchmaker",
     "/contact",
     "/services",
-    "/services/architect",
-    "/services/automator",
-    "/services/strategist",
+    "/services/pipeline",
+    "/services/security",
+    "/services/build",
     "/legal/privacy",
     "/legal/terms",
   ];
