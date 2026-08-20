@@ -9,6 +9,12 @@ colors:
   gold: "#c8a23e"
   gold-bright: "#d8b85a"
   wine: "#7e303a"
+  wine-bright: "#a0414e"
+  wine-text: "#e09aa4"
+  on-wine: "#f3cdd3"
+  spine-text: "#8fc0b5"
+  on-spine: "#e9f2ef"
+  destructive: "#e24b4a"
   cream: "#efede5"
   cream-deep: "#e0ddd0"
   ink-on-shell: "#efede5"
@@ -114,6 +120,22 @@ components:
     typography: "{typography.mono}"
 ---
 
+> **Last reconciled against the live code 2026-08-20.** This file sat unchanged from 2026-05-14
+> while `app/globals.css` moved to 2026-07-08 — eight weeks of locked brand decisions missing from
+> it, which made the live site look like it had drifted when it had not.
+>
+> **Carried forward from the 2026-08-18 pass** (verified correct): the ACTION/IDENTITY/RESERVE
+> colour role split (locked 2026-07-08, shipped `de51cc2`) and six AA-safe text tokens that
+> existed only in code.
+>
+> **Reverted from that pass** (measured false, never approved): its display-casing change. See
+> the Typography section.
+>
+> **Added 2026-08-20** (Dailen): display casing settled; the coil-S mark moved to gold.
+>
+> **If you change the site's brand, change this file in the same pass** — a stale spec is worse
+> than no spec, because it is trusted.
+
 ## Overview
 
 **The Editorial Workshop.** A magazine-grade marketing surface for Synapse Dynamics — an AI architecture studio for Peer Operators. The site reads as a continuous matte monolith: warm dark gray ground (Dodge Durango Destroyer Gray register), antique-gold filaments threaded through accents, petrol-green spine ridges marking section transitions, with a single sculpted Nox creature traveling through the page on scroll.
@@ -128,7 +150,7 @@ Pro-references: Immersive Garden (immersive-garden.com), Linear (typography rigo
 
 ## Colors
 
-**Strategy: Committed.** One ground (matte gray shell) carries 80%+ of every surface; petrol-green primary + antique-gold accent each get 5–10% of attention via spine rules + display-emphasis words + CTA pills + mono labels. Cream is reserved for ink (text on shell) — NOT for inverted section grounds (cream-as-ground reads generic and breaks the monolith).
+**Strategy: Committed.** One ground (matte gray shell) carries 80%+ of every surface. **Role split locked 2026-07-08** (`AI Hub/Decisions/sds-website-brand.md`, shipped to prod as `de51cc2`): **ACTION = spine** (all buttons, pills, live dots), **IDENTITY = wine** (eyebrows, links, selection; `wine-text` tier on dark), **CONTENT = cream/ink**, **GOLD = art-only reserve + the coil-S mark** (sparse chips; demoted in the 2026-06-10 Brand House v1 swap. **Amended 2026-08-20, Dailen:** the coil-S moves wine → gold to match the locked logo, which carries a petrol outline and gold filaments and contains no wine at all). Colours are placed strategically, not scattered. Cream is reserved for ink (text on shell) — NOT for inverted section grounds (cream-as-ground reads generic and breaks the monolith).
 
 All colors are intentionally **tinted neutrals**, not pure values. The shell `#3a3b3d` is warm gray (slight brown undertone) — explicitly chosen over `#2a2a2a` (cool gray) per locked taste profile v1. The cream `#efede5` is warm off-white, not paper. The gold is **antique gold** (desaturated brass register), not Stripe-gold (corporate). The petrol-green is desaturated bridge-of-blue/green at low chroma — never the saturated emerald `#22c55e` from brand v2.
 
@@ -138,11 +160,17 @@ All colors are intentionally **tinted neutrals**, not pure values. The shell `#3
 |---|---|---|---|
 | Body shell / primary ground | `shell` | `#3a3b3d` | Page background. Card backgrounds. The continuous monolith. |
 | Deeper shell | `shell-deep` | `#2a2a2d` | Elevated card variant. Section breaks needing slight depth. |
-| Primary accent | `spine` | `#2a6055` | Hairline rules between sections. Section-label dividers. Working-state interior emphasis. |
+| **ACTION** accent | `spine` | `#2a6055` | **All buttons, pills, live dots** (locked 2026-07-08). Also hairline rules between sections and section-label dividers. Fill-only on dark — use `spine-text` for text. |
 | Spine bright | `spine-bright` | `#347466` | Hover states on petrol-accented elements. |
-| Secondary accent | `gold` | `#c8a23e` | Mono labels (uppercase). Display-emphasis word color. Primary CTA pill background. Antique-gold-filament accents. |
+| Spine text | `spine-text` | `#8fc0b5` | Text-level petrol on dark ground — AA-safe. `spine` itself is fill-only on dark. |
+| On spine | `on-spine` | `#e9f2ef` | Text sitting on a spine fill. |
+| **RESERVE** accent | `gold` | `#c8a23e` | **Art-only reserve — sparse chips, and the coil-S mark** (coil-S amended wine → gold 2026-08-20 to match the logo). Demoted from primary in the 2026-06-10 Brand House v1 swap. **Not** the CTA background and **not** the display-emphasis colour any more; both moved off gold. |
 | Gold bright | `gold-bright` | `#d8b85a` | Hover on gold elements. |
-| Emotion accent | `wine` | `#7e303a` | Used sparingly. Reserved for "before" labels or moments needing weight. |
+| **IDENTITY** accent | `wine` | `#7e303a` | **Eyebrows, links, selection** (locked 2026-07-08). Fill-only on dark — use `wine-text` for text. **The coil-S is NOT wine** — see gold, amended 2026-08-20. |
+| Wine bright | `wine-bright` | `#a0414e` | Hover; live indicators. |
+| Wine text | `wine-text` | `#e09aa4` | Text-level identity accent on dark — AA pass. This is what the hero emphasis word uses. |
+| On wine | `on-wine` | `#f3cdd3` | Text sitting on a wine fill. |
+| Destructive | `destructive` | `#e24b4a` | Errors only. **Never wine** — wine is identity, not alarm. |
 | Warm cream (ink) | `cream` | `#efede5` | Body text on shell. Display headline base color. |
 | Cream deep | `cream-deep` | `#e0ddd0` | Slight tint for cream-on-cream contrast (rare — use only when required). |
 | Ink strong | `ink-on-shell-strong` | `#ffffff` | Reserved — display-emphasis only when cream isn't sharp enough. |
@@ -159,7 +187,13 @@ All colors are intentionally **tinted neutrals**, not pure values. The shell `#3
 
 **Display: Bricolage Grotesque** (variable font, weight 700, condensed-bold register). Stand-in for the locked Akira Expanded display lock — Bricolage covers the same condensed-heavy uppercase territory as a free open-licensed alternative. Use ONLY at 36px+ display sizes; never for body. Variation axes: `'wdth' 100` baseline (do not condense further), `'opsz' 96` for hero-scale, `'opsz' 48` for section-heading-scale.
 
-Text-transform on display: **uppercase** by default. Letter-spacing: `-0.005em` on hero (slight tightening to compensate for uppercase tracking), `0` on section heads.
+**Text-transform on display: UPPERCASE.** Settled by Dailen 2026-08-20. The display tier — `.bv3-display` and `.bv3-display-section`, `app/globals.css:404-419` — carries `text-transform: uppercase`, and has since `a32048b` (2026-05-09). It renders on 9 routes.
+
+> **Superseded claim, recorded so it is not reintroduced.** An unapproved 2026-08-18 edit reversed this rule and justified it with a historical claim about the display tier's past. That claim was measured false — the uppercase treatment ships on 9 routes and has been in `globals.css` unchanged since `a32048b` (2026-05-09), against 1 non-conforming file. Ratio 9:1. The edit is reverted here. **Do not reopen this without measuring `git log -L` on `globals.css:404-419` first.**
+
+**Known exception — the homepage hero.** `app/(brand-v3)/page.tsx` hand-rolls Bricolage inline on three elements and therefore bypasses `.bv3-display`, dropping uppercase, the `opsz` axis, `-0.005em`, and `0.95` line-height. **Status: non-conforming, scheduled for correction.** Bring those three elements onto `.bv3-display`. Do not generalise this one file into the display rule.
+
+Letter-spacing: `-0.005em` on hero, `0` on section heads — both live in `app/globals.css:404-419`. **Casing and tracking are a matched pair**: `-0.005em` exists to loosen uppercase tracking. The hero's inline `-0.035em` belongs to the non-conforming exception above and moves with it.
 
 **Body: Geist Sans** (Vercel's geometric grotesque, free MIT license). Replaces Inter — Inter is Impeccable-anti-pattern banned as a generic default. Geist is distinctive, editorial-grade, and pairs well with Bricolage for display+body contrast.
 
@@ -171,7 +205,7 @@ Body weights: 400 (default reading), 500 (UI emphasis, navigation, CTAs), 600 (s
 
 | Role | Font | Size | Weight | Notes |
 |---|---|---|---|---|
-| Hero display | Bricolage | clamp(3rem, 7.2vw, 6rem) | 700 | Uppercase. Multi-color word-emphasis allowed (one cream + one gold + one petrol per phrase). |
+| Hero display | Bricolage | clamp(3rem, 7.2vw, 6rem) | 700 | **UPPERCASE.** Single-word emphasis in `wine-text` on a cream base — per the 2026-07-08 IDENTITY lock. The older multi-colour cream+gold+petrol stack predates that lock and is superseded. |
 | Section display | Bricolage | clamp(2.25rem, 4.5vw, 3.5rem) | 700 | Uppercase. |
 | Sub-heading | Geist | 1.5–1.75rem | 600 | Card titles, pricing tier names. |
 | Body large | Geist | 1.25rem | 400 | Hero descriptions, intro paragraphs. |
@@ -288,7 +322,7 @@ Inputs match card register: shell-deep background, 1px border-subtle, 12px radiu
 - **Maintain the matte monolith.** Every section uses `shell` `#3a3b3d` as ground. Petrol-spine rules + gold mono labels + Bricolage display are how sections differentiate.
 - **Use the binary radius system: 12px (containers) or 9999px (pills).** No values between.
 - **Reserve display moments.** Bricolage 700 only at 36px+. One hero display per route. Section displays smaller.
-- **Use multi-color word emphasis on hero H1.** "BUILD THE / **THINKING** (gold) / INTO THE / **THING.** (petrol)" — the multi-color stack is signature.
+- **Use single-word emphasis on hero H1**, in `wine-text` on a cream base — per the 2026-07-08 IDENTITY lock. The older multi-colour gold+petrol stack predates that lock and is **superseded**; do not reintroduce it.
 - **Pulse LIVE status badge** with `prefers-reduced-motion` honored.
 - **Apply scroll-orchestrated motion across the entire page.** Every section animates on entry (stagger fade + y-shift). The traveling Nox crossfades poses at section thresholds. Hero copy lifts/fades on scroll-out. Per Immersive Garden register.
 - **Keep the cream as ink, not as ground.** Cream `#efede5` is text color on shell. Avoid cream-as-section-background — it reads generic and breaks the monolith.
