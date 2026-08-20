@@ -18,6 +18,7 @@
 
 "use client";
 
+import { channels } from "@/lib/content/channels";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
@@ -770,7 +771,7 @@ export default function CursorVariantHome() {
         >
           <CommandLine
             command="channels --tail"
-            result="2 active feeds"
+            result="4 channels"
           />
 
           <h2
@@ -794,22 +795,7 @@ export default function CursorVariantHome() {
             viewport={{ once: true, margin: "-10%" }}
             className="grid grid-cols-1 gap-4 md:grid-cols-2"
           >
-            {[
-              {
-                name: "Allday 24seven",
-                meta: "long-form essays · weekly cadence",
-                copy: "Studio dispatches. Brand work, taste anchors, and the weeks where it all changes.",
-                href: "/channels/allday",
-                state: "thinking" as const,
-              },
-              {
-                name: "Day One AI",
-                meta: "field notes · whenever it matters",
-                copy: "Builder logs. Tools shipped, agents wired, and what we'd skip next time.",
-                href: "/channels/day-one",
-                state: "grep" as const,
-              },
-            ].map((c) => (
+            {channels.map((c) => (
               <motion.div
                 key={c.name}
                 variants={fadeIn}
@@ -820,14 +806,14 @@ export default function CursorVariantHome() {
                 }}
               >
                 <Link
-                  href={c.href}
+                  href={c.url ?? "/channels"}
                   className="absolute inset-0 rounded-lg"
-                  aria-label={`${c.name} — visit channel`}
+                  aria-label={`${c.name} — ${c.url ? "visit channel" : "see all channels"}`}
                 />
                 <div className="mb-3 flex items-center justify-between">
                   <span
                     className="bv3-mono"
-                    style={{ color: STATE_COLOR[c.state], letterSpacing: "0.08em" }}
+                    style={{ color: c.status === "LAUNCHING" ? "var(--bv3-spine-bright)" : c.status === "IN PRODUCTION" ? "var(--bv3-wine-text)" : "var(--bv3-ink-dim)", letterSpacing: "0.08em" }}
                   >
                     [FEED]
                   </span>
@@ -835,7 +821,7 @@ export default function CursorVariantHome() {
                     className="bv3-mono"
                     style={{ color: "var(--bv3-ink-dim)" }}
                   >
-                    {c.meta}
+                    {c.format}
                   </span>
                 </div>
                 <h3
@@ -848,7 +834,7 @@ export default function CursorVariantHome() {
                   className="text-base leading-relaxed"
                   style={{ color: "var(--bv3-ink-muted)" }}
                 >
-                  {c.copy}
+                  {c.tagline}
                 </p>
               </motion.div>
             ))}

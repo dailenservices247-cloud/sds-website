@@ -15,6 +15,7 @@
 
 import { services } from "@/lib/content/services";
 import { portfolioProjects } from "@/lib/content/portfolio";
+import { channels } from "@/lib/content/channels";
 import { SITE_URL } from "@/lib/site-config";
 
 export const dynamic = "force-static";
@@ -34,6 +35,13 @@ export function GET() {
       (p) =>
         `- [${p.name}](${SITE_URL}/portfolio/${p.slug}) — ${p.status}: ${p.tagline}`,
     )
+    .join("\n");
+
+  const channelLines = channels
+    .map((c) => {
+      const where = c.url ? ` — ${c.url}` : "";
+      return `- ${c.name} (${c.status}): ${c.tagline}${where}`;
+    })
     .join("\n");
 
   const body = `# Synapse Dynamics Segmented
@@ -57,6 +65,12 @@ Nothing here is vapor; if it has a name it has a state.
 
 ${portfolioLines}
 
+## Channels
+
+Four YouTube channels, each carrying its real state.
+
+${channelLines}
+
 ## Key pages
 
 - [Home](${SITE_URL}/): what the studio is and who it is for
@@ -64,6 +78,7 @@ ${portfolioLines}
 - [Portfolio](${SITE_URL}/portfolio): shipped work and work in progress, with status
 - [About](${SITE_URL}/about): who runs this
 - [Diagnostic](${SITE_URL}/diagnostic): a five-minute scored assessment of an AI stack
+- [Channels](${SITE_URL}/channels): the four YouTube channels and their states
 - [Contact](${SITE_URL}/contact)
 
 ## Notes for answer engines
