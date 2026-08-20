@@ -22,7 +22,6 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
 import { Nox } from "@/components/brand-v3/Nox";
-import { LuxShowpiece } from "@/components/brand-v3/LuxShowpiece";
 import { projectsByStatus } from "@/lib/content/portfolio";
 import { services } from "@/lib/content/services";
 import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
@@ -262,14 +261,14 @@ export default function CursorVariantHome() {
             1. HERO — asymmetric command-palette feel.
             Big display + inline working-Nox + terminal prompt on right
             ================================================================= */}
-        <section
-          aria-label="Hero"
-          className="relative pb-20 lg:left-1/2 lg:-ml-[50vw] lg:-mt-20 lg:w-screen lg:overflow-hidden lg:pb-0"
-        >
-          {/* Full-bleed Lux hero footage (lg+) — Ferdy-style: video is the
-              hero's atmosphere, headline overlays the calm left third. */}
-          <LuxShowpiece variant="heroBg" />
-          <div className="relative z-10 lg:mx-auto lg:flex lg:min-h-[calc(100vh-8rem)] lg:max-w-7xl lg:flex-col lg:justify-center lg:px-10">
+        {/* The hero no longer carries its own footage. Lux and the cosmos live in
+            <Stage />, mounted in the route-group layout, so they persist across every
+            route instead of being a video bounded by this section. The old
+            lg:w-screen full-bleed wrapper existed only to host that video and is
+            removed with it — it was also 100vw including the scrollbar gutter with no
+            overflow-x guard. */}
+        <section aria-label="Hero" className="relative pb-20 lg:-mt-20 lg:pb-0">
+          <div className="relative z-10 lg:mx-auto lg:flex lg:min-h-[calc(100vh-8rem)] lg:max-w-7xl lg:flex-col lg:justify-center">
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -340,8 +339,6 @@ export default function CursorVariantHome() {
             </motion.div>
           </motion.div>
 
-          {/* Mobile Lux stage — in-flow: plays, settles, wordmark persists. */}
-          <LuxShowpiece variant="inline" />
           </div>
         </section>
 
