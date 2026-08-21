@@ -17,13 +17,78 @@
 
 "use client";
 
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Cosmos } from "./Cosmos";
-import { Helix } from "./Helix";
+import { Helix, helixUniforms } from "./Helix";
 import { usePathname as usePathnameForPhase } from "next/navigation";
+
+/**
+ * Scroll-driven camera, and Nox waking.
+ *
+ * CAMERA. A single fixed camera forces one compromise for the whole page:
+ * large enough to read the segment interiors means large enough to run across
+ * the copy. The dolly removes the compromise by making size a function of
+ * whether there is anything to collide with.
+ *
+ * It pulls IN when the reader stops scrolling. That is not a UI flourish — it
+ * is the narrative beat: the reader stops, Helix stops, and you get near enough
+ * to see what he is doing. `motionKick` already spikes exactly on that
+ * transition, so the cue is free.
+ *
+ * NOX WAKING. `uNoxWake` drives her crest colour from dormant to lit. It rises
+ * across the last third of the page, so by the time the final beat arrives she
+ * is visibly awake and the split is anticipated rather than sprung. This is the
+ * thing a baked texture could never do, and the reason the material became a
+ * shader.
+ */
+function CameraRig({
+  scrollProgress,
+  motionKick,
+  animate,
+}: {
+  scrollProgress: number;
+  motionKick: number;
+  animate: boolean;
+}) {
+  const { camera } = useThree();
+  const eased = useRef({ z: 6, wake: 0 });
+
+  useFrame((_, delta) => {
+    const dt = Math.min(delta, 0.1);
+
+    // 6.0 resting, easing to 4.2 when scroll halts — near enough that the
+    // segment windows resolve, without a permanently larger creature.
+    const targetZ = animate ? 6.0 - Math.min(1, motionKick) * 1.8 : 6.0;
+    eased.current.z += (targetZ - eased.current.z) * (1 - Math.exp(-2.2 * dt));
+    camera.position.z = eased.current.z;
+
+    // She stirs from 65% of the page and is fully lit by 95%.
+    const targetWake = animate
+      ? Math.min(1, Math.max(0, (scrollProgress - 0.65) / 0.3))
+      : 0;
+    eased.current.wake += (targetWake - eased.current.wake) * (1 - Math.exp(-1.6 * dt));
+    helixUniforms.uNoxWake.value = eased.current.wake;
+
+    // Dev-only probe. The creature is small on screen and these are the two
+    // values that are impossible to eyeball — how far the camera has dollied,
+    // and how awake Nox is. Stripped from production builds.
+    if (process.env.NODE_ENV !== "production") {
+      (window as unknown as Record<string, unknown>).__helix = {
+        cameraZ: +eased.current.z.toFixed(3),
+        noxWake: +eased.current.wake.toFixed(3),
+        scrollProgress: +scrollProgress.toFixed(3),
+        motionKick: +motionKick.toFixed(3),
+        crestFront: `#${helixUniforms.uCrestFront.value.getHexString()}`,
+        crestRear: `#${helixUniforms.uCrestRear.value.getHexString()}`,
+      };
+    }
+  });
+
+  return null;
+}
 
 export function Stage() {
   const reducedMotion = useReducedMotion();
@@ -145,24 +210,46 @@ export function Stage() {
         camera={{ position: [0, 0, 6], fov: 50 }}
         dpr={isDesktop ? [1, 2] : 1}
         gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
+        // ACES filmic (R3F's default) crushes the creature's midtones against
+        // the dark shell ground. Raised exposure rather than fighting it with
+        // ever-brighter lights, which would blow out the cosmos shader too.
+        onCreated={({ gl }) => {
+          gl.toneMappingExposure = 1.05;
+        }}
         style={{ background: "#3a3b3d" /* brand shell */ }}
       >
-        {/* Soft warm key — Editorial Workshop lighting */}
-        <ambientLight intensity={0.55} color="#5a4828" />
+        {/* Soft warm key — Editorial Workshop lighting.
+            RAISED 2026-08-21. These values were tuned when the creature was a
+            textured plane using meshBasicMaterial, which is UNLIT — it ignored
+            every light in this scene, so their intensity never mattered. The
+            real mesh is meshStandardMaterial and renders almost black under the
+            old rig. The cosmos is a ShaderMaterial and is likewise unaffected,
+            so raising these only touches the creature. */}
+        {/* Key is near-neutral, NOT gold. #f0d27a at this intensity dyed the
+            creature brass — on the page he read warm-gold instead of the matte
+            warm charcoal the brand locks. The gold belongs to his rings, not to
+            the light falling on him. */}
+        <ambientLight intensity={0.9} color="#c9c4b8" />
         <directionalLight
           position={[4, 4, 6]}
-          intensity={1.4}
-          color="#f0d27a"
+          intensity={1.5}
+          color="#efe9dc"
         />
         <directionalLight
           position={[-3, -2, -2]}
-          intensity={0.45}
+          intensity={1.0}
           color="#2a6055"
         />
         <directionalLight
           position={[0, 5, -1]}
-          intensity={0.5}
+          intensity={1.1}
           color="#7e303a"
+        />
+
+        <CameraRig
+          scrollProgress={scrollProgress}
+          motionKick={motionKick}
+          animate={animate}
         />
 
         <Suspense fallback={null}>

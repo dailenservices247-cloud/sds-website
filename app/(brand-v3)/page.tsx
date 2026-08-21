@@ -148,7 +148,12 @@ export default function HomePage() {
           point: everything that used to live here that is not one of these
           is off the homepage.
           =================================================================== */}
-      <Beat id="services" label="What we do" width="wide">
+      {/* Narrow, like every other beat. This was width="wide" so three columns
+          had room — but wide means content reaches into the right third, which
+          is exactly where Helix travels, and he ran straight through the copy.
+          Three columns inside lg:max-w-3xl is ~230px each, which is ample for a
+          numeral, a name and one line. The creature keeps its lane. */}
+      <Beat id="services" label="What we do">
         <h2
           className="bv3-display-section"
           style={{
