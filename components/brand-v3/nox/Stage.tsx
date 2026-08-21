@@ -22,7 +22,7 @@ import { useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Cosmos } from "./Cosmos";
-import { Helix, helixUniforms } from "./Helix";
+import { Helix } from "./Helix";
 import { usePathname as usePathnameForPhase } from "next/navigation";
 
 /**
@@ -54,7 +54,7 @@ function CameraRig({
   animate: boolean;
 }) {
   const { camera } = useThree();
-  const eased = useRef({ z: 6, wake: 0 });
+  const eased = useRef({ z: 6 });
 
   useFrame((_, delta) => {
     const dt = Math.min(delta, 0.1);
@@ -65,24 +65,20 @@ function CameraRig({
     eased.current.z += (targetZ - eased.current.z) * (1 - Math.exp(-2.2 * dt));
     camera.position.z = eased.current.z;
 
-    // She stirs from 65% of the page and is fully lit by 95%.
-    const targetWake = animate
-      ? Math.min(1, Math.max(0, (scrollProgress - 0.65) / 0.3))
-      : 0;
-    eased.current.wake += (targetWake - eased.current.wake) * (1 - Math.exp(-1.6 * dt));
-    helixUniforms.uNoxWake.value = eased.current.wake;
+    // NOTE: uNoxWake is gone. It drove a shader uniform on the 3D mesh, and
+    // the mesh has been replaced by the finished artwork — a static image
+    // cannot have its crest colours animated. Nox already reads correctly in
+    // the art (wine crests on her half, dormant closed head). Waking her will
+    // need a second artwork rather than a uniform.
 
     // Dev-only probe. The creature is small on screen and these are the two
     // values that are impossible to eyeball — how far the camera has dollied,
-    // and how awake Nox is. Stripped from production builds.
+    // Stripped from production builds.
     if (process.env.NODE_ENV !== "production") {
       (window as unknown as Record<string, unknown>).__helix = {
         cameraZ: +eased.current.z.toFixed(3),
-        noxWake: +eased.current.wake.toFixed(3),
         scrollProgress: +scrollProgress.toFixed(3),
         motionKick: +motionKick.toFixed(3),
-        crestFront: `#${helixUniforms.uCrestFront.value.getHexString()}`,
-        crestRear: `#${helixUniforms.uCrestRear.value.getHexString()}`,
       };
     }
   });
