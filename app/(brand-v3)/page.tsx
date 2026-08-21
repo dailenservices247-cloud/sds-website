@@ -1,249 +1,125 @@
 // app/(brand-v3)/page.tsx — Synapse Dynamics homepage
 //
-// V3 Cursor brand register, locked 2026-05-20 as production variant per
-// AI Hub/Decisions/decision-2026-05-20-brand-v3-variant-v3-cursor-locked.md
-// (90-day commit, re-evaluate 2026-08-20).
+// REGISTER CHANGE, 2026-08-21.
 //
-// Developer-tool clean. Asymmetric command-palette layouts, line-numbered
-// content blocks, terminal-prompt aesthetic, status-bar footer, kinetic-playful
-// hover reveals. Brand v3 matte-gray ground preserved (does NOT adopt Cursor's
-// warm cream — that violates brand v3 lock). Only Cursor's STRUCTURAL +
-// INTERACTION patterns applied.
+// This page previously ran the "V3 Cursor" developer-tool register: terminal
+// command prompts (`$ cursor --about`), line-numbered file-tree lists, keyboard
+// shortcut hints, a status-bar footer. That register was locked 2026-05-20 as a
+// deliberate NINETY-DAY commitment running through 2026-08-20 — see
+// AI Hub/Decisions/decision-2026-05-20-brand-v3-variant-v3-cursor-locked.md.
 //
-// Sibling preview routes (v1-garden / v2-linear / v3-cursor / preview) were
-// removed from prod 2026-07-06 (coherence migration). Revival templates live
-// in git history before commit "redesign/v3-coherence".
+// That window closed yesterday. The decision's own revisit trigger names the
+// exact signal to replace it on: "felt too playful / too dev-tool-y." Dailen
+// gave that signal directly. So this is not a lock being broken — it is the
+// lock expiring on schedule and its stated trigger firing.
 //
-// Brand v3 tokens preserved. PRD: AI Hub/PRDs/sds-brand-v3-rebuild-prd.md
+// WHAT REPLACES IT: the page is the descent.
+//
+// The mascot narrative (AI Hub/PRDs/helix-mascot-spec-2026-08-20.md, "THE PAGE
+// NARRATIVE") is that Helix drifts idle, notices you, then travels down the
+// page staying ahead of something — pausing to do clever things with his
+// segments, until the last trick left is to divide. Lux goes one way, Nox the
+// other, and the thing chasing one signature can only follow half.
+//
+// The page structure encodes that arc rather than illustrating it:
+//   hero (idle → notices) → services (descending) → a STOP → portfolio →
+//   a STOP → channels → the split (two ways in)
+//
+// The two STOP beats are not filler. They are where the creature pauses, and
+// structurally they are the only reason the cosmos is ever visible: content
+// arrives, holds, and LEAVES via <Beat>, so between beats the background is
+// alone on screen. The old page faded content in and never let it go, which is
+// why mounting a persistent WebGL canvas behind it bought nothing.
+//
+// Brand v3 tokens, palette, and the Bricolage display lock are unchanged. The
+// hero now uses .bv3-display rather than hand-rolling Bricolage inline, which
+// closes the non-conformance DESIGN.md:194 records as "scheduled for
+// correction" (it was dropping uppercase, the opsz axis, and the line-height).
 
 "use client";
 
-import { channels } from "@/lib/content/channels";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { useMemo } from "react";
-import { Nox } from "@/components/brand-v3/Nox";
-import { projectsByStatus } from "@/lib/content/portfolio";
+import { Beat } from "@/components/brand-v3/Beat";
+import { channels } from "@/lib/content/channels";
+import { portfolioProjects } from "@/lib/content/portfolio";
 import { services } from "@/lib/content/services";
-import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
 
-// ---------------------------------------------------------------------------
-// Cursor's "timeline state colors" mapped to brand v3 palette
-//   thinking → gold       (anti-pattern in cursor: peach;  brand v3: gold)
-//   read     → spine      (cursor: soft blue;             brand v3: petrol)
-//   grep     → spine-bright (cursor: sage green;          brand v3: petrol-bright)
-//   edit     → wine       (cursor: lavender;              brand v3: wine)
-//   delete   → wine       (rare)
-// ---------------------------------------------------------------------------
-
-const STATE_COLOR = {
-  thinking: "var(--bv3-wine-text)",
-  read: "var(--bv3-spine)",
-  grep: "var(--bv3-spine-bright)",
-  edit: "var(--bv3-wine-bright)",
+// Status reads as a quiet token-coloured word, NOT via portfolio.ts's
+// `statusBadge` — that map is built from Tailwind emerald/sky/amber classes and
+// saturated emerald is forbidden outright by DESIGN.md:157 (it is the dead
+// brand-v2 accent). Same information, on-palette.
+const STATUS_TONE: Record<string, string> = {
+  LIVE: "var(--bv3-spine-bright)",
+  "PRE-LAUNCH": "var(--bv3-gold)",
+  INTERNAL: "var(--bv3-gold)",
+  CONCEPT: "var(--bv3-ink-dim)",
+  PARKED: "var(--bv3-ink-dim)",
 };
 
-// ---------------------------------------------------------------------------
-// CommandLine — terminal prompt aesthetic. Used for section anchors.
-//
-//   $ cursor --portfolio
-//   ↳ 12 products · 6 featured
-// ---------------------------------------------------------------------------
+const STATUS_LABEL: Record<string, string> = {
+  LIVE: "Live",
+  "PRE-LAUNCH": "In progress",
+  INTERNAL: "Internal",
+  CONCEPT: "Banked",
+  PARKED: "Banked",
+};
 
-function CommandLine({
-  command,
-  result,
-}: {
-  command: string;
-  result?: string;
-}) {
-  return (
-    <div className="bv3-mono mb-6">
-      <div className="flex items-baseline gap-2">
-        <span style={{ color: "var(--bv3-spine-bright)" }}>$</span>
-        <span style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.06em" }}>
-          {command}
-        </span>
-      </div>
-      {result ? (
-        <div
-          className="ml-4 mt-1 flex items-baseline gap-2"
-          style={{ color: "var(--bv3-ink-muted)" }}
-        >
-          <span style={{ color: "var(--bv3-ink-dim)" }}>↳</span>
-          <span>{result}</span>
-        </div>
-      ) : null}
-    </div>
+export default function HomePage() {
+  const reduced = useReducedMotion();
+
+  // Portfolio, grouped the way Dailen asked for it: finished, in progress,
+  // banked — and deliberately not revealing more than the name and a line.
+  const live = portfolioProjects.filter((p) => p.status === "LIVE");
+  const building = portfolioProjects.filter(
+    (p) => p.status === "PRE-LAUNCH" || p.status === "INTERNAL",
   );
-}
+  const banked = portfolioProjects.filter(
+    (p) => p.status === "CONCEPT" || p.status === "PARKED",
+  );
 
-// ---------------------------------------------------------------------------
-// LineNumberItem — dev-tool line-numbered list pattern
-// ---------------------------------------------------------------------------
-
-function LineNumberItem({
-  index,
-  state,
-  label,
-  body,
-}: {
-  index: number;
-  state: keyof typeof STATE_COLOR;
-  label: string;
-  body: string;
-}) {
   return (
-    <li
-      className="group grid grid-cols-[3rem_1fr] items-baseline gap-4 py-3 transition-colors"
-      style={{ borderTop: "1px solid var(--bv3-border-subtle)" }}
-    >
-      <span
-        className="bv3-mono text-right"
-        style={{ color: "var(--bv3-ink-dim)" }}
+    <main className="relative">
+      {/* ===================================================================
+          HERO — he is drifting, and then he notices you.
+          Deliberately sparse. One idea, one action, and a great deal of
+          nothing, so the creature and the cosmos own the first screen.
+          =================================================================== */}
+      <section
+        aria-label="Introduction"
+        className="relative flex min-h-[92vh] items-center"
       >
-        {String(index).padStart(2, "0")}
-      </span>
-      <div>
-        <div className="flex items-center gap-2">
-          <span
-            className="bv3-mono"
-            style={{ color: STATE_COLOR[state], letterSpacing: "0.08em" }}
-          >
-            [{state.toUpperCase()}]
-          </span>
-          <h3
-            className="font-semibold"
+        <motion.div
+          initial={reduced ? false : { opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto w-full max-w-6xl px-6"
+        >
+          <h1
+            className="bv3-display text-balance"
             style={{
+              fontSize: "clamp(2.75rem, 8vw, 6.5rem)",
               color: "var(--bv3-cream)",
-              fontSize: "1.125rem",
-              letterSpacing: "-0.01em",
+              maxWidth: "14ch",
             }}
           >
-            {label}
-          </h3>
-        </div>
-        <p
-          className="mt-1 text-sm leading-relaxed"
-          style={{ color: "var(--bv3-ink-muted)" }}
-        >
-          {body}
-        </p>
-      </div>
-    </li>
-  );
-}
+            Think before you{" "}
+            <span style={{ color: "var(--bv3-wine-text)" }}>code</span>.
+          </h1>
 
-// ---------------------------------------------------------------------------
-// KbdHint — keyboard shortcut hint, dev-tool signature
-// ---------------------------------------------------------------------------
+          <p
+            className="mt-8 text-pretty text-lg leading-relaxed"
+            style={{ color: "var(--bv3-ink-muted)", maxWidth: "48ch" }}
+          >
+            An AI architecture studio. We build the pipeline an industry
+            actually runs on, secure the systems that carry it, and ship the
+            sites and apps around it.
+          </p>
 
-function KbdHint({ keys }: { keys: string[] }) {
-  return (
-    <span className="inline-flex items-center gap-1">
-      {keys.map((k, i) => (
-        <kbd
-          key={`${k}-${i}`}
-          className="bv3-mono rounded px-1.5 py-0.5 text-[0.65rem]"
-          style={{
-            background: "var(--bv3-shell-deep)",
-            color: "var(--bv3-cream)",
-            border: "1px solid var(--bv3-border-subtle)",
-            letterSpacing: "0.04em",
-          }}
-        >
-          {k}
-        </kbd>
-      ))}
-    </span>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Page
-// ---------------------------------------------------------------------------
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 6 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
-  },
-};
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.05 } },
-};
-
-export default function CursorVariantHome() {
-  const reduce = useReducedMotion();
-
-  const featured = useMemo(
-    () =>
-      [...projectsByStatus("LIVE"), ...projectsByStatus("PRE-LAUNCH")].slice(0, 6),
-    [],
-  );
-
-  const tierByService = useMemo(() => {
-    const map: Record<string, { name: string; price: string }> = {};
-    for (const s of services) {
-      const tier = s.engagementModels[0];
-      map[s.slug] = { name: tier.name, price: tier.price };
-    }
-    return map;
-  }, []);
-
-  return (
-    <div className="relative">
-
-      {/* ===================================================================
-          File-tree sidebar nav — dev-tool signature.
-          Sticky-left on desktop, top bar on mobile.
-          =================================================================== */}
-      <header
-        className="sticky top-0 z-30 backdrop-blur"
-        style={{
-          background: "rgba(58, 59, 61, 0.85)",
-          borderBottom: "1px solid var(--bv3-border-subtle)",
-        }}
-      >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3 md:px-10">
-          <div className="flex items-center gap-3">
-            <Nox
-              variant="monogram"
-              width={48}
-              height={48}
-              className="h-6 w-6 object-contain"
-              alt="Synapse Dynamics monogram"
-            />
-            <span
-              className="bv3-mono"
-              style={{ color: "var(--bv3-cream)", letterSpacing: "0.06em" }}
-            >
-              ~/synapse-dynamics
-            </span>
-            <span
-              className="bv3-mono hidden sm:inline-block"
-              style={{ color: "var(--bv3-ink-dim)" }}
-            >
-              · main · /
-            </span>
-          </div>
-          <div className="flex items-center gap-3">
-            <Link
-              href={SKOOL_SYNAPSE_STUDIO}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bv3-mono hidden items-center text-sm transition-colors hover:opacity-80 sm:inline-flex"
-              style={{ color: "var(--bv3-ink-muted)" }}
-            >
-              Community
-            </Link>
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-all"
+              className="inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-medium transition-opacity hover:opacity-90"
               style={{
                 background: "var(--bv3-spine)",
                 color: "var(--bv3-on-spine)",
@@ -251,739 +127,321 @@ export default function CursorVariantHome() {
             >
               Start a project
               <span aria-hidden="true">→</span>
-              <KbdHint keys={["⌘", "K"]} />
             </Link>
+            {/* Plain <a>, deliberately NOT next/link. Next's Link intercepts the
+                click and preventDefaults it to run a router navigation, which
+                does nothing useful for a same-page fragment AND stops the Lenis
+                anchor handler in LenisProvider from ever seeing the event. */}
+            <a
+              href="#portfolio"
+              className="text-sm underline-offset-4 transition-colors hover:underline"
+              style={{ color: "var(--bv3-ink-muted)" }}
+            >
+              See what we&rsquo;ve built
+            </a>
           </div>
-        </div>
-      </header>
-
-      <main className="mx-auto max-w-7xl px-6 py-12 md:px-10 md:py-20">
-        {/* =================================================================
-            1. HERO — asymmetric command-palette feel.
-            Big display + inline working-Nox + terminal prompt on right
-            ================================================================= */}
-        {/* The hero no longer carries its own footage. Lux and the cosmos live in
-            <Stage />, mounted in the route-group layout, so they persist across every
-            route instead of being a video bounded by this section. The old
-            lg:w-screen full-bleed wrapper existed only to host that video and is
-            removed with it — it was also 100vw including the scrollbar gutter with no
-            overflow-x guard. */}
-        <section aria-label="Hero" className="relative pb-20 lg:-mt-20 lg:pb-0">
-          <div className="relative z-10 lg:mx-auto lg:flex lg:min-h-[calc(100vh-8rem)] lg:max-w-7xl lg:flex-col lg:justify-center">
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-            className="lg:col-span-7"
-          >
-            <motion.div variants={fadeIn}>
-              <CommandLine
-                command="cursor --about"
-                result="An AI architecture studio for Peer Operators"
-              />
-            </motion.div>
-
-            <motion.h1
-              variants={fadeIn}
-              className="mt-2 text-balance"
-              style={{
-                fontFamily: "var(--font-bricolage), system-ui, sans-serif",
-                fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
-                fontWeight: 700,
-                lineHeight: 1.0,
-                letterSpacing: "-0.035em",
-                color: "var(--bv3-cream)",
-                maxWidth: "20ch",
-              }}
-            >
-              Think before you{" "}
-              <span style={{ color: "var(--bv3-wine-text)" }}>code</span>.
-            </motion.h1>
-
-            <motion.p
-              variants={fadeIn}
-              className="mt-6 text-pretty text-lg leading-relaxed"
-              style={{ color: "var(--bv3-ink-muted)", maxWidth: "55ch" }}
-            >
-              Synapse Dynamics is a small studio building sites, apps, and
-              automations for solo founders, multi-product builders, and
-              operators-who-build. We ship deliberate. We document publicly.
-            </motion.p>
-
-            <motion.div
-              variants={fadeIn}
-              className="mt-8 flex flex-wrap items-center gap-3"
-            >
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-all"
-                style={{
-                  background: "var(--bv3-spine)",
-                  color: "var(--bv3-on-spine)",
-                }}
-              >
-                Start a project
-                <span aria-hidden="true">→</span>
-              </Link>
-              <Link
-                href="#portfolio"
-                className="inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-all"
-                style={{
-                  background: "transparent",
-                  color: "var(--bv3-cream)",
-                  border: "1px solid var(--bv3-border-strong)",
-                }}
-              >
-                Explore the portfolio
-                <KbdHint keys={["P"]} />
-              </Link>
-            </motion.div>
-          </motion.div>
-
-          </div>
-        </section>
-
-        {/* =================================================================
-            2. PORTFOLIO — line-numbered list pattern (file-tree style)
-            ================================================================= */}
-        <section
-          id="portfolio"
-          className="bv3-glass mx-auto my-28 max-w-5xl px-6 py-14 md:my-40 md:px-12 md:py-20"
-          aria-label="Portfolio"
-        >
-          <CommandLine
-            command="ls portfolio/"
-            result={`${featured.length} entries shown · 12 total`}
-          />
-
-          <h2
-            className="mb-10 text-balance"
-            style={{
-              fontFamily: "var(--font-bricolage), system-ui, sans-serif",
-              fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: "-0.025em",
-              color: "var(--bv3-cream)",
-            }}
-          >
-            Twelve products. One mesh.
-          </h2>
-
-          <motion.ol
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-10%" }}
-            className="border-b"
-            style={{ borderColor: "var(--bv3-border-subtle)" }}
-          >
-            {featured.map((p, i) => {
-              const stateMap: Record<string, keyof typeof STATE_COLOR> = {
-                LIVE: "grep",
-                "PRE-LAUNCH": "thinking",
-                CONCEPT: "edit",
-              };
-              const state = stateMap[p.status] ?? "read";
-              return (
-                <motion.div key={p.slug} variants={fadeIn} className="contents">
-                  <LineNumberItem
-                    index={i + 1}
-                    state={state}
-                    label={p.name}
-                    body={p.tagline}
-                  />
-                </motion.div>
-              );
-            })}
-          </motion.ol>
-
-          <Link
-            href="/portfolio"
-            className="bv3-mono mt-6 inline-flex items-center gap-2 text-sm"
-            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.08em" }}
-          >
-            SEE ALL 12 → <KbdHint keys={["⌘", "P"]} />
-          </Link>
-        </section>
-
-        {/* =================================================================
-            2b. RECEIPTS — honest proof strip (2026-07-06, war-game R4:
-            proof by demonstration, not borrowed testimonials)
-            ================================================================= */}
-        <section
-          id="receipts"
-          className="bv3-glass mx-auto my-28 max-w-5xl px-6 py-14 md:my-40 md:px-12 md:py-20"
-          aria-label="Proof"
-        >
-          <CommandLine
-            command="cat receipts.txt"
-            result="proof you can click, not claims"
-          />
-
-          <h2
-            className="mb-10 text-balance"
-            style={{
-              fontFamily: "var(--font-bricolage), system-ui, sans-serif",
-              fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: "-0.025em",
-              color: "var(--bv3-cream)",
-            }}
-          >
-            Receipts, not promises.
-          </h2>
-
-          <motion.ol
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-10%" }}
-            className="border-b"
-            style={{ borderColor: "var(--bv3-border-subtle)" }}
-          >
-            <motion.div variants={fadeIn} className="contents">
-              <LineNumberItem
-                index={1}
-                state="grep"
-                label="Scrlpets is live"
-                body="A full-stack social marketplace for animal breeders, built end-to-end in-house and running in pre-beta right now. Click around — it's real."
-              />
-            </motion.div>
-            <motion.div variants={fadeIn} className="contents">
-              <LineNumberItem
-                index={2}
-                state="read"
-                label="This site is the demo"
-                body="Same stack, same process we install for clients. The pitch and the product are the same artifact."
-              />
-            </motion.div>
-            <motion.div variants={fadeIn} className="contents">
-              <LineNumberItem
-                index={3}
-                state="thinking"
-                label="No logo wall"
-                body="Zero borrowed testimonials. Until the first case studies land, the proof is shipped product — not quotes we wrote ourselves."
-              />
-            </motion.div>
-          </motion.ol>
-
-          <Link
-            href="/portfolio/scrlpets"
-            className="bv3-mono mt-6 inline-flex items-center gap-2 text-sm"
-            style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.08em" }}
-          >
-            READ THE SCRLPETS BUILD →
-          </Link>
-        </section>
-
-        {/* =================================================================
-            3. FOUNDATION — diff-style call-to-action panel
-            ================================================================= */}
-        <section
-          id="foundation"
-          className="bv3-glass mx-auto my-28 max-w-5xl px-6 py-14 md:my-40 md:px-12 md:py-20"
-          aria-label="Foundation"
-        >
-          <CommandLine
-            command="git log foundation"
-            result="3 of 8 seats remaining"
-          />
-
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <h2
-                className="mb-5 text-balance"
-                style={{
-                  fontFamily: "var(--font-bricolage), system-ui, sans-serif",
-                  fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
-                  fontWeight: 700,
-                  lineHeight: 1.05,
-                  letterSpacing: "-0.025em",
-                  color: "var(--bv3-cream)",
-                  maxWidth: "20ch",
-                }}
-              >
-                A standing seat at the architecture table.
-              </h2>
-              <p
-                className="mb-8 max-w-prose text-base leading-relaxed"
-                style={{ color: "var(--bv3-ink-muted)" }}
-              >
-                Monthly subscription. Direct access across pipeline, security,
-                and build. Decisions get made; momentum stays.
-              </p>
-              <div className="flex flex-wrap items-center gap-3">
-                <Link
-                  href="/foundation"
-                  className="inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-all"
-                  style={{
-                    background: "transparent",
-                    color: "var(--bv3-cream)",
-                    border: "1px solid var(--bv3-border-strong)",
-                  }}
-                >
-                  Take a seat
-                  <span aria-hidden="true">→</span>
-                  <span
-                    className="bv3-mono ml-2"
-                    style={{ color: "var(--bv3-wine-text)" }}
-                  >
-                    $3,500/mo
-                  </span>
-                </Link>
-                <span
-                  className="bv3-mono"
-                  style={{ color: "var(--bv3-ink-dim)" }}
-                >
-                  Cancel anytime
-                </span>
-              </div>
-            </div>
-
-            {/* Diff-style panel — git diff aesthetic */}
-            <div className="lg:col-span-5">
-              <div
-                className="overflow-hidden rounded-lg border"
-                style={{
-                  background: "var(--bv3-shell-deep)",
-                  borderColor: "var(--bv3-border-subtle)",
-                }}
-              >
-                <div
-                  className="bv3-mono border-b px-4 py-2 text-xs"
-                  style={{
-                    background: "rgba(0,0,0,0.2)",
-                    borderColor: "var(--bv3-border-subtle)",
-                    color: "var(--bv3-ink-muted)",
-                  }}
-                >
-                  diff: foundation/membership
-                </div>
-                <pre
-                  className="p-4 text-xs leading-relaxed"
-                  style={{
-                    fontFamily: "var(--font-jetbrains), ui-monospace, monospace",
-                  }}
-                >
-                  <code>
-                    <span style={{ color: "var(--bv3-spine-bright)" }}>
-                      {"+ direct access to pipeline + security + build"}
-                    </span>
-                    {"\n"}
-                    <span style={{ color: "var(--bv3-spine-bright)" }}>
-                      {"+ weekly office hours"}
-                    </span>
-                    {"\n"}
-                    <span style={{ color: "var(--bv3-spine-bright)" }}>
-                      {"+ retroactive Genesis allocation"}
-                    </span>
-                    {"\n"}
-                    <span style={{ color: "var(--bv3-wine)" }}>
-                      {"- decision-fatigue from going alone"}
-                    </span>
-                    {"\n"}
-                    <span style={{ color: "var(--bv3-wine)" }}>
-                      {"- waiting for the next discovery call"}
-                    </span>
-                    {"\n\n"}
-                    <span style={{ color: "var(--bv3-ink-muted)" }}>
-                      {"// 3 of 8 seats remain. cancel anytime."}
-                    </span>
-                  </code>
-                </pre>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* =================================================================
-            4. SERVICES — 3 panels, asymmetric, with state badges
-            ================================================================= */}
-        <section
-          className="bv3-glass mx-auto my-28 max-w-5xl px-6 py-14 md:my-40 md:px-12 md:py-20"
-          aria-label="Services"
-        >
-          <CommandLine
-            command="services --list"
-            result="3 workstreams · 9 engagement tiers"
-          />
-
-          <h2
-            className="mb-10 text-balance"
-            style={{
-              fontFamily: "var(--font-bricolage), system-ui, sans-serif",
-              fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: "-0.025em",
-              color: "var(--bv3-cream)",
-            }}
-          >
-            Map it. Secure it.{" "}
-            <span style={{ color: "var(--bv3-wine-text)" }}>Build it.</span>
-          </h2>
-
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-10%" }}
-            className="grid grid-cols-1 gap-4 md:grid-cols-3"
-          >
-            {services.map((s, i) => {
-              const tier = tierByService[s.slug];
-              const stateColors = [
-                STATE_COLOR.thinking,
-                STATE_COLOR.grep,
-                STATE_COLOR.read,
-              ];
-              return (
-                <motion.div
-                  key={s.slug}
-                  variants={fadeIn}
-                  className="group relative overflow-hidden rounded-lg border p-6 transition-colors"
-                  style={{
-                    background: "var(--bv3-shell-deep)",
-                    borderColor: "var(--bv3-border-subtle)",
-                  }}
-                >
-                  <Link
-                    href={`/services/${s.slug}`}
-                    className="absolute inset-0"
-                    aria-label={`${s.name} — view tier details`}
-                  />
-                  <div className="mb-6 flex items-center justify-between">
-                    <span
-                      className="bv3-mono"
-                      style={{ color: stateColors[i], letterSpacing: "0.08em" }}
-                    >
-                      [0{i + 1}]
-                    </span>
-                    <KbdHint keys={[String(i + 1)]} />
-                  </div>
-                  <h3
-                    className="mb-3 text-xl font-semibold"
-                    style={{ color: "var(--bv3-cream)", letterSpacing: "-0.015em" }}
-                  >
-                    {s.name}
-                  </h3>
-                  <p
-                    className="mb-6 text-sm leading-relaxed"
-                    style={{ color: "var(--bv3-ink-muted)" }}
-                  >
-                    {s.tagline}
-                  </p>
-                  <div
-                    className="border-t pt-3 bv3-mono text-xs"
-                    style={{ borderColor: "var(--bv3-border-subtle)" }}
-                  >
-                    <div className="flex items-baseline justify-between">
-                      <span style={{ color: "var(--bv3-ink-dim)" }}>tier</span>
-                      <span style={{ color: "var(--bv3-cream)" }}>
-                        {tier?.name}
-                      </span>
-                    </div>
-                    <div className="mt-1 flex items-baseline justify-between">
-                      <span style={{ color: "var(--bv3-ink-dim)" }}>price</span>
-                      <span style={{ color: "var(--bv3-wine-text)" }}>
-                        {tier?.price}
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </section>
-
-        {/* =================================================================
-            5. NOW / NEXT / LATER — line-numbered todo list
-            ================================================================= */}
-        <section
-          className="bv3-glass mx-auto my-28 max-w-5xl px-6 py-14 md:my-40 md:px-12 md:py-20"
-          aria-label="Roadmap"
-        >
-          <CommandLine
-            command="todo --view all"
-            result="3 in flight · 8 backlog"
-          />
-
-          <h2
-            className="mb-10 text-balance"
-            style={{
-              fontFamily: "var(--font-bricolage), system-ui, sans-serif",
-              fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: "-0.025em",
-              color: "var(--bv3-cream)",
-              maxWidth: "20ch",
-            }}
-          >
-            What we&apos;re building. Out loud.
-          </h2>
-
-          <motion.ol
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-10%" }}
-            className="border-b"
-            style={{ borderColor: "var(--bv3-border-subtle)" }}
-          >
-            {[
-              {
-                state: "grep" as const,
-                label: "Now",
-                body: "Phase 0 of Autonomous Web Agency. Brand v3 mascot lock. Otates close.",
-              },
-              {
-                state: "thinking" as const,
-                label: "Next",
-                body: "Foundation subscription public. AWA v2 toolchain validation. Scrlpets v2 brand.",
-              },
-              {
-                state: "edit" as const,
-                label: "Later",
-                body: "Apotheosis v1.0. NeoHood programmable digital jurisdiction. Sovereign Ledger.",
-              },
-            ].map((row, i) => (
-              <motion.div key={row.label} variants={fadeIn} className="contents">
-                <LineNumberItem
-                  index={i + 1}
-                  state={row.state}
-                  label={row.label}
-                  body={row.body}
-                />
-              </motion.div>
-            ))}
-          </motion.ol>
-        </section>
-
-        {/* =================================================================
-            6. CHANNELS — 2-col with command-prompt accents
-            ================================================================= */}
-        <section
-          className="bv3-glass mx-auto my-28 max-w-5xl px-6 py-14 md:my-40 md:px-12 md:py-20"
-          aria-label="Channels"
-        >
-          <CommandLine
-            command="channels --tail"
-            result="4 channels"
-          />
-
-          <h2
-            className="mb-10 text-balance"
-            style={{
-              fontFamily: "var(--font-bricolage), system-ui, sans-serif",
-              fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: "-0.025em",
-              color: "var(--bv3-cream)",
-            }}
-          >
-            Building in public.
-          </h2>
-
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-10%" }}
-            className="grid grid-cols-1 gap-4 md:grid-cols-2"
-          >
-            {channels.map((c) => (
-              <motion.div
-                key={c.name}
-                variants={fadeIn}
-                className="group relative rounded-lg border p-6 transition-colors"
-                style={{
-                  background: "var(--bv3-shell-deep)",
-                  borderColor: "var(--bv3-border-subtle)",
-                }}
-              >
-                <Link
-                  href={c.url ?? "/channels"}
-                  className="absolute inset-0 rounded-lg"
-                  aria-label={`${c.name} — ${c.url ? "visit channel" : "see all channels"}`}
-                />
-                <div className="mb-3 flex items-center justify-between">
-                  <span
-                    className="bv3-mono"
-                    style={{ color: c.status === "LAUNCHING" ? "var(--bv3-spine-bright)" : c.status === "IN PRODUCTION" ? "var(--bv3-wine-text)" : "var(--bv3-ink-dim)", letterSpacing: "0.08em" }}
-                  >
-                    [FEED]
-                  </span>
-                  <span
-                    className="bv3-mono"
-                    style={{ color: "var(--bv3-ink-dim)" }}
-                  >
-                    {c.format}
-                  </span>
-                </div>
-                <h3
-                  className="mb-2 text-xl font-semibold"
-                  style={{ color: "var(--bv3-cream)", letterSpacing: "-0.015em" }}
-                >
-                  {c.name}
-                </h3>
-                <p
-                  className="text-base leading-relaxed"
-                  style={{ color: "var(--bv3-ink-muted)" }}
-                >
-                  {c.tagline}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </section>
-
-        {/* ===================================================================
-            Productized packs — flat list, low-noise
-            =================================================================== */}
-        <section
-          className="mx-auto w-full max-w-7xl px-6 py-16 md:py-20"
-          style={{ borderTop: "1px solid var(--bv3-border-subtle)" }}
-        >
-          <CommandLine
-            command="packs --list"
-            result="4 productized digital packs · ship-ready"
-          />
-          <h2
-            className="mb-8 text-balance"
-            style={{
-              fontFamily: "var(--font-bricolage), system-ui, sans-serif",
-              fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: "-0.025em",
-              color: "var(--bv3-cream)",
-            }}
-          >
-            One-time packs. Lifetime v1.x updates.
-          </h2>
-          <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-            <Link
-              href="/voice-network"
-              className="group rounded-lg border p-5 transition-colors"
-              style={{
-                background: "var(--bv3-shell-deep)",
-                borderColor: "var(--bv3-border-subtle)",
-              }}
-            >
-              <div className="mb-2 flex items-baseline justify-between">
-                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.14em" }}>
-                  [NEW] CLAUDE VOICE NETWORK PACK
-                </span>
-                <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$79</span>
-              </div>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--bv3-ink-muted)" }}>
-                Persistent AI specialists that travel with you. Bridge installer + Playbook + vault template + 5 starter Projects.
-              </p>
-            </Link>
-            <Link
-              href="/stack"
-              className="group rounded-lg border p-5 transition-colors"
-              style={{
-                background: "var(--bv3-shell-deep)",
-                borderColor: "var(--bv3-border-subtle)",
-              }}
-            >
-              <div className="mb-2 flex items-baseline justify-between">
-                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.14em" }}>
-                  PEER OPERATOR&apos;S STACK V1
-                </span>
-                <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$149</span>
-              </div>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--bv3-ink-muted)" }}>
-                20 patterns for solo AI builders. Anti-context-drift, anti-hallucination, anti-memory-loss working library.
-              </p>
-            </Link>
-            <Link
-              href="/anti-slop"
-              className="group rounded-lg border p-5 transition-colors"
-              style={{
-                background: "var(--bv3-shell-deep)",
-                borderColor: "var(--bv3-border-subtle)",
-              }}
-            >
-              <div className="mb-2 flex items-baseline justify-between">
-                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.14em" }}>
-                  ANTI-SLOP SKILL PACK V1
-                </span>
-                <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$49</span>
-              </div>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--bv3-ink-muted)" }}>
-                Strip banned phrases, hype-tone, AI-influencer vocabulary, filler before publish. Six-category blocklist + voice scan.
-              </p>
-            </Link>
-            <Link
-              href="/atomic-note-pack"
-              className="group rounded-lg border p-5 transition-colors"
-              style={{
-                background: "var(--bv3-shell-deep)",
-                borderColor: "var(--bv3-border-subtle)",
-              }}
-            >
-              <div className="mb-2 flex items-baseline justify-between">
-                <span className="bv3-mono text-xs" style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.14em" }}>
-                  ATOMIC NOTE TEMPLATE PACK
-                </span>
-                <span className="bv3-mono text-sm" style={{ color: "var(--bv3-cream)" }}>$19 tip</span>
-              </div>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--bv3-ink-muted)" }}>
-                Decision / inference / context / test atomic node format. MIT on GitHub, honor-system tip on Stripe.
-              </p>
-            </Link>
-          </div>
-        </section>
-      </main>
+        </motion.div>
+      </section>
 
       {/* ===================================================================
-          Status bar footer — dev-tool signature
+          SERVICES — three, and only three. The scope retraction is the
+          point: everything that used to live here that is not one of these
+          is off the homepage.
           =================================================================== */}
-      <footer
-        className="sticky bottom-0 z-20"
-        style={{
-          background: "rgba(42, 42, 45, 0.92)",
-          borderTop: "1px solid var(--bv3-border-subtle)",
-          backdropFilter: "blur(8px)",
-        }}
-      >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2 md:px-10">
-          <div className="bv3-mono flex items-center gap-4 text-xs">
-            <span
-              className="inline-flex items-center gap-1.5"
-              style={{ color: "var(--bv3-spine-bright)" }}
+      <Beat id="services" label="What we do" width="wide">
+        <h2
+          className="bv3-display-section"
+          style={{
+            fontSize: "clamp(1.75rem, 4vw, 3rem)",
+            color: "var(--bv3-cream)",
+          }}
+        >
+          Three things
+        </h2>
+
+        <div className="mt-14 grid gap-x-10 gap-y-14 md:grid-cols-3">
+          {services.map((service) => (
+            <Link
+              key={service.slug}
+              href={`/services/${service.slug}`}
+              className="group block"
             >
+              <div
+                className="text-xs tracking-[0.18em]"
+                style={{ color: "var(--bv3-gold)" }}
+              >
+                {service.numeral}
+              </div>
+              <h3
+                className="mt-4 text-2xl font-semibold transition-colors"
+                style={{ color: "var(--bv3-cream)" }}
+              >
+                {service.name}
+              </h3>
+              <p
+                className="mt-3 text-[15px] leading-relaxed"
+                style={{ color: "var(--bv3-ink-muted)" }}
+              >
+                {service.tagline}
+              </p>
               <span
+                className="mt-5 inline-block text-sm opacity-0 transition-opacity group-hover:opacity-100"
+                style={{ color: "var(--bv3-spine-bright)" }}
                 aria-hidden="true"
-                className="inline-block h-1.5 w-1.5 rounded-full"
-                style={{ background: "var(--bv3-spine-bright)" }}
-              />
-              live
-            </span>
-            <span style={{ color: "var(--bv3-ink-dim)" }}>·</span>
-            <span style={{ color: "var(--bv3-ink-muted)" }}>
-              brand-v3 / homepage
-            </span>
-            <span style={{ color: "var(--bv3-ink-dim)" }}>·</span>
-            <span style={{ color: "var(--bv3-ink-muted)" }}>
-              MMXXVI
-            </span>
+              >
+                Read more →
+              </span>
+            </Link>
+          ))}
+        </div>
+      </Beat>
+
+      {/* ===================================================================
+          STOP — the first pause. He stops, works a segment, moves on.
+          Nothing here but a claim and a lot of room. The room IS the point:
+          this is where the cosmos is alone on screen.
+          =================================================================== */}
+      <Beat label="How we work">
+        <p
+          className="text-balance text-2xl leading-[1.4] sm:text-3xl"
+          style={{ color: "var(--bv3-cream)", maxWidth: "22ch" }}
+        >
+          Every one of them was built for ourselves first.
+        </p>
+        <p
+          className="mt-6 text-lg leading-relaxed"
+          style={{ color: "var(--bv3-ink-muted)", maxWidth: "46ch" }}
+        >
+          The portfolio is the proof. Not a case-study deck.
+        </p>
+      </Beat>
+
+      {/* ===================================================================
+          PORTFOLIO — finished / in progress / banked. Name and one line
+          only; the detail lives on the premiere pages.
+          =================================================================== */}
+      <Beat id="portfolio" label="Portfolio">
+        <h2
+          className="bv3-display-section"
+          style={{
+            fontSize: "clamp(1.75rem, 4vw, 3rem)",
+            color: "var(--bv3-cream)",
+          }}
+        >
+          What we&rsquo;ve built
+        </h2>
+
+        <div className="mt-14 space-y-12">
+          {[
+            { heading: "Shipped", items: live },
+            { heading: "In progress", items: building },
+            { heading: "Banked", items: banked },
+          ]
+            .filter((g) => g.items.length > 0)
+            .map((group) => (
+              <div key={group.heading}>
+                <div
+                  className="text-xs uppercase tracking-[0.18em]"
+                  style={{ color: "var(--bv3-ink-dim)" }}
+                >
+                  {group.heading}
+                </div>
+                <ul className="mt-5 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+                  {group.items.map((project) => (
+                    <li key={project.slug}>
+                      <Link
+                        href={`/portfolio/${project.slug}`}
+                        className="group block"
+                      >
+                        <div className="flex items-baseline gap-3">
+                          <span
+                            className="text-lg font-semibold"
+                            style={{ color: "var(--bv3-cream)" }}
+                          >
+                            {project.name}
+                          </span>
+                          <span
+                            className="text-[11px] uppercase tracking-[0.12em]"
+                            style={{
+                              color:
+                                STATUS_TONE[project.status] ??
+                                "var(--bv3-ink-dim)",
+                            }}
+                          >
+                            {STATUS_LABEL[project.status] ?? project.status}
+                          </span>
+                        </div>
+                        <p
+                          className="mt-2 text-[15px] leading-relaxed"
+                          style={{ color: "var(--bv3-ink-muted)" }}
+                        >
+                          {project.tagline}
+                        </p>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+        </div>
+
+        <Link
+          href="/portfolio"
+          className="mt-12 inline-block text-sm underline-offset-4 hover:underline"
+          style={{ color: "var(--bv3-spine-bright)" }}
+        >
+          The whole portfolio →
+        </Link>
+      </Beat>
+
+      {/* ===================================================================
+          STOP — the second pause, and the bridge into the channels.
+          =================================================================== */}
+      <Beat label="Working in the open">
+        <p
+          className="text-balance text-2xl leading-[1.4] sm:text-3xl"
+          style={{ color: "var(--bv3-cream)", maxWidth: "24ch" }}
+        >
+          We document while we build.
+        </p>
+        <p
+          className="mt-6 text-lg leading-relaxed"
+          style={{ color: "var(--bv3-ink-muted)", maxWidth: "46ch" }}
+        >
+          Most of it reaches a channel before it reaches a proposal.
+        </p>
+      </Beat>
+
+      {/* =================================================================== */}
+      <Beat id="channels" label="Channels">
+        <h2
+          className="bv3-display-section"
+          style={{
+            fontSize: "clamp(1.75rem, 4vw, 3rem)",
+            color: "var(--bv3-cream)",
+          }}
+        >
+          Channels
+        </h2>
+
+        <ul className="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2">
+          {channels.map((channel) => {
+            const body = (
+              <>
+                <div className="flex items-baseline gap-3">
+                  <span
+                    className="text-lg font-semibold"
+                    style={{ color: "var(--bv3-cream)" }}
+                  >
+                    {channel.name}
+                  </span>
+                  <span
+                    className="text-[11px] uppercase tracking-[0.12em]"
+                    style={{ color: "var(--bv3-ink-dim)" }}
+                  >
+                    {channel.status}
+                  </span>
+                </div>
+                <p
+                  className="mt-2 text-[15px] leading-relaxed"
+                  style={{ color: "var(--bv3-ink-muted)" }}
+                >
+                  {channel.tagline}
+                </p>
+              </>
+            );
+
+            return (
+              <li key={channel.slug}>
+                {channel.url ? (
+                  <a
+                    href={channel.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block"
+                  >
+                    {body}
+                  </a>
+                ) : (
+                  body
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </Beat>
+
+      {/* ===================================================================
+          THE SPLIT — the last beat, and the payoff of the whole descent.
+          He runs out of tricks and uses the only one left: he divides.
+          Two ways in, deliberately. The page ends where the story does.
+          =================================================================== */}
+      <Beat label="Get in touch" space="tight" className="pb-[28vh]">
+        <h2
+          className="bv3-display-section text-balance"
+          style={{
+            fontSize: "clamp(1.75rem, 4vw, 3rem)",
+            color: "var(--bv3-cream)",
+            maxWidth: "16ch",
+          }}
+        >
+          Two ways in
+        </h2>
+
+        <div className="mt-12 grid gap-10 sm:grid-cols-2">
+          <div>
+            <h3
+              className="text-lg font-semibold"
+              style={{ color: "var(--bv3-cream)" }}
+            >
+              You know what you need
+            </h3>
+            <p
+              className="mt-3 text-[15px] leading-relaxed"
+              style={{ color: "var(--bv3-ink-muted)" }}
+            >
+              Tell us the shape of it and we&rsquo;ll tell you what it takes.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-5 inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-medium transition-opacity hover:opacity-90"
+              style={{
+                background: "var(--bv3-spine)",
+                color: "var(--bv3-on-spine)",
+              }}
+            >
+              Start a project
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
-          <div className="bv3-mono hidden items-center gap-3 text-xs sm:flex">
-            <span style={{ color: "var(--bv3-ink-muted)" }}>
-              press <KbdHint keys={["⌘", "K"]} /> to start
-            </span>
+
+          <div>
+            <h3
+              className="text-lg font-semibold"
+              style={{ color: "var(--bv3-cream)" }}
+            >
+              You have a question first
+            </h3>
+            <p
+              className="mt-3 text-[15px] leading-relaxed"
+              style={{ color: "var(--bv3-ink-muted)" }}
+            >
+              Ask it in your own words. A person answers.
+            </p>
+            <Link
+              href="/ask"
+              className="mt-5 inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-medium transition-colors"
+              style={{
+                border: "1px solid var(--bv3-border-strong)",
+                color: "var(--bv3-cream)",
+              }}
+            >
+              Ask
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </div>
-      </footer>
-      {/* Suppress unused reduce var warning */}
-      {reduce ? null : null}
-    </div>
+      </Beat>
+    </main>
   );
 }

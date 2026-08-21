@@ -237,8 +237,8 @@ void main() {
   // mostly shell with subtle atmospheric tint bleeding through;
   // 0.5..1.0 (where worm + wordmark live) is full cosmos.
   // ============================================================
-  float readability = smoothstep(0.35, 0.55, uv.x);
-  float readMix = mix(0.18, 1.0, readability);
+  float readability = smoothstep(0.10, 0.48, uv.x);
+  float readMix = mix(0.42, 1.0, readability);
   // RELEASE the left-side dim past the hero. This clamp was written when copy
   // sat on the left at every scroll position; content now floats in centred
   // glass panels that carry their own legibility, so holding the left third at

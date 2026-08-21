@@ -50,8 +50,22 @@ export function Stage() {
   // different moment. Deterministic from the pathname so a route always looks
   // like itself.
   const pathForPhase = usePathnameForPhase() ?? "/";
+  // HOME IS PHASE ZERO, not a hashed offset. The hash gave "/" a phase of 0.47,
+  // which parked the creature at the MIDDLE of its dig path — world x≈1.67,
+  // directly on top of the hero copy. The path is deliberately weighted to the
+  // right two-thirds precisely so the headline column stays a calm void, and the
+  // phase offset was quietly cancelling that.
+  //
+  // Phase 0 is also the narratively correct start: the home hero is the opening
+  // of the descent (he is up and to the right, idle, not yet moving), and every
+  // inner route is a later moment of the same journey. Hashing still varies the
+  // inner routes — it just no longer overrides the one page whose position is
+  // load-bearing.
   const routePhase =
-    (Array.from(pathForPhase).reduce((a, c) => a + c.charCodeAt(0), 0) % 100) / 100;
+    pathForPhase === "/"
+      ? 0
+      : (Array.from(pathForPhase).reduce((a, c) => a + c.charCodeAt(0), 0) % 100) /
+        100;
   const [scrollProgress, setScrollProgress] = useState(0);
   // Motion-kick intensity 0..1+. Spikes when scroll stops after motion,
   // then exponentially decays to 0 over ~2.5s. The Cosmos shader
@@ -106,74 +120,16 @@ export function Stage() {
   }, [reducedMotion]);
 
 
-  // Hero wordmark fade — visible at scroll=0, fully gone by 12% scroll.
-  // Translates up + fades so the worm has the canvas to itself in dig mode.
-  // Bidirectional: scrolling back up brings it back.
-  const wordmarkOpacity = reducedMotion
-    ? 1
-    : Math.max(0, 1 - scrollProgress / 0.12);
-  const wordmarkTranslateY = reducedMotion ? 0 : -Math.min(1, scrollProgress / 0.12) * 40;
-
   return (
     <>
-      {/* Wordmark — separate fixed wrapper at z-index 5 so it renders
-          ABOVE the cosmos canvas (which is at z-index -1, flowing
-          under content). Right-anchored, fades + lifts on scroll. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed top-[7vh] right-[3vw] hidden text-right md:block"
-        style={{
-          zIndex: 5,
-          display: isHome ? undefined : "none",
-          opacity: wordmarkOpacity,
-          transform: `translateY(${wordmarkTranslateY}px)`,
-          transition: "opacity 120ms linear",
-        }}
-      >
-        <p
-          className="bv3-mono mb-3"
-          style={{ color: "var(--bv3-wine-text)", letterSpacing: "0.18em" }}
-        >
-          VOL. 03 / ISSUE Nº 01
-        </p>
-        <h2
-          className="bv3-display"
-          style={{
-            fontSize: "clamp(2.25rem, 4.2vw, 3.8rem)",
-            lineHeight: 0.94,
-            letterSpacing: "-0.005em",
-            textTransform: "uppercase",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-end",
-          }}
-        >
-          {/* Reverse stagger — SYNAPSE pulled left most, SEGMENTED flushes
-              right, so the diagonal flares outward going down.
-              SINGLE-word emphasis in wine-text on a cream base, per the
-              2026-07-08 IDENTITY lock. The former cream/gold/petrol stack was
-              superseded by that lock and removed from DESIGN.md 2026-08-20 —
-              do not reintroduce it. */}
-          <span style={{ marginRight: "3ch", color: "var(--bv3-cream)" }}>
-            Synapse
-          </span>
-          <span style={{ marginRight: "1.5ch", color: "var(--bv3-cream)" }}>
-            Dynamics
-          </span>
-          <span style={{ marginRight: "0", color: "var(--bv3-wine-text)" }}>
-            Segmented
-          </span>
-        </h2>
-        <p
-          className="bv3-mono mt-4"
-          style={{
-            color: "var(--bv3-ink-on-shell-muted, #9b9b96)",
-            letterSpacing: "0.16em",
-          }}
-        >
-          AI ARCHITECTURE STUDIO
-        </p>
-      </div>
+      {/* The hero wordmark that used to live here was REMOVED 2026-08-21.
+          It predated the page having a hero of its own: Stage WAS the hero, so
+          it carried the SYNAPSE DYNAMICS SEGMENTED lockup. The 2026-08-21
+          homepage rewrite gives the page a real <h1>, and the two then competed
+          on the first screen — two display-scale headlines plus the Nav
+          wordmark, all fighting for the same corner. Stage is background now:
+          cosmos and creature, nothing else. The wordmark still ships in the Nav
+          and in components/brand/Wordmark.tsx. */}
 
       {/* Cosmos canvas — fixed full-viewport at z-index 0, rendered
           BEFORE content in DOM order so page content (which uses
@@ -237,7 +193,7 @@ export function Stage() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(90deg, rgba(58,59,61,0.92) 0%, rgba(58,59,61,0.72) 26%, rgba(58,59,61,0.32) 52%, rgba(58,59,61,0.06) 76%, rgba(58,59,61,0) 100%)",
+            "linear-gradient(90deg, rgba(58,59,61,0.78) 0%, rgba(58,59,61,0.52) 20%, rgba(58,59,61,0.20) 42%, rgba(58,59,61,0.04) 64%, rgba(58,59,61,0) 100%)",
           opacity: reducedMotion ? 1 : Math.max(0, 1 - scrollProgress / 0.18),
           transition: "opacity 120ms linear",
         }}
