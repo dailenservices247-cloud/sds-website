@@ -80,7 +80,11 @@ export function Beat({
   const opacity = useTransform(scrollYProgress, [0, 0.28, 0.72, 1], [0, 1, 1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.28, 0.72, 1], [56, 0, 0, -56]);
 
-  const padding = space === "full" ? "py-[24vh]" : "py-24";
+  // 24vh of breathing room per beat is what lets the cosmos stand alone between
+  // them on desktop. On a phone that is ~195px top AND bottom per beat — roughly
+  // 2,300px of empty gradient across the page — for a payoff that is much weaker
+  // there, since the creature is static below md. Full rhythm from md up only.
+  const padding = space === "full" ? "py-20 md:py-[24vh]" : "py-16 md:py-24";
   // lg:max-w-3xl keeps the right of the frame clear for the creature on wide
   // screens; below lg there is no room to spare, so content takes the width.
   const column = width === "narrow" ? "lg:max-w-3xl" : "";
