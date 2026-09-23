@@ -8,7 +8,7 @@
 
 **Website: LIVE.** Wave 2 Batch 4 shipped 2026-04-11. All 12 routes deployed, all locked tier pricing visible on /services/*. No placeholders left.
 **Live URL:** https://synapsedynamics.vercel.app
-**Repo:** ~/Desktop/sds-website (github.com/dailenservices247-cloud/sds-website)
+**Repo:** ~/black-sheep-247/ventures/sds-website (github.com/dailenservices247-cloud/sds-website) (re-homed 2026-06-28; was ~/Desktop/sds-website)
 **Stack:** Next.js 14 App Router + TypeScript strict + Tailwind v3
 
 ## Locked service pricing (shipped)
@@ -30,7 +30,7 @@
 ## Standard redeploy procedure (LOCKED)
 
 ```
-cd ~/Desktop/sds-website
+cd ~/black-sheep-247/ventures/sds-website
 git add -A && git commit -m "..." && git push
 npx vercel@latest --prod --yes
 # Grab new deployment URL, then:

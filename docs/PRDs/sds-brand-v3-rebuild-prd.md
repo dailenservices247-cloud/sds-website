@@ -69,7 +69,7 @@ IA is locked. Variants don't change IA — they change visual execution.
 - `nox-pose-RESTING-LOCKED.png` — overhead coil donut
 - `nox-WORDMARK-LOCKUP-LOCKED.png` — horizontal lockup with stacked Akira
 
-Copy these into `~/Desktop/sds-website/public/brand-v3/` for serving.
+Copy these into `public/brand-v3/` (repo-relative) for serving.
 
 ## Implementation
 

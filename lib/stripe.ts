@@ -8,7 +8,7 @@ import { SITE_URL } from "@/lib/site-config";
 
 if (!process.env.STRIPE_SECRET_KEY) {
   throw new Error(
-    "STRIPE_SECRET_KEY is not set. Add it to .env.local — see /Users/dailenhuntley/Desktop/sds-website/.env.local",
+    "STRIPE_SECRET_KEY is not set. Add it to .env.local at the repo root.",
   );
 }
 
