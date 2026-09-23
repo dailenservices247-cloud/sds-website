@@ -14,8 +14,8 @@ import { SKOOL_SYNAPSE_STUDIO } from "@/lib/site-config";
 
 const STACK_ZIP_URL = "https://synapsedynamics.io/stack-v1.zip";
 // Tally feedback form for testimonial collection. Until the day-7 Tally form
-// is built per ~/Desktop/peer-operators-stack-testimonial-form-spec.md, this
-// link points at a mailto fallback so buyers have a path to send feedback.
+// is built per ~/black-sheep-247/products/peer-operators-stack-v1/peer-operators-stack-testimonial-form-spec.md,
+// this link points at a mailto fallback so buyers have a path to send feedback.
 const FEEDBACK_LINK =
   "mailto:dailen@synapsedynamics.io?subject=Peer%20Operator%27s%20Stack%20%E2%80%94%20feedback";
 

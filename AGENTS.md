@@ -99,5 +99,5 @@ This is also our locked global preference: "Default to the minimum viable" — b
 
 1. Read `DESIGN.md` (sibling file) — visual ground truth
 2. Read this file — implementation rules
-3. Check the redesign PRD: `~/Desktop/Data/TAOO-Vault/AI Hub/PRDs/sds-website-redesign-prd.md`
+3. Check the redesign PRD: `~/TAOO-Vault/AI Hub/PRDs/sds-website-redesign-2026-08-20.md` — current; supersedes `sds-website-redesign-prd.md` (2026-04-28). (vault re-homed 2026-06-16; was `~/Desktop/Data/TAOO-Vault/`)
 4. ASK the user — never guess on visual direction or brand identity
