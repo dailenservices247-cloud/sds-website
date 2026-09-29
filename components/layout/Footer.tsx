@@ -13,9 +13,9 @@ const footerGroups = [
   {
     title: "SERVICES/",
     links: [
-      { href: "/services/architect", label: "architect" },
-      { href: "/services/automator", label: "automator" },
-      { href: "/services/strategist", label: "strategist" },
+      { href: "/services/pipeline", label: "vertical-pipeline" },
+      { href: "/services/security", label: "ai-security" },
+      { href: "/services/build", label: "build" },
       { href: "/services", label: "all-services" },
     ],
   },
@@ -24,8 +24,8 @@ const footerGroups = [
     links: [
       { href: "/portfolio", label: "portfolio" },
       { href: "/foundation", label: "foundation" },
-      { href: "/matchmaker", label: "matchmaker" },
-      { href: "/lab", label: "the-lab" },
+      { href: "/ask", label: "ask" },
+      { href: "/portfolio", label: "the-portfolio" },
       { href: SKOOL_SYNAPSE_STUDIO, label: "community ↗" },
     ],
   },

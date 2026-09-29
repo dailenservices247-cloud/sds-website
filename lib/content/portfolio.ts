@@ -86,6 +86,14 @@ export interface PortfolioProject {
 
   /** External live URL (LIVE products only) */
   liveUrl?: string;
+  /**
+   * The product's OWN brand accent, used to theme its premiere page.
+   * Dailen 2026-08-20: "the premiere page should be completely decked out in
+   * that project's theme." Optional — a premiere page with no accent falls back
+   * to the SDS tokens rather than inventing a palette. Populate this only with a
+   * colour taken from the product itself, never a guess.
+   */
+  accent?: string;
 
   /** When PARKED, the named unblock condition. Required for PARKED, omitted otherwise. */
   parkedUntil?: string;
@@ -136,6 +144,8 @@ export const portfolioProjects: PortfolioProject[] = [
     blurb:
       "A social platform for breeders and pet owners with a TikTok-style feed, BreederOS dashboard, 21 AI tools for pedigree and health, real-time chat, escrow payments, and a PWA wrapper. Live and shipping. Long-term role: the Scroll Pets companion / satellite of the Super App Platform.",
     liveUrl: "https://scrlpets.lovable.app",
+    // Lifted from the product: --primary: 8 85% 62% in scrlpets src/index.css.
+    accent: "#F0624C",
     audience: "Animal breeders + pet owners",
     consumesFromMesh: [
       {

@@ -33,8 +33,11 @@ export function PageHero({
             align === "center" && "mx-auto text-center"
           )}
         >
-          {eyebrow && <p className="meta-label">{eyebrow}</p>}
-          <h1 className="mt-4 text-4xl font-bold tracking-tight text-ink-primary md:text-6xl text-balance">
+          {eyebrow && <p className="bv3-mono">{eyebrow}</p>}
+          <h1
+            className="bv3-display text-ink-primary mt-4 text-balance"
+            style={{ fontSize: "clamp(2.25rem, 5.2vw, 3.75rem)" }}
+          >
             {title}
           </h1>
           {description && (

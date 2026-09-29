@@ -161,9 +161,9 @@ export function ContactForm() {
             <option value="" disabled>
               Choose one
             </option>
-            <option value="architect">Architect — custom app / software</option>
-            <option value="automator">Automator — workflow / automation</option>
-            <option value="strategist">Strategist — consulting / strategy</option>
+            <option value="pipeline">Vertical Pipeline — workflow for my trade</option>
+            <option value="security">AI Security — audit, remediation, monitoring</option>
+            <option value="build">Build — site, app, or landing page</option>
             <option value="not-sure">Not sure yet</option>
           </select>
         </div>

@@ -17,7 +17,7 @@ export function CTA({
   primaryLabel = "Start a project",
   primaryHref = "/contact",
   secondaryLabel = "See how we work",
-  secondaryHref = "/how-it-works",
+  secondaryHref = "/services",
 }: CTAProps) {
   return (
     <section className="relative overflow-hidden border-y border-[color:var(--border-subtle)] bg-bg-surface section-y">
@@ -31,8 +31,11 @@ export function CTA({
       />
       <Container className="relative">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="meta-label">Start a project</p>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink-primary md:text-5xl">
+          <p className="bv3-mono">Start a project</p>
+          <h2
+            className="bv3-display-section text-ink-primary mt-4 text-balance"
+            style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
+          >
             {heading}
           </h2>
           <p className="mt-5 text-lg text-ink-muted md:text-xl">{subheading}</p>
@@ -40,7 +43,7 @@ export function CTA({
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href={primaryHref}
-              className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 text-base font-semibold text-accent-contrast transition-all hover:bg-accent-bright hover:shadow-[0_0_0_4px_rgba(42,96,85,0.28)]"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-base font-semibold text-accent-contrast transition-colors hover:bg-accent-bright"
             >
               {primaryLabel}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

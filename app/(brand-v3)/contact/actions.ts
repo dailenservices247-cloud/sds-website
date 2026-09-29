@@ -7,7 +7,7 @@ const ContactSchema = z.object({
   name: z.string().min(1, "Name is required").max(120),
   email: z.string().email("Valid email required").max(200),
   company: z.string().max(200).optional().or(z.literal("")),
-  projectType: z.enum(["architect", "automator", "strategist", "not-sure"]),
+  projectType: z.enum(["pipeline", "security", "build", "not-sure"]),
   budget: z.enum(["under-5k", "5k-15k", "15k-50k", "50k-plus", "not-sure"]),
   message: z.string().min(10, "Tell us a bit more").max(5000),
   // Honeypot — should always be empty. Bots fill everything.
@@ -77,9 +77,9 @@ export async function submitContact(
     try {
       const resend = new Resend(apiKey);
       const projectTypeLabel = {
-        architect: "Architect — custom apps",
-        automator: "Automator — automation",
-        strategist: "Strategist — AI strategy",
+        pipeline: "Vertical Pipeline",
+        security: "AI Security",
+        build: "Build — site / app / landing page",
         "not-sure": "Not sure yet",
       }[data.projectType];
       const budgetLabel = {
@@ -96,7 +96,7 @@ export async function submitContact(
 
       const html = `
         <div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#0a0f0c;line-height:1.55;max-width:560px">
-          <h2 style="margin:0 0 8px;color:#15803d">New project inquiry</h2>
+          <h2 style="margin:0 0 8px;color:#2a6055">New project inquiry</h2>
           <p style="margin:0 0 16px;color:#5f6b66;font-size:13px">Received ${receivedAt}</p>
           <table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;font-size:14px">
             <tr><td style="padding:6px 0;width:120px;color:#5f6b66">Name</td><td style="padding:6px 0"><strong>${escapeHtml(
@@ -115,7 +115,7 @@ export async function submitContact(
             <tr><td style="padding:6px 0;color:#5f6b66">Track</td><td style="padding:6px 0">${projectTypeLabel}</td></tr>
             <tr><td style="padding:6px 0;color:#5f6b66">Budget</td><td style="padding:6px 0">${budgetLabel}</td></tr>
           </table>
-          <div style="margin-top:24px;padding:16px;background:#f5f7f6;border-left:3px solid #22c55e;border-radius:4px">
+          <div style="margin-top:24px;padding:16px;background:#f5f7f6;border-left:3px solid #c8a23e;border-radius:4px">
             <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:#5f6b66;margin-bottom:8px">Project description</div>
             <div style="white-space:pre-wrap">${escapeHtml(data.message)}</div>
           </div>

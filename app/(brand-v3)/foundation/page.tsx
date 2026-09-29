@@ -44,7 +44,6 @@ export default function FoundationPage() {
     <article>
       {/* Loud hero — emerald gradient */}
       <section className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 -z-10 gradient-blaze" aria-hidden="true" />
         <div
           className="absolute inset-0 -z-10 opacity-[0.06] mix-blend-overlay"
           style={{
@@ -59,11 +58,11 @@ export default function FoundationPage() {
             className="mb-8 md:mb-10 text-white"
             style={{ fontSize: "clamp(1.25rem, 2vw, 1.75rem)" }}
           />
-          <p className="mono-label mb-6" style={{ color: "rgba(255,255,255,0.85)" }}>
+          <p className="bv3-mono mb-6" style={{ color: "rgba(255,255,255,0.85)" }}>
             Bridge offer · Pre-launch
           </p>
           <h1
-            className="display text-white text-balance"
+            className="bv3-display text-white text-balance"
             style={{ fontSize: "clamp(3rem, 8vw, 6rem)", maxWidth: "16ch" }}
           >
             Foundation Subscription.
@@ -89,7 +88,7 @@ export default function FoundationPage() {
       {!FOUNDATION_LIVE && (
         <section className="container-x py-12 max-w-3xl">
           <div className="rounded-xl border-2 border-accent bg-bg-surface p-6 md:p-8">
-            <p className="mono-label mb-2">Launching Week of May 5, 2026</p>
+            <p className="bv3-mono mb-2">Launching Week of May 5, 2026</p>
             <p className="text-base text-ink-primary leading-relaxed">
               Black Sheep 247 LLC formation is in queue with Ohio SOS (filed April 30, 3-7 business
               day approval). Foundation Subscription opens for Stripe billing once the cascade
@@ -105,8 +104,8 @@ export default function FoundationPage() {
       {/* Founder block — concrete proof-of-shipping above the benefit list */}
       <section className="container-x py-12 md:py-16 max-w-3xl">
         <div className="rounded-2xl bg-bg-surface border border-border-subtle p-8 md:p-10">
-          <p className="mono-label mb-3">Built by</p>
-          <h2 className="display-section text-2xl md:text-3xl text-ink-primary mb-4">
+          <p className="bv3-mono mb-3">Built by</p>
+          <h2 className="bv3-display-section text-2xl md:text-3xl text-ink-primary mb-4">
             Dailen Huntley
           </h2>
           <p className="text-base md:text-lg text-ink-muted leading-relaxed mb-6 text-pretty">
@@ -188,7 +187,7 @@ export default function FoundationPage() {
       <section className="relative overflow-hidden">
         <Creature slug="planaria" position="top-right" opacity={0.10} tint="muted" />
         <div className="container-x py-20 md:py-28 max-w-3xl relative z-10">
-          <h2 className="display-section text-3xl md:text-5xl text-ink-primary mb-10 text-balance">
+          <h2 className="bv3-display-section text-3xl md:text-5xl text-ink-primary mb-10 text-balance">
             What you get for $19/mo.
           </h2>
           <ul role="list" className="space-y-6">
@@ -201,7 +200,7 @@ export default function FoundationPage() {
             ].map((item) => (
               <li key={item.label} className="flex gap-5 border-l-2 border-accent pl-6">
                 <div>
-                  <p className="display-section text-xl md:text-2xl text-ink-primary mb-2">
+                  <p className="bv3-display-section text-xl md:text-2xl text-ink-primary mb-2">
                     {item.label}
                   </p>
                   <p className="text-base md:text-lg text-ink-muted leading-relaxed text-pretty">
@@ -217,10 +216,10 @@ export default function FoundationPage() {
       {/* Founding Member tier */}
       <section className="container-x py-16 md:py-20 max-w-3xl">
         <div className="rounded-2xl bg-bg-dark p-8 md:p-12 border border-border-subtle">
-          <p className="mono-label mb-4 text-accent-bright">
+          <p className="bv3-mono mb-4 text-accent-bright">
             First 100 subscribers · {FOUNDING_MEMBERS_REMAINING} spots left
           </p>
-          <h2 className="display text-white text-balance mb-6" style={{ fontSize: "clamp(2.25rem, 5vw, 3.5rem)" }}>
+          <h2 className="bv3-display text-white text-balance mb-6" style={{ fontSize: "clamp(2.25rem, 5vw, 3.5rem)" }}>
             Founding&nbsp;Member tier.
           </h2>
           <p className="text-sm text-ink-dim italic mb-6">
@@ -238,7 +237,7 @@ export default function FoundationPage() {
               ["04", "A retroactive Founding Member NFT", "on NeoHood's Genesis Block when the chain ships (years out — see below). Non-equity. Non-financial. A provable timestamp that says you were here at the start."],
             ].map(([num, bold, rest]) => (
               <li key={num} className="flex gap-4">
-                <span className="mono-label text-xs flex-shrink-0 mt-1 text-accent-bright">{num}</span>
+                <span className="bv3-mono text-xs flex-shrink-0 mt-1 text-accent-bright">{num}</span>
                 <p className="text-base leading-relaxed text-ink-primary">
                   <strong className="font-semibold">{bold}</strong> {rest}
                 </p>
@@ -250,7 +249,7 @@ export default function FoundationPage() {
 
       {/* What's NOT in it */}
       <section className="container-x py-16 md:py-20 max-w-3xl">
-        <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-8">
+        <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary mb-8">
           What&rsquo;s deliberately NOT in it.
         </h2>
         <ul role="list" className="space-y-5 text-base md:text-lg text-ink-muted leading-relaxed">
@@ -263,7 +262,7 @@ export default function FoundationPage() {
 
       {/* FAQ */}
       <section className="container-x py-16 md:py-20 max-w-3xl">
-        <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-8">
+        <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary mb-8">
           FAQ.
         </h2>
         <div className="space-y-4">
@@ -328,7 +327,7 @@ export default function FoundationPage() {
           If the word &ldquo;NFT&rdquo; triggers you, skip this section &mdash; it&rsquo;s
           optional reading and doesn&rsquo;t affect what you&rsquo;re paying for.
         </p>
-        <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-6">
+        <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary mb-6">
           About the Founding Member NFT.
         </h2>
         <div className="space-y-5 text-ink-muted leading-relaxed text-pretty text-base md:text-lg">
@@ -353,8 +352,8 @@ export default function FoundationPage() {
 
       {/* Setup Session */}
       <section className="container-x py-16 md:py-20 max-w-3xl border-t border-border-subtle">
-        <p className="mono-label mb-4">Side-gate · Optional</p>
-        <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-4">
+        <p className="bv3-mono mb-4">Side-gate · Optional</p>
+        <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary mb-4">
           Setup Session — $297 one-time.
         </h2>
         <p className="text-base md:text-lg text-ink-muted leading-relaxed text-pretty mb-6">
@@ -380,7 +379,7 @@ export default function FoundationPage() {
       {/* CTA */}
       <section className="container-x pb-32 max-w-3xl">
         <div className="rounded-2xl bg-bg-surface border border-border-subtle p-8 md:p-12">
-          <h2 className="display-section text-3xl md:text-4xl text-ink-primary mb-4 text-balance">
+          <h2 className="bv3-display-section text-3xl md:text-4xl text-ink-primary mb-4 text-balance">
             {FOUNDATION_LIVE ? "Subscribe — $19/mo." : "Get the launch ping."}
           </h2>
           <p className="text-base md:text-lg text-ink-muted mb-8 leading-relaxed">

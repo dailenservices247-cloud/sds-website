@@ -67,8 +67,8 @@ export default function NotFound() {
               {[
                 { href: "/about", label: "About" },
                 { href: "/services", label: "Services" },
-                { href: "/how-it-works", label: "How it works" },
-                { href: "/lab/scrlpets", label: "Lab — Scrlpets" },
+                { href: "/services", label: "Services" },
+                { href: "/portfolio/scrlpets", label: "Scrlpets" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (
                 <li key={link.href}>

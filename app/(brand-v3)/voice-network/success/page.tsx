@@ -18,12 +18,12 @@ export default function VoiceNetworkSuccessPage({
 }) {
   return (
     <article className="container-x py-24 md:py-40 max-w-3xl text-center">
-      <p className="mono-label mb-6 mx-auto inline-block text-accent-ink">
+      <p className="bv3-mono mb-6 mx-auto inline-block text-accent-ink">
         ✓ Payment received
       </p>
 
       <h1
-        className="display text-ink-primary text-balance mb-8 mx-auto"
+        className="bv3-display text-ink-primary text-balance mb-8 mx-auto"
         style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", maxWidth: "22ch" }}
       >
         Welcome to the Voice Network.
@@ -34,7 +34,7 @@ export default function VoiceNetworkSuccessPage({
       </p>
 
       <div className="rounded-2xl bg-bg-surface border border-border-subtle p-6 md:p-8 mb-10 text-left max-w-2xl mx-auto">
-        <p className="mono-label mb-3">What happens next</p>
+        <p className="bv3-mono mb-3">What happens next</p>
         <ol className="space-y-3 text-base text-ink-muted leading-relaxed list-decimal list-inside">
           <li>Email arrives with the ZIP download link + 5-step install walkthrough.</li>
           <li>Run <code>./bridge/smoke-test.sh</code> after install — passes 5/5 layers if your bridge is healthy.</li>

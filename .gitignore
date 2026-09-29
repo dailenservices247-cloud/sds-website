@@ -34,3 +34,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Helix 3D experiment artifacts — superseded conversions. The chosen mesh ships
+# as public/brand-v3/helix.glb; every version is banked in the vault at
+# AI Hub/Brand/sds-brand-v3-LOCKED/.
+public/brand-v3/helix-mesh.glb
+public/brand-v3/helix-rodin.glb
+public/brand-v3/helix-r7.glb
+public/brand-v3/helix-r7b.glb
+public/brand-v3/lux-original-approved.mov
+public/brand-v3/helix.glb
+public/brand-v3/helix-basecolor.png
