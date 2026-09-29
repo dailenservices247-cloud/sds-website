@@ -79,14 +79,14 @@ spacing:
   inline-gap: "clamp(1rem, 2vw, 2rem)"
 components:
   button-primary:
-    backgroundColor: "{colors.gold}"
-    textColor: "{colors.shell}"
+    backgroundColor: "{colors.spine}"
+    textColor: "{colors.on-spine}"
     rounded: "{rounded.pill}"
     padding: "16px 28px"
     typography: "{typography.body}"
   button-primary-hover:
-    backgroundColor: "{colors.gold-bright}"
-    textColor: "{colors.shell}"
+    backgroundColor: "{colors.spine-bright}"
+    textColor: "{colors.on-spine}"
   button-ghost:
     backgroundColor: "transparent"
     textColor: "{colors.cream}"
@@ -108,7 +108,7 @@ components:
     padding: "32px"
   pill-mono-label:
     backgroundColor: "transparent"
-    textColor: "{colors.gold}"
+    textColor: "{colors.wine-text}"
     rounded: "{rounded.pill}"
     padding: "4px 10px"
     typography: "{typography.mono}"
@@ -238,13 +238,18 @@ The exception: the traveling Nox mascot is itself a 3D bas-relief render with ba
 ### Buttons
 
 **Primary CTA** (`button-primary`):
-- Background: `gold` `#c8a23e`
-- Text: `shell` `#3a3b3d` (dark ink on gold for contrast)
+- Background: `spine` `#2a6055`
+- Text: `on-spine` `#e9f2ef`
 - Padding: 16px 28px
 - Border-radius: pill (9999px)
 - Typography: Geist body, weight 500
-- Hover: background → `gold-bright` `#d8b85a`
+- Hover: background → `spine-bright` `#347466`
 - Focus: 2px outline `border-strong` `#5c5d5f`, 2px offset
+
+> **Corrected 2026-09-29.** This block said gold, which predates the 2026-06-10 Brand House swap
+> demoting gold to art-only reserve and the 2026-07-08 ACTION=spine lock. The Colors table above
+> has said spine since; the live code has shipped it since. Measured: every primary CTA on the
+> homepage renders `background: var(--bv3-spine)`. The doc was the only thing still saying gold.
 
 **Secondary / Ghost CTA** (`button-ghost`):
 - Background: transparent
@@ -271,8 +276,13 @@ The exception: the traveling Nox mascot is itself a 3D bas-relief render with ba
 
 **Mono section label** (`pill-mono-label`):
 - Background: transparent
-- Text: `gold` `#c8a23e`
+- Text: `wine-text` `#e09aa4` on shell — `wine` `#7e303a` on a cream ground
 - UPPERCASE, JetBrains Mono 0.75rem weight 500, letter-spacing 0.08em
+
+> **Corrected 2026-09-29.** Said gold, for the same reason the CTA did. The Typography section
+> already carried this correction on 2026-08-20; this block was missed. Live values:
+> `app/globals.css:308` sets `.bv3-mono` to `--bv3-wine-text`, and `:317` overrides it to
+> `--bv3-wine` inside `.bv3-section-cream`.
 - Used as section anchors ("II. PORTFOLIO", "III. THE FOUNDATION")
 - Mimics editorial publication chapter marks
 
@@ -321,6 +331,14 @@ Inputs match card register: shell-deep background, 1px border-subtle, 12px radiu
 
 - **Maintain the matte monolith.** Every section uses `shell` `#3a3b3d` as ground. Petrol-spine rules + gold mono labels + Bricolage display are how sections differentiate.
 - **Use the binary radius system: 12px (containers) or 9999px (pills).** No values between.
+
+  > **Open divergence, measured 2026-09-29 — needs Dailen, not a doc edit.** The code does not
+  > obey this. `rounded-md` appears **38 times inside `(brand-v3)`** (40 repo-wide) and resolves to
+  > Tailwind 3's default **6px** — `tailwind.config.ts` sets no `borderRadius` override — plus one
+  > hand-rolled `14px` at `app/globals.css:401`. Against a rule that says "no values between",
+  > that is the rule losing 38:0 on the surfaces it governs. Two honest resolutions: bring the code
+  > to 12px/pill, or amend the system to admit 6px. Amending a locked brand rule to match drift is
+  > the kind of decision that belongs to Dailen, so this is recorded rather than resolved.
 - **Reserve display moments.** Bricolage 700 only at 36px+. One hero display per route. Section displays smaller.
 - **Use single-word emphasis on hero H1**, in `wine-text` on a cream base — per the 2026-07-08 IDENTITY lock. The older multi-colour gold+petrol stack predates that lock and is **superseded**; do not reintroduce it.
 - **Pulse LIVE status badge** with `prefers-reduced-motion` honored.

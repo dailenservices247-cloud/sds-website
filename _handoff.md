@@ -43,7 +43,13 @@ The alias step is REQUIRED — `--prod --yes` only sets the swart alias, not the
 
 - Wave 1 + Wave 2 Batch 1–4 routes — all live, do not regenerate
 - Locked tier pricing — edit `lib/content/services.ts` if prices change, but do not swap tier names
-- Brand identity v2 (LOCKED 2026-04-10) — emerald `#22C55E`, NodalWorm, Wordmark, Monogram all shipped inline SVG
+- **Brand identity v3** — matte shell `#3a3b3d`, spine `#2a6055` as the ACTION accent, wine `#7e303a`
+  as IDENTITY, gold `#c8a23e` as art-only reserve. `DESIGN.md` is the authority.
+
+> **Corrected 2026-09-29.** This line read *"Brand identity v2 (LOCKED 2026-04-10) — emerald
+> `#22C55E`"*. That emerald is banned by name in `DESIGN.md` and was purged from the codebase in
+> `c62cc6c`. A "do NOT rebuild" entry naming a colour the design system forbids is the worst kind
+> of stale doc: it reads as protection while pointing at the thing that was deliberately removed.
 
 ## Key refs
 - Brand: BRAND.md (repo root)
