@@ -246,7 +246,18 @@ void main() {
   // NOTE: this previously justified the release by saying the panels "carry their
   // own legibility". They do not — Beat sets no background, and the .bv3-glass
   // rule that would have has been removed as dead and as a DESIGN.md ban.
-  // The release may still be correct; it is UNVERIFIED, not established.
+  //
+  // Contrast cost of the release, computed from the constants above against the two
+  // live text colours (heading cream #efede5, body rgb(155,155,150)), WCAG AA:
+  //   SHELL 9.57 / 4.02   SHELL_DEEP 14.38 / 6.04   PETROL 6.17 / 2.59
+  //   PETROL_BR 4.07 / 1.71   WINE 7.56 / 3.17   WINE_BR 5.21 / 2.19
+  //   GOLD 2.06 / 1.16   GOLD_BR 1.35 / 1.76   CREAM 1.00 / 2.38
+  // Body copy is already marginal on plain SHELL (4.02 vs the 4.5 AA floor) and
+  // fails against every coloured region. Cream-on-cream is 1.00 — invisible. The
+  // bright constants render as point sparkles rather than fields, so this is a bound
+  // on the worst case, not a measurement of the rendered distribution: the field the
+  // reader actually sees sits between SHELL_DEEP and the petrol/wine regions.
+  // Still unmeasured in situ, and it is a real risk, not a theoretical one.
   readMix = mix(readMix, 1.0, smoothstep(0.05, 0.25, uScroll));
   col = mix(SHELL, col, readMix);
 

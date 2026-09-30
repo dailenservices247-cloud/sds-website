@@ -273,8 +273,9 @@ export function Stage() {
           full strength just greys out the cosmos. (This previously said the beats
           "carry their own glass". They do not — Beat is deliberately transparent
           and the .bv3-glass rule it referred to was dead and has been removed.
-          Whether the released scrim leaves enough contrast past the hero is
-          UNVERIFIED; see DESIGN.md.)
+          The contrast cost of releasing this gradient is quantified in Cosmos.tsx
+          next to the readMix clamp: body copy is already marginal on plain shell
+          and fails AA against every coloured region of the cosmos.)
           So it FLOWS OUT with scroll: full at the top, gone by 18%. */}
       <div
         className="absolute inset-0"
