@@ -343,8 +343,12 @@ Inputs match card register: shell-deep background, 1px border-subtle, 12px radiu
   > can no longer introduce a fourth radius. Measured after: every non-zero `border-radius` on the
   > homepage is 12px, across 18 elements.
   >
-  > Untouched: the hand-rolled `border-radius: 14px` in `app/globals.css` — a literal value, not a
-  > utility, so the token collapse does not reach it.
+  > **The last exception is closed too.** The hand-rolled `border-radius: 14px` in `app/globals.css`
+  > (`.bv3-glass`) is now 12px. The token collapse could not reach it because it is a literal rather
+  > than a utility. It is also **dead CSS** — defined at `globals.css:395` and `:407` and applied by
+  > no component, which is why the 18-element homepage measurement above was already all-12px while
+  > a 14px rule sat in the sheet. Every non-zero radius in the codebase is now 4px, 12px or 9999px.
+  > Deleting the unused `.bv3-glass` block is the obvious follow-up and is left as Dailen's call.
 - **Reserve display moments.** Bricolage 700 only at 36px+. One hero display per route. Section displays smaller.
 - **Use single-word emphasis on hero H1**, in `wine-text` on a cream base — per the 2026-07-08 IDENTITY lock. The older multi-colour gold+petrol stack predates that lock and is **superseded**; do not reintroduce it.
 - **Pulse LIVE status badge** with `prefers-reduced-motion` honored.

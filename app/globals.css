@@ -401,7 +401,10 @@ body:has([data-theme="brand-v3"]) {
   backdrop-filter: blur(18px) saturate(115%);
   -webkit-backdrop-filter: blur(18px) saturate(115%);
   border: 1px solid var(--bv3-border-subtle);
-  border-radius: 14px;
+  /* 12px per the locked binary radius system (DESIGN.md). Was a hand-rolled 14px,
+     which the tailwind.config token collapse could not reach because this is a
+     literal, not a utility. NOTE: no component currently applies .bv3-glass. */
+  border-radius: 12px;
 }
 @media (prefers-reduced-motion: reduce) {
   [data-theme="brand-v3"] .bv3-glass {
