@@ -34,19 +34,21 @@ Remediation is deliberately not fixed-price: it cannot be scoped before the audi
 
 ## Deploying
 
-⚠️ **Two conflicting procedures are on record and I could not verify which is live** (no `vercel.json`
-in the repo, and I have no Vercel access from here). Confirm before relying on either.
-
-- `~/.claude/handoffs/synapse.md` says **push = production** — a push to `main` deploys.
-- The 2026-04 procedure below adds an explicit promote + alias step after the push.
+**RESOLVED 2026-09-30: push is the deploy.** The two procedures on record are settled by
+observation, not inference. Two pushes to `main` that day each produced their own `target:
+production` deployment that reached `READY` with **no promote and no alias step run**
+(`dpl_9M5je6hz…` for `c732956`, `dpl_ARrYCVFZ…` for `6877e05`), and synapsedynamics.io served the
+new build immediately afterwards — verified by measuring the live page, not by curl alone.
 
 ```
 cd ~/black-sheep-247/ventures/sds-website
 npm run build          # ALWAYS first. Never while `next dev` is running — it clobbers .next/
 git add <paths> && git commit && git push origin main
-npx vercel@latest --prod --yes
-npx vercel@latest alias set <new-deploy-url> synapsedynamics.vercel.app
+# That is the deploy. Confirm state: target=production, then READY.
 ```
+
+The 2026-04 `npx vercel --prod --yes` + `alias set` steps are **superseded**. They predate the
+GitHub integration; running them now creates a second, redundant deployment of the same commit.
 
 **`main` is production.** Confirm what you are pushing with `git ls-remote origin`, **not**
 `git rev-parse @{u}` — upstream tracking is local branch config and says nothing about what reached
