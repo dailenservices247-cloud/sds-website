@@ -269,8 +269,12 @@ export function Stage() {
 
       {/* Left-third legibility gradient — but only where it is needed.
           The hero overlays copy on the left, so it needs the scrim. Past the
-          hero the content lives in floating panels that carry their own glass,
-          and holding this gradient at full strength just greys out the cosmos.
+          hero the content lives in floating beats, and holding this gradient at
+          full strength just greys out the cosmos. (This previously said the beats
+          "carry their own glass". They do not — Beat is deliberately transparent
+          and the .bv3-glass rule it referred to was dead and has been removed.
+          Whether the released scrim leaves enough contrast past the hero is
+          UNVERIFIED; see DESIGN.md.)
           So it FLOWS OUT with scroll: full at the top, gone by 18%. */}
       <div
         className="absolute inset-0"

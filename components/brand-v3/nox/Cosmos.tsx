@@ -241,9 +241,12 @@ void main() {
   float readMix = mix(0.42, 1.0, readability);
   // RELEASE the left-side dim past the hero. This clamp was written when copy
   // sat on the left at every scroll position; content now floats in centred
-  // glass panels that carry their own legibility, so holding the left third at
-  // 18% just flattens the region the reader is looking THROUGH. Full strength
-  // at the hero, released by ~25% scroll.
+  // beats, so holding the left third at 18% just flattens the region the reader
+  // is looking THROUGH. Full strength at the hero, released by ~25% scroll.
+  // NOTE: this previously justified the release by saying the panels "carry their
+  // own legibility". They do not — Beat sets no background, and the .bv3-glass
+  // rule that would have has been removed as dead and as a DESIGN.md ban.
+  // The release may still be correct; it is UNVERIFIED, not established.
   readMix = mix(readMix, 1.0, smoothstep(0.05, 0.25, uScroll));
   col = mix(SHELL, col, readMix);
 
