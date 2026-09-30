@@ -19,8 +19,18 @@ const navLinks = [
 export function Nav() {
   const [open, setOpen] = useState(false);
 
+  // Opaque, not glass. DESIGN.md:234 bans decorative backdrop blur outright, and :222
+  // puts all depth in background-color shifts plus 1px tinted borders. This header was
+  // 80% alpha shell under a blur utility, dropping to 60% where the filter is
+  // supported — the banned pattern, and the last one that reached the stylesheet.
+  // Solid shell also reads better over the cosmos canvas than 60% alpha did.
+  //
+  // Do not spell the utility class name anywhere in this file, comments included:
+  // Tailwind's JIT scans comments, so naming it re-emits its rule into the bundle
+  // with nothing using it. Verified twice — the class survived both the removal and
+  // a rewrite of this note, because each draft still contained the literal token.
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[color:var(--border-subtle)] bg-bg-primary/80 backdrop-blur supports-[backdrop-filter]:bg-bg-primary/60">
+    <header className="sticky top-0 z-50 w-full border-b border-[color:var(--border-subtle)] bg-bg-primary">
       <Container>
         <div className="flex h-16 items-center justify-between md:h-20">
           <Link
