@@ -39,8 +39,27 @@ const config: Config = {
         "border-soft": "var(--border-soft, var(--border-subtle))",
         "border-accent": "var(--border-accent)",
       },
+      // DESIGN.md locks a binary radius system: 12px containers, 9999px pills,
+      // 4px chips, "no values between". Tailwind's default scale contradicted it
+      // on every surface it governs — 56 `rounded-md` uses resolving to 6px, plus
+      // lg/2xl/3xl landing on 8/16/24px. Collapsing the scale here enforces the
+      // system at the token layer instead of at 100+ call sites, and keeps the
+      // utility names people already type.
+      borderRadius: {
+        none: "0px",
+        sm: "4px",
+        DEFAULT: "4px",
+        md: "12px",
+        lg: "12px",
+        xl: "12px",
+        "2xl": "12px",
+        "3xl": "12px",
+        full: "9999px",
+      },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        // Geist, not Inter. DESIGN.md bans Inter by name as a generic default;
+        // this token was the last thing still handing it to any `font-sans`.
+        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         // mono: existing JetBrains Mono kept for brand v2 routes; v3 routes
         // use --font-geist-mono via CSS classes (.mono-label and similar).
         mono: ["var(--font-jetbrains)", "ui-monospace", "monospace"],

@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import {
-  Inter,
-  JetBrains_Mono,
-  Bricolage_Grotesque,
-} from "next/font/google";
+import { JetBrains_Mono, Bricolage_Grotesque } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import Script from "next/script";
@@ -55,11 +51,9 @@ const websiteJsonLd = {
   },
 };
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
+// Inter was dropped 2026-09-30. DESIGN.md bans it by name as a generic default,
+// and it was loading on every page while the rendered surfaces already used
+// Geist — payload for a face the design system forbids.
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -145,7 +139,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} ${bricolage.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${jetbrainsMono.variable} ${bricolage.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
       {/* data-theme="brand-v3" scopes the legacy-token bridge in globals.css
           to the whole site — Nav, Footer, and all (marketing) routes inherit
