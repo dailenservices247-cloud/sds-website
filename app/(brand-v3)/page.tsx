@@ -65,6 +65,48 @@ const STATUS_LABEL: Record<string, string> = {
   PARKED: "Banked",
 };
 
+/**
+ * The five phases, taken from AI Hub/Playbooks/sds-consulting-methodology.md.
+ *
+ * `endsWhen` is the playbook's own Exit Criteria, compressed to one line. It is
+ * here rather than a vaguer "what we deliver" because a phase that names what
+ * ends it is checkable, and a phase that describes its own value is not.
+ *
+ * Phase 5 has no exit criteria in the playbook. That is not an omission.
+ */
+const phases = [
+  {
+    numeral: "01",
+    name: "Discovery",
+    does: "We work out what you need, which is rarely what the brief says.",
+    endsWhen: "your pains are validated rather than assumed, and the budget is real.",
+  },
+  {
+    numeral: "02",
+    name: "Audit",
+    does: "We map the process you run, including the workarounds nobody wrote down.",
+    endsWhen: "the real process is documented and the opportunities are ranked by return.",
+  },
+  {
+    numeral: "03",
+    name: "Design",
+    does: "We architect it before anything gets built, and the scope boundaries go in writing.",
+    endsWhen: "you have approved the architecture and how it will be observed in production.",
+  },
+  {
+    numeral: "04",
+    name: "Build",
+    does: "We ship working automation into production inside 30 days.",
+    endsWhen: "you can trigger and monitor it without us.",
+  },
+  {
+    numeral: "05",
+    name: "Calibrate",
+    does: "Agents drift. We measure quality and cost, and keep tuning against both.",
+    endsWhen: "never. It runs as long as the engagement does.",
+  },
+];
+
 export default function HomePage() {
   const reduced = useReducedMotion();
 
@@ -219,6 +261,69 @@ export default function HomePage() {
         >
           The portfolio is the proof. Not a case-study deck.
         </p>
+      </Beat>
+
+      {/* ===================================================================
+          THE METHOD — the five phases, stated with what ends each one.
+          Extends the pause above rather than replacing it: that beat makes the
+          claim, this one shows the shape behind it.
+
+          Source: AI Hub/Playbooks/sds-consulting-methodology.md. The phase
+          names and the exit criteria are lifted from the real playbook, not
+          written for the page. Phase 5 genuinely has no exit criteria in the
+          playbook, which is the strongest line here and the reason the section
+          earns its place: "not a dev shop that disappears" stops being a claim
+          and becomes a structural fact about how the engagement is shaped.
+
+          Ordered list, not the three-column grid above: a method is a sequence
+          and a service list is not.
+          =================================================================== */}
+      <Beat id="method" label="The method">
+        <h2
+          className="bv3-display-section"
+          style={{
+            fontSize: "clamp(1.75rem, 4vw, 3rem)",
+            color: "var(--bv3-cream)",
+          }}
+        >
+          Five phases
+        </h2>
+
+        <ol className="mt-14 space-y-12">
+          {phases.map((phase) => (
+            <li key={phase.numeral}>
+              <div
+                className="text-xs tracking-[0.18em]"
+                style={{ color: "var(--bv3-gold)" }}
+              >
+                {phase.numeral}
+              </div>
+              <h3
+                className="mt-4 text-2xl font-semibold"
+                style={{ color: "var(--bv3-cream)" }}
+              >
+                {phase.name}
+              </h3>
+              <p
+                className="mt-3 text-[15px] leading-relaxed"
+                style={{ color: "var(--bv3-ink-muted)", maxWidth: "62ch" }}
+              >
+                {phase.does}
+              </p>
+              <p className="mt-3 text-[15px] leading-relaxed">
+                <span
+                  className="bv3-mono"
+                  style={{ textTransform: "uppercase" }}
+                >
+                  Ends when
+                </span>{" "}
+                <span style={{ color: "var(--bv3-ink-muted)" }}>
+                  {phase.endsWhen}
+                </span>
+              </p>
+            </li>
+          ))}
+        </ol>
       </Beat>
 
       {/* ===================================================================
