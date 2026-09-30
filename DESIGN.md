@@ -332,13 +332,19 @@ Inputs match card register: shell-deep background, 1px border-subtle, 12px radiu
 - **Maintain the matte monolith.** Every section uses `shell` `#3a3b3d` as ground. Petrol-spine rules + gold mono labels + Bricolage display are how sections differentiate.
 - **Use the binary radius system: 12px (containers) or 9999px (pills).** No values between.
 
-  > **Open divergence, measured 2026-09-29 — needs Dailen, not a doc edit.** The code does not
-  > obey this. `rounded-md` appears **38 times inside `(brand-v3)`** (40 repo-wide) and resolves to
-  > Tailwind 3's default **6px** — `tailwind.config.ts` sets no `borderRadius` override — plus one
-  > hand-rolled `14px` at `app/globals.css:401`. Against a rule that says "no values between",
-  > that is the rule losing 38:0 on the surfaces it governs. Two honest resolutions: bring the code
-  > to 12px/pill, or amend the system to admit 6px. Amending a locked brand rule to match drift is
-  > the kind of decision that belongs to Dailen, so this is recorded rather than resolved.
+  > **Divergence CLOSED 2026-09-30 — the code moved, the rule did not.** It had been losing 38:0
+  > on the surfaces it governs: 56 repo-wide `rounded-md` resolving to Tailwind's 6px default, with
+  > lg/2xl/3xl at 8/16/24px and no `borderRadius` override in the config. Dailen chose to bring the
+  > code to the system rather than amend the system to admit 6px.
+  >
+  > **Enforced at the token layer, not at the call sites** (`tailwind.config.ts`, `82282e9`): the
+  > scale now collapses onto the locked values — `sm`/default 4px, `md` through `3xl` 12px, `full`
+  > 9999px. Existing utility names keep working and resolve to the system, so a stray `rounded-2xl`
+  > can no longer introduce a fourth radius. Measured after: every non-zero `border-radius` on the
+  > homepage is 12px, across 18 elements.
+  >
+  > Untouched: the hand-rolled `border-radius: 14px` in `app/globals.css` — a literal value, not a
+  > utility, so the token collapse does not reach it.
 - **Reserve display moments.** Bricolage 700 only at 36px+. One hero display per route. Section displays smaller.
 - **Use single-word emphasis on hero H1**, in `wine-text` on a cream base — per the 2026-07-08 IDENTITY lock. The older multi-colour gold+petrol stack predates that lock and is **superseded**; do not reintroduce it.
 - **Pulse LIVE status badge** with `prefers-reduced-motion` honored.

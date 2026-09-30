@@ -88,15 +88,14 @@ Per route Lighthouse targets:
 - SEO ≥ 90
 
 **Hard rules:**
-- Total font payload ≤ 220KB, subset to Latin. Four families load in `app/layout.tsx`: Bricolage Grotesque (display), Geist Sans (body), JetBrains Mono (mono), and **Inter**.
+- Total font payload ≤ 220KB, subset to Latin. Three families load in `app/layout.tsx`: Bricolage Grotesque (display), Geist Sans (body), JetBrains Mono (mono).
 
-  > **Inter is a live trap, flagged 2026-09-29.** `DESIGN.md` bans Inter by name as a generic
-  > default, and the rendered site obeys: `[data-theme="brand-v3"]` sets `--font-geist-sans`
-  > (`app/globals.css:264`) and every surface is inside that group. But Inter is still the base
-  > `body` font (`:70`) **and the Tailwind `sans` token** (`tailwind.config.ts:43`) — so any
-  > `font-sans` utility renders the banned face, silently, and it ships in the payload either way.
-  > Fixing it is a code change (repoint the token to Geist, drop the load), so it is recorded here
-  > rather than done in a docs pass.
+  > **Inter removed 2026-09-30 (`82282e9`).** `DESIGN.md` bans it by name as a generic default, and
+  > the rendered site already obeyed via the `[data-theme="brand-v3"]` font-family override — which
+  > is exactly why nobody noticed it was still the Tailwind `sans` token *and* the base `body` font.
+  > Any `font-sans` utility was silently rendering the banned face, and it loaded on every page.
+  > Token and body fallback repointed to Geist, font dropped from the layout. Verified after:
+  > `document.fonts` contains no Inter and `body` computes to `__GeistSans`.
 - Hero video ≤ 6 MB compressed (1080p H.264 + WebM AV1 fallback)
 - LCP ≤ 2.5s on 3G throttle
 - CLS ≤ 0.1
